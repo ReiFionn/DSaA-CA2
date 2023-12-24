@@ -1,15 +1,16 @@
 package system.dsaaca2;
 
 public class Game {
-    private String name, publisher, description, developers, gameMachine, cover;
+    private String name, publisher, description, developers, cover;
+    private GamesMachine gamesMachine;
     private int year;
 
-    public Game(String name, String publisher, String description, String developers, String gameMachine, String cover, int year) {
+    public Game(String name, String publisher, String description, String developers, GamesMachine gamesMachine, String cover, int year) {
         this.name = name;
         this.publisher = publisher;
         this.description = description;
         this.developers = developers;
-        this.gameMachine = gameMachine;
+        this.gamesMachine = gamesMachine;
         this.cover = cover;
         this.year = year;
     }
@@ -46,12 +47,12 @@ public class Game {
         this.developers = developers;
     }
 
-    public String getGameMachine() {
-        return gameMachine;
+    public GamesMachine getGamesMachine() {
+        return gamesMachine;
     }
 
-    public void setGameMachine(String gameMachine) {
-        this.gameMachine = gameMachine;
+    public void setGamesMachine(GamesMachine gamesMachine) {
+        this.gamesMachine = gamesMachine;
     }
 
     public String getCover() {
@@ -77,9 +78,11 @@ public class Game {
                 ", publisher='" + publisher + '\'' +
                 ", description='" + description + '\'' +
                 ", developers='" + developers + '\'' +
-                ", gameMachine='" + gameMachine + '\'' +
+                ", gamesMachine='" + gamesMachine + '\'' +
                 ", cover='" + cover + '\'' +
                 ", year=" + year +
                 '}';
     }
 }
+
+//idk if gamesMachine should be a gamesMachine object or a string and we search for the machine
