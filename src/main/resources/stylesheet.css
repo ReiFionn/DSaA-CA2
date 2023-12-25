@@ -1,0 +1,51 @@
+Button, Label {
+    -fx-font-family: 'Tomorrow', sans-serif;
+    -fx-background-radius: 0; /* Set the background radius to 0 for a pixelated effect */
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-stroke: #000000; /* Border color */
+    -fx-stroke-width: 2;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.3s; /* Transition duration */
+    -fx-effect: dropshadow(gaussian, black, 2, 2, 2, 2); /* 3D pixelated effect */
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-font-weight: bold;
+}
+
+Label {
+    -fx-background-color: #de283e; /* Mario red background color for the label */
+    -fx-background-radius: 0; /* Set the background radius to 0 for the label */
+}
+Button {
+    -fx-background-color: #de283e; /* Mario red background color for the button */
+    -fx-cursor: OPEN_HAND;
+    -fx-font-family: 'Tomorrow', sans-serif;
+    -fx-font-weight: bold;
+}
+/* Hover effect */
+Button:hover {
+    -fx-background-color: white; /* Darken the background color on hover */
+    -fx-effect: dropshadow(gaussian, black, 5, 5, 5, 5);
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-scale-x: 1.1; /* Increase scale on hover */
+    -fx-scale-y: 1.1;
+    -fx-rotate: 5deg; /* Rotate slightly on hover */
+}
+.homepage{
+    -fx-background-image: url('homePage.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover; /* or 'contain' as per your preference */
+}
+.bg{
+    -fx-background-image: url('gamePage.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover; /* or 'contain' as per your preference */
+}
+
+.systemScene{
+    -fx-background-image: url('SystemPage.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover; /* or 'contain' as per your preference */
+}
