@@ -1,60 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.GameAPI">
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1"
+      fx:controller="system.dsaaca2.Controllers.GameAPI">
    <AnchorPane prefHeight="855.0" prefWidth="1442.0" styleClass="bg" stylesheets="@stylesheet.css" VBox.vgrow="ALWAYS">
       <children>
-         <TextField layoutX="198.0" layoutY="82.0" prefHeight="25.0" prefWidth="134.0" />
-         <TextField layoutX="199.0" layoutY="113.0" prefHeight="25.0" prefWidth="134.0" />
-         <TextField layoutX="193.0" layoutY="144.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="194.0" layoutY="176.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="194.0" layoutY="210.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="194.0" layoutY="240.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="193.0" layoutY="273.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="192.0" layoutY="302.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="174.0" layoutY="384.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="174.0" layoutY="415.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="174.0" layoutY="447.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="174.0" layoutY="479.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="174.0" layoutY="510.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="174.0" layoutY="540.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="174.0" layoutY="572.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="196.0" layoutY="668.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="196.0" layoutY="699.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="196.0" layoutY="731.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="196.0" layoutY="762.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="196.0" layoutY="794.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField layoutX="196.0" layoutY="826.0" prefHeight="25.0" prefWidth="141.0" />
-         <Button layoutX="368.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: GREEN; -fx-font-size: 15px;" text="ADD MACHINE" />
-         <Button layoutX="368.0" layoutY="555.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: GREEN; -fx-font-size: 15px;" text="ADD GAME" />
-         <Button layoutX="368.0" layoutY="777.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: GREEN; -fx-font-size: 15px;" text="ADD PORT" />
+         <TextField fx:id="machineNameTextField" layoutX="198.0" layoutY="82.0" prefHeight="25.0" prefWidth="134.0"/>
+         <TextField fx:id="machineManuTextField" layoutX="199.0" layoutY="113.0" prefHeight="25.0" prefWidth="134.0"/>
+         <TextField fx:id="machineDescTextField" layoutX="193.0" layoutY="144.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="machineTypeTextField" layoutX="194.0" layoutY="176.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="machineMediaTextField" layoutX="194.0" layoutY="210.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="machineImageTextField" layoutX="194.0" layoutY="240.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="machineLaunchYearTextField" layoutX="193.0" layoutY="273.0" prefHeight="25.0"
+                    prefWidth="141.0"/>
+         <TextField fx:id="machinePriceTextField" layoutX="192.0" layoutY="302.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="gameNameTextField" layoutX="174.0" layoutY="384.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="gamePubTextField" layoutX="174.0" layoutY="415.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="gameDescTextField" layoutX="174.0" layoutY="447.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="gameDevTextField" layoutX="174.0" layoutY="479.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="gameMachineTextField" layoutX="174.0" layoutY="510.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="gameCoverTextField" layoutX="174.0" layoutY="540.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="gameLaunchYearTextField" layoutX="174.0" layoutY="572.0" prefHeight="25.0"
+                    prefWidth="141.0"/>
+         <TextField fx:id="portOriginalTextFIeld" layoutX="196.0" layoutY="668.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="portMachineTextField" layoutX="196.0" layoutY="699.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="portOrigMachineTextField" layoutX="196.0" layoutY="731.0" prefHeight="25.0"
+                    prefWidth="141.0"/>
+         <TextField fx:id="portDevTextField" layoutX="196.0" layoutY="762.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="portCoverTextField" layoutX="196.0" layoutY="794.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="portLaunchYearTextField" layoutX="196.0" layoutY="826.0" prefHeight="25.0"
+                    prefWidth="141.0"/>
+         <Button fx:id="addMachineButton" layoutX="368.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="134.0" style="-fx-background-color: GREEN; -fx-font-size: 15px;" text="ADD MACHINE"/>
+         <Button fx:id="addGameButton" layoutX="368.0" layoutY="555.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="134.0" style="-fx-background-color: GREEN; -fx-font-size: 15px;" text="ADD GAME"/>
+         <Button fx:id="addPortButton" layoutX="368.0" layoutY="777.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="134.0" style="-fx-background-color: GREEN; -fx-font-size: 15px;" text="ADD PORT"/>
          <ScrollPane layoutX="539.0" layoutY="83.0" prefHeight="258.0" prefWidth="548.0">
             <content>
-               <ListView fx:id="currentMachinesView" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: grey;" />
+               <ListView fx:id="currentMachinesView" prefHeight="574.0" prefWidth="534.0"
+                         style="-fx-background-color: grey;"/>
             </content>
          </ScrollPane>
-         <ScrollPane fx:id="currentGamesView" layoutX="541.0" layoutY="383.0" prefHeight="234.0" prefWidth="548.0">
+         <ScrollPane layoutX="541.0" layoutY="383.0" prefHeight="234.0" prefWidth="548.0">
             <content>
-               <ListView prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: grey;" />
+               <ListView fx:id="currentGamesView" prefHeight="574.0" prefWidth="534.0"
+                         style="-fx-background-color: grey;"/>
             </content>
          </ScrollPane>
-         <ScrollPane fx:id="currentPortsView" layoutX="540.0" layoutY="661.0" prefHeight="204.0" prefWidth="548.0">
+         <ScrollPane layoutX="540.0" layoutY="661.0" prefHeight="204.0" prefWidth="548.0">
             <content>
-               <ListView prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: grey;" />
+               <ListView fx:id="currentPortsView" prefHeight="574.0" prefWidth="534.0"
+                         style="-fx-background-color: grey;"/>
             </content>
          </ScrollPane>
-         <Button layoutX="1225.0" layoutY="127.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #004aad; -fx-font-size: 15px;" text="EDIT MACHINE" />
-         <Button layoutX="1216.0" layoutY="184.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="153.0" style="-fx-background-color: #cf2323; -fx-font-size: 15px;" text="DELETE MACHINE" />
-         <Button layoutX="1226.0" layoutY="429.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #004aad; -fx-font-size: 15px;" text="EDIT GAME" />
-         <Button layoutX="1225.0" layoutY="483.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #cf2323; -fx-font-size: 15px;" text="DELETE GAME" />
-         <Button layoutX="1225.0" layoutY="682.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #004aad; -fx-font-size: 15px;" text="EDIT PORT" />
-         <Button layoutX="1226.0" layoutY="739.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #cf2323; -fx-font-size: 15px;" text="DELETE PORT" />
-         <Button layoutX="1308.0" layoutY="842.0" mnemonicParsing="false" onAction="#switchSceneSystem" prefHeight="25.0" prefWidth="153.0" style="-fx-background-color: #ffde59; -fx-text-fill: black; -fx-font-size: 20px;" text="SYSTEM -&gt;" />
+         <Button fx:id="editMachineButton" layoutX="1225.0" layoutY="127.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="134.0" style="-fx-background-color: #004aad; -fx-font-size: 15px;" text="EDIT MACHINE"/>
+         <Button fx:id="deleteMachineButton" layoutX="1216.0" layoutY="184.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="153.0" style="-fx-background-color: #cf2323; -fx-font-size: 15px;" text="DELETE MACHINE"/>
+         <Button fx:id="editGameButton" layoutX="1226.0" layoutY="429.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="134.0" style="-fx-background-color: #004aad; -fx-font-size: 15px;" text="EDIT GAME"/>
+         <Button fx:id="deleteGameButton" layoutX="1225.0" layoutY="483.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="134.0" style="-fx-background-color: #cf2323; -fx-font-size: 15px;" text="DELETE GAME"/>
+         <Button fx:id="editPortButton" layoutX="1225.0" layoutY="682.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="134.0" style="-fx-background-color: #004aad; -fx-font-size: 15px;" text="EDIT PORT"/>
+         <Button fx:id="deletePortButton" layoutX="1226.0" layoutY="739.0" mnemonicParsing="false" prefHeight="35.0"
+                 prefWidth="134.0" style="-fx-background-color: #cf2323; -fx-font-size: 15px;" text="DELETE PORT"/>
+         <Button layoutX="1308.0" layoutY="842.0" mnemonicParsing="false" onAction="#switchSceneSystem"
+                 prefHeight="25.0" prefWidth="153.0"
+                 style="-fx-background-color: #ffde59; -fx-text-fill: black; -fx-font-size: 20px;" text="SYSTEM -&gt;"/>
       </children></AnchorPane>
 </VBox>

@@ -1,19 +1,12 @@
 package system.dsaaca2;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import system.dsaaca2.Controllers.*;
-import system.dsaaca2.Datastructures.SillyList;
-import system.dsaaca2.Models.Game;
-import system.dsaaca2.Models.GamePort;
-import system.dsaaca2.Models.GamesMachine;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {

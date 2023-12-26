@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.SystemAPI">
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19-ea"
+      fx:controller="system.dsaaca2.Controllers.SystemAPI">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="systemScene" stylesheets="@stylesheet.css" VBox.vgrow="ALWAYS">
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="systemScene" stylesheets="@stylesheet.css"
+                  VBox.vgrow="ALWAYS">
          <children>
-            <Button layoutX="52.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="28.0" prefWidth="147.0" style="-fx-background-color: #cf2323; -fx-font-size: 16px;" text="&lt;- BACK" />
-            <RadioButton layoutX="52.0" layoutY="194.0" mnemonicParsing="false" text="RadioButton" />
-            <RadioButton layoutX="52.0" layoutY="220.0" mnemonicParsing="false" text="RadioButton" />
-            <RadioButton layoutX="52.0" layoutY="245.0" mnemonicParsing="false" text="RadioButton" />
-            <Button layoutX="1184.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: navy; -fx-font-size: 16px;" text="SAVE" />
-            <Button layoutX="1282.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: navy; -fx-font-size: 16px;" text="LOAD" />
-            <Button layoutX="1378.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: #cf2323; -fx-font-size: 16px;" text="RESET" />
+            <Button layoutX="52.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="28.0"
+                    prefWidth="147.0" style="-fx-background-color: #cf2323; -fx-font-size: 16px;" text="&lt;- BACK"/>
+            <RadioButton layoutX="52.0" layoutY="194.0" mnemonicParsing="false" text="RadioButton"/>
+            <RadioButton layoutX="52.0" layoutY="220.0" mnemonicParsing="false" text="RadioButton"/>
+            <RadioButton layoutX="52.0" layoutY="245.0" mnemonicParsing="false" text="RadioButton"/>
+            <Button layoutX="1184.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack"
+                    prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: navy; -fx-font-size: 16px;"
+                    text="SAVE"/>
+            <Button layoutX="1282.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack"
+                    prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: navy; -fx-font-size: 16px;"
+                    text="LOAD"/>
+            <Button layoutX="1378.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack"
+                    prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: #cf2323; -fx-font-size: 16px;"
+                    text="RESET"/>
          </children>
       </AnchorPane>
    </children>
