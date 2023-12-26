@@ -25,7 +25,7 @@
          <TextField fx:id="gameCoverTextField" layoutX="174.0" layoutY="540.0" prefHeight="25.0" prefWidth="141.0"/>
          <TextField fx:id="gameLaunchYearTextField" layoutX="174.0" layoutY="572.0" prefHeight="25.0"
                     prefWidth="141.0"/>
-         <TextField fx:id="portOriginalTextFIeld" layoutX="196.0" layoutY="668.0" prefHeight="25.0" prefWidth="141.0"/>
+         <TextField fx:id="portOriginalTextField" layoutX="196.0" layoutY="668.0" prefHeight="25.0" prefWidth="141.0"/>
          <TextField fx:id="portMachineTextField" layoutX="196.0" layoutY="699.0" prefHeight="25.0" prefWidth="141.0"/>
          <TextField fx:id="portOrigMachineTextField" layoutX="196.0" layoutY="731.0" prefHeight="25.0"
                     prefWidth="141.0"/>

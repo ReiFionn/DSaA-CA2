@@ -33,12 +33,12 @@ public class GameAPI implements Initializable {
     public TextField gamePubTextField;
     public TextField gameDescTextField;
     public TextField gameDevTextField;
-    public TextField gameMachineTextField;
+    public TextField gameMachineTextField; //combo box?
     public TextField gameCoverTextField;
     public TextField gameLaunchYearTextField;
-    public TextField portOriginalTextFIeld;
-    public TextField portMachineTextField;
-    public TextField portOrigMachineTextField;
+    public TextField portOriginalTextField; //combo box?
+    public TextField portMachineTextField; //combo box?
+    public TextField portOrigMachineTextField; //combo box?
     public TextField portDevTextField;
     public TextField portCoverTextField;
     public TextField portLaunchYearTextField;
