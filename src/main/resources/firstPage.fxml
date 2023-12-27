@@ -8,7 +8,7 @@
    <children>
       <AnchorPane prefHeight="306.0" prefWidth="1500.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button layoutX="829.6666666666666" layoutY="496.0" mnemonicParsing="false" onAction="#switchSceneGame" prefHeight="79.0" prefWidth="367.0" style="-fx-font-size: 30px; -fx-font-family: sans-serif; -fx-background-color: #ffde59; -fx-text-fill: #665100; -fx-border-color: #665100; -fx-border-width: 3;" stylesheets="@stylesheet.css" text="CLICK TO START" AnchorPane.leftAnchor="829.6666666666666" AnchorPane.rightAnchor="309.0" />
+            <Button layoutX="830.0" layoutY="461.0" mnemonicParsing="false" onAction="#switchSceneGame" prefHeight="79.0" prefWidth="367.0" style="-fx-font-size: 30px; -fx-font-family: sans-serif; -fx-background-color: #cb6ce6; -fx-text-fill: #18113a; -fx-border-color: #18113a; -fx-border-width: 3;" stylesheets="@stylesheet.css" text="CLICK TO START" AnchorPane.leftAnchor="830.0" AnchorPane.rightAnchor="309.3333333333335" />
          </children>
       </AnchorPane>
    </children>
