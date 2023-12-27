@@ -1,5 +1,7 @@
 package system.dsaaca2.Models;
 
+import java.util.Objects;
+
 public class GamePort {
     private Game originalGame;
     private GamesMachine machinePortedTo;
@@ -63,16 +65,29 @@ public class GamePort {
     public void setPortYear(int portYear) {
         this.portYear = portYear;
     }
- //hello
+
     @Override
-    public String toString() {
-        return "GamePort{" +
-                "originalGame=" + originalGame +
-                ", machinePortedTo=" + machinePortedTo +
-                ", originalMachine=" + originalMachine +
-                ", developers='" + developers + '\'' +
-                ", cover='" + cover + '\'' +
-                ", portYear=" + portYear +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GamePort gamePort = (GamePort) o;
+        return getPortYear() == gamePort.getPortYear() && Objects.equals(getOriginalGame(), gamePort.getOriginalGame()) && Objects.equals(getMachinePortedTo(), gamePort.getMachinePortedTo()) && Objects.equals(getOriginalMachine(), gamePort.getOriginalMachine()) && Objects.equals(getDevelopers(), gamePort.getDevelopers()) && Objects.equals(getCover(), gamePort.getCover());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getOriginalGame(), getMachinePortedTo(), getOriginalMachine(), getDevelopers(), getCover(), getPortYear());
+    }
+
+    @Override
+ public String toString() {
+     return  "|ORIGINAL GAME: " + originalGame.getName().toUpperCase() + " | - " +
+             "|MACHINE PORTED TO: " + machinePortedTo.getName().toUpperCase() + " | - " +
+             "|ORIGINAL MACHINE: " + originalMachine.getName().toUpperCase() + "|\n" +
+             "|DEVELOPERS: " + developers.toUpperCase() + " | - " +
+             "|COVER: " + cover + " | - " +
+             "|PORT YEAR: " + portYear + "|\n" +
+             "-----------------------------------------------------------------------------------";
+ }
+
 }

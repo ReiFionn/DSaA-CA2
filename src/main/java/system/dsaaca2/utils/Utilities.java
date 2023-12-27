@@ -53,11 +53,11 @@ public class Utilities {
      * @param max           The maximum range number to check against (inclusive)
      * @return Returns true if the numberToCheck is between min and max (both inclusive), false otherwise.
      */
-    public static boolean validRange(int numberToCheck, int min, int max) {
+    public static boolean intValidRange(int numberToCheck, int min, int max) {
         return ((numberToCheck >= min) && (numberToCheck <= max));
     }
 
-    public static boolean validRange(float numbertoCheck, float min, float max, float delta) {
+    public static boolean floatValidRange(float numbertoCheck, float min, float max, float delta) {
         return ((numbertoCheck >= (min - delta)) && (numbertoCheck <= (max + delta)));
 
     }
@@ -107,8 +107,10 @@ public class Utilities {
 
 
 
-
 }
+
+
+
 
 
 

@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SystemAPI implements Initializable {
-    public static SillyList<GamePort> allGamePorts = new SillyList<>();
+
     private static SystemAPI systemAPI;
 
     @Override
