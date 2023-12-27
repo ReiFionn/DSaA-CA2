@@ -25,8 +25,6 @@ public class Main extends Application {
         return newScene; // Return the new scene
     }
 
-
-
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -45,5 +43,3 @@ public class Main extends Application {
 
     }
 }
-
-//Main JavaFX stuff here, technically a controller
