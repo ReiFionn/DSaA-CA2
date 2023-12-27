@@ -28,9 +28,9 @@
          <TextField fx:id="portCoverText" layoutX="1119.0" layoutY="284.0" prefHeight="25.0" prefWidth="141.0" />
          <TextField fx:id="portDevText" layoutX="1118.0" layoutY="254.0" prefHeight="25.0" prefWidth="141.0" />
          <TextField fx:id="portYearText" layoutX="1120.0" layoutY="315.0" prefHeight="25.0" prefWidth="141.0" />
-         <Button fx:id="addGamesMachine" layoutX="299.0" layoutY="367.0" mnemonicParsing="false" onAction="#addGamesMachine" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-text-fill: #cb6ce6; -fx-font-size: 15px;" text="ADD MACHINE" />
-         <Button fx:id="addGameButton" layoutX="792.0" layoutY="365.0" mnemonicParsing="false" onAction="#addGame" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="ADD GAME" />
-         <Button fx:id="addGamePort" layoutX="1318.0" layoutY="365.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="ADD PORT" />
+         <Button layoutX="299.0" layoutY="367.0" mnemonicParsing="false" onAction="#addGamesMachine" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-text-fill: #cb6ce6; -fx-font-size: 15px;" text="ADD MACHINE" />
+         <Button layoutX="792.0" layoutY="365.0" mnemonicParsing="false" onAction="#addGameButton" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="ADD GAME" />
+         <Button layoutX="1318.0" layoutY="365.0" mnemonicParsing="false" onAction="#addGamePort" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="ADD PORT" />
          <ScrollPane layoutX="27.0" layoutY="453.0" prefHeight="196.0" prefWidth="457.0">
             <content>
                <ListView fx:id="currentMachinesView" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: #e8d0fa;" />
