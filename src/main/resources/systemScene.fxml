@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19-ea"
-      fx:controller="system.dsaaca2.Controllers.SystemAPI">
+
+<VBox prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.SystemAPI">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="systemScene" stylesheets="@stylesheet.css"
-                  VBox.vgrow="ALWAYS">
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="systemScene" stylesheets="@stylesheet.css" VBox.vgrow="ALWAYS">
          <children>
-            <Button layoutX="52.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="28.0"
-                    prefWidth="147.0" style="-fx-background-color: #cf2323; -fx-font-size: 16px;" text="&lt;- BACK"/>
-            <RadioButton layoutX="52.0" layoutY="194.0" mnemonicParsing="false" text="RadioButton"/>
-            <RadioButton layoutX="52.0" layoutY="220.0" mnemonicParsing="false" text="RadioButton"/>
-            <RadioButton layoutX="52.0" layoutY="245.0" mnemonicParsing="false" text="RadioButton"/>
-            <Button layoutX="1184.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack"
-                    prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: navy; -fx-font-size: 16px;"
-                    text="SAVE"/>
-            <Button layoutX="1282.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack"
-                    prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: navy; -fx-font-size: 16px;"
-                    text="LOAD"/>
-            <Button layoutX="1378.0" layoutY="802.0" mnemonicParsing="false" onAction="#switchSceneBack"
-                    prefHeight="39.0" prefWidth="77.0" style="-fx-background-color: #cf2323; -fx-font-size: 16px;"
-                    text="RESET"/>
+            <Button layoutX="1247.0" layoutY="838.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="28.0" prefWidth="147.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="&lt;- BACK" />
+            <RadioButton layoutX="39.0" layoutY="162.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton layoutX="39.0" layoutY="183.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton layoutX="39.0" layoutY="204.0" mnemonicParsing="false" text="RadioButton" />
+            <TextField fx:id="searchMachineField" layoutX="39.0" layoutY="89.0" prefHeight="25.0" prefWidth="377.0" />
+            <TextField fx:id="searchGamesField" layoutX="698.0" layoutY="89.0" prefHeight="25.0" prefWidth="377.0" />
+            <Button layoutX="157.0" layoutY="242.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="40.0" prefWidth="211.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH MACHINES" />
+            <Button layoutX="772.0" layoutY="242.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="40.0" prefWidth="264.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH GAMES AND PORTS" />
+            <ScrollPane fx:id="currentGamesView" layoutX="30.0" layoutY="331.0" prefHeight="549.0" prefWidth="491.0">
+               <content>
+                  <ListView fx:id="machineSearchList" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: #e8d0fa;" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="currentGamesView1" layoutX="681.0" layoutY="331.0" prefHeight="549.0" prefWidth="491.0">
+               <content>
+                  <ListView fx:id="gamesSearchList" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: #e8d0fa;" />
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </children>
