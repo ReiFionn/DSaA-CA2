@@ -1,10 +1,7 @@
 package system.dsaaca2.Controllers;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
@@ -54,6 +51,39 @@ public class GameAPI implements Initializable {
     public ComboBox<GamesMachine> gameMachineCombo; //machines for games
     public ComboBox<Game> portGameCombo; //games for ports
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
+    private final Alert warning = new Alert(Alert.AlertType.WARNING);
+    public SillyList<GamesMachine> allMachines = new SillyList<>();
+
+    public void addGamesMachine() {
+        if (!machineNameText.getText().isEmpty() && !machinePriceText.getText().isEmpty() && !machineManuText.getText().isEmpty() && !machineDescText.getText().isEmpty() && !machineTypeText.getText().isEmpty() && !machineMediaText.getText().isEmpty() && !machineImageText.getText().isEmpty() && !machineYearText.getText().isEmpty()) {
+            String name = machineNameText.getText();
+            float price = Float.parseFloat(machinePriceText.getText());
+            String manufacturer = machineManuText.getText();
+            String description = machineDescText.getText();
+            String type = machineTypeText.getText();
+            String media = machineMediaText.getText();
+            String image = machineImageText.getText();
+            int year = Integer.parseInt(machineYearText.getText());
+
+            GamesMachine machineToAdd = new GamesMachine(name, manufacturer, description, type, media, image, year, price);
+            allMachines.add(machineToAdd);
+            currentMachinesView.getItems().add(machineToAdd);
+
+            machineNameText.clear();
+            machinePriceText.clear();
+            machineManuText.clear();
+            machineDescText.clear();
+            machineTypeText.clear();
+            machineMediaText.clear();
+            machineImageText.clear();
+            machineYearText.clear();
+
+        } else {
+            warning.setTitle("Empty Parameters Found");
+            warning.setContentText("Do not leave any fields empty when adding a games machine!");
+            warning.showAndWait();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
