@@ -43,9 +43,6 @@ public class Main extends Application {
         mainStage.setTitle("Retro Games System");
         mainStage.show();
 
-
-
-
     }
 }
 
