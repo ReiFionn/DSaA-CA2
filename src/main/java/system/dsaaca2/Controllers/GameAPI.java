@@ -7,6 +7,7 @@ import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.utils.Utilities;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,24 +52,76 @@ public class GameAPI implements Initializable {
     public ComboBox<GamesMachine> gameMachineCombo; //machines for games
     public ComboBox<Game> portGameCombo; //games for ports
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
-    private final Alert warning = new Alert(Alert.AlertType.WARNING);
+
     public SillyList<GamesMachine> allMachines = new SillyList<>();
 
+
+    public boolean isMachineDuplicate(String n, String man) {
+        /*Ensures no duplicates in the system */
+        for (GamesMachine m : allMachines) {
+            if (m.getName().equalsIgnoreCase(n) && m.getManufacturer().equalsIgnoreCase(man)) {
+                return true; // Duplicate found
+            }
+        }
+        return false; // No duplicate found
+    }
+
+
+
+
+
+    /*
+     * Method for adding a new games machine.
+     * Checks for empty fields, checks for valid inputs where necessary and prevents duplicate entries.
+     */
     public void addGamesMachine() {
-        if (!machineNameText.getText().isEmpty() && !machinePriceText.getText().isEmpty() && !machineManuText.getText().isEmpty() && !machineDescText.getText().isEmpty() && !machineTypeText.getText().isEmpty() && !machineMediaText.getText().isEmpty() && !machineImageText.getText().isEmpty() && !machineYearText.getText().isEmpty()) {
+        // Check for null fields
+        if (!machineNameText.getText().isEmpty() && !machinePriceText.getText().isEmpty() && !machineManuText.getText().isEmpty() &&
+                !machineDescText.getText().isEmpty() && !machineTypeText.getText().isEmpty() && !machineMediaText.getText().isEmpty() &&
+                !machineImageText.getText().isEmpty() && !machineYearText.getText().isEmpty()) {
+
+            // get input values
             String name = machineNameText.getText();
-            float price = Float.parseFloat(machinePriceText.getText());
             String manufacturer = machineManuText.getText();
             String description = machineDescText.getText();
             String type = machineTypeText.getText();
             String media = machineMediaText.getText();
             String image = machineImageText.getText();
-            int year = Integer.parseInt(machineYearText.getText());
 
+            // makes sure price input is a number
+            float price;
+            try {
+                price = Float.parseFloat(machinePriceText.getText());
+            } catch (NumberFormatException e) {
+                Utilities.showWarningAlert("Invalid Price", "Please enter a valid price.");
+                return;
+            }
+
+            // makes sure year input is a number
+            int year;
+            try {
+                year = Integer.parseInt(machineYearText.getText());
+            } catch (NumberFormatException e) {
+                Utilities.showWarningAlert("Invalid Year", "Please enter a valid year.");
+                return;
+            }
+
+            //new GamesMachine object
             GamesMachine machineToAdd = new GamesMachine(name, manufacturer, description, type, media, image, year, price);
+
+            // makes sure it is not a duplicate entry
+            if (isMachineDuplicate(name, manufacturer)) {
+                Utilities.showWarningAlert("Duplicate Machine", "A machine with the same name and manufacturer already exists.");
+                return;
+            }
+
+            // Add the new machine to the system
             allMachines.add(machineToAdd);
             currentMachinesView.getItems().add(machineToAdd);
+            gameMachineCombo.getItems().add(machineToAdd);
+            portMachineCombo.getItems().add(machineToAdd);
 
+            // Clear input fields
             machineNameText.clear();
             machinePriceText.clear();
             machineManuText.clear();
@@ -78,17 +131,15 @@ public class GameAPI implements Initializable {
             machineImageText.clear();
             machineYearText.clear();
 
+            // Show success alert
+            Utilities.showInformationAlert("SUCCESS!", "GAMES MACHINE ADDED SUCCESSFULLY :D");
+
         } else {
-            warning.setTitle("Empty Parameters Found");
-            warning.setContentText("Do not leave any fields empty when adding a games machine!");
-            warning.showAndWait();
+            // Show warning for empty fields
+            Utilities.showWarningAlert("No Empty Fields Allowed!!", "Please enter a value for all fields!");
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        gameAPI = this;
-    }
 
     public void switchSceneGame() {
         Main.mainStage.setScene(Main.gameScene);
