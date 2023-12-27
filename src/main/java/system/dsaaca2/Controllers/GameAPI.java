@@ -2,6 +2,7 @@ package system.dsaaca2.Controllers;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import system.dsaaca2.Datastructures.SillyList;
@@ -19,38 +20,40 @@ public class GameAPI implements Initializable {
 
     //TODO - add fx-ids to all text-fields and import here
     public ListView<GamesMachine> currentMachinesView;
+    public TextField machineNameText;
+    public TextField machinePriceText;
+    public TextField machineManuText;
+    public TextField machineDescText;
+    public TextField machineTypeText;
+    public TextField machineMediaText;
+    public TextField machineImageText;
+    public TextField machineYearText;
+    public TextField gameNameText;
+    public TextField gamePubText;
+    public TextField gameDescText;
+    public TextField gameDevText;
+    public TextField gameYearText;
+    public TextField gameCoverText;
+    public TextField portCoverText;
+    public TextField portDevText;
+    public TextField portYearText;
+    public Button addMachineButton; //might not need
+    public Button addGameButton; //might not need
+    public Button addPortButton; //might not need
     public ListView<Game> currentGamesView;
-    public ListView<GamePort> currentPortsView; //do we want these list views to be objects?
-    public TextField machineNameTextField;
-    public TextField machineManuTextField;
-    public TextField machineDescTextField;
-    public TextField machineTypeTextField;
-    public TextField machineMediaTextField;
-    public TextField machineImageTextField;
-    public TextField machineLaunchYearTextField;
-    public TextField machinePriceTextField;
-    public TextField gameNameTextField;
-    public TextField gamePubTextField;
-    public TextField gameDescTextField;
-    public TextField gameDevTextField;
-    public TextField gameMachineTextField; //combo box?
-    public TextField gameCoverTextField;
-    public TextField gameLaunchYearTextField;
-    public TextField portOriginalTextField; //combo box?
-    public TextField portMachineTextField; //combo box?
-    public TextField portOrigMachineTextField; //combo box?
-    public TextField portDevTextField;
-    public TextField portCoverTextField;
-    public TextField portLaunchYearTextField;
-    public Button addMachineButton;
-    public Button addGameButton;
-    public Button addPortButton;
-    public Button editMachineButton;
-    public Button deleteMachineButton;
-    public Button editGameButton;
-    public Button deleteGameButton;
-    public Button editPortButton;
-    public Button deletePortButton; //idk if we need IDs on the buttons, can delete later if not
+    public ListView<GamePort> currentPortsView;
+    public Button editMachineButton; //might not need
+    public Button deleteMachineButton; //might not need
+    public Button editGameButton; //might not need
+    public Button deleteGameButton; //might not need
+    public Button editPortButton; //might not need
+    public Button deletePortButton; //might not need
+    public Button saveButton; //might not need
+    public Button loadButton; //might not need
+    public Button resetButton; //might not need
+    public ComboBox<GamesMachine> gameMachineCombo; //machines for games
+    public ComboBox<Game> portGameCombo; //games for ports
+    public ComboBox<GamesMachine> portMachineCombo; //machines for ports
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
