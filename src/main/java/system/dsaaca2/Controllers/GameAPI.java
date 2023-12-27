@@ -136,6 +136,7 @@ public class GameAPI implements Initializable {
             GamesMachine gm = new GamesMachine(name, manufacturer, description, type, media, image, year, price);
 
             allMachines.add(gm); /* Add to the global list */
+            currentMachinesView.getItems().add(gm);
             gameMachineCombo.getItems().add(gm);
             portMachineCombo.getItems().add(gm);
             /* Alert for successful add */
@@ -235,8 +236,6 @@ public class GameAPI implements Initializable {
      * checking for duplicates, ensuring the year input is a number within a valid range,
      * and verifying that the port year doesn't come before the release years of both the machine and the game.
      */
-
-
     public void addGamePort() {
         /* Step 1: Get selected machine and game from combo boxes */
         GamesMachine selectedMachine = portMachineCombo.getSelectionModel().getSelectedItem();
