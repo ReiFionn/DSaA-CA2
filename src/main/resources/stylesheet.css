@@ -44,6 +44,12 @@ Button:hover {
     -fx-background-size: cover; /* or 'contain' as per your preference */
 }
 
+.machinePop{
+    -fx-background-image: url('gamesMachine.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover; /* or 'contain' as per your preference */
+}
+
 .systemScene{
     -fx-background-image: url('SystemPage.png');
     -fx-background-repeat: no-repeat;
