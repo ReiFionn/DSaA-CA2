@@ -1,5 +1,6 @@
 package system.dsaaca2.Models;
 
+import system.dsaaca2.Controllers.GameAPI;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.utils.Utilities;
 
@@ -20,6 +21,7 @@ public class GamesMachine {
         setYear(year);
         this.price = price;
     }
+
 
     public SillyList<Game> getGames() {
         return games;

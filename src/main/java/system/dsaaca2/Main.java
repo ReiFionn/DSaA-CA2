@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.util.Objects;
 public class Main extends Application {
     public static Scene homePageScene,gameScene,systemScene;
     public static Stage mainStage;
+    public static Stage popupStage;
 
     public static void main(String[] args) {
         launch();
@@ -42,4 +45,39 @@ public class Main extends Application {
         mainStage.show();
 
     }
+
+
+
+    public static Stage newPopup(String file, String title) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(file));
+        Parent root = fxmlLoader.load();
+
+        // Create a new stage
+        Stage popUp = new Stage();
+        popUp.setTitle(title);
+        popUp.setResizable(false);
+
+        // Create a new scene with the loaded content
+        Scene newScene = new Scene(root, 1000, 600);
+        Button closeButton = new Button("Close Popup");
+
+
+        // Set the scene for the stage
+        popUp.setScene(newScene);
+
+        // Add stylesheets if needed
+        newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/stylesheet.css")).toExternalForm());
+        return popUp; // Return the new stage
+
+
+    }
+
+
+
+
+
+
+
+
+
 }
