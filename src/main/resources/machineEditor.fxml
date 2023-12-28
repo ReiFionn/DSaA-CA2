@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<DialogPane minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.EditsController">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0">
+         <children>
+            <TableView fx:id="machineEditTable" layoutX="16.0" layoutY="39.0" prefHeight="353.0" prefWidth="961.0">
+              <columns>
+                <TableColumn fx:id="mName" prefWidth="105.99999713897705" text="NAME" />
+                <TableColumn fx:id="mMan" prefWidth="131.33329010009766" text="MANUFACTURER" />
+                  <TableColumn fx:id="mDesc" prefWidth="145.3332977294922" text="DESCRIPTION" />
+                  <TableColumn fx:id="mType" prefWidth="126.66671752929688" text="TYPE" />
+                  <TableColumn fx:id="mMedia" prefWidth="143.33331298828125" text="MEDIA" />
+                  <TableColumn fx:id="mImage" prefWidth="109.33331298828125" text="IMAGE" />
+                  <TableColumn fx:id="mYear" prefWidth="108.666748046875" text="YEAR" />
+                  <TableColumn fx:id="mPrice" prefWidth="94.0001220703125" text="PRICE" />
+              </columns>
+            </TableView>
+            <Button layoutX="482.0" layoutY="564.0" mnemonicParsing="false" text="Button" />
+            <TextField fx:id="updateMachineName" layoutX="177.0" layoutY="421.0" />
+         </children>
+      </AnchorPane>
+   </content>
+</DialogPane>
