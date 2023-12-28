@@ -3,8 +3,6 @@ package system.dsaaca2.utils;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import system.dsaaca2.Controllers.GameAPI;
-import system.dsaaca2.Controllers.SystemAPI;
-import system.dsaaca2.Controllers.GamesMachineAPI;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
@@ -15,10 +13,6 @@ import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-
-
-/*I PUT PERSISTENCE STUFFS HERE JUST TO KEEP EVERYTHING SEPERATED AND EASIER TO FIND
-* AND MANAGE :D*/
 public class Persistance {
 
     @SuppressWarnings("unchecked") /*Just removes annoying warnings*/
@@ -32,7 +26,7 @@ public class Persistance {
         ObjectInputStream in = xstream.createObjectInputStream(new FileReader("system.xml"));
         GameAPI.allGames = (SillyList<Game>) in.readObject();
         GameAPI.allGamePorts = (SillyList<GamePort>) in.readObject();
-        GamesMachineAPI.allGamesMachines = (SillyList<GamesMachine>) in.readObject();
+        GameAPI.allMachines = (SillyList<GamesMachine>) in.readObject();
         in.close();
     }
 
@@ -42,7 +36,7 @@ public class Persistance {
         ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("system.xml"));
         out.writeObject(GameAPI.allGames);
         out.writeObject(GameAPI.allGamePorts);
-        out.writeObject(GamesMachineAPI.allGamesMachines);
+        out.writeObject(GameAPI.allMachines);
 
         out.close();
     }
