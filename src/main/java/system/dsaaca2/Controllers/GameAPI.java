@@ -213,34 +213,36 @@ public class GameAPI implements Initializable {
                 Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID NUMERICAL YEAR");
                 return;
             }
+            if (!selectedMachine.equals(selectedGame.getGamesMachine())) {
+                if (year >= selectedMachine.getYear() && year >= selectedGame.getYear()) {
+                    GamePort newGamePort = new GamePort(selectedGame, selectedMachine, selectedGame.getGamesMachine(), developers, cover, year);
 
-            if (year >= selectedMachine.getYear() && year >= selectedGame.getYear()) {
-                GamePort newGamePort = new GamePort(selectedGame, selectedMachine, selectedGame.getGamesMachine(), developers, cover, year);
-
-                boolean dupe = false;
-                for (GamePort port : allGamePorts) {
-                    if (port.getOriginalGame().equals(newGamePort.getOriginalGame()) && port.getMachinePortedTo().equals(newGamePort.getMachinePortedTo())) {
-                        dupe = true;
-                        break;
+                    boolean dupe = false;
+                    for (GamePort port : allGamePorts) {
+                        if (port.getOriginalGame().equals(newGamePort.getOriginalGame()) && port.getMachinePortedTo().equals(newGamePort.getMachinePortedTo())) {
+                            dupe = true;
+                            break;
+                        }
                     }
-                }
 
-                if (!dupe) {
-                    allGamePorts.add(newGamePort); /* add to global list */
-                    selectedGame.addPort(newGamePort); /* add to the selected games list of ports*/
-                    currentPortsView.getItems().add(newGamePort);
+                    if (!dupe) {
+                        allGamePorts.add(newGamePort); /* add to global list */
+                        selectedGame.addPort(newGamePort); /* add to the selected games list of ports*/
+                        currentPortsView.getItems().add(newGamePort);
 
-                    portMachineCombo.getSelectionModel().clearSelection();
-                    portGameCombo.getSelectionModel().clearSelection();
-                    portDevText.clear();
-                    portCoverText.clear();
-                    portYearText.clear();
+                        portMachineCombo.getSelectionModel().clearSelection();
+                        portGameCombo.getSelectionModel().clearSelection();
+                        portDevText.clear();
+                        portCoverText.clear();
+                        portYearText.clear();
 
-                    Utilities.showInformationAlert("SUCCESS!", newGamePort.getOriginalGame().getName().toUpperCase() + "'S PORT TO " + newGamePort.getMachinePortedTo().getName().toUpperCase() + " ADDED SUCCESSFULLY!");
+                        Utilities.showInformationAlert("SUCCESS!", newGamePort.getOriginalGame().getName().toUpperCase() + "'S PORT TO " + newGamePort.getMachinePortedTo().getName().toUpperCase() + " ADDED SUCCESSFULLY!");
+                    } else
+                        Utilities.showWarningAlert("ERROR", "DUPLICATE PORT ENTERED");
                 } else
-                    Utilities.showWarningAlert("ERROR", "DUPLICATE PORT ENTERED");
+                    Utilities.showWarningAlert("ERROR", "A PORT FOR THIS MACHINE CAN NOT EXIST BEFORE THE YEAR THE MACHINE/GAME WAS RELEASED");
             } else
-                Utilities.showWarningAlert("ERROR", "A PORT FOR THIS MACHINE CAN NOT EXIST BEFORE THE YEAR THE MACHINE/GAME WAS RELEASED");
+                Utilities.showWarningAlert("ERROR", "A PORT CANNOT BE FOR THE SAME MACHINE THAT THE ORIGINAL GAME WAS MADE FOR");
         } else {
             Utilities.showWarningAlert("ERROR", "NO EMPTY FIELDS ALLOWED, PLEASE ENTER A VALUE FOR ALL FIELDS!!!");
         }
@@ -257,9 +259,47 @@ public class GameAPI implements Initializable {
 
             for (Game game : selectedMachine.getGames()) {
                 allGames.remove(game);
+                portGameCombo.getItems().remove(game);
+                currentGamesView.getItems().remove(game);
+
+                for (GamePort port : game.getPorts()) {
+                    allGamePorts.remove(port);
+                    currentPortsView.getItems().remove(port);
+                }
             }
-        } else {
+
+            for (GamePort port : allGamePorts) {
+                if (port.getMachinePortedTo().equals(selectedMachine)) {
+                    allGamePorts.remove(port);
+                    currentPortsView.getItems().remove(port);
+                }
+            }
+        } else
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO DELETE");
+    }
+
+    public void removeGame() {
+        Game selectedGame = currentGamesView.getSelectionModel().getSelectedItem();
+
+        if (selectedGame != null) {
+            allGames.remove(selectedGame);
+            portGameCombo.getItems().remove(selectedGame);
+            currentGamesView.getItems().remove(selectedGame);
+
+            for (GamePort port : selectedGame.getPorts()) {
+                allGamePorts.remove(port);
+                currentPortsView.getItems().remove(port);
+            }
+        } else
+            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO DELETE");
+    }
+
+    public void removePort() {
+        GamePort selectedPort = currentPortsView.getSelectionModel().getSelectedItem();
+
+        if (selectedPort != null) {
+            allGamePorts.remove(selectedPort);
+            currentPortsView.getItems().remove(selectedPort);
         }
     }
 
