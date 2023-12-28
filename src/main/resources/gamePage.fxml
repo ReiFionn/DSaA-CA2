@@ -29,45 +29,75 @@
                     prefHeight="35.0" prefWidth="134.0"
                     style="-fx-background-color: #18113c; -fx-text-fill: #cb6ce6; -fx-font-size: 15px;"
                     text="ADD MACHINE"/>
-         <Button layoutX="792.0" layoutY="365.0" mnemonicParsing="false" onAction="#addGame" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="ADD GAME" />
-         <Button layoutX="1318.0" layoutY="365.0" mnemonicParsing="false" onAction="#addGamePort" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="ADD PORT" />
-         <ScrollPane layoutX="27.0" layoutY="453.0" prefHeight="196.0" prefWidth="457.0">
-            <content>
-               <ListView fx:id="currentMachinesView" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: #e8d0fa;" />
-            </content>
-         </ScrollPane>
-         <ScrollPane layoutX="519.0" layoutY="453.0" prefHeight="196.0" prefWidth="457.0">
-            <content>
-               <ListView fx:id="currentGamesView" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: #e8d0fa;" />
-            </content>
-         </ScrollPane>
-         <ScrollPane layoutX="1010.0" layoutY="453.0" prefHeight="196.0" prefWidth="457.0">
-            <content>
-               <ListView fx:id="currentPortsView" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: #e8d0fa;" />
-            </content>
-         </ScrollPane>
-         <Button fx:id="editMachineButton" layoutX="105.0" layoutY="704.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="EDIT MACHINE" />
+            <Button layoutX="792.0" layoutY="365.0" mnemonicParsing="false" onAction="#addGame" prefHeight="35.0"
+                    prefWidth="134.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
+                    text="ADD GAME"/>
+            <Button layoutX="1318.0" layoutY="365.0" mnemonicParsing="false" onAction="#addGamePort" prefHeight="35.0"
+                    prefWidth="134.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
+                    text="ADD PORT"/>
+            <ScrollPane layoutX="27.0" layoutY="453.0" prefHeight="196.0" prefWidth="457.0">
+                <content>
+                    <ListView fx:id="currentMachinesView" prefHeight="574.0" prefWidth="534.0"
+                              style="-fx-background-color: #e8d0fa;"/>
+                </content>
+            </ScrollPane>
+            <ScrollPane layoutX="519.0" layoutY="453.0" prefHeight="196.0" prefWidth="457.0">
+                <content>
+                    <ListView fx:id="currentGamesView" prefHeight="574.0" prefWidth="534.0"
+                              style="-fx-background-color: #e8d0fa;"/>
+                </content>
+            </ScrollPane>
+            <ScrollPane layoutX="1010.0" layoutY="453.0" prefHeight="196.0" prefWidth="457.0">
+                <content>
+                    <ListView fx:id="currentPortsView" prefHeight="574.0" prefWidth="534.0"
+                              style="-fx-background-color: #e8d0fa;"/>
+                </content>
+            </ScrollPane>
+            <Button fx:id="editMachineButton" layoutX="105.0" layoutY="704.0" mnemonicParsing="false" prefHeight="35.0"
+                    prefWidth="134.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
+                    text="EDIT MACHINE"/>
             <Button fx:id="deleteMachineButton" layoutX="263.0" layoutY="704.0" mnemonicParsing="false"
                     onAction="#removeMachine" prefHeight="35.0" prefWidth="153.0"
                     style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
                     text="DELETE MACHINE"/>
-         <Button fx:id="editGameButton" layoutX="595.0" layoutY="705.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="EDIT GAME" />
+            <Button fx:id="editGameButton" layoutX="595.0" layoutY="705.0" mnemonicParsing="false" prefHeight="35.0"
+                    prefWidth="134.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
+                    text="EDIT GAME"/>
             <Button fx:id="deleteGameButton" layoutX="768.0" layoutY="706.0" mnemonicParsing="false"
                     onAction="#removeGame" prefHeight="35.0" prefWidth="134.0"
                     style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
                     text="DELETE GAME"/>
-         <Button fx:id="editPortButton" layoutX="1098.0" layoutY="703.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="EDIT PORT" />
+            <Button fx:id="editPortButton" layoutX="1098.0" layoutY="703.0" mnemonicParsing="false" prefHeight="35.0"
+                    prefWidth="134.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
+                    text="EDIT PORT"/>
             <Button fx:id="deletePortButton" layoutX="1265.0" layoutY="703.0" mnemonicParsing="false"
                     onAction="#removePort" prefHeight="35.0" prefWidth="134.0"
                     style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
                     text="DELETE PORT"/>
-         <Button layoutX="981.0" layoutY="838.0" mnemonicParsing="false" onAction="#switchSceneSystem" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #18113c; -fx-text-fill: #cb6ce6; -fx-font-size: 20px;" text="SYSTEM FEATURES -&gt;" />
-         <Button fx:id="saveButton" layoutX="125.0" layoutY="841.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="SAVE" />
-         <Button fx:id="loadButton" layoutX="312.0" layoutY="843.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="LOAD" />
-         <Button fx:id="resetButton" layoutX="504.0" layoutY="844.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="RESET" />
-         <ComboBox fx:id="gameMachineCombo" layoutX="582.0" layoutY="120.0" prefHeight="36.0" prefWidth="315.0" promptText="LIST OF MACHINES" style="-fx-background-color: #18113c;" />
-         <ComboBox fx:id="portGameCombo" layoutX="986.0" layoutY="121.0" prefHeight="36.0" prefWidth="227.0" promptText="LIST OF GAMES" style="-fx-background-color: #18113c;" />
-         <ComboBox fx:id="portMachineCombo" layoutX="1242.0" layoutY="122.0" prefHeight="36.0" prefWidth="221.0" promptText="LIST OF MACHINES" style="-fx-background-color: #18113c;" />
-      </children>
+            <Button layoutX="981.0" layoutY="838.0" mnemonicParsing="false" onAction="#switchSceneSystem"
+                    prefHeight="47.0" prefWidth="255.0"
+                    style="-fx-background-color: #18113c; -fx-text-fill: #cb6ce6; -fx-font-size: 20px;"
+                    text="SYSTEM FEATURES -&gt;"/>
+            <Button fx:id="saveButton" layoutX="125.0" layoutY="841.0" mnemonicParsing="false" onAction="#save"
+                    prefHeight="35.0" prefWidth="134.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="SAVE"/>
+            <Button fx:id="loadButton" layoutX="312.0" layoutY="843.0" mnemonicParsing="false" onAction="#load"
+                    prefHeight="35.0" prefWidth="134.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="LOAD"/>
+            <Button fx:id="resetButton" layoutX="504.0" layoutY="844.0" mnemonicParsing="false" onAction="#reset"
+                    prefHeight="35.0" prefWidth="134.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="RESET"/>
+            <ComboBox fx:id="gameMachineCombo" layoutX="582.0" layoutY="120.0" prefHeight="36.0" prefWidth="315.0"
+                      promptText="LIST OF MACHINES" style="-fx-background-color: #18113c;"/>
+            <ComboBox fx:id="portGameCombo" layoutX="986.0" layoutY="121.0" prefHeight="36.0" prefWidth="227.0"
+                      promptText="LIST OF GAMES" style="-fx-background-color: #18113c;"/>
+            <ComboBox fx:id="portMachineCombo" layoutX="1242.0" layoutY="122.0" prefHeight="36.0" prefWidth="221.0"
+                      promptText="LIST OF MACHINES" style="-fx-background-color: #18113c;"/>
+        </children>
    </AnchorPane>
 </VBox>

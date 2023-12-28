@@ -10,6 +10,7 @@ import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.utils.Persistance;
 import system.dsaaca2.utils.Utilities;
 
 import java.net.URL;
@@ -53,7 +54,7 @@ public class GameAPI implements Initializable {
     public ComboBox<Game> portGameCombo; //games for ports
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
 
-    public SillyList<GamesMachine> allMachines = new SillyList<>();
+    public static SillyList<GamesMachine> allMachines = new SillyList<>();
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
 
@@ -101,7 +102,7 @@ public class GameAPI implements Initializable {
             }
 
             if (!dupe) {
-                allMachines.add(gm); /* Add to the global list */
+                allMachines.add(gm);
                 currentMachinesView.getItems().add(gm);
                 gameMachineCombo.getItems().add(gm);
                 portMachineCombo.getItems().add(gm);
@@ -301,6 +302,47 @@ public class GameAPI implements Initializable {
             allGamePorts.remove(selectedPort);
             currentPortsView.getItems().remove(selectedPort);
         }
+    }
+
+    public void save() throws Exception {
+        try {
+            Persistance.save();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error Saving.");
+        }
+    }
+
+    public void load() throws Exception {
+        reset();
+        Persistance.load();
+
+        for (GamesMachine machine : allMachines) {
+            currentMachinesView.getItems().add(machine);
+            gameMachineCombo.getItems().add(machine);
+            portMachineCombo.getItems().add(machine);
+        }
+
+        for (Game game : allGames) {
+            currentGamesView.getItems().add(game);
+            portGameCombo.getItems().add(game);
+        }
+
+        for (GamePort port : allGamePorts) {
+            currentPortsView.getItems().add(port);
+        }
+    }
+
+    public void reset() {
+        allGames.clear();
+        allMachines.clear();
+        allGamePorts.clear();
+        currentMachinesView.getItems().clear();
+        currentGamesView.getItems().clear();
+        currentPortsView.getItems().clear();
+        gameMachineCombo.getItems().clear();
+        portGameCombo.getItems().clear();
+        portMachineCombo.getItems().clear();
     }
 
     public void switchSceneGame() {
