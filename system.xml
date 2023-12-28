@@ -1,0 +1,851 @@
+<object-stream>
+    <system.dsaaca2.Datastructures.SillyList>
+        <head>
+            <next>
+                <next>
+                    <next>
+                        <next>
+                            <next>
+                                <next>
+                                    <next>
+                                        <next>
+                                            <contents class="system.dsaaca2.Models.Game">
+                                                <name>1</name>
+                                                <publisher>1</publisher>
+                                                <description>1</description>
+                                                <developers>1</developers>
+                                                <cover>1</cover>
+                                                <gamesMachine>
+                                                    <name>1</name>
+                                                    <manufacturer>1</manufacturer>
+                                                    <description>1</description>
+                                                    <type>1</type>
+                                                    <media>1</media>
+                                                    <image>1</image>
+                                                    <year>2000</year>
+                                                    <price>1.0</price>
+                                                    <games>
+                                                        <head>
+                                                            <next>
+                                                                <next>
+                                                                    <contents class="system.dsaaca2.Models.Game"
+                                                                              reference="../../../../../.."/>
+                                                                </next>
+                                                                <contents class="system.dsaaca2.Models.Game">
+                                                                    <name>2</name>
+                                                                    <publisher>2</publisher>
+                                                                    <description>2</description>
+                                                                    <developers>2</developers>
+                                                                    <cover>2</cover>
+                                                                    <gamesMachine reference="../../../../.."/>
+                                                                    <year>2001</year>
+                                                                    <ports/>
+                                                                </contents>
+                                                            </next>
+                                                            <contents class="system.dsaaca2.Models.Game">
+                                                                <name>3</name>
+                                                                <publisher>3</publisher>
+                                                                <description>3</description>
+                                                                <developers>3</developers>
+                                                                <cover>3</cover>
+                                                                <gamesMachine reference="../../../.."/>
+                                                                <year>2002</year>
+                                                                <ports>
+                                                                    <head>
+                                                                        <contents
+                                                                                class="system.dsaaca2.Models.GamePort">
+                                                                            <originalGame reference="../../../.."/>
+                                                                            <machinePortedTo>
+                                                                                <name>2</name>
+                                                                                <manufacturer>2</manufacturer>
+                                                                                <description>2</description>
+                                                                                <type>2</type>
+                                                                                <media>2</media>
+                                                                                <image>2</image>
+                                                                                <year>2001</year>
+                                                                                <price>2.0</price>
+                                                                                <games>
+                                                                                    <head>
+                                                                                        <next>
+                                                                                            <next>
+                                                                                                <contents
+                                                                                                        class="system.dsaaca2.Models.Game">
+                                                                                                    <name>4</name>
+                                                                                                    <publisher>4
+                                                                                                    </publisher>
+                                                                                                    <description>4
+                                                                                                    </description>
+                                                                                                    <developers>4
+                                                                                                    </developers>
+                                                                                                    <cover>4</cover>
+                                                                                                    <gamesMachine
+                                                                                                            reference="../../../../../.."/>
+                                                                                                    <year>2001</year>
+                                                                                                    <ports/>
+                                                                                                </contents>
+                                                                                            </next>
+                                                                                            <contents
+                                                                                                    class="system.dsaaca2.Models.Game">
+                                                                                                <name>5</name>
+                                                                                                <publisher>5</publisher>
+                                                                                                <description>5
+                                                                                                </description>
+                                                                                                <developers>5
+                                                                                                </developers>
+                                                                                                <cover>5</cover>
+                                                                                                <gamesMachine
+                                                                                                        reference="../../../../.."/>
+                                                                                                <year>2002</year>
+                                                                                                <ports/>
+                                                                                            </contents>
+                                                                                        </next>
+                                                                                        <contents
+                                                                                                class="system.dsaaca2.Models.Game">
+                                                                                            <name>6</name>
+                                                                                            <publisher>6</publisher>
+                                                                                            <description>6</description>
+                                                                                            <developers>6</developers>
+                                                                                            <cover>6</cover>
+                                                                                            <gamesMachine
+                                                                                                    reference="../../../.."/>
+                                                                                            <year>2003</year>
+                                                                                            <ports/>
+                                                                                        </contents>
+                                                                                    </head>
+                                                                                </games>
+                                                                            </machinePortedTo>
+                                                                            <originalMachine
+                                                                                    reference="../../../../../../.."/>
+                                                                            <developers>10</developers>
+                                                                            <cover>10</cover>
+                                                                            <portYear>2002</portYear>
+                                                                        </contents>
+                                                                    </head>
+                                                                </ports>
+                                                            </contents>
+                                                        </head>
+                                                    </games>
+                                                </gamesMachine>
+                                                <year>2000</year>
+                                                <ports/>
+                                            </contents>
+                                        </next>
+                                        <contents class="system.dsaaca2.Models.Game"
+                                                  reference="../next/contents/gamesMachine/games/head/next/contents"/>
+                                    </next>
+                                    <contents class="system.dsaaca2.Models.Game"
+                                              reference="../next/next/contents/gamesMachine/games/head/contents"/>
+                                </next>
+                                <contents class="system.dsaaca2.Models.Game">
+                                    <name>4</name>
+                                    <publisher>4</publisher>
+                                    <description>4</description>
+                                    <developers>4</developers>
+                                    <cover>4</cover>
+                                    <gamesMachine>
+                                        <name>2</name>
+                                        <manufacturer>2</manufacturer>
+                                        <description>2</description>
+                                        <type>2</type>
+                                        <media>2</media>
+                                        <image>2</image>
+                                        <year>2001</year>
+                                        <price>2.0</price>
+                                        <games>
+                                            <head>
+                                                <next>
+                                                    <next>
+                                                        <contents class="system.dsaaca2.Models.Game"
+                                                                  reference="../../../../../.."/>
+                                                    </next>
+                                                    <contents class="system.dsaaca2.Models.Game">
+                                                        <name>5</name>
+                                                        <publisher>5</publisher>
+                                                        <description>5</description>
+                                                        <developers>5</developers>
+                                                        <cover>5</cover>
+                                                        <gamesMachine reference="../../../../.."/>
+                                                        <year>2002</year>
+                                                        <ports/>
+                                                    </contents>
+                                                </next>
+                                                <contents class="system.dsaaca2.Models.Game">
+                                                    <name>6</name>
+                                                    <publisher>6</publisher>
+                                                    <description>6</description>
+                                                    <developers>6</developers>
+                                                    <cover>6</cover>
+                                                    <gamesMachine reference="../../../.."/>
+                                                    <year>2003</year>
+                                                    <ports>
+                                                        <head>
+                                                            <contents class="system.dsaaca2.Models.GamePort">
+                                                                <originalGame reference="../../../.."/>
+                                                                <machinePortedTo>
+                                                                    <name>3</name>
+                                                                    <manufacturer>3</manufacturer>
+                                                                    <description>3</description>
+                                                                    <type>3</type>
+                                                                    <media>3</media>
+                                                                    <image>3</image>
+                                                                    <year>2002</year>
+                                                                    <price>3.0</price>
+                                                                    <games>
+                                                                        <head>
+                                                                            <next>
+                                                                                <next>
+                                                                                    <contents
+                                                                                            class="system.dsaaca2.Models.Game">
+                                                                                        <name>7</name>
+                                                                                        <publisher>7</publisher>
+                                                                                        <description>7</description>
+                                                                                        <developers>7</developers>
+                                                                                        <cover>7</cover>
+                                                                                        <gamesMachine
+                                                                                                reference="../../../../../.."/>
+                                                                                        <year>2002</year>
+                                                                                        <ports/>
+                                                                                    </contents>
+                                                                                </next>
+                                                                                <contents
+                                                                                        class="system.dsaaca2.Models.Game">
+                                                                                    <name>8</name>
+                                                                                    <publisher>8</publisher>
+                                                                                    <description>8</description>
+                                                                                    <developers>8</developers>
+                                                                                    <cover>8</cover>
+                                                                                    <gamesMachine
+                                                                                            reference="../../../../.."/>
+                                                                                    <year>2003</year>
+                                                                                    <ports/>
+                                                                                </contents>
+                                                                            </next>
+                                                                            <contents
+                                                                                    class="system.dsaaca2.Models.Game">
+                                                                                <name>9</name>
+                                                                                <publisher>9</publisher>
+                                                                                <description>9</description>
+                                                                                <developers>9</developers>
+                                                                                <cover>9</cover>
+                                                                                <gamesMachine reference="../../../.."/>
+                                                                                <year>2004</year>
+                                                                                <ports/>
+                                                                            </contents>
+                                                                        </head>
+                                                                    </games>
+                                                                </machinePortedTo>
+                                                                <originalMachine reference="../../../../../../.."/>
+                                                                <developers>11</developers>
+                                                                <cover>11</cover>
+                                                                <portYear>2003</portYear>
+                                                            </contents>
+                                                        </head>
+                                                    </ports>
+                                                </contents>
+                                            </head>
+                                        </games>
+                                    </gamesMachine>
+                                    <year>2001</year>
+                                    <ports/>
+                                </contents>
+                            </next>
+                            <contents class="system.dsaaca2.Models.Game"
+                                      reference="../next/contents/gamesMachine/games/head/next/contents"/>
+                        </next>
+                        <contents class="system.dsaaca2.Models.Game"
+                                  reference="../next/next/contents/gamesMachine/games/head/contents"/>
+                    </next>
+                    <contents class="system.dsaaca2.Models.Game">
+                        <name>7</name>
+                        <publisher>7</publisher>
+                        <description>7</description>
+                        <developers>7</developers>
+                        <cover>7</cover>
+                        <gamesMachine>
+                            <name>3</name>
+                            <manufacturer>3</manufacturer>
+                            <description>3</description>
+                            <type>3</type>
+                            <media>3</media>
+                            <image>3</image>
+                            <year>2002</year>
+                            <price>3.0</price>
+                            <games>
+                                <head>
+                                    <next>
+                                        <next>
+                                            <contents class="system.dsaaca2.Models.Game" reference="../../../../../.."/>
+                                        </next>
+                                        <contents class="system.dsaaca2.Models.Game">
+                                            <name>8</name>
+                                            <publisher>8</publisher>
+                                            <description>8</description>
+                                            <developers>8</developers>
+                                            <cover>8</cover>
+                                            <gamesMachine reference="../../../../.."/>
+                                            <year>2003</year>
+                                            <ports/>
+                                        </contents>
+                                    </next>
+                                    <contents class="system.dsaaca2.Models.Game">
+                                        <name>9</name>
+                                        <publisher>9</publisher>
+                                        <description>9</description>
+                                        <developers>9</developers>
+                                        <cover>9</cover>
+                                        <gamesMachine reference="../../../.."/>
+                                        <year>2004</year>
+                                        <ports>
+                                            <head>
+                                                <contents class="system.dsaaca2.Models.GamePort">
+                                                    <originalGame reference="../../../.."/>
+                                                    <machinePortedTo>
+                                                        <name>1</name>
+                                                        <manufacturer>1</manufacturer>
+                                                        <description>1</description>
+                                                        <type>1</type>
+                                                        <media>1</media>
+                                                        <image>1</image>
+                                                        <year>2000</year>
+                                                        <price>1.0</price>
+                                                        <games>
+                                                            <head>
+                                                                <next>
+                                                                    <next>
+                                                                        <contents class="system.dsaaca2.Models.Game">
+                                                                            <name>1</name>
+                                                                            <publisher>1</publisher>
+                                                                            <description>1</description>
+                                                                            <developers>1</developers>
+                                                                            <cover>1</cover>
+                                                                            <gamesMachine
+                                                                                    reference="../../../../../.."/>
+                                                                            <year>2000</year>
+                                                                            <ports/>
+                                                                        </contents>
+                                                                    </next>
+                                                                    <contents class="system.dsaaca2.Models.Game">
+                                                                        <name>2</name>
+                                                                        <publisher>2</publisher>
+                                                                        <description>2</description>
+                                                                        <developers>2</developers>
+                                                                        <cover>2</cover>
+                                                                        <gamesMachine reference="../../../../.."/>
+                                                                        <year>2001</year>
+                                                                        <ports/>
+                                                                    </contents>
+                                                                </next>
+                                                                <contents class="system.dsaaca2.Models.Game">
+                                                                    <name>3</name>
+                                                                    <publisher>3</publisher>
+                                                                    <description>3</description>
+                                                                    <developers>3</developers>
+                                                                    <cover>3</cover>
+                                                                    <gamesMachine reference="../../../.."/>
+                                                                    <year>2002</year>
+                                                                    <ports/>
+                                                                </contents>
+                                                            </head>
+                                                        </games>
+                                                    </machinePortedTo>
+                                                    <originalMachine reference="../../../../../../.."/>
+                                                    <developers>12</developers>
+                                                    <cover>12</cover>
+                                                    <portYear>2004</portYear>
+                                                </contents>
+                                            </head>
+                                        </ports>
+                                    </contents>
+                                </head>
+                            </games>
+                        </gamesMachine>
+                        <year>2002</year>
+                        <ports/>
+                    </contents>
+                </next>
+                <contents class="system.dsaaca2.Models.Game"
+                          reference="../next/contents/gamesMachine/games/head/next/contents"/>
+            </next>
+            <contents class="system.dsaaca2.Models.Game"
+                      reference="../next/next/contents/gamesMachine/games/head/contents"/>
+        </head>
+    </system.dsaaca2.Datastructures.SillyList>
+    <system.dsaaca2.Datastructures.SillyList>
+        <head>
+            <next>
+                <next>
+                    <contents class="system.dsaaca2.Models.GamePort">
+                        <originalGame>
+                            <name>3</name>
+                            <publisher>3</publisher>
+                            <description>3</description>
+                            <developers>3</developers>
+                            <cover>3</cover>
+                            <gamesMachine>
+                                <name>1</name>
+                                <manufacturer>1</manufacturer>
+                                <description>1</description>
+                                <type>1</type>
+                                <media>1</media>
+                                <image>1</image>
+                                <year>2000</year>
+                                <price>1.0</price>
+                                <games>
+                                    <head>
+                                        <next>
+                                            <next>
+                                                <contents class="system.dsaaca2.Models.Game">
+                                                    <name>1</name>
+                                                    <publisher>1</publisher>
+                                                    <description>1</description>
+                                                    <developers>1</developers>
+                                                    <cover>1</cover>
+                                                    <gamesMachine reference="../../../../../.."/>
+                                                    <year>2000</year>
+                                                    <ports/>
+                                                </contents>
+                                            </next>
+                                            <contents class="system.dsaaca2.Models.Game">
+                                                <name>2</name>
+                                                <publisher>2</publisher>
+                                                <description>2</description>
+                                                <developers>2</developers>
+                                                <cover>2</cover>
+                                                <gamesMachine reference="../../../../.."/>
+                                                <year>2001</year>
+                                                <ports/>
+                                            </contents>
+                                        </next>
+                                        <contents class="system.dsaaca2.Models.Game" reference="../../../.."/>
+                                    </head>
+                                </games>
+                            </gamesMachine>
+                            <year>2002</year>
+                            <ports>
+                                <head>
+                                    <contents class="system.dsaaca2.Models.GamePort" reference="../../../.."/>
+                                </head>
+                            </ports>
+                        </originalGame>
+                        <machinePortedTo>
+                            <name>2</name>
+                            <manufacturer>2</manufacturer>
+                            <description>2</description>
+                            <type>2</type>
+                            <media>2</media>
+                            <image>2</image>
+                            <year>2001</year>
+                            <price>2.0</price>
+                            <games>
+                                <head>
+                                    <next>
+                                        <next>
+                                            <contents class="system.dsaaca2.Models.Game">
+                                                <name>4</name>
+                                                <publisher>4</publisher>
+                                                <description>4</description>
+                                                <developers>4</developers>
+                                                <cover>4</cover>
+                                                <gamesMachine reference="../../../../../.."/>
+                                                <year>2001</year>
+                                                <ports/>
+                                            </contents>
+                                        </next>
+                                        <contents class="system.dsaaca2.Models.Game">
+                                            <name>5</name>
+                                            <publisher>5</publisher>
+                                            <description>5</description>
+                                            <developers>5</developers>
+                                            <cover>5</cover>
+                                            <gamesMachine reference="../../../../.."/>
+                                            <year>2002</year>
+                                            <ports/>
+                                        </contents>
+                                    </next>
+                                    <contents class="system.dsaaca2.Models.Game">
+                                        <name>6</name>
+                                        <publisher>6</publisher>
+                                        <description>6</description>
+                                        <developers>6</developers>
+                                        <cover>6</cover>
+                                        <gamesMachine reference="../../../.."/>
+                                        <year>2003</year>
+                                        <ports/>
+                                    </contents>
+                                </head>
+                            </games>
+                        </machinePortedTo>
+                        <originalMachine reference="../originalGame/gamesMachine"/>
+                        <developers>10</developers>
+                        <cover>10</cover>
+                        <portYear>2002</portYear>
+                    </contents>
+                </next>
+                <contents class="system.dsaaca2.Models.GamePort">
+                    <originalGame>
+                        <name>6</name>
+                        <publisher>6</publisher>
+                        <description>6</description>
+                        <developers>6</developers>
+                        <cover>6</cover>
+                        <gamesMachine>
+                            <name>2</name>
+                            <manufacturer>2</manufacturer>
+                            <description>2</description>
+                            <type>2</type>
+                            <media>2</media>
+                            <image>2</image>
+                            <year>2001</year>
+                            <price>2.0</price>
+                            <games>
+                                <head>
+                                    <next>
+                                        <next>
+                                            <contents class="system.dsaaca2.Models.Game">
+                                                <name>4</name>
+                                                <publisher>4</publisher>
+                                                <description>4</description>
+                                                <developers>4</developers>
+                                                <cover>4</cover>
+                                                <gamesMachine reference="../../../../../.."/>
+                                                <year>2001</year>
+                                                <ports/>
+                                            </contents>
+                                        </next>
+                                        <contents class="system.dsaaca2.Models.Game">
+                                            <name>5</name>
+                                            <publisher>5</publisher>
+                                            <description>5</description>
+                                            <developers>5</developers>
+                                            <cover>5</cover>
+                                            <gamesMachine reference="../../../../.."/>
+                                            <year>2002</year>
+                                            <ports/>
+                                        </contents>
+                                    </next>
+                                    <contents class="system.dsaaca2.Models.Game" reference="../../../.."/>
+                                </head>
+                            </games>
+                        </gamesMachine>
+                        <year>2003</year>
+                        <ports>
+                            <head>
+                                <contents class="system.dsaaca2.Models.GamePort" reference="../../../.."/>
+                            </head>
+                        </ports>
+                    </originalGame>
+                    <machinePortedTo>
+                        <name>3</name>
+                        <manufacturer>3</manufacturer>
+                        <description>3</description>
+                        <type>3</type>
+                        <media>3</media>
+                        <image>3</image>
+                        <year>2002</year>
+                        <price>3.0</price>
+                        <games>
+                            <head>
+                                <next>
+                                    <next>
+                                        <contents class="system.dsaaca2.Models.Game">
+                                            <name>7</name>
+                                            <publisher>7</publisher>
+                                            <description>7</description>
+                                            <developers>7</developers>
+                                            <cover>7</cover>
+                                            <gamesMachine reference="../../../../../.."/>
+                                            <year>2002</year>
+                                            <ports/>
+                                        </contents>
+                                    </next>
+                                    <contents class="system.dsaaca2.Models.Game">
+                                        <name>8</name>
+                                        <publisher>8</publisher>
+                                        <description>8</description>
+                                        <developers>8</developers>
+                                        <cover>8</cover>
+                                        <gamesMachine reference="../../../../.."/>
+                                        <year>2003</year>
+                                        <ports/>
+                                    </contents>
+                                </next>
+                                <contents class="system.dsaaca2.Models.Game">
+                                    <name>9</name>
+                                    <publisher>9</publisher>
+                                    <description>9</description>
+                                    <developers>9</developers>
+                                    <cover>9</cover>
+                                    <gamesMachine reference="../../../.."/>
+                                    <year>2004</year>
+                                    <ports/>
+                                </contents>
+                            </head>
+                        </games>
+                    </machinePortedTo>
+                    <originalMachine reference="../originalGame/gamesMachine"/>
+                    <developers>11</developers>
+                    <cover>11</cover>
+                    <portYear>2003</portYear>
+                </contents>
+            </next>
+            <contents class="system.dsaaca2.Models.GamePort">
+                <originalGame>
+                    <name>9</name>
+                    <publisher>9</publisher>
+                    <description>9</description>
+                    <developers>9</developers>
+                    <cover>9</cover>
+                    <gamesMachine>
+                        <name>3</name>
+                        <manufacturer>3</manufacturer>
+                        <description>3</description>
+                        <type>3</type>
+                        <media>3</media>
+                        <image>3</image>
+                        <year>2002</year>
+                        <price>3.0</price>
+                        <games>
+                            <head>
+                                <next>
+                                    <next>
+                                        <contents class="system.dsaaca2.Models.Game">
+                                            <name>7</name>
+                                            <publisher>7</publisher>
+                                            <description>7</description>
+                                            <developers>7</developers>
+                                            <cover>7</cover>
+                                            <gamesMachine reference="../../../../../.."/>
+                                            <year>2002</year>
+                                            <ports/>
+                                        </contents>
+                                    </next>
+                                    <contents class="system.dsaaca2.Models.Game">
+                                        <name>8</name>
+                                        <publisher>8</publisher>
+                                        <description>8</description>
+                                        <developers>8</developers>
+                                        <cover>8</cover>
+                                        <gamesMachine reference="../../../../.."/>
+                                        <year>2003</year>
+                                        <ports/>
+                                    </contents>
+                                </next>
+                                <contents class="system.dsaaca2.Models.Game" reference="../../../.."/>
+                            </head>
+                        </games>
+                    </gamesMachine>
+                    <year>2004</year>
+                    <ports>
+                        <head>
+                            <contents class="system.dsaaca2.Models.GamePort" reference="../../../.."/>
+                        </head>
+                    </ports>
+                </originalGame>
+                <machinePortedTo>
+                    <name>1</name>
+                    <manufacturer>1</manufacturer>
+                    <description>1</description>
+                    <type>1</type>
+                    <media>1</media>
+                    <image>1</image>
+                    <year>2000</year>
+                    <price>1.0</price>
+                    <games>
+                        <head>
+                            <next>
+                                <next>
+                                    <contents class="system.dsaaca2.Models.Game">
+                                        <name>1</name>
+                                        <publisher>1</publisher>
+                                        <description>1</description>
+                                        <developers>1</developers>
+                                        <cover>1</cover>
+                                        <gamesMachine reference="../../../../../.."/>
+                                        <year>2000</year>
+                                        <ports/>
+                                    </contents>
+                                </next>
+                                <contents class="system.dsaaca2.Models.Game">
+                                    <name>2</name>
+                                    <publisher>2</publisher>
+                                    <description>2</description>
+                                    <developers>2</developers>
+                                    <cover>2</cover>
+                                    <gamesMachine reference="../../../../.."/>
+                                    <year>2001</year>
+                                    <ports/>
+                                </contents>
+                            </next>
+                            <contents class="system.dsaaca2.Models.Game">
+                                <name>3</name>
+                                <publisher>3</publisher>
+                                <description>3</description>
+                                <developers>3</developers>
+                                <cover>3</cover>
+                                <gamesMachine reference="../../../.."/>
+                                <year>2002</year>
+                                <ports/>
+                            </contents>
+                        </head>
+                    </games>
+                </machinePortedTo>
+                <originalMachine reference="../originalGame/gamesMachine"/>
+                <developers>12</developers>
+                <cover>12</cover>
+                <portYear>2004</portYear>
+            </contents>
+        </head>
+    </system.dsaaca2.Datastructures.SillyList>
+    <system.dsaaca2.Datastructures.SillyList>
+        <head>
+            <next>
+                <next>
+                    <contents class="system.dsaaca2.Models.GamesMachine">
+                        <name>1</name>
+                        <manufacturer>1</manufacturer>
+                        <description>1</description>
+                        <type>1</type>
+                        <media>1</media>
+                        <image>1</image>
+                        <year>2000</year>
+                        <price>1.0</price>
+                        <games>
+                            <head>
+                                <next>
+                                    <next>
+                                        <contents class="system.dsaaca2.Models.Game">
+                                            <name>1</name>
+                                            <publisher>1</publisher>
+                                            <description>1</description>
+                                            <developers>1</developers>
+                                            <cover>1</cover>
+                                            <gamesMachine reference="../../../../../.."/>
+                                            <year>2000</year>
+                                            <ports/>
+                                        </contents>
+                                    </next>
+                                    <contents class="system.dsaaca2.Models.Game">
+                                        <name>2</name>
+                                        <publisher>2</publisher>
+                                        <description>2</description>
+                                        <developers>2</developers>
+                                        <cover>2</cover>
+                                        <gamesMachine reference="../../../../.."/>
+                                        <year>2001</year>
+                                        <ports/>
+                                    </contents>
+                                </next>
+                                <contents class="system.dsaaca2.Models.Game">
+                                    <name>3</name>
+                                    <publisher>3</publisher>
+                                    <description>3</description>
+                                    <developers>3</developers>
+                                    <cover>3</cover>
+                                    <gamesMachine reference="../../../.."/>
+                                    <year>2002</year>
+                                    <ports/>
+                                </contents>
+                            </head>
+                        </games>
+                    </contents>
+                </next>
+                <contents class="system.dsaaca2.Models.GamesMachine">
+                    <name>2</name>
+                    <manufacturer>2</manufacturer>
+                    <description>2</description>
+                    <type>2</type>
+                    <media>2</media>
+                    <image>2</image>
+                    <year>2001</year>
+                    <price>2.0</price>
+                    <games>
+                        <head>
+                            <next>
+                                <next>
+                                    <contents class="system.dsaaca2.Models.Game">
+                                        <name>4</name>
+                                        <publisher>4</publisher>
+                                        <description>4</description>
+                                        <developers>4</developers>
+                                        <cover>4</cover>
+                                        <gamesMachine reference="../../../../../.."/>
+                                        <year>2001</year>
+                                        <ports/>
+                                    </contents>
+                                </next>
+                                <contents class="system.dsaaca2.Models.Game">
+                                    <name>5</name>
+                                    <publisher>5</publisher>
+                                    <description>5</description>
+                                    <developers>5</developers>
+                                    <cover>5</cover>
+                                    <gamesMachine reference="../../../../.."/>
+                                    <year>2002</year>
+                                    <ports/>
+                                </contents>
+                            </next>
+                            <contents class="system.dsaaca2.Models.Game">
+                                <name>6</name>
+                                <publisher>6</publisher>
+                                <description>6</description>
+                                <developers>6</developers>
+                                <cover>6</cover>
+                                <gamesMachine reference="../../../.."/>
+                                <year>2003</year>
+                                <ports/>
+                            </contents>
+                        </head>
+                    </games>
+                </contents>
+            </next>
+            <contents class="system.dsaaca2.Models.GamesMachine">
+                <name>3</name>
+                <manufacturer>3</manufacturer>
+                <description>3</description>
+                <type>3</type>
+                <media>3</media>
+                <image>3</image>
+                <year>2002</year>
+                <price>3.0</price>
+                <games>
+                    <head>
+                        <next>
+                            <next>
+                                <contents class="system.dsaaca2.Models.Game">
+                                    <name>7</name>
+                                    <publisher>7</publisher>
+                                    <description>7</description>
+                                    <developers>7</developers>
+                                    <cover>7</cover>
+                                    <gamesMachine reference="../../../../../.."/>
+                                    <year>2002</year>
+                                    <ports/>
+                                </contents>
+                            </next>
+                            <contents class="system.dsaaca2.Models.Game">
+                                <name>8</name>
+                                <publisher>8</publisher>
+                                <description>8</description>
+                                <developers>8</developers>
+                                <cover>8</cover>
+                                <gamesMachine reference="../../../../.."/>
+                                <year>2003</year>
+                                <ports/>
+                            </contents>
+                        </next>
+                        <contents class="system.dsaaca2.Models.Game">
+                            <name>9</name>
+                            <publisher>9</publisher>
+                            <description>9</description>
+                            <developers>9</developers>
+                            <cover>9</cover>
+                            <gamesMachine reference="../../../.."/>
+                            <year>2004</year>
+                            <ports/>
+                        </contents>
+                    </head>
+                </games>
+            </contents>
+        </head>
+    </system.dsaaca2.Datastructures.SillyList>
+</object-stream>
