@@ -246,6 +246,23 @@ public class GameAPI implements Initializable {
         }
     }
 
+    public void removeMachine() {
+        GamesMachine selectedMachine = currentMachinesView.getSelectionModel().getSelectedItem();
+
+        if (selectedMachine != null) {
+            allMachines.remove(selectedMachine);
+            currentMachinesView.getItems().remove(selectedMachine);
+            gameMachineCombo.getItems().remove(selectedMachine);
+            portMachineCombo.getItems().remove(selectedMachine);
+
+            for (Game game : selectedMachine.getGames()) {
+                allGames.remove(game);
+            }
+        } else {
+            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO DELETE");
+        }
+    }
+
     public void switchSceneGame() {
         Main.mainStage.setScene(Main.gameScene);
     }

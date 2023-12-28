@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.GameAPI">
-   <AnchorPane prefHeight="855.0" prefWidth="1442.0" styleClass="bg" stylesheets="@stylesheet.css" VBox.vgrow="ALWAYS">
-      <children>
-         <TextField fx:id="machineNameText" layoutX="193.0" layoutY="91.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField fx:id="machinePriceText" layoutX="192.0" layoutY="291.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField fx:id="machineManuText" layoutX="192.0" layoutY="120.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField fx:id="machineDescText" layoutX="192.0" layoutY="149.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField fx:id="machineTypeText" layoutX="192.0" layoutY="178.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField fx:id="machineMediaText" layoutX="192.0" layoutY="206.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField fx:id="machineImageText" layoutX="192.0" layoutY="234.0" prefHeight="25.0" prefWidth="141.0" />
-         <TextField fx:id="machineYearText" layoutX="192.0" layoutY="262.0" prefHeight="25.0" prefWidth="141.0" />
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1"
+      fx:controller="system.dsaaca2.Controllers.GameAPI">
+    <AnchorPane prefHeight="855.0" prefWidth="1442.0" styleClass="bg" stylesheets="@stylesheet.css" VBox.vgrow="ALWAYS">
+        <children>
+            <TextField fx:id="machineNameText" layoutX="193.0" layoutY="91.0" prefHeight="25.0" prefWidth="141.0"/>
+            <TextField fx:id="machinePriceText" layoutX="192.0" layoutY="291.0" prefHeight="25.0" prefWidth="141.0"/>
+            <TextField fx:id="machineManuText" layoutX="192.0" layoutY="120.0" prefHeight="25.0" prefWidth="141.0"/>
+            <TextField fx:id="machineDescText" layoutX="192.0" layoutY="149.0" prefHeight="25.0" prefWidth="141.0"/>
+            <TextField fx:id="machineTypeText" layoutX="192.0" layoutY="178.0" prefHeight="25.0" prefWidth="141.0"/>
+            <TextField fx:id="machineMediaText" layoutX="192.0" layoutY="206.0" prefHeight="25.0" prefWidth="141.0"/>
+            <TextField fx:id="machineImageText" layoutX="192.0" layoutY="234.0" prefHeight="25.0" prefWidth="141.0"/>
+            <TextField fx:id="machineYearText" layoutX="192.0" layoutY="262.0" prefHeight="25.0" prefWidth="141.0"/>
          <TextField fx:id="gameNameText" layoutX="658.0" layoutY="176.0" prefHeight="25.0" prefWidth="141.0" />
          <TextField fx:id="gamePubText" layoutX="658.0" layoutY="204.0" prefHeight="25.0" prefWidth="141.0" />
          <TextField fx:id="gameDescText" layoutX="658.0" layoutY="233.0" prefHeight="25.0" prefWidth="141.0" />
@@ -47,7 +44,10 @@
             </content>
          </ScrollPane>
          <Button fx:id="editMachineButton" layoutX="105.0" layoutY="704.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="EDIT MACHINE" />
-         <Button fx:id="deleteMachineButton" layoutX="263.0" layoutY="704.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="153.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="DELETE MACHINE" />
+            <Button fx:id="deleteMachineButton" layoutX="263.0" layoutY="704.0" mnemonicParsing="false"
+                    onAction="#removeMachine" prefHeight="35.0" prefWidth="153.0"
+                    style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;"
+                    text="DELETE MACHINE"/>
          <Button fx:id="editGameButton" layoutX="595.0" layoutY="705.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="EDIT GAME" />
          <Button fx:id="deleteGameButton" layoutX="768.0" layoutY="706.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="DELETE GAME" />
          <Button fx:id="editPortButton" layoutX="1098.0" layoutY="703.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #18113c; -fx-font-size: 15px; -fx-text-fill: #cb6ce6;" text="EDIT PORT" />
