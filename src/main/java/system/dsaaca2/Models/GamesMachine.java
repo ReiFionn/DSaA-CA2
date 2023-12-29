@@ -99,17 +99,15 @@ public class GamesMachine {
 
     @Override
     public String toString() {
-        return "----------------------------------------------------------------" + "\n" +
-                "                MACHINE NAME: " + name.toUpperCase() + "\n" +
-                "----------------------------------------------------------------" + "\n" +
-                "|Manufacturer: " + manufacturer.toUpperCase() + "\n" +
-                "|Year: " + year + "\n" +
+        return
+                "Name: ( " + name.toUpperCase() + " )       Manufacturer: ( "+manufacturer.toUpperCase()+" )       Released: ( "+year+" )"+
+                "\n----------------------------------------------------------------" + "\n" +
                 "|Description: " + description.toUpperCase() + "\n" +
                 "|Machine Type: " + type.toUpperCase() + "\n" +
                 "|Media Type: " + media.toUpperCase() + "\n" +
                 "|Image: " + image + "\n" +
-                "|Price: €" + price + "\n" +
-                "****************************************************************";
+                "|Price: €" + price ;
+
     }
 
     @Override

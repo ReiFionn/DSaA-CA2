@@ -33,6 +33,12 @@ Button:hover {
     -fx-scale-y: 1.1;
     -fx-rotate: 5deg; /* Rotate slightly on hover */
 }
+.list-cell {
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+}
+
 .homepage{
     -fx-background-image: url('homePage.png');
     -fx-background-repeat: no-repeat;

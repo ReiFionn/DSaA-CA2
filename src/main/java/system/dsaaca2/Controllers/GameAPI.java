@@ -295,6 +295,7 @@ public class GameAPI implements Initializable {
             for (GamePort port : selectedGame.getPorts()) {
                 allGamePorts.remove(port);
                 currentPortsView.getItems().remove(port);
+                Utilities.showInformationAlert("SUCCESS", selectedGame.getName() +" HAS BEEN REMOVED");
             }
         } else
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO DELETE");
@@ -354,10 +355,16 @@ public class GameAPI implements Initializable {
     }
 
     public void editMachine() throws IOException {
-        GamesMachine machine = currentMachinesView.getSelectionModel().getSelectedItem();
 
         if (!allMachines.isEmpty()) {
             Main.newPopup("/machineEditor.fxml", "MACHINE EDITOR").show();
+        }
+    }
+
+    public void editGames() throws IOException {
+
+        if (!allGames.isEmpty()) {
+            Main.newPopup("/gameEditor.fxml", "GAME EDITOR").show();
         }
     }
 
