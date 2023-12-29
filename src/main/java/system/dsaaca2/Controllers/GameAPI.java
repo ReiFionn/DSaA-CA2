@@ -1,7 +1,10 @@
 package system.dsaaca2.Controllers;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
@@ -18,7 +21,6 @@ public class GameAPI implements Initializable {
 
     public static GameAPI gameAPI = new GameAPI();
 
-    //TODO - add fx-ids to all text-fields and import here
     public ListView<GamesMachine> currentMachinesView = new ListView<>();
     public TextField machineNameText;
     public TextField machinePriceText;
@@ -324,16 +326,19 @@ public class GameAPI implements Initializable {
             currentMachinesView.getItems().add(machine);
             gameMachineCombo.getItems().add(machine);
             portMachineCombo.getItems().add(machine);
+
+            for (Game game : machine.getGames()) {
+                currentGamesView.getItems().add(game);
+                portGameCombo.getItems().add(game);
+                allGames.add(game);
+
+                for (GamePort port : game.getPorts()) {
+                    currentPortsView.getItems().add(port);
+                    allGamePorts.add(port);
+                }
+            }
         }
 
-        for (Game game : allGames) {
-            currentGamesView.getItems().add(game);
-            portGameCombo.getItems().add(game);
-        }
-
-        for (GamePort port : allGamePorts) {
-            currentPortsView.getItems().add(port);
-        }
     }
 
     public void reset() {
@@ -348,17 +353,13 @@ public class GameAPI implements Initializable {
         portMachineCombo.getItems().clear();
     }
 
-
     public void editMachine() throws IOException {
         GamesMachine machine = currentMachinesView.getSelectionModel().getSelectedItem();
 
         if (!allMachines.isEmpty()) {
-
             Main.newPopup("/machineEditor.fxml", "MACHINE EDITOR").show();
         }
     }
-
-
 
     public void switchSceneGame() {
         Main.mainStage.setScene(Main.gameScene);
