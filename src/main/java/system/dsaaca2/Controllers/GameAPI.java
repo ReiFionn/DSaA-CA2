@@ -367,6 +367,12 @@ public class GameAPI implements Initializable {
             Main.newPopup("/gameEditor.fxml", "GAME EDITOR").show();
         }
     }
+    public void editPorts() throws IOException {
+
+        if (!allGamePorts.isEmpty()) {
+            Main.newPopup("/portEditor.fxml", "PORT EDITOR").show();
+        }
+    }
 
     public void switchSceneGame() {
         Main.mainStage.setScene(Main.gameScene);

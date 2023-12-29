@@ -10,6 +10,12 @@
     -fx-background-size: cover;
 
 }
+.portPop{
+    -fx-background-image: url('gamePortEditor.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+
+}
 .list-cell {
     -fx-border-color: black; /* Border color */
     -fx-border-width: 1; /* Border width */
