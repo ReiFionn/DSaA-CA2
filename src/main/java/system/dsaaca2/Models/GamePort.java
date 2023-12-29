@@ -1,5 +1,7 @@
 package system.dsaaca2.Models;
 
+import java.util.Objects;
+
 public class GamePort {
     private Game originalGame;
     private GamesMachine machinePortedTo;
@@ -69,5 +71,18 @@ public class GamePort {
                 "|Cover: " + cover.toUpperCase() + "\n" +
                 "|Year Ported: " + portYear + "\n" +
                 "****************************************************************";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GamePort port = (GamePort) o;
+        return getPortYear() == port.getPortYear() && Objects.equals(getOriginalGame(), port.getOriginalGame()) && Objects.equals(getMachinePortedTo(), port.getMachinePortedTo()) && Objects.equals(getOriginalMachine(), port.getOriginalMachine()) && Objects.equals(getDevelopers(), port.getDevelopers()) && Objects.equals(getCover(), port.getCover());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getOriginalGame(), getMachinePortedTo(), getOriginalMachine(), getDevelopers(), getCover(), getPortYear());
     }
 }

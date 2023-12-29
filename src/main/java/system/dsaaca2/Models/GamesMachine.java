@@ -4,6 +4,8 @@ import system.dsaaca2.Controllers.GameAPI;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.utils.Utilities;
 
+import java.util.Objects;
+
 public class GamesMachine {
     private String name, manufacturer, description, type, media, image;
     private int year;
@@ -88,6 +90,7 @@ public class GamesMachine {
 
     public void addGame(Game g) {
         games.add(g);
+        g.setGamesMachine(this);
     }
 
     public void removeGame(Game g) {
@@ -107,5 +110,18 @@ public class GamesMachine {
                 "|Image: " + image + "\n" +
                 "|Price: €" + price + "\n" +
                 "****************************************************************";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GamesMachine that = (GamesMachine) o;
+        return getYear() == that.getYear() && Double.compare(getPrice(), that.getPrice()) == 0 && Objects.equals(getName(), that.getName()) && Objects.equals(getManufacturer(), that.getManufacturer()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getType(), that.getType()) && Objects.equals(getMedia(), that.getMedia()) && Objects.equals(getImage(), that.getImage()) && Objects.equals(getGames(), that.getGames());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getManufacturer(), getDescription(), getType(), getMedia(), getImage(), getYear(), getPrice(), getGames());
     }
 }
