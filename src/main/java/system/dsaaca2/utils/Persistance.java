@@ -24,8 +24,6 @@ public class Persistance {
         xstream.allowTypes(classes);
 
         ObjectInputStream in = xstream.createObjectInputStream(new FileReader("system.xml"));
-        GameAPI.allGames = (SillyList<Game>) in.readObject();
-        GameAPI.allGamePorts = (SillyList<GamePort>) in.readObject();
         GameAPI.allMachines = (SillyList<GamesMachine>) in.readObject();
         in.close();
     }
@@ -34,8 +32,6 @@ public class Persistance {
     public static void save() throws Exception {
         XStream xstream = new XStream(new DomDriver());
         ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("system.xml"));
-        out.writeObject(GameAPI.allGames);
-        out.writeObject(GameAPI.allGamePorts);
         out.writeObject(GameAPI.allMachines);
 
         out.close();
