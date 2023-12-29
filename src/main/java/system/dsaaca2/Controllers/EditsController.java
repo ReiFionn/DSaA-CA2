@@ -106,28 +106,42 @@ public class EditsController implements Initializable {
                         Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID YEAR BETWEEN 1900-2023");
                         return;
                     }
-                    for (Game game : selectedMachine.getGames()) {
-                        if (game.getYear() < selectedMachine.getYear()) {
-                            allGames.remove(game);
-                            selectedMachine.removeGame(game);
-                            for (GamePort port : game.getPorts()) {
-                                allGamePorts.remove(port);
-                            }
-                        }
-                    }
-                    for (GamePort port : allGamePorts) {
-                        if (port.getMachinePortedTo().equals(selectedMachine)) {
-                            if (port.getPortYear() < selectedMachine.getYear())
-                                allGamePorts.remove(port);
-                        }
-                    }
                 } catch (NumberFormatException e) {
                     Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID NUMERICAL YEAR");
                     return;
                 }
 
+                int gamesDeleted = 0;
+                for (Game game : selectedMachine.getGames()) {
+                    if (game.getYear() < selectedMachine.getYear()) {
+                        allGames.remove(game);
+                        selectedMachine.removeGame(game);
+                        gamesDeleted++;
+                        for (GamePort port : game.getPorts()) {
+                            allGamePorts.remove(port);
+                        }
+                    }
+                }
+
+                int portsDeleted = 0;
+                for (GamePort port : allGamePorts) {
+                    if (port.getMachinePortedTo().equals(selectedMachine)) {
+                        if (port.getPortYear() < selectedMachine.getYear()) {
+                            allGamePorts.remove(port);
+                            portsDeleted++;
+                        }
+                    }
+                }
+
                 refreshAllViews();
-                Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL\nMACHINE: ");
+                if (gamesDeleted > 0 && portsDeleted > 0) {
+                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL:\n" + selectedMachine + "\n Games Deleted: " + gamesDeleted + "\n Ports Deleted: " + portsDeleted);
+                } else if (gamesDeleted > 0) {
+                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL:\n" + selectedMachine + "\n Games Deleted: " + gamesDeleted);
+                } else if (portsDeleted > 0) {
+                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL:\n" + selectedMachine + "\n Ports Deleted: " + portsDeleted);
+                } else
+                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL:\n" + selectedMachine);
             } else
                 Utilities.showWarningAlert("ERROR", "PLEASE DO NOT LEAVE ANY FIELDS EMPTY");
         } else
