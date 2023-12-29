@@ -71,12 +71,12 @@ public class SillyList<O> implements List<O> {
 
     @Override
     public boolean remove(Object o) {
-        if (head.getContents() == o) {
+        if (head.getContents().equals(o)) {
             head = head.next;
             return true;
         } else {
             for (SillyNode<O> temp = head; temp != null; temp = temp.next) {
-                if (temp.next.getContents() == o) {
+                if (temp.next != null && temp.next.getContents().equals(o)) {
                     temp.next = temp.next.next;
                     return true;
                 }
@@ -84,6 +84,7 @@ public class SillyList<O> implements List<O> {
         }
         return false;
     }
+
 
     @Override
     public boolean containsAll(Collection<?> c) {

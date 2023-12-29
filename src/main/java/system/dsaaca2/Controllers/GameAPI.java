@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class GameAPI implements Initializable {
 
-    private static GameAPI gameAPI;
+    public static GameAPI gameAPI = new GameAPI();
 
     //TODO - add fx-ids to all text-fields and import here
     public ListView<GamesMachine> currentMachinesView = new ListView<>();
@@ -53,19 +53,7 @@ public class GameAPI implements Initializable {
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
 
 
-    /*----UPDATE TEXT FIELDS-----*/
-    public TextField updateMachineName= new TextField();
-    public TextField updateMachineMan= new TextField();
-    public TextField updateMachineDesc= new TextField();
-    public TextField updateMachineType= new TextField();
-    public TextField updateMachinePrice= new TextField();
-    public TextField updateMachineYear= new TextField();
-    public TextField updateMachineImage= new TextField();
-    public TextField updateMachineMedia= new TextField();
 
-
-
-    /*----------------------------*/
 
     public static SillyList<GamesMachine> allMachines = new SillyList<>();
     public static SillyList<Game> allGames = new SillyList<>();
@@ -97,9 +85,9 @@ public class GameAPI implements Initializable {
                 Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID NUMERICAL YEAR");
                 return;
             }
-            float price;
+            double price;
             try {
-                price = Float.parseFloat(machinePriceText.getText());
+                price = Double.parseDouble(machinePriceText.getText());
             } catch (NumberFormatException e) {
                 Utilities.showWarningAlert("ERROR", "PLEASE USE NUMERICAL VALUES ONLY FOR PRICE FIELD.");
                 return;
@@ -360,16 +348,7 @@ public class GameAPI implements Initializable {
         portMachineCombo.getItems().clear();
     }
 
-    public void setMachineValues(GamesMachine machine) {
-        updateMachineName.setText(machine.getName());
-        updateMachineMan.setText(machine.getManufacturer());
-        updateMachineDesc.setText(machine.getDescription());
-        updateMachineType.setText(machine.getType());
-        updateMachineMedia.setText(machine.getMedia());
-        updateMachineImage.setText(machine.getImage());
-        updateMachineYear.setText(String.valueOf(machine.getYear()));
-        updateMachinePrice.setText(String.valueOf(machine.getPrice()));
-    }
+
     public void editMachine() throws IOException {
         GamesMachine machine = currentMachinesView.getSelectionModel().getSelectedItem();
 
@@ -378,98 +357,6 @@ public class GameAPI implements Initializable {
             Main.newPopup("/machineEditor.fxml", "MACHINE EDITOR").show();
         }
     }
-    public void applyMachineUpdate() {
-        GamesMachine selectedMachine = currentMachinesView.getSelectionModel().getSelectedItem();
-
-        if (selectedMachine != null) {
-            // Get the updated values from the text fields in the edit popup
-            String updatedName = updateMachineName.getText();
-            String updatedManufacturer = updateMachineMan.getText();
-            String updatedDescription = updateMachineDesc.getText();
-            String updatedType = updateMachineType.getText();
-            String updatedMedia = updateMachineMedia.getText();
-            String updatedImage = updateMachineImage.getText();
-
-            int updatedYear;
-            if (updateMachineYear.getText().isEmpty()) {
-                updatedYear = selectedMachine.getYear(); // Retain the previous value
-            } else {
-                try {
-                    updatedYear = Integer.parseInt(updateMachineYear.getText());
-                } catch (NumberFormatException e) {
-                    Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID NUMERICAL YEAR");
-                    return;
-                }
-            }
-
-            double updatedPrice;
-            if (updateMachinePrice.getText().isEmpty()) {
-                updatedPrice = selectedMachine.getPrice(); // Retain the previous value if no entry
-            } else {
-                try {
-                    updatedPrice = Float.parseFloat(updateMachinePrice.getText());
-                } catch (NumberFormatException e) {
-                    Utilities.showWarningAlert("ERROR", "PLEASE USE NUMERICAL VALUES ONLY FOR PRICE FIELD.");
-                    return;
-                }
-            }
-
-            //placeholder for the original value of the machine before updates for finding games and ports
-            GamesMachine previousMachine = selectedMachine;
-
-            // Remove and add the updated machine to relevant lists
-            currentMachinesView.getItems().remove(selectedMachine);
-            portMachineCombo.getItems().remove(selectedMachine);
-            gameMachineCombo.getItems().remove(selectedMachine);
-
-            // Apply the updated values to the selected machine
-            selectedMachine.setName(updatedName);
-            selectedMachine.setManufacturer(updatedManufacturer);
-            selectedMachine.setDescription(updatedDescription);
-            selectedMachine.setType(updatedType);
-            selectedMachine.setMedia(updatedMedia);
-            selectedMachine.setImage(updatedImage);
-            selectedMachine.setYear(updatedYear);
-            selectedMachine.setPrice(updatedPrice);
-
-            // Update associated games with the new machine values
-            for (Game game : allGames) {
-                if (previousMachine.getGames().contains(game)) {
-                    game.setGamesMachine(selectedMachine);
-                }
-            }
-
-            // Update associated game ports with the new machine values
-            for (GamePort gp : allGamePorts) {
-                if (gp.getOriginalMachine().equals(previousMachine)) {
-                    gp.setOriginalMachine(selectedMachine);
-                }
-                if (gp.getMachinePortedTo().equals(previousMachine)) {
-                    gp.setMachinePortedTo(selectedMachine);
-                }
-            }
-
-            // Add the updated machine back to relevant lists
-            currentMachinesView.getItems().add(selectedMachine);
-            gameMachineCombo.getItems().add(selectedMachine);
-            portMachineCombo.getItems().add(selectedMachine);
-
-            // Set all games in currentGamesView
-            currentGamesView.getItems().setAll(allGames);
-
-            // Clear selections
-            currentGamesView.getSelectionModel().clearSelection();
-            gameMachineCombo.getSelectionModel().clearSelection();
-            portMachineCombo.getSelectionModel().clearSelection();
-
-        } else {
-            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO UPDATE");
-        }
-    }
-
-
-
-
 
 
 

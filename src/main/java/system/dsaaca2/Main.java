@@ -66,7 +66,7 @@ public class Main extends Application {
         popUp.setScene(newScene);
 
         // Add stylesheets if needed
-        newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/stylesheet.css")).toExternalForm());
+        newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
         return popUp; // Return the new stage
 
 

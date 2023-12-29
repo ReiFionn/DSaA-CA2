@@ -2,6 +2,8 @@ package system.dsaaca2.Models;
 
 import system.dsaaca2.Datastructures.SillyList;
 
+import java.util.Objects;
+
 public class Game {
     private String name, publisher, description, developers, cover;
     private GamesMachine gamesMachine;
@@ -14,7 +16,7 @@ public class Game {
         this.publisher = publisher;
         this.description = description;
         this.developers = developers;
-        this.gamesMachine = gamesMachine;
+        setGamesMachine(gamesMachine);
         this.cover = cover;
         this.year = year;
     }
@@ -93,5 +95,18 @@ public class Game {
                 "|Description: " + description.toUpperCase() + "\n" +
                 "|Machine: " + gamesMachine.getName().toUpperCase() + "\n" +
                 "****************************************************************";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return getYear() == game.getYear() && Objects.equals(getName(), game.getName()) && Objects.equals(getPublisher(), game.getPublisher()) && Objects.equals(getDescription(), game.getDescription()) && Objects.equals(getDevelopers(), game.getDevelopers()) && Objects.equals(getCover(), game.getCover()) && Objects.equals(getGamesMachine(), game.getGamesMachine()) && Objects.equals(getPorts(), game.getPorts());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getPublisher(), getDescription(), getDevelopers(), getCover(), getGamesMachine(), getYear(), getPorts());
     }
 }
