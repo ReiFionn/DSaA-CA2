@@ -7,14 +7,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import system.dsaaca2.Models.Game;
+import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static system.dsaaca2.Controllers.GameAPI.allGames;
-import static system.dsaaca2.Controllers.GameAPI.allMachines;
+import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class GameEditController implements Initializable {
 
@@ -75,10 +75,21 @@ public class GameEditController implements Initializable {
                     return;
                 }
 
+                int portsDeleted = 0;
+                for (GamePort port : selectedGame.getPorts()) {
+                    if (port.getPortYear() < selectedGame.getYear()) {
+                        allGamePorts.remove(port);
+                        portsDeleted++;
+                    }
+                }
+
                 EditsController.getEditsController().refreshAllViews();
                 gameEditTable.getItems().clear();
                 gameEditTable.getItems().addAll(allGames);
-                Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL!");
+                if (portsDeleted > 0) {
+                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL: \n" + selectedGame + "\n Ports deleted: " + portsDeleted);
+                } else
+                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL: \n" + selectedGame);
             } else
                 Utilities.showWarningAlert("ERROR", "PLEASE DO NOT LEAVE ANY FIELDS EMPTY");
         } else
