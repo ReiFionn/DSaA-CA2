@@ -6,9 +6,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.utils.Utilities;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,22 +38,51 @@ public class GameEditController implements Initializable {
     public TextField updateGameYear;
     public ChoiceBox<GamesMachine> updateGamesMachineBox;
 
-    public void onGameSelect(MouseEvent mouseEvent) {
+    public void onGameSelect() {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
-        int selectedIndex = gameEditTable.getSelectionModel().getSelectedIndex();
 
         if (selectedGame != null) {
             // Update text fields with the values of the selected machine
-
             updateGameName.setText(selectedGame.getName());
             updateGamePub.setText(selectedGame.getPublisher());
             updateGameCover.setText(selectedGame.getCover());
             updateGameDesc.setText(selectedGame.getDescription());
             updateGameYear.setText(String.valueOf(selectedGame.getYear()));
             updateGameDev.setText(selectedGame.getDevelopers());
-            updateGamesMachineBox.getItems().set(selectedIndex,selectedGame.getGamesMachine());
-
+            updateGamesMachineBox.setValue(selectedGame.getGamesMachine());
         }
+    }
+
+    public void applyGameUpdate() {
+        Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
+
+        if (selectedGame != null) {
+            if (!updateGameName.getText().isEmpty() && !updateGamePub.getText().isEmpty() && !updateGameCover.getText().isEmpty() && !updateGameDesc.getText().isEmpty() && !updateGameYear.getText().isEmpty() && !updateGameDev.getText().isEmpty() && !updateGamesMachineBox.isShowing()) {
+                selectedGame.setName(updateGameName.getText());
+                selectedGame.setPublisher(updateGamePub.getText());
+                selectedGame.setCover(updateGameCover.getText());
+                selectedGame.setDescription(updateGameDesc.getText());
+                selectedGame.setDevelopers(updateGameDev.getText());
+                selectedGame.setGamesMachine(updateGamesMachineBox.getSelectionModel().getSelectedItem());
+                try {
+                    selectedGame.setYear(Integer.parseInt(updateGameYear.getText())); /* Parsing the string value input to convert to a numerical value */
+                    if (!Utilities.intValidRange(selectedGame.getYear(), 1900, 2024)) {
+                        Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID YEAR BETWEEN 1900-2023");
+                        return;
+                    }
+                } catch (NumberFormatException e) {
+                    Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID NUMERICAL YEAR");
+                    return;
+                }
+
+                EditsController.getEditsController().refreshAllViews();
+                gameEditTable.getItems().clear();
+                gameEditTable.getItems().addAll(allGames);
+                Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL!");
+            } else
+                Utilities.showWarningAlert("ERROR", "PLEASE DO NOT LEAVE ANY FIELDS EMPTY");
+        } else
+            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO UPDATE");
     }
 
     @Override

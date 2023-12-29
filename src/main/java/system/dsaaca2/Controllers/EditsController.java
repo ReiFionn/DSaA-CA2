@@ -61,24 +61,8 @@ public class EditsController implements Initializable {
         mPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-    private void refreshAllViews() {
-        gameAPI.portGameCombo.getItems().clear();
-        gameAPI.portGameCombo.getItems().addAll(allGames);
-
-        gameAPI.currentPortsView.getItems().clear();
-        gameAPI.currentPortsView.getItems().addAll(allGamePorts);
-
-        gameAPI.currentMachinesView.getItems().clear();
-        gameAPI.currentMachinesView.getItems().addAll(allMachines);
-
-        gameAPI.portMachineCombo.getItems().clear();
-        gameAPI.portMachineCombo.getItems().addAll(allMachines);
-
-        machineEditTable.getItems().clear();
-        machineEditTable.getItems().addAll(allMachines);
-
-        gameAPI.currentGamesView.getItems().clear();
-        gameAPI.currentGamesView.getItems().addAll(allGames);
+    public static EditsController getEditsController() {
+        return editsController;
     }
 
     public void onMachineSelect() {
@@ -131,6 +115,26 @@ public class EditsController implements Initializable {
                 Utilities.showWarningAlert("ERROR", "PLEASE DO NOT LEAVE ANY FIELDS EMPTY");
         } else
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO UPDATE");
+    }
+
+    public void refreshAllViews() {
+        gameAPI.portGameCombo.getItems().clear();
+        gameAPI.portGameCombo.getItems().addAll(allGames);
+
+        gameAPI.currentPortsView.getItems().clear();
+        gameAPI.currentPortsView.getItems().addAll(allGamePorts);
+
+        gameAPI.currentMachinesView.getItems().clear();
+        gameAPI.currentMachinesView.getItems().addAll(allMachines);
+
+        gameAPI.portMachineCombo.getItems().clear();
+        gameAPI.portMachineCombo.getItems().addAll(allMachines);
+
+        machineEditTable.getItems().clear();
+        machineEditTable.getItems().addAll(allMachines);
+
+        gameAPI.currentGamesView.getItems().clear();
+        gameAPI.currentGamesView.getItems().addAll(allGames);
     }
 }
 
