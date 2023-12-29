@@ -60,18 +60,17 @@ public class GamePort {
         this.portYear = portYear;
     }
 
+
     @Override
     public String toString() {
-        return "----------------------------------------------------------------" + "\n" +
-                "                GAME NAME: " + originalGame.getName().toUpperCase() + "\n" +
-                "----------------------------------------------------------------" + "\n" +
-                "|Original Machine: " + originalMachine.getName().toUpperCase() + "\n" +
-                "|Machine Ported To: " + machinePortedTo.getName().toUpperCase() + "\n" +
-                "|Developers: " + developers.toUpperCase() + "\n" +
-                "|Cover: " + cover.toUpperCase() + "\n" +
-                "|Year Ported: " + portYear + "\n" +
-                "****************************************************************";
+        return
+                "Port: ( " +machinePortedTo.getName().toUpperCase() + " )    Original Machine: ( " + originalMachine.getName().toUpperCase() + " )    Game Ported: ( "+getOriginalGame().getName().toUpperCase()+" ) \n"+
+                        "----------------------------------------------------------------\n" +
+                        "| Developers:  " + developers.toUpperCase() + "\n" +
+                        "| Cover:  " + cover.toUpperCase() + "\n" +
+                        "| Year Ported:  " + portYear ;
     }
+
 
     @Override
     public boolean equals(Object o) {

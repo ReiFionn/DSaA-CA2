@@ -56,6 +56,9 @@ public class Game {
     public GamesMachine getGamesMachine() {
         return gamesMachine;
     }
+    public String getGamesMachineName() {
+        return gamesMachine.getName();
+    }
     public void setGamesMachine(GamesMachine gamesMachine) {
         this.gamesMachine = gamesMachine;
     }
@@ -85,17 +88,15 @@ public class Game {
 
     @Override
     public String toString() {
-        return "----------------------------------------------------------------" + "\n" +
-                "                GAME NAME: " + name.toUpperCase() + "\n" +
-                "----------------------------------------------------------------" + "\n" +
-                "|Publisher: " + publisher.toUpperCase() + "\n" +
-                "|Year: " + year + "\n" +
-                "|Cover: " + cover.toUpperCase() + "\n" +
-                "|Developers: " + developers.toUpperCase() + "\n" +
-                "|Description: " + description.toUpperCase() + "\n" +
-                "|Machine: " + gamesMachine.getName().toUpperCase() + "\n" +
-                "****************************************************************";
+        return
+                "Title: ("+name.toUpperCase() + ")        Publisher: ( "+publisher.toUpperCase()+ " )       Launched: ( "+year+" )\n" +
+                        "-------------------------------------------------------------------------------\n"+
+                       "| Game Cover: " + cover.toUpperCase() + "\n" +
+                        "| Game Developers: " + developers.toUpperCase() + "\n" +
+                        "| Game Description: " + description.toUpperCase() + "\n" +
+                        "| Game Machine: " + gamesMachine.getName().toUpperCase();
     }
+
 
     @Override
     public boolean equals(Object o) {
