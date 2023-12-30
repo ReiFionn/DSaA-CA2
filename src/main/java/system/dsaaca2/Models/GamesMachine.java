@@ -100,7 +100,7 @@ public class GamesMachine implements Hashable{
     @Override
     public String toString() {
         return
-                "Name: ( " + name.toUpperCase() + " )       Manufacturer: ( "+manufacturer.toUpperCase()+" )       Released: ( "+year+" )"+
+                "Name: ( " + name.toUpperCase() + " )   Manufacturer: ( "+manufacturer.toUpperCase()+" )   Released: ( "+year+" )"+
                 "\n----------------------------------------------------------------" + "\n" +
                 "|Description: " + description.toUpperCase() + "\n" +
                 "|Machine Type: " + type.toUpperCase() + "\n" +
