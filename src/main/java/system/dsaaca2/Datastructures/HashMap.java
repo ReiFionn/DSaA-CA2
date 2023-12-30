@@ -43,7 +43,7 @@ public class HashMap<E extends Hashable> {
 
     public E find(String key) {
         int home = hashFunction(key.toLowerCase());
-        SillyList<E> list = (SillyList<E>) hashTable[home].get(home);
+        SillyList<E> list = hashTable[home];
 
         int index = findIndex(list, key);
 
