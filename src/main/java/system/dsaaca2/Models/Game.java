@@ -89,8 +89,8 @@ public class Game {
     @Override
     public String toString() {
         return
-                "Title: ("+name.toUpperCase() + ")        Publisher: ( "+publisher.toUpperCase()+ " )       Launched: ( "+year+" )\n" +
-                        "-------------------------------------------------------------------------------\n"+
+                "Title: ("+name.toUpperCase() + ")    Publisher: ( "+publisher.toUpperCase()+ " )   Launched: ( "+year+" )\n" +
+                        "-----------------------------------------------------------------------\n"+
                        "| Game Cover: " + cover.toUpperCase() + "\n" +
                         "| Game Developers: " + developers.toUpperCase() + "\n" +
                         "| Game Description: " + description.toUpperCase() + "\n" +

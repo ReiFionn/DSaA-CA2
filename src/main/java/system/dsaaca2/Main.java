@@ -57,13 +57,16 @@ public class Main extends Application {
         popUp.setTitle(title);
         popUp.setResizable(false);
 
+
         // Create a new scene with the loaded content
-        Scene newScene = new Scene(root, 1000, 600);
-        Button closeButton = new Button("Close Popup");
+        Scene newScene = new Scene(root, 1000, 700);
+
 
 
         // Set the scene for the stage
+
         popUp.setScene(newScene);
+
 
         // Add stylesheets if needed
         newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());

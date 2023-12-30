@@ -8,10 +8,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<DialogPane minHeight="600.0" minWidth="1000.0" styleClass="machinePop" stylesheets="@popUpStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.PortEditController">
+<DialogPane minHeight="700.0" minWidth="1000.0" styleClass="portPop" stylesheets="@popUpStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.PortEditController">
    <content>
-       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="1000.0" prefHeight="500.0" prefWidth="1000.0" styleClass="portPop" stylesheets="@popUpStyle.css">
-           <TableView fx:id="portEditTable" layoutX="20.0" layoutY="50.0" onMouseClicked="#onGamePortSelect" prefHeight="261.0" prefWidth="950.0">
+       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="1000.0" prefHeight="500.0" prefWidth="1000.0" stylesheets="@popUpStyle.css">
+           <TableView fx:id="portEditTable" editable="true" layoutX="27.0" layoutY="84.0" onMouseClicked="#onGamePortSelect" prefHeight="339.0" prefWidth="950.0">
                <columns>
                    <TableColumn fx:id="newPort" prefWidth="206.00003623962402" text="MACHINE PORT" />
                    <TableColumn fx:id="origMachine" prefWidth="209.99998474121094" text="ORIGINAL MACHINE" />
@@ -21,14 +21,15 @@
                    <TableColumn fx:id="pYear" prefWidth="132.0001220703125" text="YEAR" />
                </columns>
            </TableView>
-           <Button layoutX="386.0" layoutY="487.0" mnemonicParsing="false" style="-fx-font-size: 15; -fx-text-fill: #ffde59;" text="APPLY CHANGES" />
-           <TextField fx:id="currentPortGame" editable="false" layoutX="161.0" layoutY="356.0" maxHeight="18.0" minHeight="18.0" prefHeight="18.0" prefWidth="109.0" />
-           <TextField fx:id="updatePortDev" layoutX="142.0" layoutY="469.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-           <TextField fx:id="updatePortCover" layoutX="141.0" layoutY="496.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-           <TextField fx:id="updatePortYear" layoutX="140.0" layoutY="524.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-           <TextField fx:id="portOrigMac" editable="false" layoutX="513.0" layoutY="356.0" maxHeight="18.0" minHeight="18.0" prefHeight="18.0" prefWidth="109.0" />
-           <TextField fx:id="portNewPortName" editable="false" layoutX="830.0" layoutY="356.0" maxHeight="18.0" minHeight="18.0" prefHeight="18.0" prefWidth="109.0" />
-           <ComboBox fx:id="newMachineBox" layoutX="725.0" layoutY="389.0" prefHeight="29.0" prefWidth="222.0" promptText="CHOOSE A NEW PORT" />
+           <Button layoutX="514.0" layoutY="620.0" mnemonicParsing="false" style="-fx-font-size: 15;" text="APPLY CHANGES" />
+           <TextField fx:id="currentPortGame" editable="false" layoutX="178.0" layoutY="470.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="158.0" />
+           <TextField fx:id="updatePortDev" layoutX="179.0" layoutY="565.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="161.0" />
+           <TextField fx:id="updatePortCover" layoutX="178.0" layoutY="596.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="161.0" />
+           <TextField fx:id="updatePortYear" layoutX="177.0" layoutY="628.0" maxHeight="20.0" minHeight="20.0" prefHeight="18.0" prefWidth="159.0" />
+           <TextField fx:id="portOrigMac" editable="false" layoutX="179.0" layoutY="535.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="158.0" />
+           <TextField fx:id="portNewPortName" editable="false" layoutX="178.0" layoutY="502.0" maxHeight="20.0" minHeight="20.0" prefHeight="18.0" prefWidth="157.0" />
+           <ComboBox fx:id="newMachineBox" layoutX="403.0" layoutY="496.0" prefHeight="29.0" prefWidth="222.0" promptText="CHOOSE A NEW PORT" />
+         <Button layoutX="770.0" layoutY="499.0" mnemonicParsing="false" onAction="#removePort" style="-fx-font-size: 15;" text="REMOVE PORT" />
        </AnchorPane>
    </content>
 </DialogPane>

@@ -5,10 +5,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.utils.Utilities;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,7 +21,7 @@ import static system.dsaaca2.Controllers.GameAPI.allMachines;
 public class PortEditController implements Initializable {
     public static PortEditController portEditController = new PortEditController();
 
-    public TableView<GamePort> portEditTable;
+    public TableView<GamePort> portEditTable= new TableView<>();
     public TableColumn<GamesMachine,String> newPort;
     public TableColumn<GamesMachine,String> origMachine;
     public TableColumn<Game,String> pGame;
@@ -57,11 +59,29 @@ public class PortEditController implements Initializable {
         }
     }
 
+
+    public void removePort() {
+        GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
+
+        if (selectedPort != null) {
+            allGamePorts.remove(selectedPort);
+            portEditTable.getItems().remove(selectedPort);
+        }
+        Utilities.showInformationAlert("SUCCESS!", "SUCCESSFULLY DELETED:\n"+selectedPort);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         portEditController = this;
         portEditTable.getItems().addAll(allGamePorts);
         newMachineBox.getItems().addAll(allMachines);
+        newPort.setCellValueFactory(new PropertyValueFactory<>("machinePortedTo"));
+        origMachine.setCellValueFactory(new PropertyValueFactory<>("originalMachine"));
+        pDev.setCellValueFactory(new PropertyValueFactory<>("developers"));
+        pGame.setCellValueFactory(new PropertyValueFactory<>("originalGame"));
+        pCover.setCellValueFactory(new PropertyValueFactory<>("cover"));
+        pYear.setCellValueFactory(new PropertyValueFactory<>("portYear"));
+
 
     }
 }
