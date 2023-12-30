@@ -254,19 +254,16 @@ public class GameAPI implements Initializable {
         Persistance.load();
 
         for (GamesMachine machine : allMachines) {
-            currentMachinesView.getItems().add(machine);
             EditsController.editsController.machineEditTable.getItems().add(machine);
             gameMachineCombo.getItems().add(machine);
             portMachineCombo.getItems().add(machine);
 
             for (Game game : machine.getGames()) {
-                currentGamesView.getItems().add(game);
                 GameEditController.gameEditController.gameEditTable.getItems().add(game);
                 portGameCombo.getItems().add(game);
                 allGames.add(game);
 
                 for (GamePort port : game.getPorts()) {
-                    currentPortsView.getItems().add(port);
                     PortEditController.portEditController.portEditTable.getItems().add(port);
                     allGamePorts.add(port);
                 }
@@ -279,15 +276,12 @@ public class GameAPI implements Initializable {
         allGames.clear();
         allMachines.clear();
         allGamePorts.clear();
-        currentMachinesView.getItems().clear();
-        currentGamesView.getItems().clear();
-        currentPortsView.getItems().clear();
-        gameMachineCombo.getItems().clear();
-        portGameCombo.getItems().clear();
-        portMachineCombo.getItems().clear();
         GameEditController.gameEditController.gameEditTable.getItems().clear();
         EditsController.editsController.machineEditTable.getItems().clear();
         PortEditController.portEditController.portEditTable.getItems().clear();
+        gameMachineCombo.getItems().clear();
+        portGameCombo.getItems().clear();
+        portMachineCombo.getItems().clear();
     }
 
     public void editMachine() throws IOException {
