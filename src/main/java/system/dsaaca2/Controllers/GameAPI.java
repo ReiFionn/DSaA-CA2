@@ -240,62 +240,6 @@ public class GameAPI implements Initializable {
         }
     }
 
-    public void removeMachine() {
-        GamesMachine selectedMachine = currentMachinesView.getSelectionModel().getSelectedItem();
-
-        if (selectedMachine != null) {
-            allMachines.remove(selectedMachine);
-            currentMachinesView.getItems().remove(selectedMachine);
-            gameMachineCombo.getItems().remove(selectedMachine);
-            portMachineCombo.getItems().remove(selectedMachine);
-
-            for (Game game : selectedMachine.getGames()) {
-                allGames.remove(game);
-                portGameCombo.getItems().remove(game);
-                currentGamesView.getItems().remove(game);
-
-                for (GamePort port : game.getPorts()) {
-                    allGamePorts.remove(port);
-                    currentPortsView.getItems().remove(port);
-                }
-            }
-
-            for (GamePort port : allGamePorts) {
-                if (port.getMachinePortedTo().equals(selectedMachine)) {
-                    allGamePorts.remove(port);
-                    currentPortsView.getItems().remove(port);
-                }
-            }
-        } else
-            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO DELETE");
-    }
-
-    public void removeGame() {
-        Game selectedGame = currentGamesView.getSelectionModel().getSelectedItem();
-
-        if (selectedGame != null) {
-            allGames.remove(selectedGame);
-            portGameCombo.getItems().remove(selectedGame);
-            currentGamesView.getItems().remove(selectedGame);
-
-            for (GamePort port : selectedGame.getPorts()) {
-                allGamePorts.remove(port);
-                currentPortsView.getItems().remove(port);
-                Utilities.showInformationAlert("SUCCESS", selectedGame.getName() +" HAS BEEN REMOVED");
-            }
-        } else
-            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO DELETE");
-    }
-
-    public void removePort() {
-        GamePort selectedPort = currentPortsView.getSelectionModel().getSelectedItem();
-
-        if (selectedPort != null) {
-            allGamePorts.remove(selectedPort);
-            currentPortsView.getItems().remove(selectedPort);
-        }
-    }
-
     public void save() throws Exception {
         try {
             Persistance.save();
