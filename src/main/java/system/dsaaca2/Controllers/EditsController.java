@@ -1,5 +1,6 @@
 package system.dsaaca2.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -71,6 +72,7 @@ public class EditsController implements Initializable {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
 
         if (selectedMachine != null) {
+
             // Update text fields with the values of the selected machine
             updateMachineName.setText(selectedMachine.getName());
             updateMachineMan.setText(selectedMachine.getManufacturer());
@@ -86,7 +88,10 @@ public class EditsController implements Initializable {
     public void applyMachineUpdate() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
 
+
         if (selectedMachine != null) {
+            GamesMachine previousMachine = selectedMachine;
+
             if (!updateMachineName.getText().isEmpty() && !updateMachineMan.getText().isEmpty() && !updateMachineDesc.getText().isEmpty() && !updateMachineType.getText().isEmpty() && !updateMachineMedia.getText().isEmpty() && !updateMachineImage.getText().isEmpty() && !updateMachinePrice.getText().isEmpty() && !updateMachineYear.getText().isEmpty()) {
                 selectedMachine.setName(updateMachineName.getText());
                 selectedMachine.setManufacturer(updateMachineMan.getText());
@@ -135,13 +140,13 @@ public class EditsController implements Initializable {
 
                 refreshAllViews();
                 if (gamesDeleted > 0 && portsDeleted > 0) {
-                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL:\n" + selectedMachine + "\n Games Deleted: " + gamesDeleted + "\n Ports Deleted: " + portsDeleted);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousMachine.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedMachine + "\n Games Deleted: " + gamesDeleted + "\n Ports Deleted: " + portsDeleted);
                 } else if (gamesDeleted > 0) {
-                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL:\n" + selectedMachine + "\n Games Deleted: " + gamesDeleted);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousMachine.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedMachine + "\n Games Deleted: " + gamesDeleted);
                 } else if (portsDeleted > 0) {
-                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL:\n" + selectedMachine + "\n Ports Deleted: " + portsDeleted);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousMachine.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedMachine + "\n Ports Deleted: " + portsDeleted);
                 } else
-                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL:\n" + selectedMachine);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousMachine.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedMachine);
             } else
                 Utilities.showWarningAlert("ERROR", "PLEASE DO NOT LEAVE ANY FIELDS EMPTY");
         } else
@@ -152,20 +157,52 @@ public class EditsController implements Initializable {
         gameAPI.portGameCombo.getItems().clear();
         gameAPI.portGameCombo.getItems().addAll(allGames);
 
-        gameAPI.currentPortsView.getItems().clear();
-        gameAPI.currentPortsView.getItems().addAll(allGamePorts);
+        PortEditController.portEditController.portEditTable.getItems().clear();
+        PortEditController.portEditController.portEditTable.getItems().addAll(allGamePorts);
 
-        gameAPI.currentMachinesView.getItems().clear();
-        gameAPI.currentMachinesView.getItems().addAll(allMachines);
+        EditsController.editsController.machineEditTable.getItems().clear();
+        EditsController.editsController.machineEditTable.getItems().addAll(allMachines);
 
         gameAPI.portMachineCombo.getItems().clear();
         gameAPI.portMachineCombo.getItems().addAll(allMachines);
 
-        machineEditTable.getItems().clear();
-        machineEditTable.getItems().addAll(allMachines);
+        gameAPI.portGameCombo.getItems().clear();
+        gameAPI.portGameCombo.getItems().addAll(allGames);
 
-        gameAPI.currentGamesView.getItems().clear();
-        gameAPI.currentGamesView.getItems().addAll(allGames);
+
+        GameEditController.gameEditController.gameEditTable.getItems().clear();
+        GameEditController.gameEditController.gameEditTable.getItems().addAll(allGames);
+    }
+
+    public void removeMachine() {
+        GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
+
+        if (selectedMachine != null) {
+            allMachines.remove(selectedMachine);
+            machineEditTable.getItems().remove(selectedMachine);
+            gameAPI.gameMachineCombo.getItems().remove(selectedMachine);
+            gameAPI.portMachineCombo.getItems().remove(selectedMachine);
+
+            for (Game game : selectedMachine.getGames()) {
+                allGames.remove(game);
+                gameAPI.portGameCombo.getItems().remove(game);
+                GameEditController.gameEditController.gameEditTable.getItems().remove(game);
+
+                for (GamePort port : game.getPorts()) {
+                    allGamePorts.remove(port);
+                    PortEditController.portEditController.portEditTable.getItems().remove(port);
+                }
+            }
+
+            for (GamePort port : allGamePorts) {
+                if (port.getMachinePortedTo().equals(selectedMachine)) {
+                    allGamePorts.remove(port);
+                    PortEditController.portEditController.portEditTable.getItems().remove(port);
+                }
+                Utilities.showInformationAlert("SUCCESS", "SUCCESSFULLY REMOVED MACHINE: \n"+selectedMachine);
+            }
+        } else
+            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO DELETE");
     }
 }
 

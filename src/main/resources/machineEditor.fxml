@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<DialogPane xmlns:fx="http://javafx.com/fxml/1" minHeight="600.0" minWidth="1000.0" styleClass="machinePop"
-            stylesheets="@popUpStyle.css" xmlns="http://javafx.com/javafx/20.0.1"
-            fx:controller="system.dsaaca2.Controllers.EditsController">
+
+<DialogPane minHeight="700.0" minWidth="1000.0" styleClass="machinePop" stylesheets="@popUpStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.EditsController">
     <content>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="1000.0" prefHeight="500.0"
-                    prefWidth="1000.0">
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="1000.0" prefHeight="500.0" prefWidth="1000.0">
             <children>
-                <TableView fx:id="machineEditTable" layoutX="16.0" layoutY="48.0" onMouseClicked="#onMachineSelect"
-                           prefHeight="277.0" prefWidth="961.0">
+                <TableView fx:id="machineEditTable" layoutX="19.0" layoutY="89.0" onMouseClicked="#onMachineSelect" prefHeight="335.0" prefWidth="961.0" styleClass="table-cell" stylesheets="@popUpStyle.css">
                     <columns>
-                        <TableColumn fx:id="mName" prefWidth="105.99999713897705" text="NAME"/>
-                        <TableColumn fx:id="mMan" prefWidth="131.33329010009766" text="MANUFACTURER"/>
-                        <TableColumn fx:id="mDesc" prefWidth="145.3332977294922" text="DESCRIPTION"/>
-                        <TableColumn fx:id="mType" prefWidth="126.66671752929688" text="TYPE"/>
-                        <TableColumn fx:id="mMedia" prefWidth="143.33331298828125" text="MEDIA"/>
+                        <TableColumn fx:id="mName" prefWidth="105.99999713897705" text="NAME" />
+                        <TableColumn fx:id="mMan" prefWidth="131.33329010009766" text="MANUFACTURER" />
+                        <TableColumn fx:id="mDesc" prefWidth="145.3332977294922" text="DESCRIPTION" />
+                        <TableColumn fx:id="mType" prefWidth="126.66671752929688" text="TYPE" />
+                        <TableColumn fx:id="mMedia" prefWidth="143.33331298828125" text="MEDIA" />
                   <TableColumn fx:id="mImage" prefWidth="109.33331298828125" text="IMAGE" />
                   <TableColumn fx:id="mYear" prefWidth="108.666748046875" text="YEAR" />
                   <TableColumn fx:id="mPrice" prefWidth="94.0001220703125" text="PRICE" />
               </columns>
             </TableView>
-            <Button layoutX="421.0" layoutY="435.0" mnemonicParsing="false" onAction="#applyMachineUpdate" style="-fx-font-size: 15;" text="APPLY CHANGES" />
-            <TextField fx:id="updateMachineName" layoutX="170.0" layoutY="368.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-            <TextField fx:id="updateMachineMan" layoutX="170.0" layoutY="395.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-            <TextField fx:id="updateMachineDesc" layoutX="170.0" layoutY="422.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-            <TextField fx:id="updateMachineType" layoutX="169.0" layoutY="448.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-            <TextField fx:id="updateMachineMedia" layoutX="169.0" layoutY="474.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-            <TextField fx:id="updateMachineImage" layoutX="170.0" layoutY="500.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
-                <TextField fx:id="updateMachineYear" layoutX="171.0" layoutY="528.0" maxHeight="18.0" minHeight="18.0"
-                           prefHeight="15.0"/>
-            <TextField fx:id="updateMachinePrice" layoutX="170.0" layoutY="556.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
+            <Button layoutX="236.0" layoutY="622.0" mnemonicParsing="false" onAction="#applyMachineUpdate" style="-fx-font-size: 15;" text="APPLY CHANGES" />
+            <TextField fx:id="updateMachineName" layoutX="152.0" layoutY="500.0" maxHeight="20.0" minHeight="20.0" prefHeight="18.0" prefWidth="133.0" />
+            <TextField fx:id="updateMachineMan" layoutX="440.0" layoutY="499.0" maxHeight="20.0" minHeight="20.0" prefHeight="18.0" prefWidth="141.0" />
+            <TextField fx:id="updateMachineDesc" layoutX="152.0" layoutY="527.0" maxHeight="20.0" minHeight="20.0" prefHeight="18.0" prefWidth="134.0" />
+            <TextField fx:id="updateMachineType" layoutX="441.0" layoutY="527.0" maxHeight="18.0" minHeight="20.0" prefHeight="20.0" prefWidth="139.0" />
+            <TextField fx:id="updateMachineMedia" layoutX="152.0" layoutY="556.0" maxHeight="20.0" minHeight="20.0" prefHeight="18.0" prefWidth="133.0" />
+            <TextField fx:id="updateMachineImage" layoutX="443.0" layoutY="556.0" maxHeight="20.0" minHeight="20.0" prefHeight="18.0" prefWidth="135.0" />
+                <TextField fx:id="updateMachineYear" layoutX="151.0" layoutY="583.0" maxHeight="20.0" minHeight="20.0" prefHeight="18.0" prefWidth="136.0" />
+            <TextField fx:id="updateMachinePrice" layoutX="442.0" layoutY="585.0" maxHeight="18.0" minHeight="20.0" prefHeight="18.0" prefWidth="136.0" />
+            <Button layoutX="744.0" layoutY="500.0" mnemonicParsing="false" onAction="#removeMachine" style="-fx-font-size: 15;" text="REMOVE MACHINE" />
          </children>
       </AnchorPane>
    </content>

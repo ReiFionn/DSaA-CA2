@@ -1,9 +1,12 @@
 package system.dsaaca2.utils;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
+import javafx.stage.StageStyle;
 import system.dsaaca2.Main;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Utilities {
 
@@ -88,26 +91,33 @@ public class Utilities {
     /*Creates GUI alerts for exceptions*/
     public static void showWarningAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
+
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+
     }
 
     public static void showInformationAlert(String title, String content) {
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
+
+
+
         alert.showAndWait();
     }
 
 
-
-
-
 }
+
+
+
+
+
+
 
 
 

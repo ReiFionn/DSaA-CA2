@@ -1,10 +1,8 @@
 package system.dsaaca2.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
@@ -22,7 +20,7 @@ public class GameEditController implements Initializable {
 
 
     public static GameEditController gameEditController = new GameEditController();
-    public TableView<Game> gameEditTable;
+    public TableView<Game> gameEditTable = new TableView<>();
     public TableColumn<GamesMachine, String> mName;
     public TableColumn<Game, String> gNam;
     public TableColumn<Game, String> gpub;
@@ -36,7 +34,7 @@ public class GameEditController implements Initializable {
     public TextField updateGameDev;
     public TextField updateGameCover;
     public TextField updateGameYear;
-    public ChoiceBox<GamesMachine> updateGamesMachineBox;
+    public ComboBox<GamesMachine> updateGamesMachineBox;
 
     public void onGameSelect() {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
@@ -57,6 +55,7 @@ public class GameEditController implements Initializable {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
 
         if (selectedGame != null) {
+            Game previousGame  = selectedGame;
             if (!updateGameName.getText().isEmpty() && !updateGamePub.getText().isEmpty() && !updateGameCover.getText().isEmpty() && !updateGameDesc.getText().isEmpty() && !updateGameYear.getText().isEmpty() && !updateGameDev.getText().isEmpty() && !updateGamesMachineBox.isShowing()) {
                 selectedGame.setName(updateGameName.getText());
                 selectedGame.setPublisher(updateGamePub.getText());
@@ -87,9 +86,9 @@ public class GameEditController implements Initializable {
                 gameEditTable.getItems().clear();
                 gameEditTable.getItems().addAll(allGames);
                 if (portsDeleted > 0) {
-                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL: \n" + selectedGame + "\n Ports deleted: " + portsDeleted);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------------UPDATE SUCCESSFUL-------------\n\n " + previousGame.getName().toUpperCase() +"\n\n---> SUCCESSFULLY UPDATED TO ------->\n"+ selectedGame+"\n Ports deleted: " + portsDeleted);
                 } else
-                    Utilities.showInformationAlert("SUCCESS", "UPDATE SUCCESSFUL: \n" + selectedGame);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousGame.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedGame);
             } else
                 Utilities.showWarningAlert("ERROR", "PLEASE DO NOT LEAVE ANY FIELDS EMPTY");
         } else
@@ -112,7 +111,22 @@ public class GameEditController implements Initializable {
 
     }
 
-    public static GameEditController getGameEditController() {
-     return null;
+
+
+    public void removeGame() {
+        Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
+
+        if (selectedGame != null) {
+            allGames.remove(selectedGame);
+            gameAPI.portGameCombo.getItems().remove(selectedGame);
+            GameEditController.gameEditController.gameEditTable.getItems().remove(selectedGame);
+
+            for (GamePort port : selectedGame.getPorts()) {
+                allGamePorts.remove(port);
+                PortEditController.portEditController.portEditTable.getItems().remove(port);
+                Utilities.showInformationAlert("SUCCESS", selectedGame.getName() +" HAS BEEN REMOVED");
+            }
+        } else
+            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO DELETE");
     }
 }

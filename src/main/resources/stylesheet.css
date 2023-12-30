@@ -1,40 +1,46 @@
+/* Arcade-Style Button */
+/* Arcade-Style Button with Black Background and Custom Colors (No Flash Animation) */
 Button {
-    -fx-font-family: 'Tomorrow', sans-serif;
-    -fx-background-radius: 0; /* Set the background radius to 0 for a pixelated effect */
-    -fx-text-fill: #ffffff; /* Text color */
-    -fx-stroke: #000000; /* Border color */
-    -fx-stroke-width: 2;
-    -fx-scale-x: 1;
-    -fx-scale-y: 1;
-    -fx-transition: all 0.3s; /* Transition duration */
-    -fx-effect: dropshadow(gaussian, black, 2, 2, 2, 2); /* 3D pixelated effect */
-    -fx-border-color: black;
-    -fx-border-width: 2px;
+    -fx-background-color: #000000; /* Black background color */
+    -fx-background-radius: 50px; /* Set a border-radius for a rounded look */
+    -fx-border-radius: 50px; /* Set a border-radius for a rounded look */
+    -fx-border-color:  white;
+    -fx-text-fill: white; /* Text color */
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear font family */
     -fx-font-weight: bold;
+    -fx-cursor: HAND; /* Set cursor to hand for better user feedback */
+    -fx-padding: 10 10; /* Adjust padding for better appearance */
+    -fx-effect: dropshadow(gaussian, #000000, 5, 5, 5, 5); /* Add a subtle drop shadow */
+    -fx-transition: all 0.3s; /* Add transition for other animations */
 }
 
-Label {
-    -fx-background-color: black; /* Mario red background color for the label */
-    -fx-background-radius: 0; /* Set the background radius to 0 for the label */
-}
-Button {
-    -fx-background-color: #black;
-    -fx-cursor: OPEN_HAND;
-    -fx-font-family: 'Tomorrow', sans-serif;
-    -fx-font-weight: bold;
-}
-/* Hover effect */
+
+
+
+
+/* Arcade Hover effect for the Button */
 Button:hover {
-    -fx-background-color: white; /* Darken the background color on hover */
-    -fx-effect: dropshadow(gaussian, black, 5, 5, 5, 5);
-    -fx-text-fill: black;
-    -fx-font-weight: bold;
+    -fx-background-color: #222222; /* Darker black on hover */
+    -fx-effect: dropshadow(gaussian, #000000, 8, 8, 8, 8); /* Enhance drop shadow on hover */
+    -fx-text-fill: #FFDE59;
     -fx-scale-x: 1.1; /* Increase scale on hover */
     -fx-scale-y: 1.1;
     -fx-rotate: 5deg; /* Rotate slightly on hover */
 }
+
+.combo-box {
+    -fx-prompt-text-fill: white;
+    -fx-border-color: white;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+
+
 .list-cell {
-    -fx-border-color: black;
+    -fx-border-color: #FFDE59;
+    -fx-background-color: black;
+    -fx-text-fill: white;
     -fx-border-width: 1;
     -fx-padding: 5;
 }

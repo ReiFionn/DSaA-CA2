@@ -39,23 +39,10 @@ public class GameAPI implements Initializable {
     public TextField portCoverText;
     public TextField portDevText;
     public TextField portYearText;
-    public ListView<Game> currentGamesView;
-    public ListView<GamePort> currentPortsView;
-    public Button editMachineButton; //might not need
-    public Button deleteMachineButton; //might not need
-    public Button editGameButton; //might not need
-    public Button deleteGameButton; //might not need
-    public Button editPortButton; //might not need
-    public Button deletePortButton; //might not need
-    public Button saveButton; //might not need
-    public Button loadButton; //might not need
-    public Button resetButton; //might not need
+
     public ComboBox<GamesMachine> gameMachineCombo; //machines for games
     public ComboBox<Game> portGameCombo; //games for ports
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
-
-
-
 
     public static SillyList<GamesMachine> allMachines = new SillyList<>();
     public static SillyList<Game> allGames = new SillyList<>();
@@ -107,7 +94,6 @@ public class GameAPI implements Initializable {
 
             if (!dupe) {
                 allMachines.add(gm);
-                currentMachinesView.getItems().add(gm);
                 gameMachineCombo.getItems().add(gm);
                 portMachineCombo.getItems().add(gm);
                 EditsController.editsController.machineEditTable.getItems().add(gm);
@@ -174,7 +160,7 @@ public class GameAPI implements Initializable {
                 if (!dupe) {
                     allGames.add(g); /* Adds game to the global list */
                     selectedMachine.addGame(g); /* Adds game to the selected machine's list of games */
-                    currentGamesView.getItems().add(g);
+                    GameEditController.gameEditController.gameEditTable.getItems().add(g);
                     portGameCombo.getItems().add(g);
 
                     gameNameText.clear();
@@ -234,7 +220,7 @@ public class GameAPI implements Initializable {
                     if (!dupe) {
                         allGamePorts.add(newGamePort); /* add to global list */
                         selectedGame.addPort(newGamePort); /* add to the selected games list of ports*/
-                        currentPortsView.getItems().add(newGamePort);
+                        PortEditController.portEditController.portEditTable.getItems().add(newGamePort);
 
                         portMachineCombo.getSelectionModel().clearSelection();
                         portGameCombo.getSelectionModel().clearSelection();
@@ -254,61 +240,11 @@ public class GameAPI implements Initializable {
         }
     }
 
-    public void removeMachine() {
-        GamesMachine selectedMachine = currentMachinesView.getSelectionModel().getSelectedItem();
 
-        if (selectedMachine != null) {
-            allMachines.remove(selectedMachine);
-            currentMachinesView.getItems().remove(selectedMachine);
-            gameMachineCombo.getItems().remove(selectedMachine);
-            portMachineCombo.getItems().remove(selectedMachine);
 
-            for (Game game : selectedMachine.getGames()) {
-                allGames.remove(game);
-                portGameCombo.getItems().remove(game);
-                currentGamesView.getItems().remove(game);
 
-                for (GamePort port : game.getPorts()) {
-                    allGamePorts.remove(port);
-                    currentPortsView.getItems().remove(port);
-                }
-            }
 
-            for (GamePort port : allGamePorts) {
-                if (port.getMachinePortedTo().equals(selectedMachine)) {
-                    allGamePorts.remove(port);
-                    currentPortsView.getItems().remove(port);
-                }
-            }
-        } else
-            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO DELETE");
-    }
 
-    public void removeGame() {
-        Game selectedGame = currentGamesView.getSelectionModel().getSelectedItem();
-
-        if (selectedGame != null) {
-            allGames.remove(selectedGame);
-            portGameCombo.getItems().remove(selectedGame);
-            currentGamesView.getItems().remove(selectedGame);
-
-            for (GamePort port : selectedGame.getPorts()) {
-                allGamePorts.remove(port);
-                currentPortsView.getItems().remove(port);
-                Utilities.showInformationAlert("SUCCESS", selectedGame.getName() +" HAS BEEN REMOVED");
-            }
-        } else
-            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO DELETE");
-    }
-
-    public void removePort() {
-        GamePort selectedPort = currentPortsView.getSelectionModel().getSelectedItem();
-
-        if (selectedPort != null) {
-            allGamePorts.remove(selectedPort);
-            currentPortsView.getItems().remove(selectedPort);
-        }
-    }
 
     public void save() throws Exception {
         try {
@@ -324,17 +260,17 @@ public class GameAPI implements Initializable {
         Persistance.load();
 
         for (GamesMachine machine : allMachines) {
-            currentMachinesView.getItems().add(machine);
+            EditsController.editsController.machineEditTable.getItems().add(machine);
             gameMachineCombo.getItems().add(machine);
             portMachineCombo.getItems().add(machine);
 
             for (Game game : machine.getGames()) {
-                currentGamesView.getItems().add(game);
+               GameEditController.gameEditController.gameEditTable.getItems().add(game);
                 portGameCombo.getItems().add(game);
                 allGames.add(game);
 
                 for (GamePort port : game.getPorts()) {
-                    currentPortsView.getItems().add(port);
+                   PortEditController.portEditController.portEditTable.getItems().add(port);
                     allGamePorts.add(port);
                 }
             }
@@ -346,9 +282,9 @@ public class GameAPI implements Initializable {
         allGames.clear();
         allMachines.clear();
         allGamePorts.clear();
-        currentMachinesView.getItems().clear();
-        currentGamesView.getItems().clear();
-        currentPortsView.getItems().clear();
+        GameEditController.gameEditController.gameEditTable.getItems().clear();
+        EditsController.editsController.machineEditTable.getItems().clear();
+        PortEditController.portEditController.portEditTable.getItems().clear();
         gameMachineCombo.getItems().clear();
         portGameCombo.getItems().clear();
         portMachineCombo.getItems().clear();
