@@ -14,29 +14,26 @@
       <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="systemScene" stylesheets="@stylesheet.css" VBox.vgrow="ALWAYS">
          <children>
             <Button layoutX="1247.0" layoutY="838.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="28.0" prefWidth="147.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="&lt;- BACK" />
-            <RadioButton layoutX="39.0" layoutY="162.0" mnemonicParsing="false" text="Name">
+            <RadioButton fx:id="machineNameTog" layoutX="39.0" layoutY="162.0" mnemonicParsing="false" text="Name">
                <toggleGroup>
                   <ToggleGroup fx:id="machineFilter" />
                </toggleGroup></RadioButton>
-            <RadioButton layoutX="39.0" layoutY="183.0" mnemonicParsing="false" text="Description" toggleGroup="$machineFilter" />
-            <RadioButton layoutX="39.0" layoutY="204.0" mnemonicParsing="false" text="Year" toggleGroup="$machineFilter" />
+            <RadioButton fx:id="machineDescTog" layoutX="39.0" layoutY="183.0" mnemonicParsing="false" text="Description" toggleGroup="$machineFilter" />
+            <RadioButton fx:id="machineYearTog" layoutX="39.0" layoutY="204.0" mnemonicParsing="false" text="Year" toggleGroup="$machineFilter" />
             <TextField fx:id="searchMachineField" layoutX="39.0" layoutY="89.0" prefHeight="25.0" prefWidth="377.0" />
             <TextField fx:id="searchGamesField" layoutX="698.0" layoutY="89.0" prefHeight="25.0" prefWidth="377.0" />
-            <Button layoutX="157.0" layoutY="242.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="40.0" prefWidth="211.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH MACHINES" />
+            <Button layoutX="157.0" layoutY="242.0" mnemonicParsing="false" onAction="#searchByMachine" prefHeight="40.0" prefWidth="211.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH MACHINES" />
             <Button layoutX="772.0" layoutY="242.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="40.0" prefWidth="264.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH GAMES AND PORTS" />
             <ScrollPane fx:id="currentGamesView" layoutX="30.0" layoutY="331.0" prefHeight="549.0" prefWidth="491.0">
                <content>
                   <ListView fx:id="machineSearchList" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: #e8d0fa;" />
                </content>
             </ScrollPane>
-            <ScrollPane fx:id="currentGamesView1" layoutX="681.0" layoutY="331.0" prefHeight="549.0" prefWidth="491.0">
-               <content>
-                  <ListView fx:id="gamesSearchList" prefHeight="574.0" prefWidth="534.0" style="-fx-background-color: #e8d0fa;" />
-               </content>
-            </ScrollPane>
             <RadioButton layoutX="132.0" layoutY="162.0" mnemonicParsing="false" text="Manufacturer" toggleGroup="$machineFilter" />
             <RadioButton layoutX="132.0" layoutY="183.0" mnemonicParsing="false" text="Type" toggleGroup="$machineFilter" />
             <RadioButton layoutX="132.0" layoutY="204.0" mnemonicParsing="false" text="Media" toggleGroup="$machineFilter" />
+            <ListView fx:id="gamesSearchList" layoutX="682.0" layoutY="331.0" prefHeight="549.0" prefWidth="230.0" style="-fx-background-color: #e8d0fa;" />
+            <ListView fx:id="portsSearchList" layoutX="921.0" layoutY="331.0" prefHeight="549.0" prefWidth="230.0" style="-fx-background-color: #e8d0fa;" />
          </children>
       </AnchorPane>
    </children>

@@ -257,6 +257,7 @@ public class GameAPI implements Initializable {
             EditsController.editsController.machineEditTable.getItems().add(machine);
             gameMachineCombo.getItems().add(machine);
             portMachineCombo.getItems().add(machine);
+            nameMap.add(machine.getName(), machine);
 
             for (Game game : machine.getGames()) {
                 GameEditController.gameEditController.gameEditTable.getItems().add(game);
@@ -282,6 +283,7 @@ public class GameAPI implements Initializable {
         gameMachineCombo.getItems().clear();
         portGameCombo.getItems().clear();
         portMachineCombo.getItems().clear();
+        //TODO CLEAR HASHMAP
     }
 
     public void editMachine() throws IOException {

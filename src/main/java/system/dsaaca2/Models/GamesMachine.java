@@ -112,14 +112,14 @@ public class GamesMachine implements Hashable{
 
     @Override
     public boolean matchKey(String key, String keyType) {
-        switch (keyType) {
-            case "name": return Objects.equals(key, name);
-            case "manufacturer": return Objects.equals(key, manufacturer);
-            case "year": return Objects.equals(key, String.valueOf(year));
-            case "description": return Objects.equals(key, description);
-            case "type": return Objects.equals(key,type);
-            case "media": return Objects.equals(key,media);
-            default: return false;
-        }
+        return switch (keyType) {
+            case "name" -> Objects.equals(key, name);
+            case "manufacturer" -> Objects.equals(key, manufacturer);
+            case "year" -> Objects.equals(key, String.valueOf(year));
+            case "description" -> Objects.equals(key, description);
+            case "type" -> Objects.equals(key, type);
+            case "media" -> Objects.equals(key, media);
+            default -> false;
+        };
     }
 }

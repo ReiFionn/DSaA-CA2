@@ -199,12 +199,14 @@ public class EditsController implements Initializable {
                     allGamePorts.remove(port);
                     PortEditController.portEditController.portEditTable.getItems().remove(port);
                 }
-                Utilities.showInformationAlert("SUCCESS", "SUCCESSFULLY REMOVED MACHINE: \n"+selectedMachine);
             }
+
+            Utilities.showInformationAlert("SUCCESS", "SUCCESSFULLY REMOVED MACHINE: \n"+selectedMachine);
         } else
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO DELETE");
     }
 }
 
+//TODO DELETED GAMES COUNT LIKE OTHER CONFIRMATIONS
 
 

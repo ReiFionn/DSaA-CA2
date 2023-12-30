@@ -26,7 +26,7 @@ public class HashMap<E extends Hashable> {
     }
 
     public int add(String key, E object) {
-        int home = hashFunction(key);
+        int home = hashFunction(key.toLowerCase());
         hashTable[home].add(object);
         return home;
     }
@@ -42,7 +42,7 @@ public class HashMap<E extends Hashable> {
     }
 
     public E find(String key) {
-        int home = hashFunction(key);
+        int home = hashFunction(key.toLowerCase());
         SillyList<E> list = (SillyList<E>) hashTable[home].get(home);
 
         int index = findIndex(list, key);
