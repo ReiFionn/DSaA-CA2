@@ -22,7 +22,6 @@ public class GameAPI implements Initializable {
 
     public static GameAPI gameAPI = new GameAPI();
 
-    public ListView<GamesMachine> currentMachinesView = new ListView<>();
     public TextField machineNameText;
     public TextField machinePriceText;
     public TextField machineManuText;
@@ -40,8 +39,6 @@ public class GameAPI implements Initializable {
     public TextField portCoverText;
     public TextField portDevText;
     public TextField portYearText;
-    public ListView<Game> currentGamesView;
-    public ListView<GamePort> currentPortsView;
 
     public ComboBox<GamesMachine> gameMachineCombo; //machines for games
     public ComboBox<Game> portGameCombo; //games for ports
@@ -97,7 +94,6 @@ public class GameAPI implements Initializable {
                 //adding to all hashmaps
                 nameMap.add(gm.getName(), gm);
 
-                currentMachinesView.getItems().add(gm);
                 gameMachineCombo.getItems().add(gm);
                 portMachineCombo.getItems().add(gm);
                 EditsController.editsController.machineEditTable.getItems().add(gm);
@@ -164,7 +160,7 @@ public class GameAPI implements Initializable {
                 if (!dupe) {
                     allGames.add(g); /* Adds game to the global list */
                     selectedMachine.addGame(g); /* Adds game to the selected machine's list of games */
-                    currentGamesView.getItems().add(g);
+                    GameEditController.gameEditController.gameEditTable.getItems().add(g);
                     portGameCombo.getItems().add(g);
 
                     gameNameText.clear();
@@ -224,7 +220,7 @@ public class GameAPI implements Initializable {
                     if (!dupe) {
                         allGamePorts.add(newGamePort); /* add to global list */
                         selectedGame.addPort(newGamePort); /* add to the selected games list of ports*/
-                        currentPortsView.getItems().add(newGamePort);
+                        PortEditController.portEditController.portEditTable.getItems().add(newGamePort);
 
                         portMachineCombo.getSelectionModel().clearSelection();
                         portGameCombo.getSelectionModel().clearSelection();
@@ -315,16 +311,19 @@ public class GameAPI implements Initializable {
 
         for (GamesMachine machine : allMachines) {
             currentMachinesView.getItems().add(machine);
+            EditsController.editsController.machineEditTable.getItems().add(machine);
             gameMachineCombo.getItems().add(machine);
             portMachineCombo.getItems().add(machine);
 
             for (Game game : machine.getGames()) {
                 currentGamesView.getItems().add(game);
+                GameEditController.gameEditController.gameEditTable.getItems().add(game);
                 portGameCombo.getItems().add(game);
                 allGames.add(game);
 
                 for (GamePort port : game.getPorts()) {
                     currentPortsView.getItems().add(port);
+                    PortEditController.portEditController.portEditTable.getItems().add(port);
                     allGamePorts.add(port);
                 }
             }
@@ -342,6 +341,9 @@ public class GameAPI implements Initializable {
         gameMachineCombo.getItems().clear();
         portGameCombo.getItems().clear();
         portMachineCombo.getItems().clear();
+        GameEditController.gameEditController.gameEditTable.getItems().clear();
+        EditsController.editsController.machineEditTable.getItems().clear();
+        PortEditController.portEditController.portEditTable.getItems().clear();
     }
 
     public void editMachine() throws IOException {
