@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import system.dsaaca2.Datastructures.HashMap;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
@@ -41,31 +42,17 @@ public class GameAPI implements Initializable {
     public TextField portYearText;
     public ListView<Game> currentGamesView;
     public ListView<GamePort> currentPortsView;
-    public Button editMachineButton; //might not need
-    public Button deleteMachineButton; //might not need
-    public Button editGameButton; //might not need
-    public Button deleteGameButton; //might not need
-    public Button editPortButton; //might not need
-    public Button deletePortButton; //might not need
-    public Button saveButton; //might not need
-    public Button loadButton; //might not need
-    public Button resetButton; //might not need
+
     public ComboBox<GamesMachine> gameMachineCombo; //machines for games
     public ComboBox<Game> portGameCombo; //games for ports
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
-
-
-
 
     public static SillyList<GamesMachine> allMachines = new SillyList<>();
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
 
+    public HashMap<GamesMachine> nameMap = new HashMap<>(5, "name");
 
-    /*
-     * Method for adding a new games machine.
-     * Checks for empty fields, checks for valid inputs where necessary and prevents duplicate entries.
-     */
     public void addGamesMachine() {
         /* Check for null or empty fields */
         if (!machineNameText.getText().isEmpty() && !machinePriceText.getText().isEmpty() && !machineImageText.getText().isEmpty() && !machineYearText.getText().isEmpty() && !machineManuText.getText().isEmpty() && !machineDescText.getText().isEmpty() && !machineMediaText.getText().isEmpty() && !machineTypeText.getText().isEmpty()) {
@@ -107,6 +94,9 @@ public class GameAPI implements Initializable {
 
             if (!dupe) {
                 allMachines.add(gm);
+                //adding to all hashmaps
+                nameMap.add(gm.getName(), gm);
+
                 currentMachinesView.getItems().add(gm);
                 gameMachineCombo.getItems().add(gm);
                 portMachineCombo.getItems().add(gm);

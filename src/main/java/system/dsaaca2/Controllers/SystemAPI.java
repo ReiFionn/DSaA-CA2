@@ -2,9 +2,12 @@ package system.dsaaca2.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ToggleGroup;
+import system.dsaaca2.Datastructures.HashMap;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.GamePort;
+import system.dsaaca2.Models.GamesMachine;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,6 +15,11 @@ import java.util.ResourceBundle;
 public class SystemAPI implements Initializable {
 
     private static SystemAPI systemAPI;
+    public ToggleGroup machineFilter;
+
+    public void searchByMachine() {
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -22,7 +30,3 @@ public class SystemAPI implements Initializable {
         Main.mainStage.setScene(Main.gameScene);
     }
 }
-/*THIS WAS CHANGED TO SYSTEM API BECAUSE GAME-API MANAGES ADD/DELETE/EDIT FOR ALL MODELS
- THE SECOND VIEW SYSTEM WILL HAVE FUNCTIONALITY STUFF
-* LIKE VIEW SYSTEM (DRILL-DOWNS) BASED ON WHAT U SELECT, SEARCH/SORT SYSTEM STUFF, SAVE AND LOAD STUFF ETC
-JUST AS A WAY TO KEEP THINGS SIMPLE WITH TWO SCENES :D*/
