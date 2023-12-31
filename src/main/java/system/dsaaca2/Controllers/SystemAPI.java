@@ -30,29 +30,38 @@ public class SystemAPI implements Initializable {
     public RadioButton machineTypeTog;
     public RadioButton machineMediaTog;
     public ListView<GamePort> portsSearchList;
+    public ListView machineLinearSearchList;
+    public TextField searchMachineField1;
+    public ScrollPane currentGamesView1;
+    public ToggleGroup gameFilter;
+    public RadioButton gameNameTog;
+    public RadioButton gameDescTog;
+    public RadioButton gameYearTog;
 
     public void searchByMachine() {
-        Toggle selectedToggle = machineFilter.getSelectedToggle();
-        String search = searchMachineField.getText();
         HashMap<GamesMachine> selectedMap = null;
+        if (!searchMachineField.getText().isEmpty()) {
+            Toggle selectedToggle = machineFilter.getSelectedToggle();
+            String search = searchMachineField.getText();
+            if (selectedToggle!=null) {
+                if (selectedToggle.equals(machineManuTog)) {
+                } else if (selectedToggle.equals(machineMediaTog)) {
+                } else if (selectedToggle.equals(machineDescTog)) {
+                } else if (selectedToggle.equals(machineTypeTog)) {
+                } else if (selectedToggle.equals(machineNameTog)) {
+                    selectedMap = GameAPI.gameAPI.nameMap;
+                } else {
+                }
 
-        if (selectedToggle.isSelected()) {
-            if (selectedToggle.equals(machineManuTog)) {
-            } else if (selectedToggle.equals(machineMediaTog)) {
-            } else if (selectedToggle.equals(machineDescTog)) {
-            } else if (selectedToggle.equals(machineTypeTog)) {
-            } else if (selectedToggle.equals(machineNameTog)) {
-                selectedMap = GameAPI.gameAPI.nameMap;
-            } else {
-            }
-
-            if (selectedMap != null) {
-                machineSearchList.getItems().add(selectedMap.find(search));
-            } else {
-                Utilities.showWarningAlert("ERROR", "NO SEARCH RESULTS");
-            }
+                if (selectedMap != null) {
+                    machineSearchList.getItems().add(selectedMap.find(search));
+                } else {
+                    Utilities.showWarningAlert("ERROR", "NO SEARCH RESULTS");
+                }
+            } else
+                Utilities.showWarningAlert("ERROR", "PLEASE SELECT A FILTER");
         } else
-            Utilities.showWarningAlert("ERROR", "PLEASE SELECT A FILTER TO SEARCH BY");
+            Utilities.showWarningAlert("ERROR", "PLEASE ENTER TEXT TO SEARCH FOR");
     }
 
     @Override
