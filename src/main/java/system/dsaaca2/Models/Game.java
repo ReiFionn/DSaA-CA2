@@ -28,6 +28,7 @@ public class Game implements Hashable {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -35,6 +36,7 @@ public class Game implements Hashable {
     public String getPublisher() {
         return publisher;
     }
+
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
@@ -42,6 +44,7 @@ public class Game implements Hashable {
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -49,6 +52,7 @@ public class Game implements Hashable {
     public String getDevelopers() {
         return developers;
     }
+
     public void setDevelopers(String developers) {
         this.developers = developers;
     }
@@ -56,9 +60,11 @@ public class Game implements Hashable {
     public GamesMachine getGamesMachine() {
         return gamesMachine;
     }
+
     public String getGamesMachineName() {
         return gamesMachine.getName();
     }
+
     public void setGamesMachine(GamesMachine gamesMachine) {
         this.gamesMachine = gamesMachine;
     }
@@ -66,6 +72,7 @@ public class Game implements Hashable {
     public String getCover() {
         return cover;
     }
+
     public void setCover(String cover) {
         this.cover = cover;
     }
@@ -89,9 +96,9 @@ public class Game implements Hashable {
     @Override
     public String toString() {
         return
-                "Title: ("+name.toUpperCase() + ")    Publisher: ( "+publisher.toUpperCase()+ " )   Launched: ( "+year+" )\n" +
-                        "-----------------------------------------------------------------------\n"+
-                       "| Game Cover: " + cover.toUpperCase() + "\n" +
+                "Title: (" + name.toUpperCase() + ")    Publisher: ( " + publisher.toUpperCase() + " )   Launched: ( " + year + " )\n" +
+                        "-----------------------------------------------------------------------\n" +
+                        "| Game Cover: " + cover.toUpperCase() + "\n" +
                         "| Game Developers: " + developers.toUpperCase() + "\n" +
                         "| Game Description: " + description.toUpperCase() + "\n" +
                         "| Game Machine: " + gamesMachine.getName().toUpperCase();
@@ -99,11 +106,14 @@ public class Game implements Hashable {
 
     @Override
     public boolean matchKey(String key, String keyType) {
-        return false;
+        return switch (keyType.toLowerCase()) {
+            case "name" -> Objects.equals(key, name.toLowerCase());
+            case "publisher" -> Objects.equals(key, publisher.toLowerCase());
+            case "year" -> Objects.equals(key, String.valueOf(year).toLowerCase());
+            case "description" -> Objects.equals(key, description.toLowerCase());
+            case "developers" -> Objects.equals(key, developers.toLowerCase());
+            case "machine" -> Objects.equals(key, gamesMachine.getName().toLowerCase());
+            default -> false;
+        };
     }
-
-//    @Override
-//    public boolean matchKey(String key) {
-//        return Objects.equals(key, name);
-//    }
 }
