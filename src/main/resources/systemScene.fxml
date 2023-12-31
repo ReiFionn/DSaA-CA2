@@ -56,11 +56,11 @@
                </toggleGroup></RadioButton>
             <RadioButton fx:id="gameDescTog" layoutX="697.0" layoutY="203.0" mnemonicParsing="false" text="Description" toggleGroup="$gameFilter" />
             <RadioButton fx:id="gameYearTog" layoutX="699.0" layoutY="225.0" mnemonicParsing="false" text="Year" toggleGroup="$gameFilter" />
-            <RadioButton fx:id="gameManuTog" layoutX="790.0" layoutY="182.0" mnemonicParsing="false" text="Manufacturer" toggleGroup="$gameFilter" />
-            <RadioButton fx:id="gameTypeTog" layoutX="790.0" layoutY="203.0" mnemonicParsing="false" text="Type" toggleGroup="$gameFilter" />
-            <RadioButton fx:id="gameMediaTog" layoutX="790.0" layoutY="224.0" mnemonicParsing="false" text="Media" toggleGroup="$gameFilter" />
+            <RadioButton fx:id="gamePubTog" layoutX="790.0" layoutY="182.0" mnemonicParsing="false" text="Publisher" toggleGroup="$gameFilter" />
+            <RadioButton fx:id="gameDevTog" layoutX="790.0" layoutY="203.0" mnemonicParsing="false" text="Developers" toggleGroup="$gameFilter" />
+            <RadioButton fx:id="gameMachineTog" layoutX="790.0" layoutY="224.0" mnemonicParsing="false" text="Machine" toggleGroup="$gameFilter" />
             <TextField fx:id="searchGameLinearField" layoutX="797.0" layoutY="126.0" prefHeight="25.0" prefWidth="188.0" />
-            <Button layoutX="798.0" layoutY="263.0" mnemonicParsing="false" onAction="#searchByMachine" prefHeight="41.0" prefWidth="203.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH GAMES/PORTS" />
+            <Button layoutX="798.0" layoutY="263.0" mnemonicParsing="false" onAction="#searchByGameLinear" prefHeight="41.0" prefWidth="203.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH GAMES/PORTS" />
             <TextField fx:id="searchGameField" layoutX="1122.0" layoutY="127.0" prefHeight="25.0" prefWidth="188.0" />
             <Label layoutX="851.0" layoutY="103.0" text="Search Linearly" />
             <Label layoutX="1134.0" layoutY="105.0" text="Search names using HashMaps" />

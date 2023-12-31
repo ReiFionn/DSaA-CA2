@@ -59,11 +59,6 @@ public class GameAPI implements Initializable {
             String manufacturer = machineManuText.getText();
             String description = machineDescText.getText();
 
-
-
-
-
-
             String type = machineTypeText.getText();
             String media = machineMediaText.getText();
             String image = machineImageText.getText();

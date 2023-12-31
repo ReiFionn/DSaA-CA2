@@ -37,9 +37,9 @@ public class SystemAPI implements Initializable {
     public RadioButton gameNameTog;
     public RadioButton gameDescTog;
     public RadioButton gameYearTog;
-    public RadioButton gameManuTog;
-    public RadioButton gameTypeTog;
-    public RadioButton gameMediaTog;
+    public RadioButton gamePubTog;
+    public RadioButton gameDevTog;
+    public RadioButton gameMachineTog;
     public ToggleGroup gameSort;
     public RadioButton gameAlphaTog;
     public RadioButton gameHTLTog;
@@ -134,64 +134,84 @@ public class SystemAPI implements Initializable {
             Utilities.showWarningAlert("ERROR", "PLEASE ENTER SOMETHING TO SEARCH FOR");
     }
 
-//    public void searchByGameLinear() {
-//        gameLinearSearchList.getItems().clear();
-//        if (!searchGameLinearField.getText().isEmpty()) {
-//            Toggle selectedToggle = gameFilter.getSelectedToggle();
-//            String search = searchGameLinearField.getText();
-//            if (selectedToggle != null) {
-//                if (selectedToggle.equals(gameManuTog)) {
-//                    for (Game g : allGames) {
-//                        if (g.getM.toLowerCase().startsWith(search.toLowerCase())) {
-//                            machineLinearSearchList.getItems().add(m);
-//                        }
-//                    }
-//                } else if (selectedToggle.equals(machineMediaTog)) {
-//                    for (GamesMachine m : allMachines) {
-//                        if (m.getMedia().toLowerCase().startsWith(search.toLowerCase())) {
-//                            machineLinearSearchList.getItems().add(m);
-//                        }
-//                    }
-//                } else if (selectedToggle.equals(machineDescTog)) {
-//                    for (GamesMachine m : allMachines) {
-//                        if (m.getDescription().toLowerCase().startsWith(search.toLowerCase())) {
-//                            machineLinearSearchList.getItems().add(m);
-//                        }
-//                    }
-//                } else if (selectedToggle.equals(machineTypeTog)) {
-//                    for (GamesMachine m : allMachines) {
-//                        if (m.getType().toLowerCase().startsWith(search.toLowerCase())) {
-//                            machineLinearSearchList.getItems().add(m);
-//                        }
-//                    }
-//                } else if (selectedToggle.equals(machineNameTog)) {
-//                    for (GamesMachine m : allMachines) {
-//                        if (m.getName().toLowerCase().startsWith(search.toLowerCase())) {
-//                            machineLinearSearchList.getItems().add(m);
-//                        }
-//                    }
-//                } else {
-//                    for (GamesMachine m : allMachines) {
-//                        int year;
-//                        try {
-//                            year = Integer.parseInt(search); /* Parsing the string value input to convert to a numerical value */
-//                            if (!Utilities.intValidRange(year, 1900, 2024)) {
-//                                Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID YEAR BETWEEN 1900-2023");
-//                                return;
-//                            }
-//                        } catch (NumberFormatException e) {
-//                            Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID NUMERICAL YEAR");
-//                            return;
-//                        }
-//                        if (m.getYear() == year)
-//                            machineLinearSearchList.getItems().add(m);
-//                    }
-//                }
-//            } else
-//                Utilities.showWarningAlert("ERROR", "PLEASE SELECT A FILTER");
-//        } else
-//            Utilities.showWarningAlert("ERROR", "PLEASE ENTER SOMETHING TO SEARCH FOR");
-//    }
+    public void searchByGameLinear() {
+        gameLinearSearchList.getItems().clear();
+        portLinearSearchList.getItems().clear();
+        if (!searchGameLinearField.getText().isEmpty()) {
+            Toggle selectedToggle = gameFilter.getSelectedToggle();
+            String search = searchGameLinearField.getText();
+            if (selectedToggle != null) {
+                if (selectedToggle.equals(gamePubTog)) {
+                    for (Game g : allGames) {
+                        if (g.getPublisher().toLowerCase().startsWith(search.toLowerCase())) {
+                            gameLinearSearchList.getItems().add(g);
+                        }
+                    }
+                } else if (selectedToggle.equals(gameDevTog)) {
+                    for (Game g : allGames) {
+                        if (g.getDevelopers().toLowerCase().startsWith(search.toLowerCase())) {
+                            gameLinearSearchList.getItems().add(g);
+                        }
+                    }
+                    for (GamePort p : allGamePorts) {
+                        if (p.getDevelopers().toLowerCase().startsWith(search.toLowerCase())) {
+                            portLinearSearchList.getItems().add(p);
+                        }
+                    }
+                } else if (selectedToggle.equals(gameDescTog)) {
+                    for (Game g : allGames) {
+                        if (g.getDescription().toLowerCase().startsWith(search.toLowerCase())) {
+                            gameLinearSearchList.getItems().add(g);
+                            for (GamePort p : g.getPorts())
+                                portLinearSearchList.getItems().add(p);
+                        }
+                    }
+                } else if (selectedToggle.equals(gameNameTog)) {
+                    for (Game g : allGames) {
+                        if (g.getName().toLowerCase().startsWith(search.toLowerCase())) {
+                            gameLinearSearchList.getItems().add(g);
+                            for (GamePort p : g.getPorts())
+                                portLinearSearchList.getItems().add(p);
+                        }
+                    }
+                } else if (selectedToggle.equals(gameMachineTog)) {
+                    for (Game g : allGames) {
+                        if (g.getGamesMachine().getName().toLowerCase().startsWith(search.toLowerCase())) {
+                            gameLinearSearchList.getItems().add(g);
+                        }
+                    }
+                    for (GamePort p : allGamePorts) {
+                        if (p.getMachinePortedTo().getName().toLowerCase().startsWith(search.toLowerCase())) {
+                            portLinearSearchList.getItems().add(p);
+                        }
+                    }
+                } else {
+                    int year;
+                    try {
+                        year = Integer.parseInt(search); /* Parsing the string value input to convert to a numerical value */
+                        if (!Utilities.intValidRange(year, 1900, 2024)) {
+                            Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID YEAR BETWEEN 1900-2023");
+                            return;
+                        }
+                    } catch (NumberFormatException e) {
+                        Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID NUMERICAL YEAR");
+                        return;
+                    }
+                    for (Game g : allGames) {
+                        if (g.getYear() == year)
+                            gameLinearSearchList.getItems().add(g);
+                    }
+                    for (GamePort p : allGamePorts) {
+                        if (p.getPortYear() == year) {
+                            portLinearSearchList.getItems().add(p);
+                        }
+                    }
+                }
+            } else
+                Utilities.showWarningAlert("ERROR", "PLEASE SELECT A FILTER");
+        } else
+            Utilities.showWarningAlert("ERROR", "PLEASE ENTER SOMETHING TO SEARCH FOR");
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SystemAPI.systemAPI = this;
