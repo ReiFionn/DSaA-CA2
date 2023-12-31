@@ -2,6 +2,8 @@ package system.dsaaca2.Datastructures;
 
 import system.dsaaca2.Models.Hashable;
 
+import static java.lang.Math.abs;
+
 public class HashMap<E extends Hashable> {
     SillyList<E>[] hashTable;
     String keyType;
@@ -21,7 +23,7 @@ public class HashMap<E extends Hashable> {
             total += key.charAt(i)*((long)Math.pow(128, i)); //ascii value by "digit value" (BASE 128 - ALL ASCII CHARACTERS)
         }
         int toReturn = 0;
-        toReturn += total%hashTable.length; //changes long to int because java forgets LOL
+        toReturn += ( abs(total))%hashTable.length; //changes long to int because java forgets LOL
         return toReturn;
     }
 

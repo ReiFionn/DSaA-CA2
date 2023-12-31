@@ -286,6 +286,8 @@ public class GameAPI implements Initializable {
         portGameCombo.getItems().clear();
         portMachineCombo.getItems().clear();
         //TODO CLEAR HASHMAP
+        nameMap = new HashMap<>(5, "name");
+        gameNameMap = new HashMap<Game>(5, "name");
     }
 
     public void editMachine() throws IOException {
