@@ -4,7 +4,7 @@ import system.dsaaca2.Datastructures.SillyList;
 
 import java.util.Objects;
 
-public class Game {
+public class Game implements Hashable {
     private String name, publisher, description, developers, cover;
     private GamesMachine gamesMachine;
     private int year;
@@ -97,17 +97,13 @@ public class Game {
                         "| Game Machine: " + gamesMachine.getName().toUpperCase();
     }
 
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Game game = (Game) o;
-        return getYear() == game.getYear() && Objects.equals(getName(), game.getName()) && Objects.equals(getPublisher(), game.getPublisher()) && Objects.equals(getDescription(), game.getDescription()) && Objects.equals(getDevelopers(), game.getDevelopers()) && Objects.equals(getCover(), game.getCover()) && Objects.equals(getGamesMachine(), game.getGamesMachine()) && Objects.equals(getPorts(), game.getPorts());
+    public boolean matchKey(String key, String keyType) {
+        return false;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getPublisher(), getDescription(), getDevelopers(), getCover(), getGamesMachine(), getYear(), getPorts());
-    }
+//    @Override
+//    public boolean matchKey(String key) {
+//        return Objects.equals(key, name);
+//    }
 }

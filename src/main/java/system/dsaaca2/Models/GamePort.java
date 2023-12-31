@@ -71,17 +71,7 @@ public class GamePort {
                         "| Year Ported:  " + portYear ;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GamePort port = (GamePort) o;
-        return getPortYear() == port.getPortYear() && Objects.equals(getOriginalGame(), port.getOriginalGame()) && Objects.equals(getMachinePortedTo(), port.getMachinePortedTo()) && Objects.equals(getOriginalMachine(), port.getOriginalMachine()) && Objects.equals(getDevelopers(), port.getDevelopers()) && Objects.equals(getCover(), port.getCover());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getOriginalGame(), getMachinePortedTo(), getOriginalMachine(), getDevelopers(), getCover(), getPortYear());
-    }
+//    public boolean matchKey(String key) {
+//        return Objects.equals(key, );
+//    }
 }
