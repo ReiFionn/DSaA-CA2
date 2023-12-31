@@ -49,6 +49,7 @@ public class GameAPI implements Initializable {
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
 
     public HashMap<GamesMachine> nameMap = new HashMap<>(5, "name");
+    public HashMap<Game> gameNameMap = new HashMap<Game>(5, "name");
 
     public void addGamesMachine() {
         /* Check for null or empty fields */
@@ -57,6 +58,12 @@ public class GameAPI implements Initializable {
             String name = machineNameText.getText();
             String manufacturer = machineManuText.getText();
             String description = machineDescText.getText();
+
+
+
+
+
+
             String type = machineTypeText.getText();
             String media = machineMediaText.getText();
             String image = machineImageText.getText();
@@ -162,6 +169,7 @@ public class GameAPI implements Initializable {
                     selectedMachine.addGame(g); /* Adds game to the selected machine's list of games */
                     GameEditController.gameEditController.gameEditTable.getItems().add(g);
                     portGameCombo.getItems().add(g);
+                    gameNameMap.add(g.getName(), g);
 
                     gameNameText.clear();
                     gamePubText.clear();
@@ -179,8 +187,6 @@ public class GameAPI implements Initializable {
         } else
             Utilities.showWarningAlert("ERROR", "NO EMPTY FIELDS ALLOWED, PLEASE ENTER A VALUE FOR ALL FIELDS!!!");
     }
-
-
 
     /**
      * Adds a new game port, linking a selected game with a machine, after validating input fields,
@@ -263,6 +269,7 @@ public class GameAPI implements Initializable {
                 GameEditController.gameEditController.gameEditTable.getItems().add(game);
                 portGameCombo.getItems().add(game);
                 allGames.add(game);
+                gameNameMap.add(game.getName(), game);
 
                 for (GamePort port : game.getPorts()) {
                     PortEditController.portEditController.portEditTable.getItems().add(port);

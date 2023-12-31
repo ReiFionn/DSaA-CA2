@@ -84,7 +84,7 @@
             </ScrollPane>
             <Label layoutX="346.0" layoutY="62.0" text="MACHINES" />
             <Label layoutX="1047.0" layoutY="54.0" text="GAMES AND PORTS" />
-            <Button layoutX="1123.0" layoutY="263.0" mnemonicParsing="false" onAction="#searchByMachine" prefHeight="41.0" prefWidth="203.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH GAMES/PORTS" />
+            <Button layoutX="1123.0" layoutY="263.0" mnemonicParsing="false" onAction="#searchByGame" prefHeight="41.0" prefWidth="203.0" style="-fx-background-color: #18113c; -fx-font-size: 16px; -fx-text-fill: #cb6ce6;" text="SEARCH GAMES/PORTS" />
             <ScrollPane layoutX="1122.0" layoutY="331.0" prefHeight="549.0" prefWidth="188.0">
                <content>
                   <ListView fx:id="gameSearchList" prefHeight="635.0" prefWidth="171.0" style="-fx-background-color: #e8d0fa;" />

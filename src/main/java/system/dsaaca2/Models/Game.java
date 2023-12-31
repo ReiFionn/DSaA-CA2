@@ -4,7 +4,7 @@ import system.dsaaca2.Datastructures.SillyList;
 
 import java.util.Objects;
 
-public class Game{
+public class Game implements Hashable {
     private String name, publisher, description, developers, cover;
     private GamesMachine gamesMachine;
     private int year;
@@ -95,6 +95,11 @@ public class Game{
                         "| Game Developers: " + developers.toUpperCase() + "\n" +
                         "| Game Description: " + description.toUpperCase() + "\n" +
                         "| Game Machine: " + gamesMachine.getName().toUpperCase();
+    }
+
+    @Override
+    public boolean matchKey(String key, String keyType) {
+        return false;
     }
 
 //    @Override
