@@ -67,14 +67,12 @@ public class GamePort implements ListedTogether, Hashable{
     @Override
     public String toString() {
         return
-                "Port: ( " +machinePortedTo.getName().toUpperCase() + " )  Original Machine: ( " + originalMachine.getName().toUpperCase() + " )  Game Ported: ( "+getOriginalGame().getName().toUpperCase()+" ) \n"+
-                        "----------------------------------------------------------------\n" +
-                        "| Developers:  " + developers.toUpperCase() + "\n" +
-                        "| Cover:  " + cover.toUpperCase() + "\n" +
-                        "| Year Ported:  " + portYear ;
+                "[Port] " + getOriginalGame().getName().toUpperCase() + "   From Machine: ( " + originalMachine.getName().toUpperCase() +" )   For --> " +
+                        " ( "+ machinePortedTo.getName().toUpperCase()+" ) ,  Developers: ( "+ developers.toUpperCase() + " ) ,  Year: ( "+ portYear +  " )";
+
     }
 
-    @Override
+        @Override
     public boolean matchKey(String key) {
         return toString().toLowerCase().equals(key);
     }
