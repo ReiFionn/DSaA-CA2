@@ -4,7 +4,7 @@ import system.dsaaca2.Datastructures.SillyList;
 
 import java.util.Objects;
 
-public class Game implements Hashable, ListedTogether {
+public class Game implements Hashable {
     private String name, publisher, description, developers, cover;
     private GamesMachine gamesMachine;
     private int year;

@@ -74,7 +74,7 @@ public class GameEditController implements Initializable {
                 for (GamePort port : selectedGame.getPorts()) {
                     if (port.getYear() < selectedGame.getYear()) {
                         allGamePorts.remove(port);
-                        allGamesAndGamePorts.remove(port);
+
                         portsDeleted++;
                     }
                 }
@@ -112,14 +112,14 @@ public class GameEditController implements Initializable {
 
         if (selectedGame != null) {
             allGames.remove(selectedGame);
-            allGamesAndGamePorts.remove(selectedGame);
+
             gameAPI.portGameCombo.getItems().remove(selectedGame);
             GameEditController.gameEditController.gameEditTable.getItems().remove(selectedGame);
             int portsDeleted = 0;
 
             for (GamePort port : selectedGame.getPorts()) {
                 allGamePorts.remove(port);
-                allGamesAndGamePorts.remove(port);
+
                 PortEditController.portEditController.portEditTable.getItems().remove(port);
                 portsDeleted++;
             }
