@@ -227,7 +227,6 @@ public class SystemController implements Initializable {
         }
     }
 
-
     public void showGameDetailsPopup(Game selected) throws IOException {
         gameName.setText(selected.getName().toUpperCase());
         Main.viewPopup("/gameViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
@@ -242,7 +241,6 @@ public class SystemController implements Initializable {
         Main.viewPopup("/portViewer.fxml", selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
     }
 
-    @FXML
     public void resultsClicked(MouseEvent event) {
         String toDrill;
         if(event.getButton().equals(MouseButton.PRIMARY)) {
