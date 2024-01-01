@@ -1,12 +1,15 @@
 package system.dsaaca2.Controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
@@ -16,6 +19,7 @@ import system.dsaaca2.utils.Utilities;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static system.dsaaca2.Controllers.GameAPI.*;
@@ -202,16 +206,6 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("EMPTY", "THE SEARCH FIELD IS EMPTY, PLEASE ENTER SOMETHING TO SEARCH");
     }
 
-    public void drillDownGameMachine(){
-                return;
-                 /* Going to have it that when u double click drill down will happen
-                 * Three different hashtables will be used here
-                 In a instance of Game machine it will drill down once to games
-                 * in an instance of Game it will drill Once to ports*/
-
-
-    }
-
     public void selectForDetails() throws IOException {
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
@@ -233,7 +227,6 @@ public class SystemController implements Initializable {
         }
     }
 
-
     public void showGameDetailsPopup(Game selected) throws IOException {
         gameName.setText(selected.getName().toUpperCase());
         Main.viewPopup("/gameViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
@@ -248,7 +241,29 @@ public class SystemController implements Initializable {
         Main.viewPopup("/portViewer.fxml", selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
     }
 
+    public void resultsClicked(MouseEvent event) {
+        String toDrill;
+        if(event.getButton().equals(MouseButton.PRIMARY)) {
+            if(event.getClickCount() == 2) {
+                toDrill = searchResults.getSelectionModel().getSelectedItem();
+                Object foundDrill = gameAPI.hashMap.find(toDrill);
 
+                if (foundDrill != null) {
+                    if (foundDrill instanceof GamesMachine) {
+                        for (Game g : ((GamesMachine) foundDrill).getGames()) {
+                            searchResults.getItems().clear();
+                            searchResults.getItems().add(g.toString());
+                        }
+                    } else if (foundDrill instanceof Game) {
+                        for (GamePort p : ((Game) foundDrill).getPorts()) {
+                            searchResults.getItems().clear();
+                            searchResults.getItems().add(p.toString());
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
