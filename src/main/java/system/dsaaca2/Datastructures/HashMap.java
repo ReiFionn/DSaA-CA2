@@ -34,8 +34,10 @@ public class HashMap<E extends Hashable> {
     private int findIndex(SillyList<E> list, String key) {
         int index = -1;
         for(int i = 0; i<list.size();i++) {
-            if (list.get(i).matchKey(key))
+            if (list.get(i).matchKey(key)) {
                 index = i;
+                break;
+            }
         }
 
         return index;

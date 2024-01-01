@@ -5,10 +5,7 @@ import javafx.scene.control.*;
 import system.dsaaca2.Datastructures.HashMap;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
-import system.dsaaca2.Models.Game;
-import system.dsaaca2.Models.GamePort;
-import system.dsaaca2.Models.GamesMachine;
-import system.dsaaca2.Models.ListedTogether;
+import system.dsaaca2.Models.*;
 import system.dsaaca2.utils.Persistance;
 import system.dsaaca2.utils.Utilities;
 
@@ -47,8 +44,7 @@ public class GameAPI implements Initializable {
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
 
-    public HashMap<GamesMachine> machineMap = new HashMap<>(5);
-    public HashMap<Game> gameMap = new HashMap<Game>(5);
+    public HashMap<Hashable> hashMap = new HashMap<>(10);
 
     public void addGamesMachine() {
         /* Check for null or empty fields */
@@ -93,7 +89,7 @@ public class GameAPI implements Initializable {
             if (!dupe) {
                 allMachines.add(gm);
                 //adding to all hashmaps
-                machineMap.add(gm.toString(), gm);
+                hashMap.add(gm.toString(), gm);
 
                 gameMachineCombo.getItems().add(gm);
                 portMachineCombo.getItems().add(gm);
@@ -164,7 +160,7 @@ public class GameAPI implements Initializable {
                     selectedMachine.addGame(g); /* Adds game to the selected machine's list of games */
                     GameEditController.gameEditController.gameEditTable.getItems().add(g);
                     portGameCombo.getItems().add(g);
-                    gameMap.add(g.toString(), g);
+                    hashMap.add(g.toString(), g);
 
                     gameNameText.clear();
                     gamePubText.clear();
@@ -259,19 +255,20 @@ public class GameAPI implements Initializable {
             EditsController.editsController.machineEditTable.getItems().add(machine);
             gameMachineCombo.getItems().add(machine);
             portMachineCombo.getItems().add(machine);
-            machineMap.add(machine.toString(), machine);
+            hashMap.add(machine.toString(), machine);
 
             for (Game game : machine.getGames()) {
                 GameEditController.gameEditController.gameEditTable.getItems().add(game);
                 portGameCombo.getItems().add(game);
                 allGames.add(game);
                 allGamesAndGamePorts.add(game);
-                gameMap.add(game.toString(), game);
+                hashMap.add(game.toString(), game);
 
                 for (GamePort port : game.getPorts()) {
                     PortEditController.portEditController.portEditTable.getItems().add(port);
                     allGamesAndGamePorts.add(port);
                     allGamePorts.add(port);
+                    hashMap.add(port.toString(), port);
                 }
             }
         }
@@ -290,8 +287,7 @@ public class GameAPI implements Initializable {
         portGameCombo.getItems().clear();
         portMachineCombo.getItems().clear();
         //TODO CLEAR HASHMAP
-        machineMap = new HashMap<>(5);
-        gameMap = new HashMap<Game>(5);
+        hashMap = new HashMap<>(10);
     }
 
     public void editMachine() throws IOException {

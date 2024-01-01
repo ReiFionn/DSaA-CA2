@@ -112,6 +112,6 @@ public class GamesMachine implements Hashable{
 
     @Override
     public boolean matchKey(String key) {
-        return toString().equals(key);
+        return toString().toLowerCase().equals(key);
     }
 }
