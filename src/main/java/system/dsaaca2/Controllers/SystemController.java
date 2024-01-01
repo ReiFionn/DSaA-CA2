@@ -12,7 +12,6 @@ import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
-import system.dsaaca2.Models.ListedTogether;
 import system.dsaaca2.utils.Utilities;
 
 import java.io.IOException;
@@ -25,12 +24,11 @@ public class SystemController implements Initializable {
     public static SystemController sysControll = new SystemController();
     public TextField searchMachines;
     public ListView<String> searchResults = new ListView<>();
-    //TODO set listview as ? instead of object for easier type checking for new methods below
     public TextField searchGamesAndPorts;
-    public ComboBox<String> machineFilter;
-    public ComboBox<String> machineSort;
-    public ComboBox<String> gameAndPortFilter;
-    public ComboBox<String> gameAndPortSort;
+    public ComboBox<String> machineFilter = new ComboBox<>();
+    public ComboBox<String> machineSort = new ComboBox<>();
+    public ComboBox<String> gameAndPortFilter = new ComboBox<>();
+    public ComboBox<String> gameAndPortSort = new ComboBox<>();
     public ImageView imageViewer;
     public ImageView gameImage;
     public Label gameName = new Label();
@@ -58,7 +56,7 @@ public class SystemController implements Initializable {
      * for the purpose of sorting later on (maybe)*/
 
     SillyList<GamesMachine> machineSearchResults = new SillyList<>();
-    SillyList<ListedTogether> gameAndPortsResults = new SillyList<>();
+
 
     public void searchMachines() {
         searchResults.getItems().clear();
@@ -121,7 +119,7 @@ public class SystemController implements Initializable {
 
     public void searchGamesAndPorts() {
         searchResults.getItems().clear();
-        gameAndPortsResults.clear();
+
         String filterChoice = gameAndPortFilter.getSelectionModel().getSelectedItem();
         String search = searchGamesAndPorts.getText().toLowerCase();
         boolean added = false;
@@ -217,22 +215,38 @@ public class SystemController implements Initializable {
     public void selectForDetails() throws IOException {
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
-        if (!selected.isEmpty()) {
+
+        if (selected != null && !selected.isEmpty()) {
             found = gameAPI.hashMap.find(selected);
-            if (found != null) {
-                System.out.println(found);
-                //
-            } else
+
+            if (found instanceof Game) {
+                showGameDetailsPopup((Game) found);
+            } if(found instanceof GamesMachine){
+                showMachineDetailsPopUp((GamesMachine) found);
+            } if(found instanceof GamePort) {
+                showPortDetailsPopUp((GamePort) found);
+            }else {
                 Utilities.showWarningAlert("ERR", "ERR");
-        } else
-                Utilities.showWarningAlert("ERR", "SELECT A RESULT");
+            }
+        } else {
+            Utilities.showWarningAlert("ERR", "SELECT A RESULT");
+        }
     }
 
     public void showGameDetailsPopup(Game selected) throws IOException {
         gameName.setText(selected.getName().toUpperCase());
         Main.viewPopup("/gameViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
-
     }
+    public void showMachineDetailsPopUp(GamesMachine selected) throws IOException {
+        gameName.setText(selected.getName().toUpperCase());
+        Main.viewPopup("/machineViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
+    }
+
+    public void showPortDetailsPopUp(GamePort selected) throws IOException {
+        gameName.setText(selected.getMachinePortedTo().getName().toUpperCase());
+        Main.viewPopup("/portViewer.fxml", selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
+    }
+
 
 }
 

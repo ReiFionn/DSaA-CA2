@@ -39,7 +39,7 @@ public class GameAPI implements Initializable {
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
 
     /*List of interface that both classes implement so both objects can be listed together*/
-    public static SillyList<ListedTogether> allGamesAndGamePorts = new SillyList<>();
+
     public static SillyList<GamesMachine> allMachines = new SillyList<>();
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
@@ -156,7 +156,7 @@ public class GameAPI implements Initializable {
 
                 if (!dupe) {
                     allGames.add(g); /* Adds game to the global list */
-                    allGamesAndGamePorts.add(g);
+
                     selectedMachine.addGame(g); /* Adds game to the selected machine's list of games */
                     GameEditController.gameEditController.gameEditTable.getItems().add(g);
                     portGameCombo.getItems().add(g);
@@ -216,7 +216,7 @@ public class GameAPI implements Initializable {
 
                     if (!dupe) {
                         allGamePorts.add(newGamePort); /* add to global list */
-                        allGamesAndGamePorts.add(newGamePort);
+
                         selectedGame.addPort(newGamePort); /* add to the selected games list of ports*/
                         PortEditController.portEditController.portEditTable.getItems().add(newGamePort);
 
@@ -241,45 +241,55 @@ public class GameAPI implements Initializable {
     public void save() throws Exception {
         try {
             Persistance.save();
+            Utilities.showInformationAlert("SAVED!","PROGRESS SAVED TO SYSTEM");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error Saving.");
         }
     }
 
-    public void load() throws Exception {
-        reset();
-        Persistance.load();
+    public void load() {
+        try {
+            reset();
+            Persistance.load();
 
-        for (GamesMachine machine : allMachines) {
-            EditsController.editsController.machineEditTable.getItems().add(machine);
-            gameMachineCombo.getItems().add(machine);
-            portMachineCombo.getItems().add(machine);
-            hashMap.add(machine.toString(), machine);
+            for (GamesMachine machine : allMachines) {
+                EditsController.editsController.machineEditTable.getItems().add(machine);
+                gameMachineCombo.getItems().add(machine);
+                portMachineCombo.getItems().add(machine);
+                hashMap.add(machine.toString(), machine);
 
-            for (Game game : machine.getGames()) {
-                GameEditController.gameEditController.gameEditTable.getItems().add(game);
-                portGameCombo.getItems().add(game);
-                allGames.add(game);
-                allGamesAndGamePorts.add(game);
-                hashMap.add(game.toString(), game);
+                for (Game game : machine.getGames()) {
+                    GameEditController.gameEditController.gameEditTable.getItems().add(game);
+                    portGameCombo.getItems().add(game);
+                    allGames.add(game);
 
-                for (GamePort port : game.getPorts()) {
-                    PortEditController.portEditController.portEditTable.getItems().add(port);
-                    allGamesAndGamePorts.add(port);
-                    allGamePorts.add(port);
-                    hashMap.add(port.toString(), port);
+                    hashMap.add(game.toString(), game);
+
+                    for (GamePort port : game.getPorts()) {
+                        PortEditController.portEditController.portEditTable.getItems().add(port);
+
+                        allGamePorts.add(port);
+                        hashMap.add(port.toString(), port);
+                    }
                 }
             }
-        }
 
+            Utilities.showInformationAlert("LOADED!","PAST SAVE LOADED TO SYSTEM");
+        } catch (Exception e) {
+            Utilities.showWarningAlert("ERROR","SYSTEM COULD NOT BE LOADED");
+            e.printStackTrace();
+        }
     }
+
+
+
 
     public void reset() {
         allGames.clear();
         allMachines.clear();
         allGamePorts.clear();
-        allGamesAndGamePorts.clear();
+
         GameEditController.gameEditController.gameEditTable.getItems().clear();
         EditsController.editsController.machineEditTable.getItems().clear();
         PortEditController.portEditController.portEditTable.getItems().clear();
@@ -288,6 +298,7 @@ public class GameAPI implements Initializable {
         portMachineCombo.getItems().clear();
         //TODO CLEAR HASHMAP
         hashMap = new HashMap<>(10);
+        Utilities.showInformationAlert("RESET COMPLETE","SYSTEM DATA CLEARED");
     }
 
     public void editMachine() throws IOException {

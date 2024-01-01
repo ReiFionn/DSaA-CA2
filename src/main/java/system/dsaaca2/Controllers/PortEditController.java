@@ -52,7 +52,7 @@ public class PortEditController implements Initializable {
 
         if (selectedPort != null) {
             allGamePorts.remove(selectedPort);
-            allGamesAndGamePorts.remove(selectedPort);
+
             portEditTable.getItems().remove(selectedPort);
             selectedPort.getOriginalGame().removePort(selectedPort);
         }

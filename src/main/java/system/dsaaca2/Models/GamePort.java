@@ -1,6 +1,6 @@
 package system.dsaaca2.Models;
 
-public class GamePort implements ListedTogether, Hashable{
+public class GamePort implements Hashable{
     private Game originalGame;
     private GamesMachine machinePortedTo;
     private GamesMachine originalMachine;
