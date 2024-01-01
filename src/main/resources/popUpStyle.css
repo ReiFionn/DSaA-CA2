@@ -20,14 +20,14 @@
 /* Arcade-Style Button with Black Background and Custom Colors (No Flash Animation) */
 Button {
     -fx-background-color: #000000; /* Black background color */
-    -fx-background-radius: 20px; /* Set a border-radius for a rounded look */
-    -fx-border-radius: 20px; /* Set a border-radius for a rounded look */
+    -fx-background-radius: 10px; /* Set a border-radius for a rounded look */
+    -fx-border-radius: 10px; /* Set a border-radius for a rounded look */
     -fx-border-color:  white;
     -fx-text-fill: white; /* Text color */
     -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear font family */
     -fx-font-weight: bold;
     -fx-cursor: HAND; /* Set cursor to hand for better user feedback */
-    -fx-padding: 15 30; /* Adjust padding for better appearance */
+    -fx-padding: 5 5; /* Adjust padding for better appearance */
     -fx-effect: dropshadow(gaussian, #000000, 5, 5, 5, 5); /* Add a subtle drop shadow */
     -fx-transition: all 0.3s; /* Add transition for other animations */
 }
@@ -63,10 +63,14 @@ Button:hover {
 
 
 
-
+.viewerBg{
+    -fx-background-image: url('viewer.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
 
 .list-cell {
-    -fx-border-color: #FFDE59;
+    -fx-border-color: white;
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-width: 1;

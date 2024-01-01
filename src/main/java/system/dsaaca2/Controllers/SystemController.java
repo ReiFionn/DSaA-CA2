@@ -1,12 +1,18 @@
 package system.dsaaca2.Controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
@@ -16,6 +22,7 @@ import system.dsaaca2.utils.Utilities;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static system.dsaaca2.Controllers.GameAPI.*;
@@ -29,10 +36,60 @@ public class SystemController implements Initializable {
     public ComboBox<String> machineSort = new ComboBox<>();
     public ComboBox<String> gameAndPortFilter = new ComboBox<>();
     public ComboBox<String> gameAndPortSort = new ComboBox<>();
-    public ImageView imageViewer;
+
+    /*Port viewer fx-ids----------*/
+    @FXML
+    private ImageView portImage;
+
+    @FXML
+    public Label portNameLabel = new Label();
+
+    @FXML
+    public Label portOrigMachine= new Label();
+
+    @FXML
+    public Label portMachineToLabel= new Label();
+
+    @FXML
+    public Label portGameLabel= new Label();
+
+    @FXML
+    public Label portYearLabel= new Label();
+
+    @FXML
+    public Label portDevLabel= new Label();
+
+    @FXML
+    public Label portCoverLabel= new Label();
+
+    /*------------------------------*/
+  /*GAME VIEWER FX-IDS-------------*/
+    @FXML
     public ImageView gameImage;
-    public Label gameName = new Label();
-    public Label gameYearLabel = new Label();
+
+    @FXML
+    public Label gameNameLabel= new Label();
+
+    @FXML
+    public Label gamePubLabel= new Label();
+
+    @FXML
+    public Label gameDevLabel= new Label();
+
+    @FXML
+    public Label gameYearLabel= new Label();
+
+    @FXML
+    public Label gameDescLabel= new Label();
+
+    @FXML
+    public Label gameCoverLabel= new Label();
+
+    @FXML
+    public Label gamesPortsLabel= new Label();
+    @FXML
+    public Label gameMachineLabel= new Label();
+    /*------------------------------*/
 
     public void switchSceneBack(ActionEvent actionEvent) {
         Main.mainStage.setScene(Main.gameScene);
@@ -232,24 +289,126 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("ERR", "SELECT A RESULT");
         }
     }
+    public void showPortDetailsPopUp(GamePort selected) throws IOException {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/portViewer.fxml"));
+            Parent root = fxmlLoader.load();
+
+            ImageView portImageView = (ImageView) root.lookup("#portImage");
+            String coverURL = selected.getCover();
+            Label portNameLabel = (Label) root.lookup("#portNameLabel");
+            Label portOrigMachine = (Label) root.lookup("#portOrigMachine");
+            Label portMachineToLabel = (Label) root.lookup("#portMachineToLabel");
+            Label portGameLabel = (Label) root.lookup("#portGameLabel");
+            Label portYearLabel = (Label) root.lookup("#portYearLabel");
+            Label portDevLabel = (Label) root.lookup("#portDevLabel");
+            Label portCoverLabel = (Label) root.lookup("#portCoverLabel");
+
+            portNameLabel.setText("NEW PORT FOR:   "+selected.getNewPortName().toUpperCase());
+            portGameLabel.setText(selected.getOriginalGame().getName().toUpperCase() + "  Released: " + selected.getOriginalGame().getYear());
+            portMachineToLabel.setText(selected.getMachinePortedTo().getName().toUpperCase());
+            portOrigMachine.setText(selected.getOriginalMachine().getName().toUpperCase());
+            portYearLabel.setText(String.valueOf(selected.getYear()));
+            portCoverLabel.setText(selected.getCover());
+            portDevLabel.setText(selected.getDevelopers());
+
+            try {
+                Image image = new Image(coverURL);
+                portImageView.setImage(image);
+
+            } catch (Exception e) {
+
+                Image defaultImage = new Image("/default.png");
+                portImageView.setImage(defaultImage);
+            }
+
+
+            Stage popUp = new Stage();
+            popUp.setTitle(selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
+            popUp.setResizable(false);
+            Scene newScene = new Scene(root, 500, 700);
+            popUp.setScene(newScene);
+            newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
+            popUp.show();
+        } catch (IOException e) {
+            Utilities.showWarningAlert("Error","Error");
+        }
+    }
 
 
     public void showGameDetailsPopup(Game selected) throws IOException {
-        gameName.setText(selected.getName().toUpperCase());
-        Main.viewPopup("/gameViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
-    }
-    public void showMachineDetailsPopUp(GamesMachine selected) throws IOException {
-        gameName.setText(selected.getName().toUpperCase());
-        Main.viewPopup("/machineViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
+
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/gameViewer.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            ImageView gameImage = (ImageView) root.lookup("#gameImage");
+            String coverURL = selected.getCover();
+            Label gameNameLabel = (Label) root.lookup("#gameNameLabel");
+            Label gamePubLabel = (Label) root.lookup("#gamePubLabel");
+            Label gameDevLabel = (Label) root.lookup("#gameDevLabel");
+            Label gameMachineLabel = (Label) root.lookup("#gameMachineLabel");
+            Label gameYearLabel = (Label) root.lookup("#gameYearLabel");
+            Label gameDescLabel = (Label) root.lookup("#gameDescLabel");
+            Label gameCoverLabel = (Label) root.lookup("#gameCoverLabel");
+            Label gamesPortsLabel = (Label) root.lookup("#gamesPortsLabel");
+
+            gameNameLabel.setText(selected.getName().toUpperCase());
+            gamePubLabel.setText(selected.getPublisher().toUpperCase());
+            gameDevLabel.setText(selected.getDevelopers());
+            gameMachineLabel.setText(selected.getGamesMachineName().toUpperCase());
+            gameYearLabel.setText(String.valueOf(selected.getYear()));
+            gameDescLabel.setText(selected.getDescription().toUpperCase());
+            gameCoverLabel.setText(selected.getCover().toLowerCase());
+            String namesText = "";
+
+            for (GamePort gp : selected.getPorts()) {
+                namesText += gp.getMachinePortedTo().getName().toUpperCase() + "\n";
+            }
+            gamesPortsLabel.setText(namesText);
+
+            try {
+                Image image = new Image(coverURL);
+                gameImage.setImage(image);
+
+            } catch (Exception e) {
+
+                Image defaultImage = new Image("/default.png");
+                gameImage.setImage(defaultImage);
+            }
+
+
+            Stage popUp = new Stage();
+            popUp.setTitle(selected.getGamesMachineName().toUpperCase() + " GAME DETAILS");
+            popUp.setResizable(false);
+            Scene newScene = new Scene(root, 500, 700);
+            popUp.setScene(newScene);
+            newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
+            popUp.show();
+        } catch (IOException e) {
+            Utilities.showWarningAlert("Error","Error");
+        }
     }
 
-    public void showPortDetailsPopUp(GamePort selected) throws IOException {
-        gameName.setText(selected.getMachinePortedTo().getName().toUpperCase());
-        Main.viewPopup("/portViewer.fxml", selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
+    public void showMachineDetailsPopUp(GamesMachine selected) throws IOException {
+
+        Main.viewPopup("/machineViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
     }
+//    public ImageView portImage;
+
+
+
+
+
 
 
 }
+
+
+
 
 
 

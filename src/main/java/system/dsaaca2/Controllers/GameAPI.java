@@ -219,7 +219,7 @@ public class GameAPI implements Initializable {
 
                         selectedGame.addPort(newGamePort); /* add to the selected games list of ports*/
                         PortEditController.portEditController.portEditTable.getItems().add(newGamePort);
-
+                        hashMap.add(newGamePort.toString(), newGamePort);
                         portMachineCombo.getSelectionModel().clearSelection();
                         portGameCombo.getSelectionModel().clearSelection();
                         portDevText.clear();
