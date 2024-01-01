@@ -58,7 +58,7 @@ public class HashMap<E extends Hashable> {
 
     public void remove(String key) {
         int home = hashFunction(key);
-        SillyList<E> list = (SillyList<E>) hashTable[home].get(home);
+        SillyList<E> list = (SillyList<E>) hashTable[home];
 
         int index = findIndex(list, key);
 

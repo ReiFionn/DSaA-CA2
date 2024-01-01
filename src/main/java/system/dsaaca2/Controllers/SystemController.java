@@ -215,16 +215,13 @@ public class SystemController implements Initializable {
     }
 
     public void selectForDetails() throws IOException {
-        /*adding other parts tomorrow
-         * IF an instance of Game is chosen from search, pop up shows with all details
-         * of a game and its pic*/
-
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
         if (!selected.isEmpty()) {
             found = gameAPI.hashMap.find(selected);
             if (found != null) {
                 System.out.println(found);
+                //
             } else
                 Utilities.showWarningAlert("ERR", "ERR");
         } else
