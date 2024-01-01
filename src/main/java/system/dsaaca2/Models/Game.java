@@ -117,6 +117,6 @@ public class Game implements Hashable, ListedTogether {
 
     @Override
     public boolean matchKey(String key) {
-        return name.equals(key);
+        return toString().equals(key);
     }
 }
