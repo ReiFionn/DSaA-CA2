@@ -216,7 +216,7 @@ public class GameAPI implements Initializable {
 
                     if (!dupe) {
                         allGamePorts.add(newGamePort); /* add to global list */
-
+                        hashMap.add(newGamePort.toString(), newGamePort);
                         selectedGame.addPort(newGamePort); /* add to the selected games list of ports*/
                         PortEditController.portEditController.portEditTable.getItems().add(newGamePort);
                         hashMap.add(newGamePort.toString(), newGamePort);

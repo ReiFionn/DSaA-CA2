@@ -57,12 +57,13 @@ public class HashMap<E extends Hashable> {
     }
 
     public void remove(String key) {
+        key = key.toLowerCase();
         int home = hashFunction(key);
-        SillyList<E> list = (SillyList<E>) hashTable[home];
+        SillyList<E> list = hashTable[home];
 
         int index = findIndex(list, key);
 
         if (index != -1)
-            list.remove(index);
+            list.remove(list.get(index));
     }
 }
