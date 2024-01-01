@@ -1,11 +1,10 @@
 package system.dsaaca2;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Models.GamesMachine;
-
-import static org.junit.Assert.assertEquals;
 
 class SillyListTest {
 
@@ -19,9 +18,9 @@ class SillyListTest {
         games.add(g2);
         games.add(g3);
 
-        assertEquals(3, games.size());
+        Assertions.assertEquals(3, games.size());
         games.clear();
-        assertEquals(0, games.size());
+        Assertions.assertEquals(0, games.size());
     }
 
     @Test
@@ -69,9 +68,9 @@ class SillyListTest {
         ports.add(g2);
         ports.add(g3);
 
-        assertEquals(g3, ports.get(0));
-        assertEquals(g2, ports.get(1));
-        assertEquals(g1, ports.get(2));
+        Assertions.assertEquals(g3, ports.get(0));
+        Assertions.assertEquals(g2, ports.get(1));
+        Assertions.assertEquals(g1, ports.get(2));
     }
 
     @Test
@@ -84,8 +83,8 @@ class SillyListTest {
         ports.add(g2);
         ports.add(g3);
 
-        assertEquals(0, ports.indexOf(g3));
-        assertEquals(1,ports.indexOf(g2));
-        assertEquals(2, ports.indexOf(g1));
+        Assertions.assertEquals(0, ports.indexOf(g3));
+        Assertions.assertEquals(1, ports.indexOf(g2));
+        Assertions.assertEquals(2, ports.indexOf(g1));
     }
 }
