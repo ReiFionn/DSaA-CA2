@@ -1,6 +1,5 @@
 package system.dsaaca2.Controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -131,7 +130,7 @@ public class EditsController implements Initializable {
                 int portsDeleted = 0;
                 for (GamePort port : allGamePorts) {
                     if (port.getMachinePortedTo().equals(selectedMachine)) {
-                        if (port.getPortYear() < selectedMachine.getYear()) {
+                        if (port.getYear() < selectedMachine.getYear()) {
                             allGamePorts.remove(port);
                             portsDeleted++;
                         }
@@ -182,14 +181,18 @@ public class EditsController implements Initializable {
             machineEditTable.getItems().remove(selectedMachine);
             gameAPI.gameMachineCombo.getItems().remove(selectedMachine);
             gameAPI.portMachineCombo.getItems().remove(selectedMachine);
+            int gamesDeleted = 0;
+            int portsDeleted = 0;
 
             for (Game game : selectedMachine.getGames()) {
                 allGames.remove(game);
                 gameAPI.portGameCombo.getItems().remove(game);
                 GameEditController.gameEditController.gameEditTable.getItems().remove(game);
+                gamesDeleted++;
 
                 for (GamePort port : game.getPorts()) {
-                    allGamePorts.remove(port);
+                    if (!allGamePorts.isEmpty())
+                        allGamePorts.remove(port);
                     PortEditController.portEditController.portEditTable.getItems().remove(port);
                 }
             }
@@ -198,13 +201,23 @@ public class EditsController implements Initializable {
                 if (port.getMachinePortedTo().equals(selectedMachine)) {
                     allGamePorts.remove(port);
                     PortEditController.portEditController.portEditTable.getItems().remove(port);
+                    portsDeleted++;
                 }
-                Utilities.showInformationAlert("SUCCESS", "SUCCESSFULLY REMOVED MACHINE: \n"+selectedMachine);
             }
+
+            if (gamesDeleted > 0 && portsDeleted > 0) {
+                Utilities.showInformationAlert("SUCCESS", "SUCCESSFULLY REMOVED MACHINE: \n"+selectedMachine + "\n Games Deleted: " + gamesDeleted + "\n Ports Deleted: " + portsDeleted);
+            } else if (gamesDeleted > 0) {
+                Utilities.showInformationAlert("SUCCESS", "SUCCESSFULLY REMOVED MACHINE: \n"+selectedMachine + "\n Games Deleted: " + gamesDeleted);
+            } else if (portsDeleted > 0) {
+                Utilities.showInformationAlert("SUCCESS", "SUCCESSFULLY REMOVED MACHINE: \n"+selectedMachine + "\n Ports Deleted: " + portsDeleted);
+            } else
+                Utilities.showInformationAlert("SUCCESS", "SUCCESSFULLY REMOVED MACHINE: \n"+selectedMachine);
         } else
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO DELETE");
     }
 }
 
+//TODO DELETED GAMES COUNT LIKE OTHER CONFIRMATIONS
 
 

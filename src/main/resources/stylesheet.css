@@ -2,15 +2,15 @@
 /* Arcade-Style Button with Black Background and Custom Colors (No Flash Animation) */
 Button {
     -fx-background-color: #000000; /* Black background color */
-    -fx-background-radius: 50px; /* Set a border-radius for a rounded look */
-    -fx-border-radius: 50px; /* Set a border-radius for a rounded look */
+    -fx-background-radius: 20px; /* Set a border-radius for a rounded look */
+    -fx-border-radius: 20px; /* Set a border-radius for a rounded look */
     -fx-border-color:  white;
     -fx-text-fill: white; /* Text color */
     -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear font family */
     -fx-font-weight: bold;
     -fx-cursor: HAND; /* Set cursor to hand for better user feedback */
-    -fx-padding: 10 10; /* Adjust padding for better appearance */
-    -fx-effect: dropshadow(gaussian, #000000, 5, 5, 5, 5); /* Add a subtle drop shadow */
+    -fx-padding: 5 5; /* Adjust padding for better appearance */
+    -fx-effect: dropshadow(gaussian, #000000, 2, 2, 2, 2); /* Add a subtle drop shadow */
     -fx-transition: all 0.3s; /* Add transition for other animations */
 }
 
@@ -21,7 +21,7 @@ Button {
 /* Arcade Hover effect for the Button */
 Button:hover {
     -fx-background-color: #222222; /* Darker black on hover */
-    -fx-effect: dropshadow(gaussian, #000000, 8, 8, 8, 8); /* Enhance drop shadow on hover */
+    -fx-effect: dropshadow(gaussian, #000000, 4, 4,4, 4); /* Enhance drop shadow on hover */
     -fx-text-fill: #FFDE59;
     -fx-scale-x: 1.1; /* Increase scale on hover */
     -fx-scale-y: 1.1;
@@ -77,7 +77,7 @@ Button:hover {
 
 
 .systemScene{
-    -fx-background-image: url('SystemPage.png');
+    -fx-background-image: url('systemPage.png');
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover; /* or 'contain' as per your preference */
 }

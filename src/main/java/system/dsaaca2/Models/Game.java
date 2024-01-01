@@ -4,7 +4,7 @@ import system.dsaaca2.Datastructures.SillyList;
 
 import java.util.Objects;
 
-public class Game {
+public class Game implements Hashable, ListedTogether {
     private String name, publisher, description, developers, cover;
     private GamesMachine gamesMachine;
     private int year;
@@ -28,6 +28,7 @@ public class Game {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -35,6 +36,7 @@ public class Game {
     public String getPublisher() {
         return publisher;
     }
+
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
@@ -42,6 +44,7 @@ public class Game {
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -49,6 +52,7 @@ public class Game {
     public String getDevelopers() {
         return developers;
     }
+
     public void setDevelopers(String developers) {
         this.developers = developers;
     }
@@ -56,9 +60,11 @@ public class Game {
     public GamesMachine getGamesMachine() {
         return gamesMachine;
     }
+
     public String getGamesMachineName() {
         return gamesMachine.getName();
     }
+
     public void setGamesMachine(GamesMachine gamesMachine) {
         this.gamesMachine = gamesMachine;
     }
@@ -66,6 +72,7 @@ public class Game {
     public String getCover() {
         return cover;
     }
+
     public void setCover(String cover) {
         this.cover = cover;
     }
@@ -86,28 +93,30 @@ public class Game {
         ports.remove(p);
     }
 
+    public String originalString(){
+        return
+                "Title: (" + name.toUpperCase() + "),  Publisher: ( " + publisher.toUpperCase() + " ), Year: ( " + year + " )\n" +
+                        "-----------------------------------------------------------------------\n" +
+                        "| Game Cover: " + cover.toUpperCase() + "\n" +
+                        "| Game Developers: " + developers.toUpperCase() + "\n" +
+                        "| Game Description: " + description.toUpperCase() + "\n" +
+                        "| Game Machine: " + gamesMachine.getName().toUpperCase();
+
+    }
+
     @Override
     public String toString() {
         return
-                "Title: ("+name.toUpperCase() + ")    Publisher: ( "+publisher.toUpperCase()+ " )   Launched: ( "+year+" )\n" +
-                        "-----------------------------------------------------------------------\n"+
-                       "| Game Cover: " + cover.toUpperCase() + "\n" +
+                "Title: (" + name.toUpperCase() + ")    Publisher: ( " + publisher.toUpperCase() + " )   Launched: ( " + year + " )\n" +
+                        "-----------------------------------------------------------------------\n" +
+                        "| Game Cover: " + cover.toUpperCase() + "\n" +
                         "| Game Developers: " + developers.toUpperCase() + "\n" +
                         "| Game Description: " + description.toUpperCase() + "\n" +
                         "| Game Machine: " + gamesMachine.getName().toUpperCase();
     }
 
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Game game = (Game) o;
-        return getYear() == game.getYear() && Objects.equals(getName(), game.getName()) && Objects.equals(getPublisher(), game.getPublisher()) && Objects.equals(getDescription(), game.getDescription()) && Objects.equals(getDevelopers(), game.getDevelopers()) && Objects.equals(getCover(), game.getCover()) && Objects.equals(getGamesMachine(), game.getGamesMachine()) && Objects.equals(getPorts(), game.getPorts());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getPublisher(), getDescription(), getDevelopers(), getCover(), getGamesMachine(), getYear(), getPorts());
+    public boolean matchKey(String key) {
+        return toString().equals(key);
     }
 }

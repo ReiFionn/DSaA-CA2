@@ -15,12 +15,10 @@ import system.dsaaca2.utils.Utilities;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static system.dsaaca2.Controllers.GameAPI.allGamePorts;
-import static system.dsaaca2.Controllers.GameAPI.allMachines;
+import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class PortEditController implements Initializable {
     public static PortEditController portEditController = new PortEditController();
-
     public TableView<GamePort> portEditTable= new TableView<>();
     public TableColumn<GamesMachine,String> newPort;
     public TableColumn<GamesMachine,String> origMachine;
@@ -28,44 +26,35 @@ public class PortEditController implements Initializable {
     public TableColumn<GamePort,String> pDev;
     public TableColumn<GamePort,String>pCover;
     public TableColumn<GamePort, Integer> pYear;
-
     public TextField currentPortGame;
     public TextField updatePortDev;
     public TextField updatePortCover;
     public TextField updatePortYear;
     public TextField portOrigMac;
     public TextField portNewPortName;
-
-
-
     public ComboBox<GamesMachine> newMachineBox;
-
 
     public void onGamePortSelect(MouseEvent mouseEvent) {
         GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
-
-
         if (selectedPort != null) {
             // Update text fields with the values of the selected machine
-
             currentPortGame.setText(selectedPort.getOriginalGame().getName());
             portOrigMac.setText(selectedPort.getOriginalMachine().getName());
             portNewPortName.setText(selectedPort.getMachinePortedTo().getName());
             updatePortDev.setText(selectedPort.getDevelopers());
-            updatePortYear.setText(String.valueOf(selectedPort.getPortYear()));
+            updatePortYear.setText(String.valueOf(selectedPort.getYear()));
             updatePortCover.setText(selectedPort.getCover());
-
-
         }
     }
-
 
     public void removePort() {
         GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
 
         if (selectedPort != null) {
             allGamePorts.remove(selectedPort);
+            allGamesAndGamePorts.remove(selectedPort);
             portEditTable.getItems().remove(selectedPort);
+            selectedPort.getOriginalGame().removePort(selectedPort);
         }
         Utilities.showInformationAlert("SUCCESS!", "SUCCESSFULLY DELETED:\n"+selectedPort);
     }
@@ -80,9 +69,7 @@ public class PortEditController implements Initializable {
         pDev.setCellValueFactory(new PropertyValueFactory<>("developers"));
         pGame.setCellValueFactory(new PropertyValueFactory<>("originalGame"));
         pCover.setCellValueFactory(new PropertyValueFactory<>("cover"));
-        pYear.setCellValueFactory(new PropertyValueFactory<>("portYear"));
-
-
+        pYear.setCellValueFactory(new PropertyValueFactory<>("year"));
     }
 }
 

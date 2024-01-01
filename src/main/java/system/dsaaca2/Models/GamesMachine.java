@@ -6,7 +6,7 @@ import system.dsaaca2.utils.Utilities;
 
 import java.util.Objects;
 
-public class GamesMachine {
+public class GamesMachine implements Hashable{
     private String name, manufacturer, description, type, media, image;
     private int year;
     private double price;
@@ -111,15 +111,7 @@ public class GamesMachine {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GamesMachine that = (GamesMachine) o;
-        return getYear() == that.getYear() && Double.compare(getPrice(), that.getPrice()) == 0 && Objects.equals(getName(), that.getName()) && Objects.equals(getManufacturer(), that.getManufacturer()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getType(), that.getType()) && Objects.equals(getMedia(), that.getMedia()) && Objects.equals(getImage(), that.getImage()) && Objects.equals(getGames(), that.getGames());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getManufacturer(), getDescription(), getType(), getMedia(), getImage(), getYear(), getPrice(), getGames());
+    public boolean matchKey(String key) {
+        return toString().equals(key);
     }
 }

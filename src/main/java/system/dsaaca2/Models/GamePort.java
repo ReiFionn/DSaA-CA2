@@ -1,8 +1,6 @@
 package system.dsaaca2.Models;
 
-import java.util.Objects;
-
-public class GamePort {
+public class GamePort implements ListedTogether, Hashable{
     private Game originalGame;
     private GamesMachine machinePortedTo;
     private GamesMachine originalMachine;
@@ -20,6 +18,12 @@ public class GamePort {
 
     public Game getOriginalGame() {
         return originalGame;
+    }
+    public String getGameName() {
+        return originalGame.getName();
+    }
+    public String getNewPortName(){
+       return machinePortedTo.getName();
     }
     public void setOriginalGame(Game originalGame) {
         this.originalGame = originalGame;
@@ -53,13 +57,12 @@ public class GamePort {
         this.cover = cover;
     }
 
-    public int getPortYear() {
+    public int getYear() {
         return portYear;
     }
     public void setPortYear(int portYear) {
         this.portYear = portYear;
     }
-
 
     @Override
     public String toString() {
@@ -71,17 +74,8 @@ public class GamePort {
                         "| Year Ported:  " + portYear ;
     }
 
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GamePort port = (GamePort) o;
-        return getPortYear() == port.getPortYear() && Objects.equals(getOriginalGame(), port.getOriginalGame()) && Objects.equals(getMachinePortedTo(), port.getMachinePortedTo()) && Objects.equals(getOriginalMachine(), port.getOriginalMachine()) && Objects.equals(getDevelopers(), port.getDevelopers()) && Objects.equals(getCover(), port.getCover());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getOriginalGame(), getMachinePortedTo(), getOriginalMachine(), getDevelopers(), getCover(), getPortYear());
+    public boolean matchKey(String key) {
+        return toString().equals(key);
     }
 }
