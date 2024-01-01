@@ -24,7 +24,7 @@ import static system.dsaaca2.Controllers.GameAPI.*;
 public class SystemController implements Initializable {
     public static SystemController sysControll = new SystemController();
     public TextField searchMachines;
-    public ListView<Object> searchResults = new ListView<>();
+    public ListView<String> searchResults = new ListView<>();
     //TODO set listview as ? instead of object for easier type checking for new methods below
     public TextField searchGamesAndPorts;
     public ComboBox<String> machineFilter;
@@ -71,42 +71,42 @@ public class SystemController implements Initializable {
                 if ("Name".equalsIgnoreCase(filterChoice)) {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getName().toLowerCase().startsWith(search.toLowerCase())) {
-                            searchResults.getItems().add(gm);
+                            searchResults.getItems().add(gm.toString());
                             added = true;
                         }
                     }
                 } else if ("Description".equalsIgnoreCase(filterChoice)) {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getDescription().toLowerCase().contains(search.toLowerCase())) {
-                            searchResults.getItems().add(gm);
+                            searchResults.getItems().add(gm.toString());
                             added = true;
                         }
                     }
                 } else if ("Year".equalsIgnoreCase(filterChoice)) {
                     for (GamesMachine gm : allMachines) {
                         if (String.valueOf(gm.getYear()).startsWith(search)) {
-                            searchResults.getItems().add(gm);
+                            searchResults.getItems().add(gm.toString());
                             added = true;
                         }
                     }
                 } else if ("Manufacturer".equalsIgnoreCase(filterChoice)) {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getManufacturer().toLowerCase().startsWith(search.toLowerCase())) {
-                            searchResults.getItems().add(gm);
+                            searchResults.getItems().add(gm.toString());
                             added = true;
                         }
                     }
                 } else if ("Type".equalsIgnoreCase(filterChoice)) {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getType().toLowerCase().startsWith(search.toLowerCase())) {
-                            searchResults.getItems().add(gm);
+                            searchResults.getItems().add(gm.toString());
                             added = true;
                         }
                     }
                 } else if ("Media".equalsIgnoreCase(filterChoice)) {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getMedia().toLowerCase().startsWith(search.toLowerCase())) {
-                            searchResults.getItems().add(gm);
+                            searchResults.getItems().add(gm.toString());
                             added = true;
                         }
                     }
@@ -205,7 +205,6 @@ public class SystemController implements Initializable {
     }
 
     public void drillDownGameMachine(){
-        GamesMachine gm = (GamesMachine) searchResults.getSelectionModel().getSelectedItem();
                 return;
                  /* Going to have it that when u double click drill down will happen
                  * Three different hashtables will be used here
@@ -216,23 +215,17 @@ public class SystemController implements Initializable {
     }
 
     public void selectForDetails() throws IOException {
-        /*adding other parts tomorrow
-         * IF an instance of Game is chosen from search, pop up shows with all details
-         * of a game and its pic*/
-
-        Object selected = searchResults.getSelectionModel().getSelectedItem();
-        System.out.println(selected.getClass());
-        if (selected == null) {
-            // Handle the case when nothing is selected
-            return;
-        }
-
-        if (selected instanceof Game) {
-            showGameDetailsPopup((Game) selected);
-                System.out.println(selected.getClass());
-        } else {
-            Utilities.showWarningAlert("ERR", "ERR");
-        }
+        String selected = searchResults.getSelectionModel().getSelectedItem();
+        Object found;
+        if (!selected.isEmpty()) {
+            found = gameAPI.hashMap.find(selected);
+            if (found != null) {
+                System.out.println(found);
+                //
+            } else
+                Utilities.showWarningAlert("ERR", "ERR");
+        } else
+                Utilities.showWarningAlert("ERR", "SELECT A RESULT");
     }
 
     public void showGameDetailsPopup(Game selected) throws IOException {

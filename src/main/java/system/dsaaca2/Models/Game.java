@@ -103,6 +103,6 @@ public class Game implements Hashable, ListedTogether {
 
     @Override
     public boolean matchKey(String key) {
-        return toString().equals(key);
+        return toString().toLowerCase().equals(key);
     }
 }

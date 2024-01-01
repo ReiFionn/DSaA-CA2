@@ -74,6 +74,6 @@ public class GamePort implements ListedTogether, Hashable{
 
         @Override
     public boolean matchKey(String key) {
-        return toString().equals(key);
+        return toString().toLowerCase().equals(key);
     }
 }
