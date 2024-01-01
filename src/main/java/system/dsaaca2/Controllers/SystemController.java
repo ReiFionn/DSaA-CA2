@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
@@ -397,7 +398,6 @@ public class SystemController implements Initializable {
 
         Main.viewPopup("/machineViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
     }
-//    public ImageView portImage;
 
 
 
