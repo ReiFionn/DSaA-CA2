@@ -15,9 +15,6 @@ import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class GameEditController implements Initializable {
 
-
-
-
     public static GameEditController gameEditController = new GameEditController();
     public TableView<Game> gameEditTable = new TableView<>();
     public TableColumn<GamesMachine, String> mName;
@@ -108,10 +105,7 @@ public class GameEditController implements Initializable {
         gYear.setCellValueFactory(new PropertyValueFactory<>("year"));
         gDev.setCellValueFactory(new PropertyValueFactory<>("developers"));
         gpub.setCellValueFactory(new PropertyValueFactory<>("publisher"));
-
     }
-
-
 
     public void removeGame() {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
@@ -121,13 +115,19 @@ public class GameEditController implements Initializable {
             allGamesAndGamePorts.remove(selectedGame);
             gameAPI.portGameCombo.getItems().remove(selectedGame);
             GameEditController.gameEditController.gameEditTable.getItems().remove(selectedGame);
+            int portsDeleted = 0;
 
             for (GamePort port : selectedGame.getPorts()) {
                 allGamePorts.remove(port);
                 allGamesAndGamePorts.remove(port);
                 PortEditController.portEditController.portEditTable.getItems().remove(port);
-                Utilities.showInformationAlert("SUCCESS", selectedGame.getName() +" HAS BEEN REMOVED");
+                portsDeleted++;
             }
+
+            if (portsDeleted > 0)
+                Utilities.showInformationAlert("SUCCESS", selectedGame.getName() +" HAS BEEN REMOVED" + "\n Ports Deleted: " + portsDeleted);
+            else
+                Utilities.showInformationAlert("SUCCESS", selectedGame.getName() +" HAS BEEN REMOVED");
         } else
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO DELETE");
     }

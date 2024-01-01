@@ -93,9 +93,6 @@ public class Game implements Hashable, ListedTogether {
         ports.remove(p);
     }
 
-
-
-
     public String originalString(){
         return
                 "Title: (" + name.toUpperCase() + "),  Publisher: ( " + publisher.toUpperCase() + " ), Year: ( " + year + " )\n" +
@@ -119,15 +116,7 @@ public class Game implements Hashable, ListedTogether {
     }
 
     @Override
-    public boolean matchKey(String key, String keyType) {
-        return switch (keyType.toLowerCase()) {
-            case "name" -> Objects.equals(key, name.toLowerCase());
-            case "publisher" -> Objects.equals(key, publisher.toLowerCase());
-            case "year" -> Objects.equals(key, String.valueOf(year).toLowerCase());
-            case "description" -> Objects.equals(key, description.toLowerCase());
-            case "developers" -> Objects.equals(key, developers.toLowerCase());
-            case "machine" -> Objects.equals(key, gamesMachine.getName().toLowerCase());
-            default -> false;
-        };
+    public boolean matchKey(String key) {
+        return name.equals(key);
     }
 }
