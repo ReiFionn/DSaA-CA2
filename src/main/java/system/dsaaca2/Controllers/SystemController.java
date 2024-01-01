@@ -40,7 +40,6 @@ public class SystemController implements Initializable {
         Main.mainStage.setScene(Main.gameScene);
     }
 
-
     public void populateSearchFiltersAndSorts() {
         /*Adds filtering/sorting options*/
         machineFilter.getItems().addAll("Name", "Description", "Year", "Manufacturer", "Type", "Media");
@@ -52,7 +51,6 @@ public class SystemController implements Initializable {
 
 
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -128,6 +126,7 @@ public class SystemController implements Initializable {
             }
         }
     }
+
     private void searchMachineByManu() {
 
 
@@ -138,7 +137,6 @@ public class SystemController implements Initializable {
         }
         }
     }
-
 
     private void searchMachineByType() {
 
@@ -163,7 +161,6 @@ public class SystemController implements Initializable {
         }
     }
     /*--------------------------------------------------------------------------------------------------------------------------------*/
-
 
     SillyList<ListedTogether> gameAndPortsResults = new SillyList<>();
     public void searchGamesAndPorts() {
@@ -201,13 +198,6 @@ public class SystemController implements Initializable {
         }
     }
 
-
-
-
-
-
-
-
     private void searchGamesAndPortsByMachine() {
         searchResults.getItems().clear();
 
@@ -244,9 +234,6 @@ public class SystemController implements Initializable {
         }
     }
 
-
-
-
     private void searchGamesAndPortsByGameName() {
         String search = searchGamesAndPorts.getText().toLowerCase();
         for (Game g : allGames) {
@@ -261,6 +248,7 @@ public class SystemController implements Initializable {
             }
         }
     }
+
     private void searchGamesByPub() {
         String search = searchGamesAndPorts.getText().toLowerCase();
         for (Game g : allGames) {
@@ -269,6 +257,7 @@ public class SystemController implements Initializable {
             }
         }
     }
+
     private void searchGameByDesc() {
         String search = searchGamesAndPorts.getText().toLowerCase();
         for (Game g : allGames) {
@@ -277,6 +266,7 @@ public class SystemController implements Initializable {
             }
         }
     }
+
     private void searchGamesAndPortsByYear() {
         String search = searchGamesAndPorts.getText().toLowerCase();
 
@@ -293,7 +283,6 @@ public class SystemController implements Initializable {
         }
     }
 
-
     public void drillDownGameMachine(){
         GamesMachine gm = (GamesMachine) searchResults.getSelectionModel().getSelectedItem();
                 return;
@@ -304,6 +293,7 @@ public class SystemController implements Initializable {
 
 
     }
+
     public void selectForDetails() throws IOException {
         /*adding other parts tomorrow
          * IF an instance of Game is chosen from search, pop up shows with all details
@@ -316,14 +306,13 @@ public class SystemController implements Initializable {
             return;
         }
 
-            if (selected instanceof Game) {
-                showGameDetailsPopup((Game) selected);
-                    System.out.println(selected.getClass());
-            } else {
-                Utilities.showWarningAlert("ERR", "ERR");
-            }
+        if (selected instanceof Game) {
+            showGameDetailsPopup((Game) selected);
+                System.out.println(selected.getClass());
+        } else {
+            Utilities.showWarningAlert("ERR", "ERR");
         }
-
+    }
 
     public void showGameDetailsPopup(Game selected) throws IOException {
         gameName.setText(selected.getName().toUpperCase());
@@ -331,7 +320,7 @@ public class SystemController implements Initializable {
 
     }
 
-    }
+}
 
 
 

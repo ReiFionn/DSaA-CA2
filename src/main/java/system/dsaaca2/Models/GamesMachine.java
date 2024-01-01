@@ -111,17 +111,7 @@ public class GamesMachine implements Hashable{
     }
 
     @Override
-    public boolean matchKey(String key, String keyType) {
-        return switch (keyType.toLowerCase()) {
-            case "name" -> Objects.equals(key, name.toLowerCase());
-            case "manufacturer" -> Objects.equals(key, manufacturer.toLowerCase());
-            case "year" -> Objects.equals(key, String.valueOf(year).toLowerCase());
-            case "description" -> Objects.equals(key, description.toLowerCase());
-            case "type" -> Objects.equals(key, type.toLowerCase());
-            case "media" -> Objects.equals(key, media.toLowerCase());
-            default -> false;
-        };
+    public boolean matchKey(String key) {
+        return name.equals(key);
     }
-
-
 }
