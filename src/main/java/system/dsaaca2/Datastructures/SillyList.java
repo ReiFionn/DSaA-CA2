@@ -85,7 +85,6 @@ public class SillyList<O> implements List<O> {
         return false;
     }
 
-
     @Override
     public boolean containsAll(Collection<?> c) {
         return false;

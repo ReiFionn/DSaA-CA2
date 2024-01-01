@@ -37,13 +37,8 @@ public class GameAPI implements Initializable {
     public TextField portCoverText;
     public TextField portDevText;
     public TextField portYearText;
-
     public ComboBox<GamesMachine> gameMachineCombo; //machines for games
     public ComboBox<Game> portGameCombo; //games for ports
-
-
-
-
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
 
     /*List of interface that both classes implement so both objects can be listed together*/
@@ -52,10 +47,8 @@ public class GameAPI implements Initializable {
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
 
-    public HashMap<GamesMachine> nameMap = new HashMap<>(5, "name");
-    public HashMap<Game> gameNameMap = new HashMap<Game>(5, "name");
-
-
+    public HashMap<GamesMachine> machineMap = new HashMap<>(5);
+    public HashMap<Game> gameMap = new HashMap<Game>(5);
 
     public void addGamesMachine() {
         /* Check for null or empty fields */
@@ -100,7 +93,7 @@ public class GameAPI implements Initializable {
             if (!dupe) {
                 allMachines.add(gm);
                 //adding to all hashmaps
-                nameMap.add(gm.getName(), gm);
+                machineMap.add(gm.toString(), gm);
 
                 gameMachineCombo.getItems().add(gm);
                 portMachineCombo.getItems().add(gm);
@@ -171,7 +164,7 @@ public class GameAPI implements Initializable {
                     selectedMachine.addGame(g); /* Adds game to the selected machine's list of games */
                     GameEditController.gameEditController.gameEditTable.getItems().add(g);
                     portGameCombo.getItems().add(g);
-                    gameNameMap.add(g.getName(), g);
+                    gameMap.add(g.toString(), g);
 
                     gameNameText.clear();
                     gamePubText.clear();
@@ -266,14 +259,14 @@ public class GameAPI implements Initializable {
             EditsController.editsController.machineEditTable.getItems().add(machine);
             gameMachineCombo.getItems().add(machine);
             portMachineCombo.getItems().add(machine);
-            nameMap.add(machine.getName(), machine);
+            machineMap.add(machine.toString(), machine);
 
             for (Game game : machine.getGames()) {
                 GameEditController.gameEditController.gameEditTable.getItems().add(game);
                 portGameCombo.getItems().add(game);
                 allGames.add(game);
                 allGamesAndGamePorts.add(game);
-                gameNameMap.add(game.getName(), game);
+                gameMap.add(game.toString(), game);
 
                 for (GamePort port : game.getPorts()) {
                     PortEditController.portEditController.portEditTable.getItems().add(port);
@@ -297,8 +290,8 @@ public class GameAPI implements Initializable {
         portGameCombo.getItems().clear();
         portMachineCombo.getItems().clear();
         //TODO CLEAR HASHMAP
-        nameMap = new HashMap<>(5, "name");
-        gameNameMap = new HashMap<Game>(5, "name");
+        machineMap = new HashMap<>(5);
+        gameMap = new HashMap<Game>(5);
     }
 
     public void editMachine() throws IOException {
@@ -332,7 +325,6 @@ public class GameAPI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         GameAPI.gameAPI = this;
-
     }
 }
 
