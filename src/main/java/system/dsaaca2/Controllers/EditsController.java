@@ -1,6 +1,5 @@
 package system.dsaaca2.Controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -131,7 +130,7 @@ public class EditsController implements Initializable {
                 int portsDeleted = 0;
                 for (GamePort port : allGamePorts) {
                     if (port.getMachinePortedTo().equals(selectedMachine)) {
-                        if (port.getPortYear() < selectedMachine.getYear()) {
+                        if (port.getYear() < selectedMachine.getYear()) {
                             allGamePorts.remove(port);
                             portsDeleted++;
                         }

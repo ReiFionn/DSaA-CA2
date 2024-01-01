@@ -1,6 +1,5 @@
 package system.dsaaca2.Controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -76,8 +75,9 @@ public class GameEditController implements Initializable {
 
                 int portsDeleted = 0;
                 for (GamePort port : selectedGame.getPorts()) {
-                    if (port.getPortYear() < selectedGame.getYear()) {
+                    if (port.getYear() < selectedGame.getYear()) {
                         allGamePorts.remove(port);
+                        allGamesAndGamePorts.remove(port);
                         portsDeleted++;
                     }
                 }
@@ -118,11 +118,13 @@ public class GameEditController implements Initializable {
 
         if (selectedGame != null) {
             allGames.remove(selectedGame);
+            allGamesAndGamePorts.remove(selectedGame);
             gameAPI.portGameCombo.getItems().remove(selectedGame);
             GameEditController.gameEditController.gameEditTable.getItems().remove(selectedGame);
 
             for (GamePort port : selectedGame.getPorts()) {
                 allGamePorts.remove(port);
+                allGamesAndGamePorts.remove(port);
                 PortEditController.portEditController.portEditTable.getItems().remove(port);
                 Utilities.showInformationAlert("SUCCESS", selectedGame.getName() +" HAS BEEN REMOVED");
             }

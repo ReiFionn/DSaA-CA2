@@ -4,7 +4,7 @@ import system.dsaaca2.Datastructures.SillyList;
 
 import java.util.Objects;
 
-public class Game implements Hashable {
+public class Game implements Hashable, ListedTogether {
     private String name, publisher, description, developers, cover;
     private GamesMachine gamesMachine;
     private int year;
@@ -91,6 +91,20 @@ public class Game implements Hashable {
 
     public void removePort(GamePort p) {
         ports.remove(p);
+    }
+
+
+
+
+    public String originalString(){
+        return
+                "Title: (" + name.toUpperCase() + "),  Publisher: ( " + publisher.toUpperCase() + " ), Year: ( " + year + " )\n" +
+                        "-----------------------------------------------------------------------\n" +
+                        "| Game Cover: " + cover.toUpperCase() + "\n" +
+                        "| Game Developers: " + developers.toUpperCase() + "\n" +
+                        "| Game Description: " + description.toUpperCase() + "\n" +
+                        "| Game Machine: " + gamesMachine.getName().toUpperCase();
+
     }
 
     @Override

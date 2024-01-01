@@ -1,8 +1,6 @@
 package system.dsaaca2.Models;
 
-import java.util.Objects;
-
-public class GamePort {
+public class GamePort implements Hashable, ListedTogether{
     private Game originalGame;
     private GamesMachine machinePortedTo;
     private GamesMachine originalMachine;
@@ -20,6 +18,12 @@ public class GamePort {
 
     public Game getOriginalGame() {
         return originalGame;
+    }
+    public String getGameName() {
+        return originalGame.getName();
+    }
+    public String getNewPortName(){
+       return machinePortedTo.getName();
     }
     public void setOriginalGame(Game originalGame) {
         this.originalGame = originalGame;
@@ -53,12 +57,13 @@ public class GamePort {
         this.cover = cover;
     }
 
-    public int getPortYear() {
+    public int getYear() {
         return portYear;
     }
     public void setPortYear(int portYear) {
         this.portYear = portYear;
     }
+
 
 
     @Override
@@ -69,6 +74,11 @@ public class GamePort {
                         "| Developers:  " + developers.toUpperCase() + "\n" +
                         "| Cover:  " + cover.toUpperCase() + "\n" +
                         "| Year Ported:  " + portYear ;
+    }
+
+    @Override
+    public boolean matchKey(String key, String keyType) {
+        return false;
     }
 
 //    public boolean matchKey(String key) {

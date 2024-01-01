@@ -19,7 +19,7 @@
                   <publisher>Naughty Dog</publisher>
                   <description>ZAMBIE game</description>
                   <developers>Naughty Dog</developers>
-                  <cover>www.steam.com</cover>
+                  <cover>https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg</cover>
                   <gamesMachine reference="../../../.."/>
                   <year>2010</year>
                   <ports>

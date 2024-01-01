@@ -1,16 +1,14 @@
 package system.dsaaca2.Controllers;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import system.dsaaca2.Datastructures.HashMap;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.Models.ListedTogether;
 import system.dsaaca2.utils.Persistance;
 import system.dsaaca2.utils.Utilities;
 
@@ -42,14 +40,22 @@ public class GameAPI implements Initializable {
 
     public ComboBox<GamesMachine> gameMachineCombo; //machines for games
     public ComboBox<Game> portGameCombo; //games for ports
+
+
+
+
     public ComboBox<GamesMachine> portMachineCombo; //machines for ports
 
+    /*List of interface that both classes implement so both objects can be listed together*/
+    public static SillyList<ListedTogether> allGamesAndGamePorts = new SillyList<>();
     public static SillyList<GamesMachine> allMachines = new SillyList<>();
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
 
     public HashMap<GamesMachine> nameMap = new HashMap<>(5, "name");
     public HashMap<Game> gameNameMap = new HashMap<Game>(5, "name");
+
+
 
     public void addGamesMachine() {
         /* Check for null or empty fields */
@@ -161,6 +167,7 @@ public class GameAPI implements Initializable {
 
                 if (!dupe) {
                     allGames.add(g); /* Adds game to the global list */
+                    allGamesAndGamePorts.add(g);
                     selectedMachine.addGame(g); /* Adds game to the selected machine's list of games */
                     GameEditController.gameEditController.gameEditTable.getItems().add(g);
                     portGameCombo.getItems().add(g);
@@ -220,6 +227,7 @@ public class GameAPI implements Initializable {
 
                     if (!dupe) {
                         allGamePorts.add(newGamePort); /* add to global list */
+                        allGamesAndGamePorts.add(newGamePort);
                         selectedGame.addPort(newGamePort); /* add to the selected games list of ports*/
                         PortEditController.portEditController.portEditTable.getItems().add(newGamePort);
 
@@ -264,10 +272,12 @@ public class GameAPI implements Initializable {
                 GameEditController.gameEditController.gameEditTable.getItems().add(game);
                 portGameCombo.getItems().add(game);
                 allGames.add(game);
+                allGamesAndGamePorts.add(game);
                 gameNameMap.add(game.getName(), game);
 
                 for (GamePort port : game.getPorts()) {
                     PortEditController.portEditController.portEditTable.getItems().add(port);
+                    allGamesAndGamePorts.add(port);
                     allGamePorts.add(port);
                 }
             }
@@ -279,6 +289,7 @@ public class GameAPI implements Initializable {
         allGames.clear();
         allMachines.clear();
         allGamePorts.clear();
+        allGamesAndGamePorts.clear();
         GameEditController.gameEditController.gameEditTable.getItems().clear();
         EditsController.editsController.machineEditTable.getItems().clear();
         PortEditController.portEditController.portEditTable.getItems().clear();

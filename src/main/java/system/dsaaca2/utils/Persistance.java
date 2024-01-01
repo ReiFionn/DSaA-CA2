@@ -7,6 +7,7 @@ import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.Models.ListedTogether;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -25,6 +26,7 @@ public class Persistance {
 
         ObjectInputStream in = xstream.createObjectInputStream(new FileReader("system.xml"));
         GameAPI.allMachines = (SillyList<GamesMachine>) in.readObject();
+
         in.close();
     }
 

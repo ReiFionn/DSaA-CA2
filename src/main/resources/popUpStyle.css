@@ -20,8 +20,8 @@
 /* Arcade-Style Button with Black Background and Custom Colors (No Flash Animation) */
 Button {
     -fx-background-color: #000000; /* Black background color */
-    -fx-background-radius: 50px; /* Set a border-radius for a rounded look */
-    -fx-border-radius: 50px; /* Set a border-radius for a rounded look */
+    -fx-background-radius: 20px; /* Set a border-radius for a rounded look */
+    -fx-border-radius: 20px; /* Set a border-radius for a rounded look */
     -fx-border-color:  white;
     -fx-text-fill: white; /* Text color */
     -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear font family */

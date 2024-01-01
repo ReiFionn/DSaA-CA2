@@ -202,7 +202,7 @@ public class SystemAPI implements Initializable {
                             gameLinearSearchList.getItems().add(g);
                     }
                     for (GamePort p : allGamePorts) {
-                        if (p.getPortYear() == year) {
+                        if (p.getYear() == year) {
                             portLinearSearchList.getItems().add(p);
                         }
                     }
