@@ -215,17 +215,18 @@ public class SystemController implements Initializable {
 
             if (found instanceof Game) {
                 showGameDetailsPopup((Game) found);
-            } if(found instanceof GamesMachine){
+            } else if (found instanceof GamesMachine) {
                 showMachineDetailsPopUp((GamesMachine) found);
-            } if(found instanceof GamePort) {
+            } else if (found instanceof GamePort) {
                 showPortDetailsPopUp((GamePort) found);
-            }else {
+            } else {
                 Utilities.showWarningAlert("ERR", "ERR");
             }
         } else {
             Utilities.showWarningAlert("ERR", "SELECT A RESULT");
         }
     }
+
 
     public void showGameDetailsPopup(Game selected) throws IOException {
         gameName.setText(selected.getName().toUpperCase());
