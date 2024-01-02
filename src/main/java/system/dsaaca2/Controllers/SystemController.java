@@ -244,7 +244,6 @@ public class SystemController implements Initializable {
         }
     }
 
-
     public void selectForDetails(){
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
@@ -265,6 +264,7 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("ERR", "SELECT A RESULT");
         }
     }
+
     public void showPortDetailsPopUp(GamePort selected){
 
         try {
@@ -454,7 +454,7 @@ public class SystemController implements Initializable {
        SillyList<Hashable> results = new SillyList<>();
 
        for (String s : searchResultsList) {
-           results.add(gameAPI.hashMap.find(s));
+           results.add(hashMap.find(s));
        }
 
        if (sort != null) {

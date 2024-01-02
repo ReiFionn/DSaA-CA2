@@ -74,7 +74,6 @@ public class PortEditController implements Initializable {
         GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
 
         if (selectedPort != null) {
-
             if (!updatePortCover.getText().isEmpty() && !updatePortYear.getText().isEmpty() && !updatePortDev.getText().isEmpty() && !newMachineBox.isShowing()) {
                 hashMap.remove(selectedPort.toString());
                 selectedPort.setCover(updatePortCover.getText());
@@ -97,12 +96,10 @@ public class PortEditController implements Initializable {
                     return;
                 }
 
-
                 MachineEditController.machineEditController.refreshAllViews();
                 SystemController.sysControl.searchResults.getItems().clear();
                 portEditTable.getItems().clear();
                 portEditTable.getItems().addAll(allGamePorts);
-
 
                 Utilities.showInformationAlert("SUCCESS", "---------UPDATE SUCCESSFUL--------\n\n ---> SUCCESSFULLY UPDATED TO ------->\n" + selectedPort);
             } else {
