@@ -37,60 +37,60 @@ public class SystemController implements Initializable {
     public ComboBox<String> machineSort = new ComboBox<>();
     public ComboBox<String> gameAndPortFilter = new ComboBox<>();
     public ComboBox<String> gameAndPortSort = new ComboBox<>();
-    private final SillyList<String > searchResultsList = new SillyList<>();
+    private final SillyList<String> searchResultsList = new SillyList<>();
 
     @FXML
     public Label portNameLabel = new Label();
     @FXML
-    public Label portOrigMachine= new Label();
+    public Label portOrigMachine = new Label();
     @FXML
-    public Label portMachineToLabel= new Label();
+    public Label portMachineToLabel = new Label();
     @FXML
-    public Label portGameLabel= new Label();
+    public Label portGameLabel = new Label();
     @FXML
-    public Label portYearLabel= new Label();
+    public Label portYearLabel = new Label();
     @FXML
-    public Label portDevLabel= new Label();
+    public Label portDevLabel = new Label();
     @FXML
-    public Label portCoverLabel= new Label();
+    public Label portCoverLabel = new Label();
     @FXML
     public ImageView gameImage;
     @FXML
-    public Label gameNameLabel= new Label();
+    public Label gameNameLabel = new Label();
     @FXML
-    public Label gamePubLabel= new Label();
+    public Label gamePubLabel = new Label();
     @FXML
-    public Label gameDevLabel= new Label();
+    public Label gameDevLabel = new Label();
     @FXML
-    public Label gameYearLabel= new Label();
+    public Label gameYearLabel = new Label();
     @FXML
-    public Label gameDescLabel= new Label();
+    public Label gameDescLabel = new Label();
     @FXML
-    public Label gameCoverLabel= new Label();
+    public Label gameCoverLabel = new Label();
     @FXML
-    public Label gamesPortsLabel= new Label();
+    public Label gamesPortsLabel = new Label();
     @FXML
-    public Label gameMachineLabel= new Label();
+    public Label gameMachineLabel = new Label();
     @FXML
     public ImageView machineImage;
     @FXML
-    public Label machineNameLabel= new Label();
+    public Label machineNameLabel = new Label();
     @FXML
-    public Label machineManLabel= new Label();
+    public Label machineManLabel = new Label();
     @FXML
-    public Label machineTypeLabel= new Label();
+    public Label machineTypeLabel = new Label();
     @FXML
-    public Label machineMediaLabel= new Label();
+    public Label machineMediaLabel = new Label();
     @FXML
-    public Label machinePriceLabel= new Label();
+    public Label machinePriceLabel = new Label();
     @FXML
-    public Label mYearLabel= new Label();
+    public Label mYearLabel = new Label();
     @FXML
-    public Label mImageLabel= new Label();
+    public Label mImageLabel = new Label();
     @FXML
-    public Label mGamesLabel= new Label();
+    public Label mGamesLabel = new Label();
     @FXML
-    public Label mPortsLabel= new Label();
+    public Label mPortsLabel = new Label();
 
     public void switchSceneBack() {
         Main.mainStage.setScene(Main.gameScene);
@@ -273,27 +273,9 @@ public class SystemController implements Initializable {
     }
 
 
-    public void selectForDetails(){
-        String selected = searchResults.getSelectionModel().getSelectedItem();
-        Object found;
 
-        if (selected != null && !selected.isEmpty()) {
-            found = hashMap.find(selected);
 
-            if (found instanceof Game) {
-                showGameDetailsPopup((Game) found);
-            } else if (found instanceof GamesMachine) {
-                showMachineDetailsPopUp((GamesMachine) found);
-            } else if (found instanceof GamePort) {
-                showPortDetailsPopUp((GamePort) found);
-            } else {
-                Utilities.showWarningAlert("ERR", "ERR");
-            }
-        } else {
-            Utilities.showWarningAlert("ERR", "SELECT A RESULT");
-        }
-    }
-    public void showPortDetailsPopUp(GamePort selected){
+    public void showPortDetailsPopUp(GamePort selected) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/portViewer.fxml"));
@@ -309,7 +291,7 @@ public class SystemController implements Initializable {
             Label portDevLabel = (Label) root.lookup("#portDevLabel");
             Label portCoverLabel = (Label) root.lookup("#portCoverLabel");
 
-            portNameLabel.setText("NEW PORT FOR:   "+selected.getNewPortName().toUpperCase());
+            portNameLabel.setText("NEW PORT FOR:   " + selected.getNewPortName().toUpperCase());
             portGameLabel.setText(selected.getOriginalGame().getName().toUpperCase() + "  Released: " + selected.getOriginalGame().getYear());
             portMachineToLabel.setText(selected.getMachinePortedTo().getName().toUpperCase());
             portOrigMachine.setText(selected.getOriginalMachine().getName().toUpperCase());
@@ -329,7 +311,7 @@ public class SystemController implements Initializable {
 
             Stage popUp = new Stage();
             Main.getMainStage().setIconified(true);
-            Main.getMainStage().setOnCloseRequest(event -> Main.getMainStage().setIconified(true));
+            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(false));
 
             popUp.setTitle(selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
             popUp.setResizable(false);
@@ -338,11 +320,11 @@ public class SystemController implements Initializable {
             newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
             popUp.show();
         } catch (IOException e) {
-            Utilities.showWarningAlert("Error","Error");
+            Utilities.showWarningAlert("Error", "Error");
         }
     }
 
-    public void showGameDetailsPopup(Game selected){
+    public void showGameDetailsPopup(Game selected) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/gameViewer.fxml"));
@@ -393,16 +375,17 @@ public class SystemController implements Initializable {
             newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
             popUp.show();
         } catch (IOException e) {
-            Utilities.showWarningAlert("Error","Error");
+            Utilities.showWarningAlert("Error", "Error");
         }
     }
 
-    public void showMachineDetailsPopUp(GamesMachine selected){
+    public void showMachineDetailsPopUp(GamesMachine selected) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/machineViewer.fxml"));
             Parent root = fxmlLoader.load();
             fxmlLoader.setController(this);
+
             ImageView machineImage = (ImageView) root.lookup("#machineImage");
             String coverURL = selected.getImage();
             Label machineNameLabel = (Label) root.lookup("#machineNameLabel");
@@ -419,23 +402,22 @@ public class SystemController implements Initializable {
             machineNameLabel.setText(selected.getName().toUpperCase());
             machineManLabel.setText(selected.getManufacturer().toUpperCase());
             machineMediaLabel.setText(selected.getMedia());
-            machinePriceLabel.setText("€"+ selected.getPrice());
+            machinePriceLabel.setText("€" + selected.getPrice());
             mYearLabel.setText(String.valueOf(selected.getYear()));
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             mImageLabel.setText(selected.getImage().toLowerCase());
-            StringBuilder namesText = new StringBuilder();
 
+            String names="";
             for (GamePort gp : allGamePorts) {
-
-                if(gp.getMachinePortedTo().getName().equals(selected.getName()))
-                    namesText.append(gp.getGameName()).append(" , ");
+                if (gp.getMachinePortedTo().getName().equals(selected.getName()))
+                 names+= gp.getGameName().toUpperCase() +" ( " +gp.getMachinePortedTo().getName().toUpperCase()+" ) , ";
             }
-            mPortsLabel.setText(namesText.toString());
-            StringBuilder gamesText = new StringBuilder();
-            for(Game g: selected.getGames()){
-                gamesText.append(g.getName()).append(" (").append(g.getYear()).append(") , ");
+            mPortsLabel.setText(names);
+            String gamesText = "";
+            for (Game g : selected.getGames()) {
+                gamesText+= g.getName().toUpperCase() +" ( " +g.getYear()+" ) , ";
             }
-            mGamesLabel.setText(gamesText.toString());
+            mGamesLabel.setText(gamesText);
             try {
                 Image image = new Image(coverURL);
                 machineImage.setImage(image);
@@ -448,7 +430,7 @@ public class SystemController implements Initializable {
 
             Stage popUp = new Stage();
             Main.getMainStage().setIconified(true);
-            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(true));
+            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(false));
             popUp.setTitle(selected.getName().toUpperCase() + " MACHINE DETAILS");
             popUp.setResizable(false);
             Scene newScene = new Scene(root, 500, 700);
@@ -456,14 +438,14 @@ public class SystemController implements Initializable {
             newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
             popUp.show();
         } catch (IOException e) {
-            Utilities.showWarningAlert("Error","Error");
+            Utilities.showWarningAlert("Error", "Error");
         }
     }
 
     public void resultsClicked(MouseEvent event) {
         String toDrill;
-        if(event.getButton().equals(MouseButton.PRIMARY)) {
-            if(event.getClickCount() == 2) {
+        if (event.getButton().equals(MouseButton.PRIMARY)) {
+            if (event.getClickCount() == 2) {
                 toDrill = searchResults.getSelectionModel().getSelectedItem();
                 Object foundDrill = hashMap.find(toDrill);
 
@@ -476,8 +458,14 @@ public class SystemController implements Initializable {
                     } else if (foundDrill instanceof Game) {
                         for (GamePort p : ((Game) foundDrill).getPorts()) {
                             searchResults.getItems().clear();
+                            if(((Game) foundDrill).getPorts().isEmpty()){
+                                Utilities.showInformationAlert("DRILL-DOWN","THIS GAME DOES NOT HAVE ANY PORTS TO DRILL FURTHER");
+                            }
+                            searchResults.getItems().add("--------------------LIST OF GAME PORTS FOR "+((Game) foundDrill).getName().toUpperCase()+"--------------------");
                             searchResults.getItems().add(p.toString());
                         }
+                    } else if (foundDrill instanceof GamePort) {
+                        Utilities.showInformationAlert("DRILL-DOWN","CANNOT DRILL DOWN ANY FURTHER");
                     }
                 }
             }
@@ -485,107 +473,150 @@ public class SystemController implements Initializable {
     }
 
     public void sortResults() {
-       String sort = machineSort.getSelectionModel().getSelectedItem();
-       SillyList<Hashable> results = new SillyList<>();
+        String sort = machineSort.getSelectionModel().getSelectedItem();
+        SillyList<Hashable> results = new SillyList<>();
 
-       for (String s : searchResultsList) {
-           results.add(hashMap.find(s));
-       }
+        for (String s : searchResultsList) {
+            results.add(hashMap.find(s));
+        }
 
-       if (sort != null) {
-           if ("Oldest ---> Newest".equalsIgnoreCase(sort)) {
-               for (int e = 1; e < results.size(); e++) {
-                   int elem;
+        if (sort != null) {
+            if ("Oldest ---> Newest".equalsIgnoreCase(sort)) {
+                for (int e = 1; e < results.size(); e++) {
+                    int elem;
 
-                   if (results.get(e) instanceof GamesMachine) {
-                       elem = ((GamesMachine) results.get(e)).getYear();
-                   } else if (results.get(e) instanceof Game) {
-                       elem = ((Game) results.get(e)).getYear();
-                   } else {
-                       elem = ((GamePort) results.get(e)).getYear();
-                   }
+                    if (results.get(e) instanceof GamesMachine) {
+                        elem = ((GamesMachine) results.get(e)).getYear();
+                    } else if (results.get(e) instanceof Game) {
+                        elem = ((Game) results.get(e)).getYear();
+                    } else {
+                        elem = ((GamePort) results.get(e)).getYear();
+                    }
 
-                   int i;
-                   for (i = e; i >=1; i--) {
-                       int eye;
+                    int i;
+                    for (i = e; i >= 1; i--) {
+                        int eye;
 
-                       if(results.get(i-1) instanceof GamesMachine) {
-                           eye = ((GamesMachine) results.get(i-1)).getYear();
-                       } else if (results.get(i-1) instanceof Game) {
-                           eye = ((Game)  results.get(i-1)).getYear();
-                       } else {
-                           eye = ((GamePort) results.get(i-1)).getYear();
-                       }
+                        if (results.get(i - 1) instanceof GamesMachine) {
+                            eye = ((GamesMachine) results.get(i - 1)).getYear();
+                        } else if (results.get(i - 1) instanceof Game) {
+                            eye = ((Game) results.get(i - 1)).getYear();
+                        } else {
+                            eye = ((GamePort) results.get(i - 1)).getYear();
+                        }
 
-                       if (eye <= elem)
-                           break;
-                       else
-                           results.swapIndex(i, i-1);
-                   }
-               }
-           } else if ("Alphabetically".equalsIgnoreCase(sort)) {
-               for (int e = 1; e < results.size(); e++) {
-                   String elem;
+                        if (eye <= elem)
+                            break;
+                        else
+                            results.swapIndex(i, i - 1);
+                    }
+                }
+            } else if ("Alphabetically".equalsIgnoreCase(sort)) {
+                for (int e = 1; e < results.size(); e++) {
+                    String elem;
 
-                   if (results.get(e) instanceof GamesMachine) {
-                       elem = ((GamesMachine) results.get(e)).getName();
-                   } else if (results.get(e) instanceof Game) {
-                       elem = ((Game) results.get(e)).getName();
-                   } else {
-                       elem = ((GamePort) results.get(e)).getGameName();
-                   }
+                    if (results.get(e) instanceof GamesMachine) {
+                        elem = ((GamesMachine) results.get(e)).getName();
+                    } else if (results.get(e) instanceof Game) {
+                        elem = ((Game) results.get(e)).getName();
+                    } else {
+                        elem = ((GamePort) results.get(e)).getGameName();
+                    }
 
-                   int i;
-                   for (i = e; i >=1; i--) {
-                       String eye;
+                    int i;
+                    for (i = e; i >= 1; i--) {
+                        String eye;
 
-                       if(results.get(i-1) instanceof GamesMachine) {
-                           eye = ((GamesMachine) results.get(i-1)).getName();
-                       } else if (results.get(i-1) instanceof Game) {
-                           eye = ((Game)  results.get(i-1)).getName();
-                       } else {
-                           eye = ((GamePort) results.get(i-1)).getGameName();
-                       }
+                        if (results.get(i - 1) instanceof GamesMachine) {
+                            eye = ((GamesMachine) results.get(i - 1)).getName();
+                        } else if (results.get(i - 1) instanceof Game) {
+                            eye = ((Game) results.get(i - 1)).getName();
+                        } else {
+                            eye = ((GamePort) results.get(i - 1)).getGameName();
+                        }
 
-                       if (eye.compareToIgnoreCase(elem) < 1 )
-                           break;
-                       else
-                           results.swapIndex(i, i-1);
-                   }
-               }
-           } else {
-               for (int e = 1; e < results.size(); e++) {
-                   double elem;
+                        if (eye.compareToIgnoreCase(elem) < 1)
+                            break;
+                        else
+                            results.swapIndex(i, i - 1);
+                    }
+                }
+            } else {
+                for (int e = 1; e < results.size(); e++) {
+                    double elem;
 
-                   if (results.get(e) instanceof GamesMachine) {
-                       elem = ((GamesMachine) results.get(e)).getPrice();
-                   } else if (results.get(e) instanceof Game) {
-                       Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
-                       break;
-                   } else {
-                       Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
-                       break;
-                   }
+                    if (results.get(e) instanceof GamesMachine) {
+                        elem = ((GamesMachine) results.get(e)).getPrice();
+                    } else if (results.get(e) instanceof Game) {
+                        Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
+                        break;
+                    } else {
+                        Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
+                        break;
+                    }
 
-                   int i;
-                   for (i = e; i >=1; i--) {
-                       double eye = ((GamesMachine) results.get(i-1)).getPrice();
+                    int i;
+                    for (i = e; i >= 1; i--) {
+                        double eye = ((GamesMachine) results.get(i - 1)).getPrice();
 
-                       if (eye <= elem)
-                           break;
-                       else
-                           results.swapIndex(i, i-1);
-                   }
-               }
-           }
+                        if (eye <= elem)
+                            break;
+                        else
+                            results.swapIndex(i, i - 1);
+                    }
+                }
+            }
 
-           searchResults.getItems().clear();
-           for (Hashable h : results) {
-               searchResults.getItems().add(h.toString());
-           }
-       } else
-           Utilities.showWarningAlert("ERR", "SELECT A WAY TO SORT");
+            searchResults.getItems().clear();
+            for (Hashable h : results) {
+                searchResults.getItems().add(h.toString());
+            }
+        } else
+            Utilities.showWarningAlert("ERR", "SELECT A WAY TO SORT");
     }
+
+    public void selectForDetails() {
+
+        Object found;
+        String selected = searchResults.getSelectionModel().getSelectedItem();
+        if (selected != null && !selected.isEmpty()) {
+            found = hashMap.find(selected);
+
+            if (found instanceof Game) {
+                showGameDetailsPopup((Game) found);
+            } else if (found instanceof GamesMachine) {
+                showMachineDetailsPopUp((GamesMachine) found);
+            } else if (found instanceof GamePort) {
+                showPortDetailsPopUp((GamePort) found);
+            } else {
+                Utilities.showWarningAlert("ERR", "ERR");
+            }
+        } else {
+            Utilities.showWarningAlert("ERR", "SELECT A RESULT");
+        }
+    }
+    public void edit() throws IOException {
+        String selected = searchResults.getSelectionModel().getSelectedItem();
+        Object found;
+
+        if (selected != null) {
+            found = hashMap.find(selected);
+            if (found instanceof Game) {
+                 gameAPI.editGames();
+                 GameEditController.gameEditController.gameEditTable.getSelectionModel().select((Game) found);
+            } else if (found instanceof GamesMachine) {
+                gameAPI.editMachine();
+                MachineEditController.machineEditController.machineEditTable.getSelectionModel().select((GamesMachine) found);
+            } else if (found instanceof GamePort) {
+                gameAPI.editPorts();
+                PortEditController.portEditController.portEditTable.getSelectionModel().select((GamePort) found);
+            } else {
+                Utilities.showWarningAlert("ERR", "Invalid selection");
+            }
+        } else {
+            Utilities.showWarningAlert("ERR", "SELECT A RESULT");
+        }
+   }
 }
 
 
