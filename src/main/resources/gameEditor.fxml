@@ -3,45 +3,42 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<DialogPane maxHeight="700.0" minHeight="700.0" minWidth="1000.0" styleClass="machinePop" stylesheets="@popUpStyle.css" xmlns="http://javafx.com/javafx/19-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.GameEditController">
+<DialogPane maxHeight="700.0" minHeight="700.0" minWidth="1000.0" styleClass="machinePop" stylesheets="@popUpStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.GameEditController">
     <content>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="1000.0" prefHeight="500.0"
-                    prefWidth="1000.0" styleClass="gamePop" stylesheets="@popUpStyle.css">
-            <TableView fx:id="gameEditTable" layoutX="21.0" layoutY="90.0" onMouseClicked="#onGameSelect"
-                       prefHeight="330.0" prefWidth="958.0">
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="1000.0" prefHeight="500.0" prefWidth="1000.0" styleClass="gamePop" stylesheets="@popUpStyle.css">
+            <TableView fx:id="gameEditTable" layoutX="21.0" layoutY="90.0" onMouseClicked="#onGameSelect" prefHeight="330.0" prefWidth="958.0">
                 <columns>
-                    <TableColumn fx:id="mName" prefWidth="164.66666221618652" text="MACHINE"/>
-                    <TableColumn fx:id="gNam" prefWidth="148.6666717529297" text="GAME NAME"/>
-                    <TableColumn fx:id="gPub" prefWidth="123.33332824707031" text="PUBLISHER"/>
-                    <TableColumn fx:id="gDesc" prefWidth="148.66671752929688" text="DESCRIPTION"/>
-                    <TableColumn fx:id="gDev" prefWidth="132.66668701171875" text="DEVELOPERS"/>
-                    <TableColumn fx:id="gCover" prefWidth="138.6666259765625" text="COVER"/>
-                    <TableColumn fx:id="gYear" prefWidth="97.99993896484375" text="YEAR"/>
+                    <TableColumn fx:id="mName" prefWidth="164.66666221618652" text="MACHINE" />
+                    <TableColumn fx:id="gNam" prefWidth="148.6666717529297" text="GAME NAME" />
+                    <TableColumn fx:id="gPub" prefWidth="123.33332824707031" text="PUBLISHER" />
+                    <TableColumn fx:id="gDesc" prefWidth="148.66671752929688" text="DESCRIPTION" />
+                    <TableColumn fx:id="gDev" prefWidth="132.66668701171875" text="DEVELOPERS" />
+                    <TableColumn fx:id="gCover" prefWidth="138.6666259765625" text="COVER" />
+                    <TableColumn fx:id="gYear" prefWidth="97.99993896484375" text="YEAR" />
                 </columns>
         </TableView>
-            <Button layoutX="468.0" layoutY="464.0" mnemonicParsing="false" onAction="#applyGameUpdate"
-                    style="-fx-font-size: 15;" text="APPLY CHANGES"/>
-            <TextField fx:id="updateGameName" layoutX="132.0" layoutY="572.0" maxHeight="18.0" minHeight="18.0"
-                       prefHeight="15.0"/>
-            <TextField fx:id="updateGamePub" layoutX="411.0" layoutY="574.0" maxHeight="18.0" minHeight="18.0"
-                       prefHeight="15.0"/>
-            <TextField fx:id="updateGameDesc" layoutX="132.0" layoutY="601.0" maxHeight="18.0" minHeight="18.0"
-                       prefHeight="15.0"/>
-            <TextField fx:id="updateGameDev" layoutX="411.0" layoutY="602.0" maxHeight="18.0" minHeight="18.0"
-                       prefHeight="15.0"/>
-            <TextField fx:id="updateGameCover" layoutX="132.0" layoutY="629.0" maxHeight="18.0" minHeight="18.0"
-                       prefHeight="15.0"/>
-            <TextField fx:id="updateGameYear" layoutX="411.0" layoutY="629.0" maxHeight="18.0" minHeight="18.0"
-                       prefHeight="15.0"/>
-            <ComboBox fx:id="updateGamesMachineBox" layoutX="105.0" layoutY="469.0" prefHeight="32.0" prefWidth="247.0"
-                      promptText="UPDATE GAMES MACHINE"/>
-            <Button layoutX="750.0" layoutY="498.0" mnemonicParsing="false" onAction="#removeGame"
-                    style="-fx-font-size: 15;" text="REMOVE GAME"/>
+            <Button layoutX="468.0" layoutY="464.0" mnemonicParsing="false" onAction="#applyGameUpdate" style="-fx-font-size: 15;" text="APPLY CHANGES" />
+            <TextField fx:id="updateGameName" layoutX="132.0" layoutY="572.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
+            <TextField fx:id="updateGamePub" layoutX="411.0" layoutY="574.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
+            <TextField fx:id="updateGameDesc" layoutX="132.0" layoutY="601.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
+            <TextField fx:id="updateGameDev" layoutX="411.0" layoutY="602.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
+            <TextField fx:id="updateGameCover" layoutX="132.0" layoutY="629.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
+            <TextField fx:id="updateGameYear" layoutX="411.0" layoutY="629.0" maxHeight="18.0" minHeight="18.0" prefHeight="15.0" />
+            <ComboBox fx:id="updateGamesMachineBox" layoutX="105.0" layoutY="469.0" prefHeight="32.0" prefWidth="247.0" promptText="UPDATE GAMES MACHINE" />
+            <Button layoutX="780.0" layoutY="505.0" mnemonicParsing="false" onAction="#removeGame" style="-fx-font-size: 15;" text="REMOVE GAME" />
+         <Label layoutX="737.0" layoutY="598.0" text="SELECT A GAME TO VIEW" textFill="#f6f5f5">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+         <Button layoutX="778.0" layoutY="631.0" mnemonicParsing="false" onAction="#showViewer" style="-fx-font-size: 15;" text="VIEW GAME" />
         </AnchorPane>
    </content>
 </DialogPane>

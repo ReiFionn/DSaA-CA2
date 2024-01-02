@@ -17,12 +17,12 @@
             <TextField fx:id="machineMediaText" layoutX="236.0" layoutY="381.0" prefHeight="25.0" prefWidth="141.0" />
             <TextField fx:id="machineImageText" layoutX="236.0" layoutY="413.0" prefHeight="25.0" prefWidth="141.0" />
             <TextField fx:id="machineYearText" layoutX="236.0" layoutY="445.0" prefHeight="25.0" prefWidth="141.0" />
-            <TextField fx:id="gameNameText" layoutX="697.0" layoutY="373.0" prefHeight="25.0" prefWidth="141.0" />
-            <TextField fx:id="gamePubText" layoutX="697.0" layoutY="403.0" prefHeight="25.0" prefWidth="141.0" />
-            <TextField fx:id="gameDescText" layoutX="697.0" layoutY="433.0" prefHeight="25.0" prefWidth="141.0" />
-            <TextField fx:id="gameDevText" layoutX="697.0" layoutY="464.0" prefHeight="25.0" prefWidth="141.0" />
-            <TextField fx:id="gameYearText" layoutX="697.0" layoutY="525.0" prefHeight="25.0" prefWidth="141.0" />
-            <TextField fx:id="gameCoverText" layoutX="697.0" layoutY="494.0" prefHeight="25.0" prefWidth="141.0" />
+            <TextField fx:id="gameNameText" layoutX="697.0" layoutY="350.0" prefHeight="25.0" prefWidth="141.0" />
+            <TextField fx:id="gamePubText" layoutX="697.0" layoutY="379.0" prefHeight="25.0" prefWidth="141.0" />
+            <TextField fx:id="gameDescText" layoutX="697.0" layoutY="408.0" prefHeight="25.0" prefWidth="141.0" />
+            <TextField fx:id="gameDevText" layoutX="697.0" layoutY="438.0" prefHeight="25.0" prefWidth="141.0" />
+            <TextField fx:id="gameYearText" layoutX="697.0" layoutY="500.0" prefHeight="25.0" prefWidth="141.0" />
+            <TextField fx:id="gameCoverText" layoutX="698.0" layoutY="469.0" prefHeight="25.0" prefWidth="141.0" />
             <TextField fx:id="portCoverText" layoutX="1188.0" layoutY="474.0" prefHeight="25.0" prefWidth="141.0" />
             <TextField fx:id="portDevText" layoutX="1188.0" layoutY="443.0" prefHeight="25.0" prefWidth="141.0" />
             <TextField fx:id="portYearText" layoutX="1188.0" layoutY="506.0" prefHeight="25.0" prefWidth="141.0" />

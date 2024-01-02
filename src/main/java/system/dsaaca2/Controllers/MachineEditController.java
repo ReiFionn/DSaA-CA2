@@ -6,11 +6,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -80,6 +83,19 @@ public class MachineEditController implements Initializable {
             updateMachineMedia.setText(selectedMachine.getMedia());
         }
     }
+
+
+
+        public void showViewer() {
+            GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
+            if (selectedMachine != null) {
+                SystemController.sysControl.showMachineDetailsPopUp(selectedMachine);
+
+
+
+            }
+        }
+
 
     public void applyMachineUpdate() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
