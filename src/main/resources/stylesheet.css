@@ -1,31 +1,30 @@
-/* Arcade-Style Button */
-/* Arcade-Style Button with Black Background and Custom Colors (No Flash Animation) */
+/* Arcade-Style Buttons were generated using a CSS Generator */
 Button {
-    -fx-background-color: #000000; /* Black background color */
-    -fx-background-radius: 20px; /* Set a border-radius for a rounded look */
-    -fx-border-radius: 20px; /* Set a border-radius for a rounded look */
+    -fx-background-color: #000000;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
     -fx-border-color:  white;
-    -fx-text-fill: white; /* Text color */
-    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear font family */
+    -fx-text-fill: white;
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     -fx-font-weight: bold;
-    -fx-cursor: HAND; /* Set cursor to hand for better user feedback */
-    -fx-padding: 5 5; /* Adjust padding for better appearance */
-    -fx-effect: dropshadow(gaussian, #000000, 2, 2, 2, 2); /* Add a subtle drop shadow */
-    -fx-transition: all 0.3s; /* Add transition for other animations */
+    -fx-cursor: HAND;
+    -fx-padding: 5 5;
+    -fx-effect: dropshadow(gaussian, #000000, 2, 2, 2, 2);
+    -fx-transition: all 0.3s;
 }
 
 
 
 
 
-/* Arcade Hover effect for the Button */
+
 Button:hover {
-    -fx-background-color: #222222; /* Darker black on hover */
-    -fx-effect: dropshadow(gaussian, #000000, 4, 4,4, 4); /* Enhance drop shadow on hover */
+    -fx-background-color: #222222;
+    -fx-effect: dropshadow(gaussian, #000000, 4, 4,4, 4);
     -fx-text-fill: #FFDE59;
-    -fx-scale-x: 1.1; /* Increase scale on hover */
+    -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
-    -fx-rotate: 5deg; /* Rotate slightly on hover */
+    -fx-rotate: 5deg;
 }
 
 .combo-box {
@@ -76,12 +75,12 @@ Button:hover {
 .homepage{
     -fx-background-image: url('homePage.png');
     -fx-background-repeat: no-repeat;
-    -fx-background-size: cover; /* or 'contain' as per your preference */
+    -fx-background-size: cover;
 }
 .bg{
     -fx-background-image: url('gamePage.png');
     -fx-background-repeat: no-repeat;
-    -fx-background-size: cover; /* or 'contain' as per your preference */
+    -fx-background-size: cover;
 }
 
 
@@ -89,5 +88,5 @@ Button:hover {
 .systemScene{
     -fx-background-image: url('systemPage.png');
     -fx-background-repeat: no-repeat;
-    -fx-background-size: cover; /* or 'contain' as per your preference */
+    -fx-background-size: cover;
 }

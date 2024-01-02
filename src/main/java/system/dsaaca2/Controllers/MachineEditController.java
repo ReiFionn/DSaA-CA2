@@ -6,14 +6,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,7 +18,7 @@ import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class MachineEditController implements Initializable {
     public static MachineEditController machineEditController = new MachineEditController();
-
+    /*--------------JavaFx----------------------------------------*/
     @FXML
     public TableView<GamesMachine> machineEditTable = new TableView<>();
     @FXML
@@ -50,8 +47,12 @@ public class MachineEditController implements Initializable {
     public TextField updateMachineYear = new TextField();
     public TextField updateMachineImage = new TextField();
     public TextField updateMachineMedia = new TextField();
+    /*---------------------------------------------------------*/
 
-    /*----------------------------*/
+    /**
+     * Initializes the MachineEditController during JavaFX application startup.
+     * Populates the table with existing machines and their information.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         MachineEditController.machineEditController = this;
@@ -66,7 +67,10 @@ public class MachineEditController implements Initializable {
         mPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-
+    /**
+     * Handles the event when a machine is selected in the table.
+     * Populates the update fields with the values of the selected machine.
+     */
     public void onMachineSelect() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
 
@@ -85,18 +89,22 @@ public class MachineEditController implements Initializable {
     }
 
 
-
+    /**
+     * Opens a viewer to display detailed information about the selected machine.
+     * Requires a machine to be selected in the table.
+     */
         public void showViewer() {
             GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
             if (selectedMachine != null) {
                 SystemController.sysControl.showMachineDetailsPopUp(selectedMachine);
-
-
-
             }
         }
 
-
+    /**
+     * Applies the updates made to the selected machine's information.
+     * Validates input fields and updates the machine accordingly.
+     * Displays success or error alerts based on the update result.
+     */
     public void applyMachineUpdate() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
 
@@ -165,6 +173,10 @@ public class MachineEditController implements Initializable {
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO UPDATE");
     }
 
+    /**
+     * Refreshes all views associated with machines, games, and ports.
+     * Updates combo boxes and tables to reflect changes.
+     */
     public void refreshAllViews() {
         gameAPI.portGameCombo.getItems().clear();
         gameAPI.portGameCombo.getItems().addAll(allGames);
@@ -189,6 +201,11 @@ public class MachineEditController implements Initializable {
         GameEditController.gameEditController.gameEditTable.getItems().addAll(allGames);
     }
 
+    /**
+     * Removes the selected machine from the system.
+     * Also removes associated games and ports and updates relevant UI components.
+     * Displays success or error alerts based on the removal result.
+     */
     public void removeMachine() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
 
