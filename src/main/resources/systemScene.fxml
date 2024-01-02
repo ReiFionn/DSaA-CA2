@@ -33,12 +33,12 @@
          </font>
       </TextField>
       <ComboBox fx:id="machineFilter" layoutX="100.0" layoutY="134.0" prefWidth="150.0" promptText="FILTERS" styleClass="combo-box" stylesheets="@stylesheet.css" />
-      <ComboBox fx:id="machineSort" layoutX="342.0" layoutY="132.0" prefWidth="150.0" promptText="SORT BY" styleClass="combo-box" stylesheets="@stylesheet.css" />
+      <ComboBox fx:id="machineSort" layoutX="659.0" layoutY="48.0" prefWidth="150.0" promptText="SORT BY" styleClass="combo-box" stylesheets="@stylesheet.css" />
       <ComboBox fx:id="gameAndPortFilter" layoutX="87.0" layoutY="409.0" prefWidth="150.0" promptText="FILTERS" styleClass="combo-box" stylesheets="@stylesheet.css" />
-      <ComboBox fx:id="gameAndPortSort" layoutX="350.0" layoutY="410.0" prefWidth="150.0" promptText="SORT BY" styleClass="combo-box" stylesheets="@stylesheet.css" />
       <ImageView fx:id="imageViewer" fitHeight="260.0" fitWidth="219.0" layoutX="1008.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="560.6666666666666" AnchorPane.leftAnchor="1008.0" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="79.0">
          <viewport>
             <Rectangle2D />
          </viewport></ImageView>
+      <Button layoutX="661.0" layoutY="91.0" mnemonicParsing="false" onAction="#sortResults" prefHeight="28.0" prefWidth="147.0" style="-fx-font-size: 18px;" text="SORT" />
    </AnchorPane>
 </VBox>

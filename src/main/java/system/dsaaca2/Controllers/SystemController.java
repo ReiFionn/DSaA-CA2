@@ -3,6 +3,7 @@ package system.dsaaca2.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -10,11 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import system.dsaaca2.Datastructures.HashMap;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.Models.Hashable;
 import system.dsaaca2.utils.Utilities;
 
 import java.io.IOException;
@@ -45,7 +48,7 @@ public class SystemController implements Initializable {
     public void populateSearchFiltersAndSorts() {
         /*Adds filtering/sorting options*/
         machineFilter.getItems().addAll("Name", "Description", "Year", "Manufacturer", "Type", "Media");
-        machineSort.getItems().addAll("Price Highest ---> Lowest ", "Price Lowest ---> Highest", "Oldest ---> Newest");
+        machineSort.getItems().addAll("Price Highest ---> Lowest ", "Alphabetically", "Oldest ---> Newest");
         gameAndPortFilter.getItems().addAll("Game Name", "Games by Publisher", "Games by Description", "Developers", "Games Machine", "Year");
         gameAndPortSort.getItems().addAll("A ---> Z", "Newest ---> Oldest ", "Oldest ---> Newest");
     }
@@ -59,12 +62,12 @@ public class SystemController implements Initializable {
     /*A list that stores found results from searches and is then added to the listview
      * for the purpose of sorting later on (maybe)*/
 
-    SillyList<GamesMachine> machineSearchResults = new SillyList<>();
+    SillyList<String > searchResultsList = new SillyList<>();
 
 
     public void searchMachines() {
         searchResults.getItems().clear();
-        machineSearchResults.clear();
+        searchResultsList.clear();
         String filterChoice = machineFilter.getSelectionModel().getSelectedItem();
         String search = searchMachines.getText().toLowerCase();
         boolean added = false;
@@ -74,6 +77,7 @@ public class SystemController implements Initializable {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getName().toLowerCase().startsWith(search.toLowerCase())) {
                             searchResults.getItems().add(gm.toString());
+                            searchResultsList.add(gm.toString());
                             added = true;
                         }
                     }
@@ -81,6 +85,7 @@ public class SystemController implements Initializable {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getDescription().toLowerCase().contains(search.toLowerCase())) {
                             searchResults.getItems().add(gm.toString());
+                            searchResultsList.add(gm.toString());
                             added = true;
                         }
                     }
@@ -88,6 +93,7 @@ public class SystemController implements Initializable {
                     for (GamesMachine gm : allMachines) {
                         if (String.valueOf(gm.getYear()).startsWith(search)) {
                             searchResults.getItems().add(gm.toString());
+                            searchResultsList.add(gm.toString());
                             added = true;
                         }
                     }
@@ -95,6 +101,7 @@ public class SystemController implements Initializable {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getManufacturer().toLowerCase().startsWith(search.toLowerCase())) {
                             searchResults.getItems().add(gm.toString());
+                            searchResultsList.add(gm.toString());
                             added = true;
                         }
                     }
@@ -102,6 +109,7 @@ public class SystemController implements Initializable {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getType().toLowerCase().startsWith(search.toLowerCase())) {
                             searchResults.getItems().add(gm.toString());
+                            searchResultsList.add(gm.toString());
                             added = true;
                         }
                     }
@@ -109,6 +117,7 @@ public class SystemController implements Initializable {
                     for (GamesMachine gm : allMachines) {
                         if (gm.getMedia().toLowerCase().startsWith(search.toLowerCase())) {
                             searchResults.getItems().add(gm.toString());
+                            searchResultsList.add(gm.toString());
                             added = true;
                         }
                     }
@@ -123,7 +132,7 @@ public class SystemController implements Initializable {
 
     public void searchGamesAndPorts() {
         searchResults.getItems().clear();
-
+        searchResultsList.clear();
         String filterChoice = gameAndPortFilter.getSelectionModel().getSelectedItem();
         String search = searchGamesAndPorts.getText().toLowerCase();
         boolean added = false;
@@ -134,12 +143,14 @@ public class SystemController implements Initializable {
                     for (Game g : allGames) {
                         if (g.getName().toLowerCase().startsWith(search.toLowerCase())|| g.getName().toLowerCase().contains(search.toLowerCase())) {
                             searchResults.getItems().add(g.toString());
+                            searchResultsList.add(g.toString());
                             added = true;
                         }
                         /*all ports made for that machine*/
                         for (GamePort p : g.getPorts()) {
                             if (p.getGameName().toLowerCase().startsWith(search.toLowerCase())|| p.getGameName().toLowerCase().contains(search.toLowerCase())) {
                                 searchResults.getItems().add(p.toString());
+                                searchResultsList.add(g.toString());
                                 added = true;
                             }
                         }
@@ -148,6 +159,7 @@ public class SystemController implements Initializable {
                     for (Game g : allGames) {
                         if (g.getPublisher().toLowerCase().startsWith(search.toLowerCase())) {
                             searchResults.getItems().add(g.toString());
+                            searchResultsList.add(g.toString());
                             added = true;
                         }
                     }
@@ -155,11 +167,13 @@ public class SystemController implements Initializable {
                     for (Game g : allGames) {
                         if (String.valueOf(g.getYear()).startsWith(search)) {
                             searchResults.getItems().add(g.toString());
+                            searchResultsList.add(g.toString());
                             added = true;
                         }
                         for (GamePort p : g.getPorts()) {
                             if (String.valueOf(p.getYear()).startsWith(search)) {
                                 searchResults.getItems().add(p.toString());
+                                searchResultsList.add(g.toString());
                                 added = true;
                             }
                         }
@@ -168,12 +182,14 @@ public class SystemController implements Initializable {
                     for (Game g : allGames) {
                         if (g.getDevelopers().toLowerCase().startsWith(search)) {
                             searchResults.getItems().add(g.toString());
+                            searchResultsList.add(g.toString());
                             added = true;
                         }
                     }
                     for (GamePort p : allGamePorts) {
                         if (p.getDevelopers().startsWith(search)) {
                             searchResults.getItems().add(p.toString());
+                            searchResultsList.add(p.toString());
                             added = true;
                         }
                     }
@@ -181,6 +197,7 @@ public class SystemController implements Initializable {
                     for (Game g : allGames) {
                         if (g.getDescription().toLowerCase().startsWith(search.toLowerCase())) {
                             searchResults.getItems().add(g.toString());
+                            searchResultsList.add(g.toString());
                             added = true;
                         }
                     }
@@ -188,12 +205,14 @@ public class SystemController implements Initializable {
                     for (Game g : allGames) {
                         if (g.getGamesMachine().getName().toLowerCase().startsWith(search)) {
                             searchResults.getItems().add(g.toString());
+                            searchResultsList.add(g.toString());
                             added = true;
                         }
                     }
                     for (GamePort p : allGamePorts) {
                         if (p.getNewPortName().toLowerCase().startsWith(search)) {
                             searchResults.getItems().add(p.toString());
+                            searchResultsList.add(p.toString());
                             added = false;
                         }
                     }
@@ -263,6 +282,87 @@ public class SystemController implements Initializable {
                 }
             }
         }
+    }
+
+    public void sortResults() {
+       String sort = machineSort.getSelectionModel().getSelectedItem();
+       SillyList<Hashable> results = new SillyList<>();
+
+       for (String s : searchResultsList) {
+           results.add(gameAPI.hashMap.find(s));
+       }
+
+       if (sort != null) {
+           if ("Oldest ---> Newest".equalsIgnoreCase(sort)) {
+               for (int e = 1; e < results.size()-1; e++) {
+                   int elem;
+
+                   if (results.get(e) instanceof GamesMachine) {
+                       elem = ((GamesMachine) results.get(e)).getYear();
+                   } else if (results.get(e) instanceof Game) {
+                       elem = ((Game) results.get(e)).getYear();
+                   } else {
+                       elem = ((GamePort) results.get(e)).getYear();
+                   }
+
+                   int i;
+                   for (i = e; i >=1; i--) {
+                       int eye;
+
+                       if(results.get(i-1) instanceof GamesMachine) {
+                           eye = ((GamesMachine) results.get(i-1)).getYear();
+                       } else if (results.get(i-1) instanceof Game) {
+                           eye = ((Game)  results.get(i-1)).getYear();
+                       } else {
+                           eye = ((GamePort) results.get(i-1)).getYear();
+                       }
+
+                       if (eye <= elem)
+                           break;
+                       else
+                           results.swapIndex(i, i-1);
+                   }
+               }
+           } else if ("Alphabetically".equalsIgnoreCase(sort)) {
+               for (int e = 1; e < results.size(); e++) {
+                   String elem;
+
+                   if (results.get(e) instanceof GamesMachine) {
+                       elem = ((GamesMachine) results.get(e)).getName();
+                   } else if (results.get(e) instanceof Game) {
+                       elem = ((Game) results.get(e)).getName();
+                   } else {
+                       elem = ((GamePort) results.get(e)).getGameName();
+                   }
+
+                   int i;
+                   for (i = e; i >=1; i--) {
+                       String eye;
+
+                       if(results.get(i-1) instanceof GamesMachine) {
+                           eye = ((GamesMachine) results.get(i-1)).getName();
+                       } else if (results.get(i-1) instanceof Game) {
+                           eye = ((Game)  results.get(i-1)).getName();
+                       } else {
+                           eye = ((GamePort) results.get(i-1)).getGameName();
+                       }
+
+                       if (eye.compareToIgnoreCase(elem) < 1 )
+                           break;
+                       else
+                           results.swapIndex(i, i-1);
+                   }
+               }
+           } else {
+
+           }
+
+           searchResults.getItems().clear();
+           for (Hashable h : results) {
+               searchResults.getItems().add(h.toString());
+           }
+       } else
+           Utilities.showWarningAlert("ERR", "SELECT A WAY TO SORT");
     }
 }
 

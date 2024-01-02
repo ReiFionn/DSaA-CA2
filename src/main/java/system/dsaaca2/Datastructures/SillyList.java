@@ -207,5 +207,23 @@ public class SillyList<O> implements List<O> {
             contents = c;
         }
     }
+
+    public SillyNode<O> getNode(int index) {
+        SillyNode<O> temp = head;
+
+        while (indexOf(temp.getContents()) < index) {
+            temp = temp.next;
+        }
+
+        return temp;
+    }
+
+    public void swapIndex(int index1, int index2) {
+        if (index1 >= 0 && index1 < size() && index2 >= 0 && index2 < size()) {
+            O temp = get(index1);
+            getNode(index1).setContents(get(index2));
+            getNode(index2).setContents(temp);
+        }
+    }
 }
 
