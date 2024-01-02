@@ -38,11 +38,21 @@ Button:hover {
 
 
 .list-cell {
-    -fx-border-color: #FFDE59;
+    -fx-border-color: white;
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-width: 1;
-    -fx-padding: 5;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-font-family: Cambria;
+
+}
+
+.text-field{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-font-family: "Cambria Math";
 
 }
 .list-cell:hover{
@@ -51,7 +61,7 @@ Button:hover {
     -fx-text-fill: #FFDE59;
     -fx-font-weight:bold ;
     -fx-border-width: 1;
-    -fx-padding: 5;
+    -fx-padding: 10;
 
 }
 .list-cell:selected{
@@ -60,7 +70,7 @@ Button:hover {
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-width: 1;
-    -fx-padding: 5;
+    -fx-padding: 10;
  }
 
 .homepage{

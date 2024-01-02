@@ -244,6 +244,7 @@ public class SystemController implements Initializable {
         }
     }
 
+
     public void selectForDetails(){
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
@@ -264,7 +265,6 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("ERR", "SELECT A RESULT");
         }
     }
-
     public void showPortDetailsPopUp(GamePort selected){
 
         try {
@@ -281,7 +281,7 @@ public class SystemController implements Initializable {
             Label portDevLabel = (Label) root.lookup("#portDevLabel");
             Label portCoverLabel = (Label) root.lookup("#portCoverLabel");
 
-            portNameLabel.setText("NEW PORT FOR:   "+selected.getNewPortName().toUpperCase());
+            portNameLabel.setText("NEW PORT FOR:   " + selected.getNewPortName().toUpperCase());
             portGameLabel.setText(selected.getOriginalGame().getName().toUpperCase() + "  Released: " + selected.getOriginalGame().getYear());
             portMachineToLabel.setText(selected.getMachinePortedTo().getName().toUpperCase());
             portOrigMachine.setText(selected.getOriginalMachine().getName().toUpperCase());
@@ -301,7 +301,7 @@ public class SystemController implements Initializable {
 
             Stage popUp = new Stage();
             Main.getMainStage().setIconified(true);
-            Main.getMainStage().setOnCloseRequest(event -> Main.getMainStage().setIconified(true));
+            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(false));
 
             popUp.setTitle(selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
             popUp.setResizable(false);
@@ -310,11 +310,11 @@ public class SystemController implements Initializable {
             newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
             popUp.show();
         } catch (IOException e) {
-            Utilities.showWarningAlert("Error","Error");
+            Utilities.showWarningAlert("Error", "Error");
         }
     }
 
-    public void showGameDetailsPopup(Game selected){
+    public void showGameDetailsPopup(Game selected) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/gameViewer.fxml"));
@@ -365,11 +365,11 @@ public class SystemController implements Initializable {
             newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
             popUp.show();
         } catch (IOException e) {
-            Utilities.showWarningAlert("Error","Error");
+            Utilities.showWarningAlert("Error", "Error");
         }
     }
 
-    public void showMachineDetailsPopUp(GamesMachine selected){
+    public void showMachineDetailsPopUp(GamesMachine selected) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/machineViewer.fxml"));
@@ -391,23 +391,22 @@ public class SystemController implements Initializable {
             machineNameLabel.setText(selected.getName().toUpperCase());
             machineManLabel.setText(selected.getManufacturer().toUpperCase());
             machineMediaLabel.setText(selected.getMedia());
-            machinePriceLabel.setText("€"+ selected.getPrice());
+            machinePriceLabel.setText("€" + selected.getPrice());
             mYearLabel.setText(String.valueOf(selected.getYear()));
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             mImageLabel.setText(selected.getImage().toLowerCase());
-            StringBuilder namesText = new StringBuilder();
 
+            String names="";
             for (GamePort gp : allGamePorts) {
-
-                if(gp.getMachinePortedTo().getName().equals(selected.getName()))
-                    namesText.append(gp.getGameName()).append(" , ");
+                if (gp.getMachinePortedTo().getName().equals(selected.getName()))
+                 names+= gp.getGameName().toUpperCase() +" ( " +gp.getMachinePortedTo().getName().toUpperCase()+" ) , ";
             }
-            mPortsLabel.setText(namesText.toString());
-            StringBuilder gamesText = new StringBuilder();
-            for(Game g: selected.getGames()){
-                gamesText.append(g.getName()).append(" (").append(g.getYear()).append(") , ");
+            mPortsLabel.setText(names);
+            String gamesText = "";
+            for (Game g : selected.getGames()) {
+                gamesText+= g.getName().toUpperCase() +" ( " +g.getYear()+" ) , ";
             }
-            mGamesLabel.setText(gamesText.toString());
+            mGamesLabel.setText(gamesText);
             try {
                 Image image = new Image(coverURL);
                 machineImage.setImage(image);
@@ -420,7 +419,7 @@ public class SystemController implements Initializable {
 
             Stage popUp = new Stage();
             Main.getMainStage().setIconified(true);
-            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(true));
+            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(false));
             popUp.setTitle(selected.getName().toUpperCase() + " MACHINE DETAILS");
             popUp.setResizable(false);
             Scene newScene = new Scene(root, 500, 700);
@@ -428,14 +427,14 @@ public class SystemController implements Initializable {
             newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
             popUp.show();
         } catch (IOException e) {
-            Utilities.showWarningAlert("Error","Error");
+            Utilities.showWarningAlert("Error", "Error");
         }
     }
 
     public void resultsClicked(MouseEvent event) {
         String toDrill;
-        if(event.getButton().equals(MouseButton.PRIMARY)) {
-            if(event.getClickCount() == 2) {
+        if (event.getButton().equals(MouseButton.PRIMARY)) {
+            if (event.getClickCount() == 2) {
                 toDrill = searchResults.getSelectionModel().getSelectedItem();
                 Object foundDrill = hashMap.find(toDrill);
 
@@ -448,8 +447,14 @@ public class SystemController implements Initializable {
                     } else if (foundDrill instanceof Game) {
                         for (GamePort p : ((Game) foundDrill).getPorts()) {
                             searchResults.getItems().clear();
+                            if(((Game) foundDrill).getPorts().isEmpty()){
+                                Utilities.showInformationAlert("DRILL-DOWN","THIS GAME DOES NOT HAVE ANY PORTS TO DRILL FURTHER");
+                            }
+                            searchResults.getItems().add("--------------------LIST OF GAME PORTS FOR "+((Game) foundDrill).getName().toUpperCase()+"--------------------");
                             searchResults.getItems().add(p.toString());
                         }
+                    } else if (foundDrill instanceof GamePort) {
+                        Utilities.showInformationAlert("DRILL-DOWN","CANNOT DRILL DOWN ANY FURTHER");
                     }
                 }
             }
@@ -558,6 +563,29 @@ public class SystemController implements Initializable {
        } else
            Utilities.showWarningAlert("ERR", "SELECT A WAY TO SORT");
     }
+
+    public void edit() throws IOException {
+        String selected = searchResults.getSelectionModel().getSelectedItem();
+        Object found;
+
+        if (selected != null) {
+            found = hashMap.find(selected);
+            if (found instanceof Game) {
+                 gameAPI.editGames();
+                 GameEditController.gameEditController.gameEditTable.getSelectionModel().select((Game) found);
+            } else if (found instanceof GamesMachine) {
+                gameAPI.editMachine();
+                MachineEditController.machineEditController.machineEditTable.getSelectionModel().select((GamesMachine) found);
+            } else if (found instanceof GamePort) {
+                gameAPI.editPorts();
+                PortEditController.portEditController.portEditTable.getSelectionModel().select((GamePort) found);
+            } else {
+                Utilities.showWarningAlert("ERR", "Invalid selection");
+            }
+        } else {
+            Utilities.showWarningAlert("ERR", "SELECT A RESULT");
+        }
+   }
 }
 
 

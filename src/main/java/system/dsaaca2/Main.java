@@ -11,8 +11,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
-    public static Scene homePageScene,gameScene,systemScene;
+    public static Scene homePageScene,gameScene,systemScene,gameEditScene;
     public static Stage mainStage;
+
 
     public static void main(String[] args) {
         launch();
