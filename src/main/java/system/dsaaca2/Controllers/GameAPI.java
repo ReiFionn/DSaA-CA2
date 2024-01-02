@@ -6,7 +6,7 @@ import system.dsaaca2.Datastructures.HashMap;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
 import system.dsaaca2.Models.*;
-import system.dsaaca2.utils.Persistance;
+import system.dsaaca2.utils.Persistence;
 import system.dsaaca2.utils.Utilities;
 import java.io.IOException;
 import java.net.URL;
@@ -218,7 +218,7 @@ public class GameAPI implements Initializable {
 
     public void save() {
         try {
-            Persistance.save();
+            Persistence.save();
             Utilities.showInformationAlert("SAVED!","PROGRESS SAVED TO SYSTEM");
         } catch (Exception e) {
             e.printStackTrace();
@@ -229,7 +229,7 @@ public class GameAPI implements Initializable {
     public void load() {
         try {
             reset();
-            Persistance.load();
+            Persistence.load();
 
             for (GamesMachine machine : allMachines) {
                 EditsController.editsController.machineEditTable.getItems().add(machine);

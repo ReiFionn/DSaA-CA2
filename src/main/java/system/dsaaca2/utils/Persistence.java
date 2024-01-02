@@ -13,14 +13,12 @@ import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class Persistance {
+public class Persistence {
 
-    @SuppressWarnings("unchecked") /*Just removes annoying warnings*/
     public static void load() throws Exception {
         Class<?>[] classes = new Class[]{Game.class, GamePort.class, GamesMachine.class, SillyList.class};
 
         XStream xstream = new XStream(new DomDriver());
-        XStream.setupDefaultSecurity(xstream);
         xstream.allowTypes(classes);
 
         ObjectInputStream in = xstream.createObjectInputStream(new FileReader("system.xml"));
@@ -28,7 +26,6 @@ public class Persistance {
 
         in.close();
     }
-
 
     public static void save() throws Exception {
         XStream xstream = new XStream(new DomDriver());
