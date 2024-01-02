@@ -49,6 +49,8 @@ public class SystemController implements Initializable {
         /*Adds filtering/sorting options*/
         machineFilter.getItems().addAll("Name", "Description", "Year", "Manufacturer", "Type", "Media");
         machineSort.getItems().addAll("Price Lowest ---> Highest", "Alphabetically", "Oldest ---> Newest");
+        gameAndPortFilter.getItems().addAll("Game Name", "Games by Publisher", "Games by Description", "Developers", "Games Machine", "Year");
+        gameAndPortSort.getItems().addAll("A ---> Z", "Newest ---> Oldest ", "Oldest ---> Newest");
     }
 
     @Override
@@ -148,7 +150,7 @@ public class SystemController implements Initializable {
                         for (GamePort p : g.getPorts()) {
                             if (p.getGameName().toLowerCase().startsWith(search.toLowerCase())|| p.getGameName().toLowerCase().contains(search.toLowerCase())) {
                                 searchResults.getItems().add(p.toString());
-                                searchResultsList.add(g.toString());
+                                searchResultsList.add(p.toString());
                                 added = true;
                             }
                         }
@@ -171,7 +173,7 @@ public class SystemController implements Initializable {
                         for (GamePort p : g.getPorts()) {
                             if (String.valueOf(p.getYear()).startsWith(search)) {
                                 searchResults.getItems().add(p.toString());
-                                searchResultsList.add(g.toString());
+                                searchResultsList.add(p.toString());
                                 added = true;
                             }
                         }
