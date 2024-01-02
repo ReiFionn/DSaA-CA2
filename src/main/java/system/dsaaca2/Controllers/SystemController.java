@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class SystemController implements Initializable {
-    public static SystemController sysControll = new SystemController();
+    public static SystemController sysControl = new SystemController();
     public TextField searchMachines;
     public ListView<String> searchResults = new ListView<>();
     public TextField searchGamesAndPorts;
@@ -48,14 +48,12 @@ public class SystemController implements Initializable {
     public void populateSearchFiltersAndSorts() {
         /*Adds filtering/sorting options*/
         machineFilter.getItems().addAll("Name", "Description", "Year", "Manufacturer", "Type", "Media");
-        machineSort.getItems().addAll("Price Highest ---> Lowest ", "Alphabetically", "Oldest ---> Newest");
-        gameAndPortFilter.getItems().addAll("Game Name", "Games by Publisher", "Games by Description", "Developers", "Games Machine", "Year");
-        gameAndPortSort.getItems().addAll("A ---> Z", "Newest ---> Oldest ", "Oldest ---> Newest");
+        machineSort.getItems().addAll("Price Lowest ---> Highest", "Alphabetically", "Oldest ---> Newest");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        sysControll = this;
+        sysControl = this;
         populateSearchFiltersAndSorts();
     }
 
@@ -294,7 +292,7 @@ public class SystemController implements Initializable {
 
        if (sort != null) {
            if ("Oldest ---> Newest".equalsIgnoreCase(sort)) {
-               for (int e = 1; e < results.size()-1; e++) {
+               for (int e = 1; e < results.size(); e++) {
                    int elem;
 
                    if (results.get(e) instanceof GamesMachine) {
@@ -354,7 +352,29 @@ public class SystemController implements Initializable {
                    }
                }
            } else {
+               for (int e = 1; e < results.size(); e++) {
+                   double elem;
 
+                   if (results.get(e) instanceof GamesMachine) {
+                       elem = ((GamesMachine) results.get(e)).getPrice();
+                   } else if (results.get(e) instanceof Game) {
+                       Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
+                       break;
+                   } else {
+                       Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
+                       break;
+                   }
+
+                   int i;
+                   for (i = e; i >=1; i--) {
+                       double eye = ((GamesMachine) results.get(i-1)).getPrice();
+
+                       if (eye <= elem)
+                           break;
+                       else
+                           results.swapIndex(i, i-1);
+                   }
+               }
            }
 
            searchResults.getItems().clear();
