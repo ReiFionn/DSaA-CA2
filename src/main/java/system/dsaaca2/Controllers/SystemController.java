@@ -94,6 +94,7 @@ public class SystemController implements Initializable {
 
     public void switchSceneBack() {
         Main.mainStage.setScene(Main.gameScene);
+        searchResults.getItems().clear();
     }
 
     public void populateSearchFiltersAndSorts() {
@@ -453,7 +454,7 @@ public class SystemController implements Initializable {
         if(event.getButton().equals(MouseButton.PRIMARY)) {
             if(event.getClickCount() == 2) {
                 toDrill = searchResults.getSelectionModel().getSelectedItem();
-                Object foundDrill = gameAPI.hashMap.find(toDrill);
+                Object foundDrill = hashMap.find(toDrill);
 
                 if (foundDrill != null) {
                     if (foundDrill instanceof GamesMachine) {

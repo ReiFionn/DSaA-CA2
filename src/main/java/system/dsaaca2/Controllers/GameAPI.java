@@ -38,7 +38,7 @@ public class GameAPI implements Initializable {
     public static SillyList<GamesMachine> allMachines = new SillyList<>();
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
-    public HashMap<Hashable> hashMap = new HashMap<>(10);
+    public static HashMap<Hashable> hashMap = new HashMap<>(10);
 
     public void addGamesMachine() {
         if (!machineNameText.getText().isEmpty() && !machinePriceText.getText().isEmpty() && !machineImageText.getText().isEmpty() && !machineYearText.getText().isEmpty() && !machineManuText.getText().isEmpty() && !machineDescText.getText().isEmpty() && !machineMediaText.getText().isEmpty() && !machineTypeText.getText().isEmpty()) {

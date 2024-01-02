@@ -90,12 +90,14 @@ public class MachineEditController implements Initializable {
         if (selectedMachine != null) {
 
             if (!updateMachineName.getText().isEmpty() && !updateMachineMan.getText().isEmpty() && !updateMachineDesc.getText().isEmpty() && !updateMachineType.getText().isEmpty() && !updateMachineMedia.getText().isEmpty() && !updateMachineImage.getText().isEmpty() && !updateMachinePrice.getText().isEmpty() && !updateMachineYear.getText().isEmpty()) {
+                hashMap.remove(selectedMachine.toString());
                 selectedMachine.setName(updateMachineName.getText());
                 selectedMachine.setManufacturer(updateMachineMan.getText());
                 selectedMachine.setDescription(updateMachineDesc.getText());
                 selectedMachine.setType(updateMachineType.getText());
                 selectedMachine.setMedia(updateMachineMedia.getText());
                 selectedMachine.setImage(updateMachineImage.getText());
+                hashMap.add(selectedMachine.toString(), selectedMachine);
                 try {
                     selectedMachine.setPrice(Double.parseDouble(updateMachinePrice.getText()));
                 } catch (NumberFormatException e) {
