@@ -3,6 +3,7 @@ package system.dsaaca2.Controllers;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
@@ -88,7 +89,16 @@ public class GameEditController implements Initializable {
         } else
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO UPDATE");
     }
+    public void showViewer() {
+        Game p = gameEditTable.getSelectionModel().getSelectedItem();
+        if (p != null) {
 
+            SystemController.sysControl.showGameDetailsPopup(p);
+
+
+
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateGamesMachineBox.getItems().addAll(allMachines);

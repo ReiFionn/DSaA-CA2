@@ -300,6 +300,9 @@ public class SystemController implements Initializable {
             }
 
             Stage popUp = new Stage();
+            Main.getMainStage().setIconified(true);
+            Main.getMainStage().setOnCloseRequest(event -> Main.getMainStage().setIconified(true));
+
             popUp.setTitle(selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
             popUp.setResizable(false);
             Scene newScene = new Scene(root, 500, 700);
@@ -354,6 +357,8 @@ public class SystemController implements Initializable {
 
             Stage popUp = new Stage();
             popUp.setTitle(selected.getGamesMachineName().toUpperCase() + " GAME DETAILS");
+            Main.getMainStage().setIconified(true);
+            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(false));
             popUp.setResizable(false);
             Scene newScene = new Scene(root, 500, 700);
             popUp.setScene(newScene);
@@ -369,7 +374,7 @@ public class SystemController implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/machineViewer.fxml"));
             Parent root = fxmlLoader.load();
-
+            fxmlLoader.setController(this);
             ImageView machineImage = (ImageView) root.lookup("#machineImage");
             String coverURL = selected.getImage();
             Label machineNameLabel = (Label) root.lookup("#machineNameLabel");
@@ -414,6 +419,8 @@ public class SystemController implements Initializable {
             }
 
             Stage popUp = new Stage();
+            Main.getMainStage().setIconified(true);
+            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(true));
             popUp.setTitle(selected.getName().toUpperCase() + " MACHINE DETAILS");
             popUp.setResizable(false);
             Scene newScene = new Scene(root, 500, 700);
