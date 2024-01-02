@@ -16,8 +16,8 @@ import java.util.ResourceBundle;
 
 import static system.dsaaca2.Controllers.GameAPI.*;
 
-public class EditsController implements Initializable {
-    public static EditsController editsController = new EditsController();
+public class MachineEditController implements Initializable {
+    public static MachineEditController machineEditController = new MachineEditController();
 
     @FXML
     public TableView<GamesMachine> machineEditTable = new TableView<>();
@@ -51,7 +51,7 @@ public class EditsController implements Initializable {
     /*----------------------------*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        EditsController.editsController = this;
+        MachineEditController.machineEditController = this;
         machineEditTable.getItems().addAll(allMachines);
         mName.setCellValueFactory(new PropertyValueFactory<>("name"));
         mMan.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
@@ -63,8 +63,8 @@ public class EditsController implements Initializable {
         mPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-    public static EditsController getEditsController() {
-        return editsController;
+    public static MachineEditController getEditsController() {
+        return machineEditController;
     }
 
     public void onMachineSelect() {
@@ -157,8 +157,8 @@ public class EditsController implements Initializable {
         PortEditController.portEditController.portEditTable.getItems().clear();
         PortEditController.portEditController.portEditTable.getItems().addAll(allGamePorts);
 
-        EditsController.editsController.machineEditTable.getItems().clear();
-        EditsController.editsController.machineEditTable.getItems().addAll(allMachines);
+        MachineEditController.machineEditController.machineEditTable.getItems().clear();
+        MachineEditController.machineEditController.machineEditTable.getItems().addAll(allMachines);
 
         gameAPI.portMachineCombo.getItems().clear();
         gameAPI.portMachineCombo.getItems().addAll(allMachines);

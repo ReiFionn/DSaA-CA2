@@ -15,6 +15,7 @@ import java.io.ObjectOutputStream;
 
 public class Persistence {
 
+@SuppressWarnings("unchecked")
     public static void load() throws Exception {
         Class<?>[] classes = new Class[]{Game.class, GamePort.class, GamesMachine.class, SillyList.class};
 

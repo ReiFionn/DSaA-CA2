@@ -75,7 +75,7 @@ public class GameEditController implements Initializable {
                     }
                 }
 
-                EditsController.getEditsController().refreshAllViews();
+                MachineEditController.getEditsController().refreshAllViews();
                 gameEditTable.getItems().clear();
                 gameEditTable.getItems().addAll(allGames);
                 if (portsDeleted > 0) {

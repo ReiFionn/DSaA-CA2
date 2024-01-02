@@ -161,26 +161,38 @@
           <price>50.0</price>
           <games>
             <head>
+              <next>
+                <contents class="system.dsaaca2.Models.Game">
+                  <name>The last of us 1</name>
+                  <publisher>Sony</publisher>
+                  <description>zombie</description>
+                  <developers>Naughty Dog</developers>
+                  <cover>https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg</cover>
+                  <gamesMachine reference="../../../../.."/>
+                  <year>2009</year>
+                  <ports>
+                    <head>
+                      <contents class="system.dsaaca2.Models.GamePort">
+                        <originalGame reference="../../../.."/>
+                        <machinePortedTo reference="../../../../../../../../../next/next/next/contents/games/head/contents/ports/head/contents/machinePortedTo/games/head/contents/ports/head/contents/machinePortedTo"/>
+                        <originalMachine reference="../../../../../../../.."/>
+                        <developers>Naughty Dog</developers>
+                        <cover>https://ie.static.webuy.com/product_images/Gaming/Playstation4%20Software/711719441717_l.jpg</cover>
+                        <portYear>2017</portYear>
+                      </contents>
+                    </head>
+                  </ports>
+                </contents>
+              </next>
               <contents class="system.dsaaca2.Models.Game">
-                <name>The last of us 1</name>
+                <name>Sly Cooper</name>
                 <publisher>Sony</publisher>
-                <description>zombie</description>
-                <developers>Naughty Dog</developers>
-                <cover>https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg</cover>
+                <description>racoon</description>
+                <developers>Sony</developers>
+                <cover>q</cover>
                 <gamesMachine reference="../../../.."/>
-                <year>2009</year>
-                <ports>
-                  <head>
-                    <contents class="system.dsaaca2.Models.GamePort">
-                      <originalGame reference="../../../.."/>
-                      <machinePortedTo reference="../../../../../../../../next/next/next/contents/games/head/contents/ports/head/contents/machinePortedTo/games/head/contents/ports/head/contents/machinePortedTo"/>
-                      <originalMachine reference="../../../../../../.."/>
-                      <developers>Naughty Dog</developers>
-                      <cover>https://ie.static.webuy.com/product_images/Gaming/Playstation4%20Software/711719441717_l.jpg</cover>
-                      <portYear>2017</portYear>
-                    </contents>
-                  </head>
-                </ports>
+                <year>2010</year>
+                <ports/>
               </contents>
             </head>
           </games>
