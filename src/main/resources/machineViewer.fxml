@@ -40,7 +40,7 @@
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="235.0" layoutY="449.0" prefHeight="37.0" prefWidth="58.0" text="Price:" textFill="#fdf0f0">
+            <Label layoutX="246.0" layoutY="449.0" prefHeight="37.0" prefWidth="58.0" text="Price:" textFill="#fdf0f0">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>
@@ -55,12 +55,12 @@
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label id="machineMediaLabel" fx:id="machineMediaLabel" layoutX="89.0" layoutY="418.0" prefHeight="37.0" prefWidth="277.0" textFill="#8decff">
+            <Label id="machineMediaLabel" fx:id="machineMediaLabel" layoutX="89.0" layoutY="418.0" prefHeight="37.0" prefWidth="145.0" textFill="#8decff">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label id="machinePriceLabel" fx:id="machinePriceLabel" layoutX="281.0" layoutY="449.0" prefHeight="37.0" prefWidth="106.0" textFill="#8decff">
+            <Label id="machinePriceLabel" fx:id="machinePriceLabel" layoutX="294.0" layoutY="449.0" prefHeight="37.0" prefWidth="106.0" textFill="#8decff">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>
@@ -70,35 +70,35 @@
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="107.0" layoutY="623.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="260.0" stylesheets="@popUpStyle.css" text="EDIT OR MODIFY THIS MACHINE" />
-            <Label layoutX="26.0" layoutY="479.0" prefHeight="37.0" prefWidth="62.0" text="Image:" textFill="#fdf0f0">
+            <Button layoutX="107.0" layoutY="643.0" mnemonicParsing="false" onAction="#edit" prefHeight="35.0" prefWidth="260.0" stylesheets="@popUpStyle.css" text="EDIT OR MODIFY THIS MACHINE" />
+            <Label layoutX="246.0" layoutY="418.0" prefHeight="37.0" prefWidth="62.0" text="Image:" textFill="#fdf0f0">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label id="mImageLabel" fx:id="mImageLabel" layoutX="80.0" layoutY="479.0" prefHeight="37.0" prefWidth="277.0" textFill="#8decff">
+            <Label id="mImageLabel" fx:id="mImageLabel" layoutX="288.0" layoutY="418.0" prefHeight="37.0" prefWidth="173.0" textFill="#8decff">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="27.0" layoutY="512.0" prefHeight="37.0" prefWidth="60.0" text="Games:" textFill="#fdf0f0">
+            <Label layoutX="27.0" layoutY="478.0" prefHeight="37.0" prefWidth="60.0" text="Games:" textFill="#fdf0f0">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label id="mGamesLabel" fx:id="mGamesLabel" layoutX="79.0" layoutY="512.0" prefHeight="37.0" prefWidth="299.0" textFill="#8decff" wrapText="true">
+            <Label layoutX="27.0" layoutY="538.0" prefHeight="37.0" prefWidth="101.0" text="Ported Games:" textFill="#fdf0f0">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="27.0" layoutY="558.0" prefHeight="37.0" prefWidth="101.0" text="Ported Games:" textFill="#fdf0f0">
+            <Label id="mPortsLabel" fx:id="mPortsLabel" alignment="TOP_LEFT" layoutX="27.0" layoutY="567.0" prefHeight="67.0" prefWidth="427.0" textFill="#8decff" wrapText="true">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label id="mPortsLabel" fx:id="mPortsLabel" layoutX="131.0" layoutY="558.0" prefHeight="37.0" prefWidth="299.0" textFill="#8decff" wrapText="true">
+            <Label id="mGamesLabel" fx:id="mGamesLabel" alignment="TOP_LEFT" layoutX="82.0" layoutY="490.0" prefHeight="54.0" prefWidth="375.0" style="-fx-background-color: black;" textFill="#8decff" wrapText="true">
                <font>
-                  <Font name="Cambria Math" size="15.0" />
+                  <Font name="Cambria Math" size="14.0" />
                </font>
             </Label>
          </AnchorPane>

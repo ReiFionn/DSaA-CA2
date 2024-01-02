@@ -70,7 +70,7 @@
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="128.0" layoutY="600.0" mnemonicParsing="false" text="EDIT OR MODIFY THIS PORT" />
+            <Button layoutX="153.0" layoutY="617.0" mnemonicParsing="false" onAction="#edit" text="EDIT OR MODIFY THIS PORT" />
             <Label layoutX="31.0" layoutY="550.0" prefHeight="37.0" prefWidth="91.0" text="Port Cover:" textFill="#fdf0f0">
                <font>
                   <Font name="Cambria Math" size="15.0" />
