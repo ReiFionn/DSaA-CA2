@@ -53,18 +53,15 @@ public class SillyList<O> implements List<O> {
 
     @Override
     public boolean add(O o) {
-        if (o == null) {
+        if (o == null)
             return false;
-        }
         SillyNode<O> sn = new SillyNode<>();
         sn.setContents(o);
 
-        if (isEmpty())
-            head = sn;
-        else {
+        if (!isEmpty()) {
             sn.next = head;
-            head = sn;
         }
+        head = sn;
 
         return true;
     }
@@ -178,8 +175,8 @@ public class SillyList<O> implements List<O> {
     public static class SillyIterator<I> implements Iterator<I> {
         private SillyNode<I> pos;
 
-        public SillyIterator(SillyNode<I> fnode) {
-            pos = fnode;
+        public SillyIterator(SillyNode<I> fNode) {
+            pos = fNode;
         }
 
         @Override

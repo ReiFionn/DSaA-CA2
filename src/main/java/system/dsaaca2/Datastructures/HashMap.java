@@ -1,7 +1,6 @@
 package system.dsaaca2.Datastructures;
 
 import system.dsaaca2.Models.Hashable;
-
 import static java.lang.Math.abs;
 
 public class HashMap<E extends Hashable> {
