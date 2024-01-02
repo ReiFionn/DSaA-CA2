@@ -17,7 +17,7 @@
                 <columns>
                     <TableColumn fx:id="mName" prefWidth="164.66666221618652" text="MACHINE"/>
                     <TableColumn fx:id="gNam" prefWidth="148.6666717529297" text="GAME NAME"/>
-                    <TableColumn fx:id="gpub" prefWidth="123.33332824707031" text="PUBLISHER"/>
+                    <TableColumn fx:id="gPub" prefWidth="123.33332824707031" text="PUBLISHER"/>
                     <TableColumn fx:id="gDesc" prefWidth="148.66671752929688" text="DESCRIPTION"/>
                     <TableColumn fx:id="gDev" prefWidth="132.66668701171875" text="DEVELOPERS"/>
                     <TableColumn fx:id="gCover" prefWidth="138.6666259765625" text="COVER"/>

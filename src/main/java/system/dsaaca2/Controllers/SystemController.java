@@ -1,10 +1,8 @@
 package system.dsaaca2.Controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -15,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import system.dsaaca2.Datastructures.HashMap;
 import javafx.stage.Stage;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
@@ -24,7 +21,6 @@ import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.Models.Hashable;
 import system.dsaaca2.utils.Utilities;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -41,10 +37,8 @@ public class SystemController implements Initializable {
     public ComboBox<String> machineSort = new ComboBox<>();
     public ComboBox<String> gameAndPortFilter = new ComboBox<>();
     public ComboBox<String> gameAndPortSort = new ComboBox<>();
+    private final SillyList<String > searchResultsList = new SillyList<>();
 
-
-    @FXML
-    private ImageView portImage;
     @FXML
     public Label portNameLabel = new Label();
     @FXML
@@ -98,12 +92,11 @@ public class SystemController implements Initializable {
     @FXML
     public Label mPortsLabel= new Label();
 
-    public void switchSceneBack(ActionEvent actionEvent) {
+    public void switchSceneBack() {
         Main.mainStage.setScene(Main.gameScene);
     }
 
     public void populateSearchFiltersAndSorts() {
-        /*Adds filtering/sorting options*/
         machineFilter.getItems().addAll("Name", "Description", "Year", "Manufacturer", "Type", "Media");
         machineSort.getItems().addAll("Price Lowest ---> Highest", "Alphabetically", "Oldest ---> Newest");
         gameAndPortFilter.getItems().addAll("Game Name", "Games by Publisher", "Games by Description", "Developers", "Games Machine", "Year");
@@ -115,12 +108,6 @@ public class SystemController implements Initializable {
         sysControl = this;
         populateSearchFiltersAndSorts();
     }
-
-    /*A list that stores found results from searches and is then added to the listview
-     * for the purpose of sorting later on (maybe)*/
-
-    SillyList<String > searchResultsList = new SillyList<>();
-
 
     public void searchMachines() {
         searchResults.getItems().clear();
@@ -203,7 +190,6 @@ public class SystemController implements Initializable {
                             searchResultsList.add(g.toString());
                             added = true;
                         }
-                        /*all ports made for that machine*/
                         for (GamePort p : g.getPorts()) {
                             if (p.getGameName().toLowerCase().startsWith(search.toLowerCase())|| p.getGameName().toLowerCase().contains(search.toLowerCase())) {
                                 searchResults.getItems().add(p.toString());
@@ -282,7 +268,7 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("EMPTY", "THE SEARCH FIELD IS EMPTY, PLEASE ENTER SOMETHING TO SEARCH");
     }
 
-    public void selectForDetails() throws IOException {
+    public void selectForDetails(){
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
 
@@ -302,7 +288,7 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("ERR", "SELECT A RESULT");
         }
     }
-    public void showPortDetailsPopUp(GamePort selected) throws IOException {
+    public void showPortDetailsPopUp(GamePort selected){
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/portViewer.fxml"));
@@ -336,7 +322,6 @@ public class SystemController implements Initializable {
                 portImageView.setImage(defaultImage);
             }
 
-
             Stage popUp = new Stage();
             popUp.setTitle(selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
             popUp.setResizable(false);
@@ -349,14 +334,11 @@ public class SystemController implements Initializable {
         }
     }
 
-
-    public void showGameDetailsPopup(Game selected) throws IOException {
-
+    public void showGameDetailsPopup(Game selected){
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/gameViewer.fxml"));
             Parent root = fxmlLoader.load();
-
 
             ImageView gameImage = (ImageView) root.lookup("#gameImage");
             String coverURL = selected.getCover();
@@ -376,12 +358,12 @@ public class SystemController implements Initializable {
             gameYearLabel.setText(String.valueOf(selected.getYear()));
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             gameCoverLabel.setText(selected.getCover().toLowerCase());
-            String namesText = "";
+            StringBuilder namesText = new StringBuilder();
 
             for (GamePort gp : selected.getPorts()) {
-                namesText += gp.getMachinePortedTo().getName().toUpperCase() + "\n";
+                namesText.append(gp.getMachinePortedTo().getName().toUpperCase()).append("\n");
             }
-            gamesPortsLabel.setText(namesText);
+            gamesPortsLabel.setText(namesText.toString());
 
             try {
                 Image image = new Image(coverURL);
@@ -392,7 +374,6 @@ public class SystemController implements Initializable {
                 Image defaultImage = new Image("/default.png");
                 gameImage.setImage(defaultImage);
             }
-
 
             Stage popUp = new Stage();
             popUp.setTitle(selected.getGamesMachineName().toUpperCase() + " GAME DETAILS");
@@ -405,12 +386,12 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("Error","Error");
         }
     }
-    public void showMachineDetailsPopUp(GamesMachine selected) throws IOException {
+
+    public void showMachineDetailsPopUp(GamesMachine selected){
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/machineViewer.fxml"));
             Parent root = fxmlLoader.load();
-
 
             ImageView machineImage = (ImageView) root.lookup("#machineImage");
             String coverURL = selected.getImage();
@@ -432,19 +413,19 @@ public class SystemController implements Initializable {
             mYearLabel.setText(String.valueOf(selected.getYear()));
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             mImageLabel.setText(selected.getImage().toLowerCase());
-            String namesText = "";
+            StringBuilder namesText = new StringBuilder();
 
             for (GamePort gp : allGamePorts) {
 
                 if(gp.getMachinePortedTo().getName().equals(selected.getName()))
-                    namesText += gp.getGameName() + " , ";
+                    namesText.append(gp.getGameName()).append(" , ");
             }
-            mPortsLabel.setText(namesText);
-            String gamesText = "";
+            mPortsLabel.setText(namesText.toString());
+            StringBuilder gamesText = new StringBuilder();
             for(Game g: selected.getGames()){
-                gamesText += g.getName() + " ("+g.getYear() +") , ";
+                gamesText.append(g.getName()).append(" (").append(g.getYear()).append(") , ");
             }
-            mGamesLabel.setText(gamesText);
+            mGamesLabel.setText(gamesText.toString());
             try {
                 Image image = new Image(coverURL);
                 machineImage.setImage(image);
@@ -454,7 +435,6 @@ public class SystemController implements Initializable {
                 Image defaultImage = new Image("/default.png");
                 machineImage.setImage(defaultImage);
             }
-
 
             Stage popUp = new Stage();
             popUp.setTitle(selected.getName().toUpperCase() + " MACHINE DETAILS");

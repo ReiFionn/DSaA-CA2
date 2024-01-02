@@ -7,10 +7,8 @@ import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class GameEditController implements Initializable {
@@ -19,7 +17,7 @@ public class GameEditController implements Initializable {
     public TableView<Game> gameEditTable = new TableView<>();
     public TableColumn<GamesMachine, String> mName;
     public TableColumn<Game, String> gNam;
-    public TableColumn<Game, String> gpub;
+    public TableColumn<Game, String> gPub;
     public TableColumn<Game, String> gDesc;
     public TableColumn<Game, String> gDev;
     public TableColumn<Game, String> gCover;
@@ -36,7 +34,6 @@ public class GameEditController implements Initializable {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
 
         if (selectedGame != null) {
-            // Update text fields with the values of the selected machine
             updateGameName.setText(selectedGame.getName());
             updateGamePub.setText(selectedGame.getPublisher());
             updateGameCover.setText(selectedGame.getCover());
@@ -51,7 +48,6 @@ public class GameEditController implements Initializable {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
 
         if (selectedGame != null) {
-            Game previousGame  = selectedGame;
             if (!updateGameName.getText().isEmpty() && !updateGamePub.getText().isEmpty() && !updateGameCover.getText().isEmpty() && !updateGameDesc.getText().isEmpty() && !updateGameYear.getText().isEmpty() && !updateGameDev.getText().isEmpty() && !updateGamesMachineBox.isShowing()) {
                 selectedGame.setName(updateGameName.getText());
                 selectedGame.setPublisher(updateGamePub.getText());
@@ -60,7 +56,7 @@ public class GameEditController implements Initializable {
                 selectedGame.setDevelopers(updateGameDev.getText());
                 selectedGame.setGamesMachine(updateGamesMachineBox.getSelectionModel().getSelectedItem());
                 try {
-                    selectedGame.setYear(Integer.parseInt(updateGameYear.getText())); /* Parsing the string value input to convert to a numerical value */
+                    selectedGame.setYear(Integer.parseInt(updateGameYear.getText()));
                     if (!Utilities.intValidRange(selectedGame.getYear(), 1900, 2024)) {
                         Utilities.showWarningAlert("ERROR", "PLEASE ENTER A VALID YEAR BETWEEN 1900-2023");
                         return;
@@ -83,9 +79,9 @@ public class GameEditController implements Initializable {
                 gameEditTable.getItems().clear();
                 gameEditTable.getItems().addAll(allGames);
                 if (portsDeleted > 0) {
-                    Utilities.showInformationAlert("SUCCESS", "        ---------------UPDATE SUCCESSFUL-------------\n\n " + previousGame.getName().toUpperCase() +"\n\n---> SUCCESSFULLY UPDATED TO ------->\n"+ selectedGame+"\n Ports deleted: " + portsDeleted);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------------UPDATE SUCCESSFUL-------------\n\n ---> SUCCESSFULLY UPDATED TO ------->\n"+ selectedGame+"\n Ports deleted: " + portsDeleted);
                 } else
-                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousGame.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedGame);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n ---> SUCCESSFULLY UPDATED TO ------->\n"+ selectedGame);
             } else
                 Utilities.showWarningAlert("ERROR", "PLEASE DO NOT LEAVE ANY FIELDS EMPTY");
         } else
@@ -104,7 +100,7 @@ public class GameEditController implements Initializable {
         gCover.setCellValueFactory(new PropertyValueFactory<>("cover"));
         gYear.setCellValueFactory(new PropertyValueFactory<>("year"));
         gDev.setCellValueFactory(new PropertyValueFactory<>("developers"));
-        gpub.setCellValueFactory(new PropertyValueFactory<>("publisher"));
+        gPub.setCellValueFactory(new PropertyValueFactory<>("publisher"));
     }
 
     public void removeGame() {

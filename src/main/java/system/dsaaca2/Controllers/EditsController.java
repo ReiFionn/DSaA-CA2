@@ -87,9 +87,7 @@ public class EditsController implements Initializable {
     public void applyMachineUpdate() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
 
-
         if (selectedMachine != null) {
-            GamesMachine previousMachine = selectedMachine;
 
             if (!updateMachineName.getText().isEmpty() && !updateMachineMan.getText().isEmpty() && !updateMachineDesc.getText().isEmpty() && !updateMachineType.getText().isEmpty() && !updateMachineMedia.getText().isEmpty() && !updateMachineImage.getText().isEmpty() && !updateMachinePrice.getText().isEmpty() && !updateMachineYear.getText().isEmpty()) {
                 selectedMachine.setName(updateMachineName.getText());
@@ -139,13 +137,13 @@ public class EditsController implements Initializable {
 
                 refreshAllViews();
                 if (gamesDeleted > 0 && portsDeleted > 0) {
-                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousMachine.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedMachine + "\n Games Deleted: " + gamesDeleted + "\n Ports Deleted: " + portsDeleted);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n SUCCESSFULLY UPDATED ------->\n"+ selectedMachine + "\n Games Deleted: " + gamesDeleted + "\n Ports Deleted: " + portsDeleted);
                 } else if (gamesDeleted > 0) {
-                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousMachine.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedMachine + "\n Games Deleted: " + gamesDeleted);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n SUCCESSFULLY UPDATED ------->\n"+ selectedMachine + "\n Games Deleted: " + gamesDeleted);
                 } else if (portsDeleted > 0) {
-                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousMachine.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedMachine + "\n Ports Deleted: " + portsDeleted);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n SUCCESSFULLY UPDATED ------->\n"+ selectedMachine + "\n Ports Deleted: " + portsDeleted);
                 } else
-                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n" + previousMachine.getName().toUpperCase() + " SUCCESSFULLY UPDATED TO ------->\n"+ selectedMachine);
+                    Utilities.showInformationAlert("SUCCESS", "        ---------UPDATE SUCCESSFUL--------\n\n SUCCESSFULLY UPDATED ------->\n"+ selectedMachine);
             } else
                 Utilities.showWarningAlert("ERROR", "PLEASE DO NOT LEAVE ANY FIELDS EMPTY");
         } else
@@ -167,7 +165,6 @@ public class EditsController implements Initializable {
 
         gameAPI.portGameCombo.getItems().clear();
         gameAPI.portGameCombo.getItems().addAll(allGames);
-
 
         GameEditController.gameEditController.gameEditTable.getItems().clear();
         GameEditController.gameEditController.gameEditTable.getItems().addAll(allGames);
@@ -217,7 +214,5 @@ public class EditsController implements Initializable {
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A MACHINE TO DELETE");
     }
 }
-
-//TODO DELETED GAMES COUNT LIKE OTHER CONFIRMATIONS
 
 

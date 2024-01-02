@@ -6,12 +6,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,10 +32,9 @@ public class PortEditController implements Initializable {
     public TextField portNewPortName;
     public ComboBox<GamesMachine> newMachineBox;
 
-    public void onGamePortSelect(MouseEvent mouseEvent) {
+    public void onGamePortSelect() {
         GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
         if (selectedPort != null) {
-            // Update text fields with the values of the selected machine
             currentPortGame.setText(selectedPort.getOriginalGame().getName());
             portOrigMac.setText(selectedPort.getOriginalMachine().getName());
             portNewPortName.setText(selectedPort.getMachinePortedTo().getName());
