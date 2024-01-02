@@ -1,10 +1,7 @@
 package system.dsaaca2.Models;
 
-import system.dsaaca2.Controllers.GameAPI;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.utils.Utilities;
-
-import java.util.Objects;
 
 public class GamesMachine implements Hashable{
     private String name, manufacturer, description, type, media, image;
@@ -23,7 +20,6 @@ public class GamesMachine implements Hashable{
         setYear(year);
         this.price = price;
     }
-
 
     public SillyList<Game> getGames() {
         return games;
@@ -83,7 +79,6 @@ public class GamesMachine implements Hashable{
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -92,7 +87,6 @@ public class GamesMachine implements Hashable{
         games.add(g);
         g.setGamesMachine(this);
     }
-
     public void removeGame(Game g) {
         games.remove(g);
     }

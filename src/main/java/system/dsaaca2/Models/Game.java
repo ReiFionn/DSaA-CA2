@@ -2,8 +2,6 @@ package system.dsaaca2.Models;
 
 import system.dsaaca2.Datastructures.SillyList;
 
-import java.util.Objects;
-
 public class Game implements Hashable {
     private String name, publisher, description, developers, cover;
     private GamesMachine gamesMachine;
@@ -28,7 +26,6 @@ public class Game implements Hashable {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -36,7 +33,6 @@ public class Game implements Hashable {
     public String getPublisher() {
         return publisher;
     }
-
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
@@ -44,7 +40,6 @@ public class Game implements Hashable {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -52,7 +47,6 @@ public class Game implements Hashable {
     public String getDevelopers() {
         return developers;
     }
-
     public void setDevelopers(String developers) {
         this.developers = developers;
     }
@@ -60,19 +54,17 @@ public class Game implements Hashable {
     public GamesMachine getGamesMachine() {
         return gamesMachine;
     }
+    public void setGamesMachine(GamesMachine gamesMachine) {
+        this.gamesMachine = gamesMachine;
+    }
 
     public String getGamesMachineName() {
         return gamesMachine.getName();
     }
 
-    public void setGamesMachine(GamesMachine gamesMachine) {
-        this.gamesMachine = gamesMachine;
-    }
-
     public String getCover() {
         return cover;
     }
-
     public void setCover(String cover) {
         this.cover = cover;
     }
@@ -80,7 +72,6 @@ public class Game implements Hashable {
     public int getYear() {
         return year;
     }
-
     public void setYear(int year) {
         this.year = year;
     }
@@ -88,7 +79,6 @@ public class Game implements Hashable {
     public void addPort(GamePort p) {
         ports.add(p);
     }
-
     public void removePort(GamePort p) {
         ports.remove(p);
     }
