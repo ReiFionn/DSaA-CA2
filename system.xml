@@ -3,115 +3,102 @@
     <head>
       <next>
         <next>
-          <next>
-            <contents class="system.dsaaca2.Models.GamesMachine">
-              <name>PS4</name>
-              <manufacturer>Microsoft</manufacturer>
-              <description>console</description>
-              <type>console</type>
-              <media>CD</media>
-              <image>www.net</image>
-              <year>2005</year>
-              <price>500.0</price>
-              <games>
-                <head>
-                  <contents class="system.dsaaca2.Models.Game">
-                    <name>The Last of us</name>
-                    <publisher>Naughty Dog</publisher>
-                    <description>ZAMBIE game</description>
-                    <developers>Naughty Dog</developers>
-                    <cover>https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg</cover>
-                    <gamesMachine reference="../../../.."/>
-                    <year>2010</year>
-                    <ports>
-                      <head>
-                        <contents class="system.dsaaca2.Models.GamePort">
-                          <originalGame reference="../../../.."/>
-                          <machinePortedTo>
-                            <name>Xbox 360</name>
-                            <manufacturer>Microsoft</manufacturer>
-                            <description>console</description>
-                            <type>console</type>
-                            <media>CD</media>
-                            <image>www.net</image>
-                            <year>2002</year>
-                            <price>600.0</price>
-                            <games>
-                              <head>
-                                <contents class="system.dsaaca2.Models.Game">
-                                  <name>Call of Duty II</name>
-                                  <publisher>Ubisoft</publisher>
-                                  <description>war simulator</description>
-                                  <developers>Ubisoft</developers>
-                                  <cover>www.powpow.com</cover>
-                                  <gamesMachine reference="../../../.."/>
-                                  <year>2005</year>
-                                  <ports>
-                                    <head>
-                                      <contents class="system.dsaaca2.Models.GamePort">
-                                        <originalGame reference="../../../.."/>
-                                        <machinePortedTo>
-                                          <name>GAMEBOY</name>
-                                          <manufacturer>SEGA</manufacturer>
-                                          <description>c</description>
-                                          <type>portable console</type>
-                                          <media>cartridge</media>
-                                          <image>ww.net</image>
-                                          <year>1990</year>
-                                          <price>70.0</price>
-                                          <games>
-                                            <head>
-                                              <contents class="system.dsaaca2.Models.Game">
-                                                <name>GOAT SIMULATOR</name>
-                                                <publisher>GOATS</publisher>
-                                                <description>beh</description>
-                                                <developers>GOATS</developers>
-                                                <cover>goats.cpm</cover>
-                                                <gamesMachine reference="../../../.."/>
-                                                <year>2007</year>
-                                                <ports/>
-                                              </contents>
-                                            </head>
-                                          </games>
-                                        </machinePortedTo>
-                                        <originalMachine reference="../../../../../../.."/>
-                                        <developers>Steam</developers>
-                                        <cover>woohoo</cover>
-                                        <portYear>2019</portYear>
-                                      </contents>
-                                    </head>
-                                  </ports>
-                                </contents>
-                              </head>
-                            </games>
-                          </machinePortedTo>
-                          <originalMachine reference="../../../../../../.."/>
-                          <developers>NAUGHTY DOG</developers>
-                          <cover>wooo</cover>
-                          <portYear>2015</portYear>
-                        </contents>
-                      </head>
-                    </ports>
-                  </contents>
-                </head>
-              </games>
-            </contents>
-          </next>
-          <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/contents/games/head/contents/ports/head/contents/machinePortedTo"/>
+          <contents class="system.dsaaca2.Models.GamesMachine">
+            <name>PS4</name>
+            <manufacturer>Microsoft</manufacturer>
+            <description>console</description>
+            <type>console</type>
+            <media>CD</media>
+            <image>www.net</image>
+            <year>2005</year>
+            <price>500.0</price>
+            <games>
+              <head>
+                <contents class="system.dsaaca2.Models.Game">
+                  <name>The Last of us</name>
+                  <publisher>Naughty Dog</publisher>
+                  <description>ZAMBIE game</description>
+                  <developers>Naughty Dog</developers>
+                  <cover>https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg</cover>
+                  <gamesMachine reference="../../../.."/>
+                  <year>2010</year>
+                  <ports>
+                    <head>
+                      <contents class="system.dsaaca2.Models.GamePort">
+                        <originalGame reference="../../../.."/>
+                        <machinePortedTo>
+                          <name>Xbox 360</name>
+                          <manufacturer>Microsoft</manufacturer>
+                          <description>console</description>
+                          <type>console</type>
+                          <media>CD</media>
+                          <image>www.net</image>
+                          <year>2002</year>
+                          <price>600.0</price>
+                          <games>
+                            <head>
+                              <contents class="system.dsaaca2.Models.Game">
+                                <name>Call of Duty II</name>
+                                <publisher>Ubisoft</publisher>
+                                <description>war simulator</description>
+                                <developers>Ubisoft</developers>
+                                <cover>www.powpow.com</cover>
+                                <gamesMachine reference="../../../.."/>
+                                <year>2005</year>
+                                <ports>
+                                  <head>
+                                    <contents class="system.dsaaca2.Models.GamePort">
+                                      <originalGame reference="../../../.."/>
+                                      <machinePortedTo>
+                                        <name>GAMEBOY</name>
+                                        <manufacturer>SEGA</manufacturer>
+                                        <description>boii</description>
+                                        <type>portable console</type>
+                                        <media>cartridge</media>
+                                        <image>ww.net</image>
+                                        <year>1990</year>
+                                        <price>70.0</price>
+                                        <games>
+                                          <head>
+                                            <contents class="system.dsaaca2.Models.Game">
+                                              <name>GOAT SIMULATOR</name>
+                                              <publisher>GOATS</publisher>
+                                              <description>beh</description>
+                                              <developers>GOATS</developers>
+                                              <cover>goats.cpm</cover>
+                                              <gamesMachine reference="../../../.."/>
+                                              <year>2007</year>
+                                              <ports/>
+                                            </contents>
+                                          </head>
+                                        </games>
+                                      </machinePortedTo>
+                                      <originalMachine reference="../../../../../../.."/>
+                                      <developers>Steam</developers>
+                                      <cover>woohoo</cover>
+                                      <portYear>2019</portYear>
+                                    </contents>
+                                  </head>
+                                </ports>
+                              </contents>
+                            </head>
+                          </games>
+                        </machinePortedTo>
+                        <originalMachine reference="../../../../../../.."/>
+                        <developers>Naughty Dog</developers>
+                        <cover>https://cdn.cdkeys.com/700x700/media/catalog/product/e/g/egs_wildhearts_koeitecmogamescoltd_s2_1200x1600-398fdb8dbc918051f99347ebe0335973_3_.jpg</cover>
+                        <portYear>2015</portYear>
+                      </contents>
+                    </head>
+                  </ports>
+                </contents>
+              </head>
+            </games>
+          </contents>
         </next>
-        <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/next/contents/games/head/contents/ports/head/contents/machinePortedTo/games/head/contents/ports/head/contents/machinePortedTo"/>
+        <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/contents/games/head/contents/ports/head/contents/machinePortedTo"/>
       </next>
-      <contents class="system.dsaaca2.Models.GamesMachine">
-        <name>balls</name>
-        <manufacturer>1</manufacturer>
-        <description>c</description>
-        <type>1</type>
-        <media>1</media>
-        <image>1</image>
-        <year>2000</year>
-        <price>1.0</price>
-        <games/>
-      </contents>
+      <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/next/contents/games/head/contents/ports/head/contents/machinePortedTo/games/head/contents/ports/head/contents/machinePortedTo"/>
     </head>
   </system.dsaaca2.Datastructures.SillyList>
 </object-stream>

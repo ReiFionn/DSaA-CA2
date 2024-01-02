@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
@@ -7,25 +8,77 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<DialogPane minHeight="700.0" minWidth="500.0" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.SystemController">
+<DialogPane minHeight="700.0" minWidth="500.0" prefHeight="700.0" prefWidth="500.0" styleClass="viewerBg" stylesheets="@popUpStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.SystemController">
    <content>
       <VBox minHeight="700.0" minWidth="500.0" prefHeight="700.0" prefWidth="500.0">
          <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-            <VBox layoutX="140.0" layoutY="53.0" minHeight="300.0" prefWidth="200.0"
-                  style="-fx-border-color: black;">
-               <ImageView fx:id="gameImage" fitHeight="301.0" fitWidth="200.0" pickOnBounds="true"
-                          preserveRatio="true" VBox.vgrow="ALWAYS"/>
+            <VBox layoutX="140.0" layoutY="53.0" minHeight="278.0" prefHeight="278.0" prefWidth="203.0" style="-fx-border-color: white;">
+               <ImageView id="portImage" fx:id="portImage" fitHeight="273.0" fitWidth="200.0" pickOnBounds="true" VBox.vgrow="ALWAYS" />
             </VBox>
-            <Label fx:id="gameName" layoutX="212.0" layoutY="14.0" text="Label">
+            <Label id="portNameLabel" fx:id="portNameLabel" layoutX="9.0" prefHeight="28.0" prefWidth="459.0" text="NEW PORT FOR:" textFill="#33e0e9">
                <font>
-                  <Font name="Cambria Math" size="24.0"/>
+                  <Font name="Cambria Math" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="gameYearLabel" layoutX="22.0" layoutY="389.0" prefHeight="37.0" prefWidth="163.0"
-                   text="Launch Year:">
+            <Label layoutX="31.0" layoutY="372.0" prefHeight="37.0" prefWidth="62.0" text="Game:" textFill="#fdf0f0">
                <font>
-                  <Font name="Cambria Math" size="24.0"/>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="405.0" prefHeight="37.0" prefWidth="109.0" text="Ported From:" textFill="#fdf0f0">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="442.0" prefHeight="37.0" prefWidth="91.0" text="New Port:" textFill="#fdf0f0">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="479.0" prefHeight="37.0" prefWidth="91.0" text="Developer:" textFill="#fdf0f0">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="516.0" prefHeight="37.0" prefWidth="91.0" text="Release Year:" textFill="#fdf0f0">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label id="portGameLabel" fx:id="portGameLabel" layoutX="80.0" layoutY="372.0" prefHeight="37.0" prefWidth="351.0" textFill="#61dcef">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label id="portOrigMachine" fx:id="portOrigMachine" layoutX="128.0" layoutY="405.0" prefHeight="37.0" prefWidth="277.0" textFill="#8decff">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label id="portMachineToLabel" fx:id="portMachineToLabel" layoutX="103.0" layoutY="442.0" prefHeight="37.0" prefWidth="277.0" textFill="#8decff">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label id="portYearLabel" fx:id="portYearLabel" layoutX="123.0" layoutY="516.0" prefHeight="37.0" prefWidth="277.0" textFill="#8decff">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label id="portDevLabel" fx:id="portDevLabel" layoutX="111.0" layoutY="479.0" prefHeight="37.0" prefWidth="277.0" textFill="#8decff">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="128.0" layoutY="600.0" mnemonicParsing="false" text="EDIT OR MODIFY THIS PORT" />
+            <Label layoutX="31.0" layoutY="550.0" prefHeight="37.0" prefWidth="91.0" text="Port Cover:" textFill="#fdf0f0">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
+               </font>
+            </Label>
+            <Label id="portCoverLabel" fx:id="portCoverLabel" layoutX="117.0" layoutY="550.0" prefHeight="37.0" prefWidth="277.0" textFill="#8decff">
+               <font>
+                  <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
          </AnchorPane>

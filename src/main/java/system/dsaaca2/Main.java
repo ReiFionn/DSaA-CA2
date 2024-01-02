@@ -77,22 +77,21 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(file));
         Parent root = fxmlLoader.load();
 
-        // Create a new stage
+
         Stage popUp = new Stage();
         popUp.setTitle(title);
         popUp.setResizable(false);
 
-        // Create a new scene with the loaded content
         Scene newScene = new Scene(root, 500, 700);
 
-        // Set the scene for the stage
+
         popUp.setScene(newScene);
 
-        // Add stylesheets if needed
+
         newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
 
         // Show the stage
-        popUp.showAndWait(); // You can use popUp.show() if you don't want it to block the calling code
+        popUp.showAndWait();
     }
 
 
