@@ -6,6 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
@@ -69,7 +70,13 @@ public class PortEditController implements Initializable {
         pCover.setCellValueFactory(new PropertyValueFactory<>("cover"));
         pYear.setCellValueFactory(new PropertyValueFactory<>("year"));
     }
+    public void showViewer() {
+        GamePort p = portEditTable.getSelectionModel().getSelectedItem();
+        if (p != null) {
+            SystemController.sysControl.showPortDetailsPopUp(p);
 
+        }
+    }
     public void updatePort() {
         GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
 

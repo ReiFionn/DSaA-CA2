@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,6 +26,14 @@ public class Main extends Application {
         return newScene; // Return the new scene
     }
 
+    public static Stage getMainStage() {
+        return mainStage;
+    }
+
+    public static void setMainStage(Stage mainStage) {
+        Main.mainStage = mainStage;
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -44,16 +53,18 @@ public class Main extends Application {
 
     public static Stage newPopup(String file, String title) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(file));
+
         Parent root = fxmlLoader.load();
 
         Stage popUp = new Stage();
+        mainStage.setIconified(true);
         popUp.setTitle(title);
         popUp.setResizable(false);
 
+        popUp.setOnCloseRequest(event -> mainStage.setIconified(false));
+
         Scene newScene = new Scene(root, 1000, 700);
-
         popUp.setScene(newScene);
-
         newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
         return popUp;
     }
