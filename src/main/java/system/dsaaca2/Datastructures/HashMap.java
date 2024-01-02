@@ -19,7 +19,7 @@ public class HashMap<E extends Hashable> {
 
     /* Constructs a new hash map with the specified size.
      * size is the size of the hash table.
- */
+    */
     public HashMap(int size) {
         hashTable = (SillyList<E>[]) new SillyList[size];
         for (int i=0; i<size; i++)
