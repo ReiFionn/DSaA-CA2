@@ -22,6 +22,7 @@ import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.Models.Hashable;
 import system.dsaaca2.utils.Utilities;
 
 import java.io.IOException;
@@ -41,59 +42,61 @@ public class SystemController implements Initializable {
     public ComboBox<String> gameAndPortFilter = new ComboBox<>();
     public ComboBox<String> gameAndPortSort = new ComboBox<>();
 
-    /*Port viewer fx-ids----------*/
+
     @FXML
     private ImageView portImage;
-
     @FXML
     public Label portNameLabel = new Label();
-
     @FXML
     public Label portOrigMachine= new Label();
-
     @FXML
     public Label portMachineToLabel= new Label();
-
     @FXML
     public Label portGameLabel= new Label();
-
     @FXML
     public Label portYearLabel= new Label();
-
     @FXML
     public Label portDevLabel= new Label();
-
     @FXML
     public Label portCoverLabel= new Label();
-
-    /*------------------------------*/
-  /*GAME VIEWER FX-IDS-------------*/
     @FXML
     public ImageView gameImage;
-
     @FXML
     public Label gameNameLabel= new Label();
-
     @FXML
     public Label gamePubLabel= new Label();
-
     @FXML
     public Label gameDevLabel= new Label();
-
     @FXML
     public Label gameYearLabel= new Label();
-
     @FXML
     public Label gameDescLabel= new Label();
-
     @FXML
     public Label gameCoverLabel= new Label();
-
     @FXML
     public Label gamesPortsLabel= new Label();
     @FXML
     public Label gameMachineLabel= new Label();
-    /*------------------------------*/
+    @FXML
+    public ImageView machineImage;
+    @FXML
+    public Label machineNameLabel= new Label();
+    @FXML
+    public Label machineManLabel= new Label();
+    @FXML
+    public Label machineTypeLabel= new Label();
+    @FXML
+    public Label machineMediaLabel= new Label();
+    @FXML
+    public Label machinePriceLabel= new Label();
+    @FXML
+    public Label mYearLabel= new Label();
+    @FXML
+    public Label mImageLabel= new Label();
+    @FXML
+    public Label mGamesLabel= new Label();
+    @FXML
+    public Label mPortsLabel= new Label();
 
     public void switchSceneBack(ActionEvent actionEvent) {
         Main.mainStage.setScene(Main.gameScene);
@@ -404,7 +407,65 @@ public class SystemController implements Initializable {
     }
     public void showMachineDetailsPopUp(GamesMachine selected) throws IOException {
 
-        Main.viewPopup("/machineViewer.fxml", selected.getName().toUpperCase() + " DETAILS");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/machineViewer.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            ImageView machineImage = (ImageView) root.lookup("#machineImage");
+            String coverURL = selected.getImage();
+            Label machineNameLabel = (Label) root.lookup("#machineNameLabel");
+            Label machineManLabel = (Label) root.lookup("#machineManLabel");
+            Label machineMediaLabel = (Label) root.lookup("#machineMediaLabel");
+            Label machinePriceLabel = (Label) root.lookup("#machinePriceLabel");
+            Label mYearLabel = (Label) root.lookup("#mYearLabel");
+            Label mImageLabel = (Label) root.lookup("#mImageLabel");
+            Label mGamesLabel = (Label) root.lookup("#mGamesLabel");
+            Label mPortsLabel = (Label) root.lookup("#mPortsLabel");
+            Label machineTypeLabel = (Label) root.lookup("#machineTypeLabel");
+
+            machineTypeLabel.setText(selected.getType().toUpperCase());
+            machineNameLabel.setText(selected.getName().toUpperCase());
+            machineManLabel.setText(selected.getManufacturer().toUpperCase());
+            machineMediaLabel.setText(selected.getMedia());
+            machinePriceLabel.setText("€"+ selected.getPrice());
+            mYearLabel.setText(String.valueOf(selected.getYear()));
+            gameDescLabel.setText(selected.getDescription().toUpperCase());
+            mImageLabel.setText(selected.getImage().toLowerCase());
+            String namesText = "";
+
+            for (GamePort gp : allGamePorts) {
+
+                if(gp.getMachinePortedTo().getName().equals(selected.getName()))
+                    namesText += gp.getGameName() + " , ";
+            }
+            mPortsLabel.setText(namesText);
+            String gamesText = "";
+            for(Game g: selected.getGames()){
+                gamesText += g.getName() + " ("+g.getYear() +") , ";
+            }
+            mGamesLabel.setText(gamesText);
+            try {
+                Image image = new Image(coverURL);
+                machineImage.setImage(image);
+
+            } catch (Exception e) {
+
+                Image defaultImage = new Image("/default.png");
+                machineImage.setImage(defaultImage);
+            }
+
+
+            Stage popUp = new Stage();
+            popUp.setTitle(selected.getName().toUpperCase() + " MACHINE DETAILS");
+            popUp.setResizable(false);
+            Scene newScene = new Scene(root, 500, 700);
+            popUp.setScene(newScene);
+            newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
+            popUp.show();
+        } catch (IOException e) {
+            Utilities.showWarningAlert("Error","Error");
+        }
     }
 
     public void resultsClicked(MouseEvent event) {
