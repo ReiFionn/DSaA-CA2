@@ -21,6 +21,7 @@ import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.Models.Hashable;
 import system.dsaaca2.utils.Utilities;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -29,7 +30,11 @@ import java.util.ResourceBundle;
 import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class SystemController implements Initializable {
+
     public static SystemController sysControl = new SystemController();
+    private final SillyList<String> searchResultsList = new SillyList<>();
+
+    /*JavaFx Ids*/
     public TextField searchMachines;
     public ListView<String> searchResults = new ListView<>();
     public TextField searchGamesAndPorts;
@@ -37,7 +42,6 @@ public class SystemController implements Initializable {
     public ComboBox<String> machineSort = new ComboBox<>();
     public ComboBox<String> gameAndPortFilter = new ComboBox<>();
     public ComboBox<String> gameAndPortSort = new ComboBox<>();
-    private final SillyList<String> searchResultsList = new SillyList<>();
 
     @FXML
     public Label portNameLabel = new Label();
@@ -91,12 +95,19 @@ public class SystemController implements Initializable {
     public Label mGamesLabel = new Label();
     @FXML
     public Label mPortsLabel = new Label();
+    /*------------------------------------------------------*/
 
+    /**
+     * Switches the scene back to the main game scene and clears the search results.
+     */
     public void switchSceneBack() {
         Main.mainStage.setScene(Main.gameScene);
         searchResults.getItems().clear();
     }
 
+    /**
+     * Populates the search filters and sorts for machines, games, and ports in JavaFx.
+     */
     public void populateSearchFiltersAndSorts() {
         machineFilter.getItems().addAll("Name", "Description", "Year", "Manufacturer", "Type", "Media");
         machineSort.getItems().addAll("Price Lowest ---> Highest", "Alphabetically", "Oldest ---> Newest");
@@ -105,11 +116,14 @@ public class SystemController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    /* Populates choices on scene initialisation*/ public void initialize(URL url, ResourceBundle resourceBundle) {
         sysControl = this;
         populateSearchFiltersAndSorts();
     }
 
+    /**
+     * Performs a search for machines based on the selected filter and user input.
+     */
     public void searchMachines() {
         searchResults.getItems().clear();
         searchResultsList.clear();
@@ -167,14 +181,15 @@ public class SystemController implements Initializable {
                         }
                     }
                 }
-                if (!added)
-                    Utilities.showWarningAlert("OOPS", "NO RESULTS FOUND");
-            } else
-                Utilities.showWarningAlert("OOPS", "PICK A FILTER PLEASE");
-        } else
-            Utilities.showWarningAlert("OOPS", "ENTER SOMETHING TO SEARCH FOR");
+                if (!added) Utilities.showWarningAlert("OOPS", "NO RESULTS FOUND");
+            } else Utilities.showWarningAlert("OOPS", "PICK A FILTER PLEASE");
+        } else Utilities.showWarningAlert("OOPS", "ENTER SOMETHING TO SEconARCH FOR");
     }
 
+
+    /**
+     * Performs a search for games and ports based on the selected filter and user input.
+     */
     public void searchGamesAndPorts() {
         searchResults.getItems().clear();
         searchResultsList.clear();
@@ -273,8 +288,11 @@ public class SystemController implements Initializable {
     }
 
 
-
-
+    /**
+     * Displays a pop-up displaying details for the selected game port with its image.
+     *
+     * @param selected The selected game port.
+     */
     public void showPortDetailsPopUp(GamePort selected) {
 
         try {
@@ -324,6 +342,11 @@ public class SystemController implements Initializable {
         }
     }
 
+    /**
+     * Displays a pop-up with details for the selected game with its image.
+     *
+     * @param selected The selected game.
+     */
     public void showGameDetailsPopup(Game selected) {
 
         try {
@@ -379,6 +402,11 @@ public class SystemController implements Initializable {
         }
     }
 
+    /**
+     * Displays a pop-up with details for the selected games machine with its image.
+     *
+     * @param selected The selected games machine.
+     */
     public void showMachineDetailsPopUp(GamesMachine selected) {
 
         try {
@@ -407,15 +435,15 @@ public class SystemController implements Initializable {
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             mImageLabel.setText(selected.getImage().toLowerCase());
 
-            String names="";
+            String names = "";
             for (GamePort gp : allGamePorts) {
                 if (gp.getMachinePortedTo().getName().equals(selected.getName()))
-                 names+= gp.getGameName().toUpperCase() +" ( " +gp.getMachinePortedTo().getName().toUpperCase()+" ) , ";
+                    names += gp.getGameName().toUpperCase() + " ( " + gp.getMachinePortedTo().getName().toUpperCase() + " ) , ";
             }
             mPortsLabel.setText(names);
             String gamesText = "";
             for (Game g : selected.getGames()) {
-                gamesText+= g.getName().toUpperCase() +" ( " +g.getYear()+" ) , ";
+                gamesText += g.getName().toUpperCase() + " ( " + g.getYear() + " ) , ";
             }
             mGamesLabel.setText(gamesText);
             try {
@@ -442,6 +470,12 @@ public class SystemController implements Initializable {
         }
     }
 
+    /**
+     * Triggered once a double click is registered on the search results and drills down based on the selected item.
+     * Hashing is used here to efficiently find and retrieve specific data based on the instance selected.
+     * Alerts the user if an instance can not be further expanded.
+     * @param event The mouse event.
+     */
     public void resultsClicked(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
             String toDrill = searchResults.getSelectionModel().getSelectedItem();
@@ -478,21 +512,30 @@ public class SystemController implements Initializable {
     }
 
 
-
-
+    /**
+     * Sorts the search results using Insertion Sort based on the Object instance of the selected sorting criteria.
+     * Hashing is used here for effective search and retrieval of results to sort
+     */
     public void sortResults() {
+        /* Get the selected sorting option from the combo box. */
         String sort = machineSort.getSelectionModel().getSelectedItem();
+
+        /* Create a list to store the results after sorting. */
         SillyList<Hashable> results = new SillyList<>();
 
+        /* Populate the results list with the Hashable objects corresponding to the search results. */
         for (String s : searchResultsList) {
             results.add(hashMap.find(s));
         }
 
+        /* Make sure an option is chosen. */
         if (sort != null) {
+            /* Sort based on Old -> New. */
             if ("Oldest ---> Newest".equalsIgnoreCase(sort)) {
+                /* Iterate through each element starting from the second one. */
                 for (int e = 1; e < results.size(); e++) {
+                    /* Extract the year value of the current element. */
                     int elem;
-
                     if (results.get(e) instanceof GamesMachine) {
                         elem = ((GamesMachine) results.get(e)).getYear();
                     } else if (results.get(e) instanceof Game) {
@@ -501,10 +544,11 @@ public class SystemController implements Initializable {
                         elem = ((GamePort) results.get(e)).getYear();
                     }
 
+                    /* Insert the current element at the correct position in the sorted order. */
                     int i;
                     for (i = e; i >= 1; i--) {
                         int eye;
-
+                        /* Extract the year value of the element at index (i-1). */
                         if (results.get(i - 1) instanceof GamesMachine) {
                             eye = ((GamesMachine) results.get(i - 1)).getYear();
                         } else if (results.get(i - 1) instanceof Game) {
@@ -513,16 +557,18 @@ public class SystemController implements Initializable {
                             eye = ((GamePort) results.get(i - 1)).getYear();
                         }
 
-                        if (eye <= elem)
-                            break;
-                        else
-                            results.swapIndex(i, i - 1);
+                        /* Compare and swap if necessary to maintain sorted order. */
+                        if (eye <= elem) break;
+                        else results.swapIndex(i, i - 1);
                     }
                 }
-            } else if ("Alphabetically".equalsIgnoreCase(sort)) {
+            }
+            /* Sort based on A-Z. */
+            else if ("Alphabetically".equalsIgnoreCase(sort)) {
+                /* Iterate through each element starting from the second one. */
                 for (int e = 1; e < results.size(); e++) {
+                    /* Extract the name value of the current element. */
                     String elem;
-
                     if (results.get(e) instanceof GamesMachine) {
                         elem = ((GamesMachine) results.get(e)).getName();
                     } else if (results.get(e) instanceof Game) {
@@ -531,10 +577,11 @@ public class SystemController implements Initializable {
                         elem = ((GamePort) results.get(e)).getGameName();
                     }
 
+                    /* Insert the current element at the correct position in the sorted order. */
                     int i;
                     for (i = e; i >= 1; i--) {
                         String eye;
-
+                        /* Extract the name value of the element at index (i-1). */
                         if (results.get(i - 1) instanceof GamesMachine) {
                             eye = ((GamesMachine) results.get(i - 1)).getName();
                         } else if (results.get(i - 1) instanceof Game) {
@@ -543,46 +590,54 @@ public class SystemController implements Initializable {
                             eye = ((GamePort) results.get(i - 1)).getGameName();
                         }
 
-                        if (eye.compareToIgnoreCase(elem) < 1)
-                            break;
-                        else
-                            results.swapIndex(i, i - 1);
+                        /* Compare and swap if necessary */
+                        if (eye.compareToIgnoreCase(elem) < 1) break;
+                        else results.swapIndex(i, i - 1);
                     }
                 }
-            } else {
+            }
+            /* Sort based on Price Low -> High. */
+            else {
+                /* Iterate through each element starting from the second one. */
                 for (int e = 1; e < results.size(); e++) {
+                    /* Extract the price value of the current element. */
                     double elem;
-
                     if (results.get(e) instanceof GamesMachine) {
                         elem = ((GamesMachine) results.get(e)).getPrice();
-                    } else if (results.get(e) instanceof Game) {
-                        Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
-                        break;
                     } else {
+                        /* Display a warning alert if trying to sort games and ports without a price. */
                         Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
                         break;
                     }
 
+                    /* Insert the current element at the correct position in the sorted order. */
                     int i;
                     for (i = e; i >= 1; i--) {
                         double eye = ((GamesMachine) results.get(i - 1)).getPrice();
 
-                        if (eye <= elem)
-                            break;
-                        else
-                            results.swapIndex(i, i - 1);
+                        /* Compare and swap if necessary. */
+                        if (eye <= elem) break;
+                        else results.swapIndex(i, i - 1);
                     }
                 }
             }
 
+            /* Clear the search results in the Listview. */
             searchResults.getItems().clear();
+
+            /* Repopulate the ListView with the sorted results. */
             for (Hashable h : results) {
                 searchResults.getItems().add(h.toString());
             }
-        } else
+        } else {
+            /* Display a warning alert if no sorting option is selected. */
             Utilities.showWarningAlert("ERR", "SELECT A WAY TO SORT");
+        }
     }
-
+    /**
+     * Opens a pop-up window displaying detailed information about the selected result Object
+     * based on the instance selected.
+     */
     public void selectForDetails() {
 
         Object found;
@@ -603,6 +658,7 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("ERR", "SELECT A RESULT");
         }
     }
+
     public void edit() throws IOException {
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
@@ -610,8 +666,8 @@ public class SystemController implements Initializable {
         if (selected != null) {
             found = hashMap.find(selected);
             if (found instanceof Game) {
-                 gameAPI.editGames();
-                 GameEditController.gameEditController.gameEditTable.getSelectionModel().select((Game) found);
+                gameAPI.editGames();
+                GameEditController.gameEditController.gameEditTable.getSelectionModel().select((Game) found);
             } else if (found instanceof GamesMachine) {
                 gameAPI.editMachine();
                 MachineEditController.machineEditController.machineEditTable.getSelectionModel().select((GamesMachine) found);
@@ -624,7 +680,7 @@ public class SystemController implements Initializable {
         } else {
             Utilities.showWarningAlert("ERR", "SELECT A RESULT");
         }
-   }
+    }
 }
 
 
