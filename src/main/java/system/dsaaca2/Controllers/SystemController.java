@@ -1,6 +1,5 @@
 package system.dsaaca2.Controllers;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -38,59 +37,32 @@ public class SystemController implements Initializable {
     public ComboBox<String> gameAndPortFilter = new ComboBox<>();
     public ComboBox<String> gameAndPortSort = new ComboBox<>();
     private final SillyList<String > searchResultsList = new SillyList<>();
-
-    @FXML
-    public Label portNameLabel = new Label();
-    @FXML
-    public Label portOrigMachine= new Label();
-    @FXML
-    public Label portMachineToLabel= new Label();
-    @FXML
-    public Label portGameLabel= new Label();
-    @FXML
-    public Label portYearLabel= new Label();
-    @FXML
-    public Label portDevLabel= new Label();
-    @FXML
-    public Label portCoverLabel= new Label();
-    @FXML
+    public Label portNameLabel;
+    public Label portOrigMachine;
+    public Label portMachineToLabel;
+    public Label portGameLabel;
+    public Label portYearLabel;
+    public Label portDevLabel;
+    public Label portCoverLabel;
     public ImageView gameImage;
-    @FXML
-    public Label gameNameLabel= new Label();
-    @FXML
-    public Label gamePubLabel= new Label();
-    @FXML
-    public Label gameDevLabel= new Label();
-    @FXML
-    public Label gameYearLabel= new Label();
-    @FXML
-    public Label gameDescLabel= new Label();
-    @FXML
-    public Label gameCoverLabel= new Label();
-    @FXML
-    public Label gamesPortsLabel= new Label();
-    @FXML
-    public Label gameMachineLabel= new Label();
-    @FXML
+    public Label gameNameLabel;
+    public Label gamePubLabel;
+    public Label gameDevLabel;
+    public Label gameYearLabel;
+    public Label gameDescLabel;
+    public Label gameCoverLabel;
+    public Label gamesPortsLabel;
+    public Label gameMachineLabel;
     public ImageView machineImage;
-    @FXML
-    public Label machineNameLabel= new Label();
-    @FXML
-    public Label machineManLabel= new Label();
-    @FXML
-    public Label machineTypeLabel= new Label();
-    @FXML
-    public Label machineMediaLabel= new Label();
-    @FXML
-    public Label machinePriceLabel= new Label();
-    @FXML
-    public Label mYearLabel= new Label();
-    @FXML
-    public Label mImageLabel= new Label();
-    @FXML
-    public Label mGamesLabel= new Label();
-    @FXML
-    public Label mPortsLabel= new Label();
+    public Label machineNameLabel;
+    public Label machineManLabel;
+    public Label machineTypeLabel;
+    public Label machineMediaLabel;
+    public Label machinePriceLabel;
+    public Label mYearLabel;
+    public Label mImageLabel;
+    public Label mGamesLabel;
+    public Label mPortsLabel;
 
     public void switchSceneBack() {
         Main.mainStage.setScene(Main.gameScene);
