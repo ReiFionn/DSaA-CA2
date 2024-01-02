@@ -34,7 +34,7 @@ public class SystemController implements Initializable {
     public static SystemController sysControl = new SystemController();
     private final SillyList<String> searchResultsList = new SillyList<>();
 
-    /*JavaFx Ids*/
+    /*------------JavaFx Ids----------------------------------*/
     public TextField searchMachines;
     public ListView<String> searchResults = new ListView<>();
     public TextField searchGamesAndPorts;
@@ -42,7 +42,6 @@ public class SystemController implements Initializable {
     public ComboBox<String> machineSort = new ComboBox<>();
     public ComboBox<String> gameAndPortFilter = new ComboBox<>();
     public ComboBox<String> gameAndPortSort = new ComboBox<>();
-
     @FXML
     public Label portNameLabel = new Label();
     @FXML
