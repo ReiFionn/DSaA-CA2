@@ -13,7 +13,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameAPI implements Initializable {
-
     public static GameAPI gameAPI = new GameAPI();
 
     public TextField machineNameText;
@@ -39,7 +38,7 @@ public class GameAPI implements Initializable {
     public static SillyList<GamesMachine> allMachines = new SillyList<>();
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
-    public HashMap<Hashable> hashMap = new HashMap<>(10);
+    public static HashMap<Hashable> hashMap = new HashMap<>(10);
 
     public void addGamesMachine() {
         if (!machineNameText.getText().isEmpty() && !machinePriceText.getText().isEmpty() && !machineImageText.getText().isEmpty() && !machineYearText.getText().isEmpty() && !machineManuText.getText().isEmpty() && !machineDescText.getText().isEmpty() && !machineMediaText.getText().isEmpty() && !machineTypeText.getText().isEmpty()) {
@@ -84,7 +83,7 @@ public class GameAPI implements Initializable {
                 hashMap.add(gm.toString(), gm);
                 gameMachineCombo.getItems().add(gm);
                 portMachineCombo.getItems().add(gm);
-                EditsController.editsController.machineEditTable.getItems().add(gm);
+                MachineEditController.machineEditController.machineEditTable.getItems().add(gm);
 
                 machineNameText.clear();
                 machineTypeText.clear();
@@ -232,7 +231,7 @@ public class GameAPI implements Initializable {
             Persistence.load();
 
             for (GamesMachine machine : allMachines) {
-                EditsController.editsController.machineEditTable.getItems().add(machine);
+                MachineEditController.machineEditController.machineEditTable.getItems().add(machine);
                 gameMachineCombo.getItems().add(machine);
                 portMachineCombo.getItems().add(machine);
                 hashMap.add(machine.toString(), machine);
@@ -266,7 +265,7 @@ public class GameAPI implements Initializable {
         allGamePorts.clear();
 
         GameEditController.gameEditController.gameEditTable.getItems().clear();
-        EditsController.editsController.machineEditTable.getItems().clear();
+        MachineEditController.machineEditController.machineEditTable.getItems().clear();
         PortEditController.portEditController.portEditTable.getItems().clear();
         gameMachineCombo.getItems().clear();
         portGameCombo.getItems().clear();

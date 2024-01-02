@@ -156,31 +156,43 @@
           <description>console</description>
           <type>console</type>
           <media>Cd</media>
-          <image>https://m.media-amazon.com/images/I/81P4pHFbj3L._AC_UF1000,1000_QL80_.jpg</image>
+          <image>https://www-konga-com-res.cloudinary.com/w_400,f_auto,fl_lossy,dpr_3.0,q_auto/media/catalog/product/P/s/Ps3-Slim-160gb-With-10-Games-Including-Fifa17-And-Pes17-5549373.jpg</image>
           <year>2003</year>
           <price>50.0</price>
           <games>
             <head>
+              <next>
+                <contents class="system.dsaaca2.Models.Game">
+                  <name>The last of us 1</name>
+                  <publisher>Sony</publisher>
+                  <description>zombie</description>
+                  <developers>Naughty Dog</developers>
+                  <cover>https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg</cover>
+                  <gamesMachine reference="../../../../.."/>
+                  <year>2009</year>
+                  <ports>
+                    <head>
+                      <contents class="system.dsaaca2.Models.GamePort">
+                        <originalGame reference="../../../.."/>
+                        <machinePortedTo reference="../../../../../../../../../next/next/next/contents/games/head/contents/ports/head/contents/machinePortedTo/games/head/contents/ports/head/contents/machinePortedTo"/>
+                        <originalMachine reference="../../../../../../../.."/>
+                        <developers>Naughty Dog</developers>
+                        <cover>https://ie.static.webuy.com/product_images/Gaming/Playstation4%20Software/711719441717_l.jpg</cover>
+                        <portYear>2017</portYear>
+                      </contents>
+                    </head>
+                  </ports>
+                </contents>
+              </next>
               <contents class="system.dsaaca2.Models.Game">
-                <name>The last of us 1</name>
+                <name>Sly Cooper</name>
                 <publisher>Sony</publisher>
-                <description>zombie</description>
-                <developers>Naughty Dog</developers>
-                <cover>https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg</cover>
+                <description>racoon</description>
+                <developers>Sony</developers>
+                <cover>https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/81XeJm6-SVL.jpg</cover>
                 <gamesMachine reference="../../../.."/>
-                <year>2009</year>
-                <ports>
-                  <head>
-                    <contents class="system.dsaaca2.Models.GamePort">
-                      <originalGame reference="../../../.."/>
-                      <machinePortedTo reference="../../../../../../../../next/next/next/contents/games/head/contents/ports/head/contents/machinePortedTo/games/head/contents/ports/head/contents/machinePortedTo"/>
-                      <originalMachine reference="../../../../../../.."/>
-                      <developers>Naughty Dog</developers>
-                      <cover>https://ie.static.webuy.com/product_images/Gaming/Playstation4%20Software/711719441717_l.jpg</cover>
-                      <portYear>2017</portYear>
-                    </contents>
-                  </head>
-                </ports>
+                <year>2010</year>
+                <ports/>
               </contents>
             </head>
           </games>

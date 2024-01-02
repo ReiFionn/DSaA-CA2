@@ -16,8 +16,8 @@ import java.util.ResourceBundle;
 
 import static system.dsaaca2.Controllers.GameAPI.*;
 
-public class EditsController implements Initializable {
-    public static EditsController editsController = new EditsController();
+public class MachineEditController implements Initializable {
+    public static MachineEditController machineEditController = new MachineEditController();
 
     @FXML
     public TableView<GamesMachine> machineEditTable = new TableView<>();
@@ -51,7 +51,7 @@ public class EditsController implements Initializable {
     /*----------------------------*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        EditsController.editsController = this;
+        MachineEditController.machineEditController = this;
         machineEditTable.getItems().addAll(allMachines);
         mName.setCellValueFactory(new PropertyValueFactory<>("name"));
         mMan.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
@@ -63,9 +63,6 @@ public class EditsController implements Initializable {
         mPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-    public static EditsController getEditsController() {
-        return editsController;
-    }
 
     public void onMachineSelect() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
@@ -90,12 +87,14 @@ public class EditsController implements Initializable {
         if (selectedMachine != null) {
 
             if (!updateMachineName.getText().isEmpty() && !updateMachineMan.getText().isEmpty() && !updateMachineDesc.getText().isEmpty() && !updateMachineType.getText().isEmpty() && !updateMachineMedia.getText().isEmpty() && !updateMachineImage.getText().isEmpty() && !updateMachinePrice.getText().isEmpty() && !updateMachineYear.getText().isEmpty()) {
+                hashMap.remove(selectedMachine.toString());
                 selectedMachine.setName(updateMachineName.getText());
                 selectedMachine.setManufacturer(updateMachineMan.getText());
                 selectedMachine.setDescription(updateMachineDesc.getText());
                 selectedMachine.setType(updateMachineType.getText());
                 selectedMachine.setMedia(updateMachineMedia.getText());
                 selectedMachine.setImage(updateMachineImage.getText());
+                hashMap.add(selectedMachine.toString(), selectedMachine);
                 try {
                     selectedMachine.setPrice(Double.parseDouble(updateMachinePrice.getText()));
                 } catch (NumberFormatException e) {
@@ -154,11 +153,15 @@ public class EditsController implements Initializable {
         gameAPI.portGameCombo.getItems().clear();
         gameAPI.portGameCombo.getItems().addAll(allGames);
 
-        PortEditController.portEditController.portEditTable.getItems().clear();
-        PortEditController.portEditController.portEditTable.getItems().addAll(allGamePorts);
 
-        EditsController.editsController.machineEditTable.getItems().clear();
-        EditsController.editsController.machineEditTable.getItems().addAll(allMachines);
+        MachineEditController.machineEditController.machineEditTable.getItems().clear();
+        MachineEditController.machineEditController.machineEditTable.getItems().addAll(allMachines);
+
+
+        PortEditController.portEditController.portEditTable.getItems().clear();
+        PortEditController.portEditController.newMachineBox.getItems().clear();
+        PortEditController.portEditController.newMachineBox.getItems().addAll(allMachines);
+        PortEditController.portEditController.portEditTable.getItems().addAll(allGamePorts);
 
         gameAPI.portMachineCombo.getItems().clear();
         gameAPI.portMachineCombo.getItems().addAll(allMachines);

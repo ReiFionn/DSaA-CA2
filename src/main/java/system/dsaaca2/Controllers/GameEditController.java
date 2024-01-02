@@ -14,6 +14,7 @@ import static system.dsaaca2.Controllers.GameAPI.*;
 public class GameEditController implements Initializable {
 
     public static GameEditController gameEditController = new GameEditController();
+
     public TableView<Game> gameEditTable = new TableView<>();
     public TableColumn<GamesMachine, String> mName;
     public TableColumn<Game, String> gNam;
@@ -75,7 +76,7 @@ public class GameEditController implements Initializable {
                     }
                 }
 
-                EditsController.getEditsController().refreshAllViews();
+                MachineEditController.machineEditController.refreshAllViews();
                 gameEditTable.getItems().clear();
                 gameEditTable.getItems().addAll(allGames);
                 if (portsDeleted > 0) {

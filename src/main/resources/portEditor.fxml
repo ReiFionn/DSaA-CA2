@@ -21,7 +21,7 @@
                    <TableColumn fx:id="pYear" prefWidth="132.0001220703125" text="YEAR" />
                </columns>
            </TableView>
-           <Button layoutX="514.0" layoutY="620.0" mnemonicParsing="false" style="-fx-font-size: 15;" text="APPLY CHANGES" />
+           <Button layoutX="514.0" layoutY="620.0" mnemonicParsing="false" onAction="#updatePort" style="-fx-font-size: 15;" text="APPLY CHANGES" />
            <TextField fx:id="currentPortGame" editable="false" layoutX="178.0" layoutY="470.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="158.0" />
            <TextField fx:id="updatePortDev" layoutX="179.0" layoutY="565.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="161.0" />
            <TextField fx:id="updatePortCover" layoutX="178.0" layoutY="596.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="161.0" />
