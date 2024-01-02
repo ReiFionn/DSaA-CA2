@@ -12,7 +12,6 @@ import java.util.Objects;
 public class Main extends Application {
     public static Scene homePageScene,gameScene,systemScene;
     public static Stage mainStage;
-    public static Stage popupStage;
 
     public static void main(String[] args) {
         launch();
@@ -36,7 +35,6 @@ public class Main extends Application {
 
         gameScene = newScene("/gamePage.fxml");
         systemScene = newScene("/systemScene.fxml");
-        // Set the initial scene (homePage)
         mainStage.setScene(homePageScene);
         mainStage.setResizable(false);
         mainStage.setTitle("Retro Games System");
@@ -44,61 +42,19 @@ public class Main extends Application {
 
     }
 
-
-
     public static Stage newPopup(String file, String title) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(file));
         Parent root = fxmlLoader.load();
 
-        // Create a new stage
         Stage popUp = new Stage();
         popUp.setTitle(title);
         popUp.setResizable(false);
 
-
-        // Create a new scene with the loaded content
         Scene newScene = new Scene(root, 1000, 700);
 
-
-
-        // Set the scene for the stage
-
         popUp.setScene(newScene);
 
-
-        // Add stylesheets if needed
         newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
         return popUp; // Return the new stage
-
-
     }
-
-    public static void viewPopup(String file, String title) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(file));
-        Parent root = fxmlLoader.load();
-
-
-        Stage popUp = new Stage();
-        popUp.setTitle(title);
-        popUp.setResizable(false);
-
-        Scene newScene = new Scene(root, 500, 700);
-
-
-        popUp.setScene(newScene);
-
-
-        newScene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/popUpStyle.css")).toExternalForm());
-
-        // Show the stage
-        popUp.showAndWait();
-    }
-
-
-
-
-
-
-
-
 }
