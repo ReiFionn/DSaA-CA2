@@ -443,34 +443,42 @@ public class SystemController implements Initializable {
     }
 
     public void resultsClicked(MouseEvent event) {
-        String toDrill;
-        if (event.getButton().equals(MouseButton.PRIMARY)) {
-            if (event.getClickCount() == 2) {
-                toDrill = searchResults.getSelectionModel().getSelectedItem();
-                Object foundDrill = hashMap.find(toDrill);
+        if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+            String toDrill = searchResults.getSelectionModel().getSelectedItem();
+            Object foundDrill = hashMap.find(toDrill);
 
-                if (foundDrill != null) {
-                    if (foundDrill instanceof GamesMachine) {
+            if (foundDrill != null) {
+                if (foundDrill instanceof GamesMachine) {
+                    if (((GamesMachine) foundDrill).getGames().isEmpty()) {
+                        Utilities.showInformationAlert("DRILL-DOWN", "No games available for this machine. Cannot drill down any further.");
+                    } else {
+                        searchResults.getItems().clear();
+                        searchResults.getItems().add("--------------------------------------------------------LIST OF GAMES FOR " + ((GamesMachine) foundDrill).getName().toUpperCase() + "----------------------------------------");
                         for (Game g : ((GamesMachine) foundDrill).getGames()) {
-                            searchResults.getItems().clear();
                             searchResults.getItems().add(g.toString());
                         }
-                    } else if (foundDrill instanceof Game) {
+
+                    }
+                } else if (foundDrill instanceof Game) {
+                    if (((Game) foundDrill).getPorts().isEmpty()) {
+                        Utilities.showInformationAlert("DRILL-DOWN", "This game does not have any ports to drill further.");
+                    } else {
                         for (GamePort p : ((Game) foundDrill).getPorts()) {
                             searchResults.getItems().clear();
-                            if(((Game) foundDrill).getPorts().isEmpty()){
-                                Utilities.showInformationAlert("DRILL-DOWN","THIS GAME DOES NOT HAVE ANY PORTS TO DRILL FURTHER");
-                            }
-                            searchResults.getItems().add("--------------------LIST OF GAME PORTS FOR "+((Game) foundDrill).getName().toUpperCase()+"--------------------");
+                            searchResults.getItems().add("--------------------------------------  LIST OF GAME PORTS FOR " + ((Game) foundDrill).getName().toUpperCase() + "  --------------------------------------------");
                             searchResults.getItems().add(p.toString());
                         }
-                    } else if (foundDrill instanceof GamePort) {
-                        Utilities.showInformationAlert("DRILL-DOWN","CANNOT DRILL DOWN ANY FURTHER");
                     }
+
+                } else if (foundDrill instanceof GamePort) {
+                    Utilities.showInformationAlert("DRILL-DOWN", "Cannot drill down any further");
                 }
             }
         }
     }
+
+
+
 
     public void sortResults() {
         String sort = machineSort.getSelectionModel().getSelectedItem();
