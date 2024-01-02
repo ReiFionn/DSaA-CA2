@@ -40,12 +40,13 @@ Button:hover {
     -fx-border-color: white;
     -fx-background-color: black;
     -fx-text-fill: white;
-    -fx-border-width: 1;
+    -fx-border-width: 0.5;
     -fx-padding: 10;
     -fx-font-size: 14px;
-    -fx-font-family: Cambria;
+    -fx-font-family: "Arial";
 
 }
+
 
 .text-field{
     -fx-background-color: black;
@@ -56,22 +57,29 @@ Button:hover {
 }
 .list-cell:hover{
     -fx-border-color:#ff66c4;
-    -fx-background-color: black;
+    -fx-background-image: url('listview.png');
     -fx-text-fill: #FFDE59;
-    -fx-font-weight:bold ;
+    -fx-font-weight:bold;
+    -fx-font-size: 15px;
     -fx-border-width: 1;
-    -fx-padding: 10;
+    -fx-padding: 13;
 
 }
 .list-cell:selected{
     -fx-border-color: white;
     -fx-font-weight:bold ;
-    -fx-background-color: black;
+    -fx-font-size: 15px;
+    -fx-background-color: black ;
     -fx-text-fill: white;
     -fx-border-width: 1;
-    -fx-padding: 10;
+    -fx-padding: 12;
  }
 
+.bg2{
+    -fx-background-image: url('listview.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
 .homepage{
     -fx-background-image: url('homePage.png');
     -fx-background-repeat: no-repeat;
