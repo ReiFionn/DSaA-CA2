@@ -1,9 +1,9 @@
 package system.dsaaca2.Models;
 
 public class GamePort implements Hashable{
-    private Game originalGame;
+    private final Game originalGame;
     private GamesMachine machinePortedTo;
-    private GamesMachine originalMachine;
+    private final GamesMachine originalMachine;
     private String developers, cover;
     private int portYear;
 
@@ -22,11 +22,9 @@ public class GamePort implements Hashable{
     public String getGameName() {
         return originalGame.getName();
     }
+
     public String getNewPortName(){
        return machinePortedTo.getName();
-    }
-    public void setOriginalGame(Game originalGame) {
-        this.originalGame = originalGame;
     }
 
     public GamesMachine getMachinePortedTo() {
@@ -38,9 +36,6 @@ public class GamePort implements Hashable{
 
     public GamesMachine getOriginalMachine() {
         return originalMachine;
-    }
-    public void setOriginalMachine(GamesMachine originalMachine) {
-        this.originalMachine = originalMachine;
     }
 
     public String getDevelopers() {

@@ -6,7 +6,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
@@ -15,7 +14,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static system.dsaaca2.Controllers.GameAPI.*;
-import static system.dsaaca2.Controllers.GameEditController.gameEditController;
 
 public class PortEditController implements Initializable {
     public static PortEditController portEditController = new PortEditController();

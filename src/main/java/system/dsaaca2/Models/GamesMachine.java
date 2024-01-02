@@ -26,7 +26,6 @@ public class GamesMachine implements Hashable{
         return games;
     }
 
-
     public String getName() {
         return name;
     }

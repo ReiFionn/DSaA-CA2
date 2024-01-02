@@ -1,19 +1,14 @@
 package system.dsaaca2.Controllers;
 
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import system.dsaaca2.Main;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
-
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -22,23 +17,14 @@ import static system.dsaaca2.Controllers.GameAPI.*;
 public class MachineEditController implements Initializable {
     public static MachineEditController machineEditController = new MachineEditController();
 
-    @FXML
     public TableView<GamesMachine> machineEditTable = new TableView<>();
-    @FXML
     public TableColumn<GamesMachine, String> mName;
-    @FXML
     public TableColumn<GamesMachine, String> mMan;
-    @FXML
     public TableColumn<GamesMachine, String> mDesc;
-    @FXML
     public TableColumn<GamesMachine, String> mType;
-    @FXML
     public TableColumn<GamesMachine, String> mMedia;
-    @FXML
     public TableColumn<GamesMachine, String> mImage;
-    @FXML
     public TableColumn<GamesMachine, Integer> mYear;
-    @FXML
     public TableColumn<GamesMachine, Double> mPrice;
 
     /*----UPDATE TEXT FIELDS-----*/
@@ -51,7 +37,6 @@ public class MachineEditController implements Initializable {
     public TextField updateMachineImage = new TextField();
     public TextField updateMachineMedia = new TextField();
 
-    /*----------------------------*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         MachineEditController.machineEditController = this;
@@ -66,12 +51,10 @@ public class MachineEditController implements Initializable {
         mPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-
     public void onMachineSelect() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
 
         if (selectedMachine != null) {
-
             // Update text fields with the values of the selected machine
             updateMachineName.setText(selectedMachine.getName());
             updateMachineMan.setText(selectedMachine.getManufacturer());
@@ -84,24 +67,17 @@ public class MachineEditController implements Initializable {
         }
     }
 
-
-
-        public void showViewer() {
-            GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
-            if (selectedMachine != null) {
-                SystemController.sysControl.showMachineDetailsPopUp(selectedMachine);
-
-
-
-            }
-        }
+    public void showViewer() {
+        GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
+        if (selectedMachine != null)
+            SystemController.sysControl.showMachineDetailsPopUp(selectedMachine);
+    }
 
 
     public void applyMachineUpdate() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
 
         if (selectedMachine != null) {
-
             if (!updateMachineName.getText().isEmpty() && !updateMachineMan.getText().isEmpty() && !updateMachineDesc.getText().isEmpty() && !updateMachineType.getText().isEmpty() && !updateMachineMedia.getText().isEmpty() && !updateMachineImage.getText().isEmpty() && !updateMachinePrice.getText().isEmpty() && !updateMachineYear.getText().isEmpty()) {
                 hashMap.remove(selectedMachine.toString());
                 selectedMachine.setName(updateMachineName.getText());
@@ -166,13 +142,8 @@ public class MachineEditController implements Initializable {
     }
 
     public void refreshAllViews() {
-        gameAPI.portGameCombo.getItems().clear();
-        gameAPI.portGameCombo.getItems().addAll(allGames);
-
-
         MachineEditController.machineEditController.machineEditTable.getItems().clear();
         MachineEditController.machineEditController.machineEditTable.getItems().addAll(allMachines);
-
 
         PortEditController.portEditController.portEditTable.getItems().clear();
         PortEditController.portEditController.newMachineBox.getItems().clear();
@@ -181,7 +152,6 @@ public class MachineEditController implements Initializable {
 
         gameAPI.portMachineCombo.getItems().clear();
         gameAPI.portMachineCombo.getItems().addAll(allMachines);
-
         gameAPI.portGameCombo.getItems().clear();
         gameAPI.portGameCombo.getItems().addAll(allGames);
 
