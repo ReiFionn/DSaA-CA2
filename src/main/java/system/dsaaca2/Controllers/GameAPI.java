@@ -1,20 +1,25 @@
 package system.dsaaca2.Controllers;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import system.dsaaca2.Datastructures.HashMap;
 import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Main;
-import system.dsaaca2.Models.*;
+import system.dsaaca2.Models.Game;
+import system.dsaaca2.Models.GamePort;
+import system.dsaaca2.Models.GamesMachine;
+import system.dsaaca2.Models.Hashable;
 import system.dsaaca2.utils.Persistence;
 import system.dsaaca2.utils.Utilities;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameAPI implements Initializable {
     public static GameAPI gameAPI = new GameAPI();
-
+    /*---------------------Java fx--------------------*/
     public TextField machineNameText;
     public TextField machinePriceText;
     public TextField machineManuText;
@@ -39,7 +44,12 @@ public class GameAPI implements Initializable {
     public static SillyList<Game> allGames = new SillyList<>();
     public static SillyList<GamePort> allGamePorts = new SillyList<>();
     public static HashMap<Hashable> hashMap = new HashMap<>(10);
+    /*----------------------------------------------------------*/
 
+    /**
+     * Adds a new game machine to the system.
+     * Validates input fields and checks for duplicates.
+     */
     public void addGamesMachine() {
         if (!machineNameText.getText().isEmpty() && !machinePriceText.getText().isEmpty() && !machineImageText.getText().isEmpty() && !machineYearText.getText().isEmpty() && !machineManuText.getText().isEmpty() && !machineDescText.getText().isEmpty() && !machineMediaText.getText().isEmpty() && !machineTypeText.getText().isEmpty()) {
             String name = machineNameText.getText();
@@ -104,6 +114,10 @@ public class GameAPI implements Initializable {
         }
     }
 
+    /**
+     * Adds a new game to the system.
+     * Validates input fields, checks for duplicates, and ensures the game is associated with a valid game machine.
+     */
     public void addGame() {
         GamesMachine selectedMachine = gameMachineCombo.getSelectionModel().getSelectedItem();
 
@@ -160,6 +174,11 @@ public class GameAPI implements Initializable {
             Utilities.showWarningAlert("ERROR", "NO EMPTY FIELDS ALLOWED, PLEASE ENTER A VALUE FOR ALL FIELDS!!!");
     }
 
+
+    /**
+     * Adds a new game port to the system.
+     * Validates input fields, checks for duplicates, and ensures the port is associated with valid game and game machine.
+     */
     public void addGamePort() {
         GamesMachine selectedMachine = portMachineCombo.getSelectionModel().getSelectedItem();
         Game selectedGame = portGameCombo.getSelectionModel().getSelectedItem();
@@ -215,6 +234,9 @@ public class GameAPI implements Initializable {
         }
     }
 
+    /**
+     * Saves the current state of the system for persistence.
+     */
     public void save() {
         try {
             Persistence.save();
@@ -225,6 +247,10 @@ public class GameAPI implements Initializable {
         }
     }
 
+    /**
+     * Loads a previous save of the system from persistent storage.
+     * Populates data structures and UI from save.
+     */
     public void load() {
         try {
             reset();
@@ -259,6 +285,10 @@ public class GameAPI implements Initializable {
         }
     }
 
+
+    /**
+     * Resets the system by clearing all data structures and UI.
+     */
     public void reset() {
         allGames.clear();
         allMachines.clear();
@@ -274,27 +304,46 @@ public class GameAPI implements Initializable {
         Utilities.showInformationAlert("RESET COMPLETE","SYSTEM DATA CLEARED");
     }
 
+    /**
+     * Opens the machine editor popup for editing existing machines.
+     * Only opens if machines are added in the system.
+     */
     public void editMachine() throws IOException {
         if (!allMachines.isEmpty()) {
             Main.newPopup("/machineEditor.fxml", "MACHINE EDITOR").show();
         }
     }
 
+    /**
+     * Opens the game editor popup for editing existing games.
+     * Only opens if games are added in the system.
+     */
     public void editGames() throws IOException {
         if (!allGames.isEmpty()) {
             Main.newPopup("/gameEditor.fxml", "GAME EDITOR").show();
         }
     }
+
+    /**
+     * Opens the game editor popup for editing existing games.
+     * Only opens if ports are added in the system.
+     */
     public void editPorts() throws IOException {
         if (!allGamePorts.isEmpty()) {
             Main.newPopup("/portEditor.fxml", "PORT EDITOR").show();
         }
     }
 
+    /**
+     * Switches the scene to the main game scene.
+     */
     public void switchSceneGame() {
         Main.mainStage.setScene(Main.gameScene);
     }
 
+    /**
+     * Switches the scene to the main system scene.
+     */
     public void switchSceneSystem() {
         Main.mainStage.setScene(Main.systemScene);
     }
