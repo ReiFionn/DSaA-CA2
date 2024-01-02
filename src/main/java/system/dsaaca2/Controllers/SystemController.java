@@ -658,6 +658,14 @@ public class SystemController implements Initializable {
         }
     }
 
+    /**
+     * Edits the selected item from the search results.
+     * The method identifies the type of the selected item (Game, GamesMachine, or GamePort)
+     * and invokes the corresponding edit method from the gameAPI.
+     * It also selects the found object in the respective controller's TableView.
+     *
+     * @throws IOException If an input or output exception occurs.
+     */
     public void edit() throws IOException {
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
