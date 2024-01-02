@@ -186,13 +186,13 @@ public class SystemController implements Initializable {
             if (filterChoice != null) {
                 if ("game name".equalsIgnoreCase(filterChoice)) {
                     for (Game g : allGames) {
-                        if (g.getName().toLowerCase().startsWith(search.toLowerCase())|| g.getName().toLowerCase().contains(search.toLowerCase())) {
+                        if (g.getName().toLowerCase().startsWith(search.toLowerCase()) || g.getName().toLowerCase().contains(search.toLowerCase())) {
                             searchResults.getItems().add(g.toString());
                             searchResultsList.add(g.toString());
                             added = true;
                         }
                         for (GamePort p : g.getPorts()) {
-                            if (p.getGameName().toLowerCase().startsWith(search.toLowerCase())|| p.getGameName().toLowerCase().contains(search.toLowerCase())) {
+                            if (p.getGameName().toLowerCase().startsWith(search.toLowerCase()) || p.getGameName().toLowerCase().contains(search.toLowerCase())) {
                                 searchResults.getItems().add(p.toString());
                                 searchResultsList.add(p.toString());
                                 added = true;
@@ -257,24 +257,28 @@ public class SystemController implements Initializable {
                         if (p.getNewPortName().toLowerCase().startsWith(search)) {
                             searchResults.getItems().add(p.toString());
                             searchResultsList.add(p.toString());
-                            added = false;
+                            added = true;
                         }
                     }
                 }
-                if (!added)
+                if (!added) {
                     Utilities.showWarningAlert("OOPS", "NO RESULTS FOUND");
-            } else
+                }
+            } else {
                 Utilities.showWarningAlert("FILTER NOT SELECTED", "PLEASE SELECT A FILTER");
-        } else
+            }
+        } else {
             Utilities.showWarningAlert("EMPTY", "THE SEARCH FIELD IS EMPTY, PLEASE ENTER SOMETHING TO SEARCH");
+        }
     }
+
 
     public void selectForDetails(){
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
 
         if (selected != null && !selected.isEmpty()) {
-            found = gameAPI.hashMap.find(selected);
+            found = hashMap.find(selected);
 
             if (found instanceof Game) {
                 showGameDetailsPopup((Game) found);

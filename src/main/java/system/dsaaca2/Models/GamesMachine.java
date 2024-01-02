@@ -10,6 +10,7 @@ public class GamesMachine implements Hashable{
 
     SillyList<Game> games = new SillyList<>();
 
+
     public GamesMachine(String name, String manufacturer, String description, String type, String media, String image, int year, double price) {
         this.name = name;
         this.manufacturer = manufacturer;
@@ -24,6 +25,7 @@ public class GamesMachine implements Hashable{
     public SillyList<Game> getGames() {
         return games;
     }
+
 
     public String getName() {
         return name;
@@ -87,20 +89,18 @@ public class GamesMachine implements Hashable{
         games.add(g);
         g.setGamesMachine(this);
     }
+
     public void removeGame(Game g) {
         games.remove(g);
     }
 
+
     @Override
     public String toString() {
         return
-                "Name: ( " + name.toUpperCase() + " )   Manufacturer: ( "+manufacturer.toUpperCase()+" )   Released: ( "+year+" )"+
-                "\n----------------------------------------------------------------" + "\n" +
-                "|Description: " + description.toUpperCase() + "\n" +
-                "|Machine Type: " + type.toUpperCase() + "\n" +
-                "|Media Type: " + media.toUpperCase() + "\n" +
-                "|Image: " + image + "\n" +
-                "|Price: €" + price ;
+                "Name: ( " + name.toUpperCase() + " ),  Manufacturer: ( "+manufacturer.toUpperCase()+" ),  Year: ( "+year+" ),  "+
+                        "Type:( "+type.toUpperCase()+" ),  Media: ( "+media.toUpperCase()+ " ),  Price: €"+price;
+
 
     }
 

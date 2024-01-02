@@ -63,9 +63,6 @@ public class MachineEditController implements Initializable {
         mPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-    public static MachineEditController getEditsController() {
-        return machineEditController;
-    }
 
     public void onMachineSelect() {
         GamesMachine selectedMachine = machineEditTable.getSelectionModel().getSelectedItem();
@@ -156,11 +153,15 @@ public class MachineEditController implements Initializable {
         gameAPI.portGameCombo.getItems().clear();
         gameAPI.portGameCombo.getItems().addAll(allGames);
 
-        PortEditController.portEditController.portEditTable.getItems().clear();
-        PortEditController.portEditController.portEditTable.getItems().addAll(allGamePorts);
 
         MachineEditController.machineEditController.machineEditTable.getItems().clear();
         MachineEditController.machineEditController.machineEditTable.getItems().addAll(allMachines);
+
+
+        PortEditController.portEditController.portEditTable.getItems().clear();
+        PortEditController.portEditController.newMachineBox.getItems().clear();
+        PortEditController.portEditController.newMachineBox.getItems().addAll(allMachines);
+        PortEditController.portEditController.portEditTable.getItems().addAll(allGamePorts);
 
         gameAPI.portMachineCombo.getItems().clear();
         gameAPI.portMachineCombo.getItems().addAll(allMachines);
