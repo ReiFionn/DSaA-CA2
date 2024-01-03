@@ -84,7 +84,7 @@
                   <Font name="Cambria Math" size="15.0" />
                </font>
             </Label>
-            <Label id="gamesPortsLabel" fx:id="gamesPortsLabel" alignment="TOP_LEFT" layoutX="153.0" layoutY="558.0" prefHeight="67.0" prefWidth="305.0" textFill="#8decff" wrapText="true">
+            <Label id="gamesPortsLabel" fx:id="gamesPortsLabel" alignment="TOP_LEFT" layoutX="156.0" layoutY="566.0" prefHeight="67.0" prefWidth="305.0" textFill="#8decff" wrapText="true">
                <font>
                   <Font name="Cambria Math" size="15.0" />
                </font>

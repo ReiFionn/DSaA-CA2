@@ -369,12 +369,13 @@ public class SystemController implements Initializable {
             gameYearLabel.setText(String.valueOf(selected.getYear()));
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             gameCoverLabel.setText(selected.getCover().toLowerCase());
-            StringBuilder namesText = new StringBuilder();
 
+              String names="";
             for (GamePort gp : selected.getPorts()) {
-                namesText.append(gp.getMachinePortedTo().getName().toUpperCase()).append("\n");
+                names += "( " + gp.getMachinePortedTo().getName().toUpperCase() + " ) , ";
+
             }
-            gamesPortsLabel.setText(namesText.toString());
+            gamesPortsLabel.setText(names);
 
             try {
                 Image image = new Image(coverURL);
