@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="900.0" prefWidth="1500.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.SystemController">
+<VBox prefHeight="900.0" prefWidth="1500.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/19-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.dsaaca2.Controllers.SystemController">
    <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="systemScene" stylesheets="@stylesheet.css" VBox.vgrow="ALWAYS">
       <Button layoutX="19.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchSceneBack" prefHeight="28.0" prefWidth="147.0" style="-fx-font-size: 18px;" text="&lt;- BACK" />
       <TextField fx:id="searchMachines" layoutX="102.0" layoutY="189.0" prefHeight="31.0" prefWidth="293.0" promptText="Search Machines.....">
