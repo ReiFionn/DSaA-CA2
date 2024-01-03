@@ -32,7 +32,7 @@ public class PortEditController implements Initializable {
     public TextField updatePortYear;
     public TextField portOrigMac;
     public TextField portNewPortName;
-    public ComboBox<GamesMachine> newMachineBox;
+    public ComboBox<GamesMachine> newMachineBox = new ComboBox<>();
     /*--------------------------------------------------------*/
 
     /**

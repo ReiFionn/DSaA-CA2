@@ -5,115 +5,173 @@
         <next>
           <next>
             <next>
-              <next>
-                <contents class="system.dsaaca2.Models.GamesMachine">
-                  <name>Xbox 360</name>
-                  <manufacturer>Microsoft</manufacturer>
-                  <description>Home console</description>
-                  <type>Console</type>
-                  <media>CD</media>
-                  <image>https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61oFqsoj9nL.SS700.jpg</image>
-                  <year>2008</year>
-                  <price>50.0</price>
-                  <games>
-                    <head>
-                      <contents class="system.dsaaca2.Models.Game">
-                        <name>Crash Bandicoot</name>
-                        <publisher>Sony</publisher>
-                        <description>silly guy</description>
-                        <developers>Naughty Dog</developers>
-                        <cover>https://www.retrosales.com.au/cdn/shop/files/crash_mind_over_mutant_xb3_cover.jpg?v=1695176337</cover>
-                        <gamesMachine reference="../../../.."/>
-                        <year>2008</year>
-                        <ports/>
-                      </contents>
-                    </head>
-                  </games>
-                </contents>
-              </next>
               <contents class="system.dsaaca2.Models.GamesMachine">
-                <name>GameBoy</name>
-                <manufacturer>Nintendo</manufacturer>
-                <description>portable games console</description>
-                <type>Portable Console</type>
-                <media>Cartridge</media>
-                <image>https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Game-Boy-FL.jpg/1024px-Game-Boy-FL.jpg</image>
-                <year>1989</year>
-                <price>300.0</price>
+                <name>Playstation</name>
+                <manufacturer>Sony</manufacturer>
+                <description>Its use of compact discs heralded the game industry&apos;s transition from cartridges.</description>
+                <type>console</type>
+                <media>CD ROM</media>
+                <image>https://www.gamespot.com/a/uploads/scale_medium/1568/15683559/3134744-ps1-2.jpg</image>
+                <year>1998</year>
+                <price>200.0</price>
                 <games>
                   <head>
+                    <next>
+                      <next>
+                        <contents class="system.dsaaca2.Models.Game">
+                          <name>Crash BandiCoot</name>
+                          <publisher>Naughty Dog</publisher>
+                          <description>classic</description>
+                          <developers>Naughty Dog</developers>
+                          <cover>https://www.fullyretro.com/images/items/61154085-item-big-PS1-CRASHBA1-A-1.jpg</cover>
+                          <gamesMachine reference="../../../../../.."/>
+                          <year>1998</year>
+                          <ports>
+                            <head>
+                              <next>
+                                <next>
+                                  <contents class="system.dsaaca2.Models.GamePort">
+                                    <originalGame reference="../../../../../.."/>
+                                    <machinePortedTo>
+                                      <name>Ps2</name>
+                                      <manufacturer>Sony</manufacturer>
+                                      <description> having sold over 155 million units worldwide, nearly triple the combined sales of the Dreamcast, GameCube, and Xbox</description>
+                                      <type>console</type>
+                                      <media>CD ROM</media>
+                                      <image>https://i5.walmartimages.com/seo/Restored-Sony-PlayStation-2-PS2-Slim-Console-Black-Matching-Controller-Power-and-Cables-Refurbished_dbaccc62-1405-45c3-a9e0-82eee8b1039d_1.ccbb04536b1daeab75e8248b0a1ac1e6.jpeg</image>
+                                      <year>2000</year>
+                                      <price>50.0</price>
+                                      <games/>
+                                    </machinePortedTo>
+                                    <originalMachine reference="../../../../../../../../../../.."/>
+                                    <developers>Naughty Dog</developers>
+                                    <cover>https://static.wikia.nocookie.net/crashban/images/5/54/WrathofcortexNA.jpg/revision/latest?cb=20150626145932</cover>
+                                    <portYear>2000</portYear>
+                                  </contents>
+                                </next>
+                                <contents class="system.dsaaca2.Models.GamePort">
+                                  <originalGame reference="../../../../.."/>
+                                  <machinePortedTo>
+                                    <name>xbox</name>
+                                    <manufacturer>Flextronics, Microsoft</manufacturer>
+                                    <description> first installment in the Xbox series of video game consoles.</description>
+                                    <type>console</type>
+                                    <media>CD ROM</media>
+                                    <image>https://static.wikia.nocookie.net/metalgear/images/4/42/Xbox.jpg/revision/latest?cb=20100217034216</image>
+                                    <year>2001</year>
+                                    <price>479.0</price>
+                                    <games/>
+                                  </machinePortedTo>
+                                  <originalMachine reference="../../../../../../../../../.."/>
+                                  <developers>Naughty Dog</developers>
+                                  <cover>https://m.media-amazon.com/images/I/61Prvzl37UL._SL1000_.jpg</cover>
+                                  <portYear>2003</portYear>
+                                </contents>
+                              </next>
+                              <contents class="system.dsaaca2.Models.GamePort">
+                                <originalGame reference="../../../.."/>
+                                <machinePortedTo>
+                                  <name>xbox 360</name>
+                                  <manufacturer>Microsoft</manufacturer>
+                                  <description>The Xbox 360 was released as the successor of the original Xbox in November 2005, competing with Sony&apos;s PlayStation 3</description>
+                                  <type>console</type>
+                                  <media>CD ROM</media>
+                                  <image>https://m.media-amazon.com/images/I/61oFqsoj9nL.jpg</image>
+                                  <year>2005</year>
+                                  <price>229.0</price>
+                                  <games>
+                                    <head>
+                                      <contents class="system.dsaaca2.Models.Game">
+                                        <name>Minecraft</name>
+                                        <publisher>Microsoft</publisher>
+                                        <description>block guy</description>
+                                        <developers>Mojang</developers>
+                                        <cover>https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/71TQeUM4A8L.SS700.jpg</cover>
+                                        <gamesMachine reference="../../../.."/>
+                                        <year>2008</year>
+                                        <ports>
+                                          <head>
+                                            <contents class="system.dsaaca2.Models.GamePort">
+                                              <originalGame reference="../../../.."/>
+                                              <machinePortedTo reference="../../../../../../../../../next/next/contents/machinePortedTo"/>
+                                              <originalMachine reference="../../../../../../.."/>
+                                              <developers>Mojang</developers>
+                                              <cover>https://preview.redd.it/b3nagrn2y3w71.jpg?width=2310&amp;format=pjpg&amp;auto=webp&amp;s=304f4e04bba989f5237ad5fd076bf8b37bf95202</cover>
+                                              <portYear>2010</portYear>
+                                            </contents>
+                                          </head>
+                                        </ports>
+                                      </contents>
+                                    </head>
+                                  </games>
+                                </machinePortedTo>
+                                <originalMachine reference="../../../../../../../../.."/>
+                                <developers>Naughty Dog</developers>
+                                <cover>https://m.media-amazon.com/images/I/511It5+F+pL._SX342_SY445_.jpg</cover>
+                                <portYear>2005</portYear>
+                              </contents>
+                            </head>
+                          </ports>
+                        </contents>
+                      </next>
+                      <contents class="system.dsaaca2.Models.Game">
+                        <name>Guitar Hero</name>
+                        <publisher>Ps</publisher>
+                        <description>acoustic</description>
+                        <developers>someone</developers>
+                        <cover>https://upload.wikimedia.org/wikipedia/en/2/2d/Guitarhero-cover.jpg</cover>
+                        <gamesMachine reference="../../../../.."/>
+                        <year>2007</year>
+                        <ports>
+                          <head>
+                            <contents class="system.dsaaca2.Models.GamePort">
+                              <originalGame reference="../../../.."/>
+                              <machinePortedTo reference="../../../../../next/contents/ports/head/next/next/contents/machinePortedTo"/>
+                              <originalMachine reference="../../../../../../../.."/>
+                              <developers>someone</developers>
+                              <cover>https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61arnYr2LlL._AC_UF1000,1000_QL80_.jpg</cover>
+                              <portYear>2008</portYear>
+                            </contents>
+                          </head>
+                        </ports>
+                      </contents>
+                    </next>
                     <contents class="system.dsaaca2.Models.Game">
-                      <name>Super Mario</name>
-                      <publisher>Nintendo</publisher>
-                      <description>mario</description>
-                      <developers>Nintendo</developers>
-                      <cover>https://upload.wikimedia.org/wikipedia/en/2/22/Super-mario-land-gameboy-boxart.png</cover>
+                      <name>Grand theft Auto</name>
+                      <publisher>someone</publisher>
+                      <description>steal car</description>
+                      <developers>vroom</developers>
+                      <cover>https://archive.org/download/gta-san-andreas-legacy-ps-1_202206/Cover.jpg</cover>
                       <gamesMachine reference="../../../.."/>
-                      <year>1990</year>
+                      <year>2002</year>
                       <ports>
                         <head>
+                          <next>
+                            <next>
+                              <contents class="system.dsaaca2.Models.GamePort">
+                                <originalGame reference="../../../../../.."/>
+                                <machinePortedTo reference="../../../../../../../next/next/contents/ports/head/next/next/contents/machinePortedTo"/>
+                                <originalMachine reference="../../../../../../../../.."/>
+                                <developers>Activision</developers>
+                                <cover>https://www.therage.ie/cdn/shop/products/yXGPfJz_530x.jpg?v=1480091670</cover>
+                                <portYear>2003</portYear>
+                              </contents>
+                            </next>
+                            <contents class="system.dsaaca2.Models.GamePort">
+                              <originalGame reference="../../../../.."/>
+                              <machinePortedTo reference="../../../../../../next/next/contents/ports/head/next/contents/machinePortedTo"/>
+                              <originalMachine reference="../../../../../../../.."/>
+                              <developers>Activision</developers>
+                              <cover>https://ie.static.webuy.com/product_images/Gaming/Xbox%20Software/SXBOGRAE002_l.jpg</cover>
+                              <portYear>2007</portYear>
+                            </contents>
+                          </next>
                           <contents class="system.dsaaca2.Models.GamePort">
                             <originalGame reference="../../../.."/>
-                            <machinePortedTo>
-                              <name>Wii</name>
-                              <manufacturer>Nintendo</manufacturer>
-                              <description>fun interactive games console</description>
-                              <type>console</type>
-                              <media>CD</media>
-                              <image>https://ie.static.webuy.com/product_images/Gaming/Wii%20Consoles/SWIIWIIE005_l.jpg</image>
-                              <year>2006</year>
-                              <price>50.0</price>
-                              <games>
-                                <head>
-                                  <next>
-                                    <contents class="system.dsaaca2.Models.Game">
-                                      <name>Wii Sports</name>
-                                      <publisher>Nintendo</publisher>
-                                      <description>sport simulator</description>
-                                      <developers>Tsutomu Kaneshige</developers>
-                                      <cover>https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Wii_Sports_Europe.jpg/220px-Wii_Sports_Europe.jpg</cover>
-                                      <gamesMachine reference="../../../../.."/>
-                                      <year>2006</year>
-                                      <ports/>
-                                    </contents>
-                                  </next>
-                                  <contents class="system.dsaaca2.Models.Game">
-                                    <name>Crash Bandicoot</name>
-                                    <publisher>Sony</publisher>
-                                    <description>silly guy</description>
-                                    <developers>Naughty Dog</developers>
-                                    <cover>https://www.retrosales.com.au/cdn/shop/files/crash_mind_over_mutant_xb3_cover.jpg?v=1695176337</cover>
-                                    <gamesMachine reference="../../../.."/>
-                                    <year>2009</year>
-                                    <ports>
-                                      <head>
-                                        <contents class="system.dsaaca2.Models.GamePort">
-                                          <originalGame reference="../../../.."/>
-                                          <machinePortedTo>
-                                            <name>ps4</name>
-                                            <manufacturer>sony</manufacturer>
-                                            <description>ps3 upgrade</description>
-                                            <type>console</type>
-                                            <media>cd</media>
-                                            <image>https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Sony-PlayStation-4-PS4-wDualShock-4.jpg/1200px-Sony-PlayStation-4-PS4-wDualShock-4.jpg</image>
-                                            <year>2013</year>
-                                            <price>200.0</price>
-                                            <games/>
-                                          </machinePortedTo>
-                                          <originalMachine reference="../../../../../../.."/>
-                                          <developers>Sony</developers>
-                                          <cover>https://ie.static.webuy.com/product_images/Gaming/Playstation4%20Software/5030917211034_l.jpg</cover>
-                                          <portYear>2017</portYear>
-                                        </contents>
-                                      </head>
-                                    </ports>
-                                  </contents>
-                                </head>
-                              </games>
-                            </machinePortedTo>
+                            <machinePortedTo reference="../../../../../next/next/contents/ports/head/contents/machinePortedTo"/>
                             <originalMachine reference="../../../../../../.."/>
-                            <developers>Nintendo</developers>
-                            <cover>https://m.media-amazon.com/images/I/81P4pHFbj3L._AC_UF1000,1000_QL80_.jpg</cover>
+                            <developers>Microsoft</developers>
+                            <cover>https://retromagaz.com/uploads/products/30/74/site_f3t7lochc_a1841537.png</cover>
                             <portYear>2010</portYear>
                           </contents>
                         </head>
@@ -123,82 +181,36 @@
                 </games>
               </contents>
             </next>
-            <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/contents/games/head/contents/ports/head/contents/machinePortedTo"/>
+            <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/contents/games/head/next/next/contents/ports/head/next/next/contents/machinePortedTo"/>
           </next>
-          <contents class="system.dsaaca2.Models.GamesMachine">
-            <name>SEGA GENESIS</name>
-            <manufacturer>sega</manufacturer>
-            <description>VES</description>
-            <type>Console</type>
-            <media>Cartridge</media>
-            <image>https://cdn.vox-cdn.com/thumbor/d2Pwy35Tic-JLNqGvzgwhHc4UDQ=/0x0:800x583/1400x1400/filters:focal(400x292:401x293)/cdn.vox-cdn.com/uploads/chorus_asset/file/15996852/a02kz8aey4wczznpm49r.jpg</image>
-            <year>1988</year>
-            <price>400.0</price>
-            <games>
-              <head>
-                <contents class="system.dsaaca2.Models.Game">
-                  <name>Sonic The hedgehog 2</name>
-                  <publisher>sega</publisher>
-                  <description>fast guy</description>
-                  <developers>sega</developers>
-                  <cover>https://upload.wikimedia.org/wikipedia/en/0/07/Sonic3-box-us-225.jpg</cover>
-                  <gamesMachine reference="../../../.."/>
-                  <year>1989</year>
-                  <ports/>
-                </contents>
-              </head>
-            </games>
-          </contents>
+          <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/next/contents/games/head/next/next/contents/ports/head/next/contents/machinePortedTo"/>
         </next>
-        <contents class="system.dsaaca2.Models.GamesMachine">
-          <name>Ps3</name>
-          <manufacturer>Sony</manufacturer>
-          <description>console</description>
-          <type>console</type>
-          <media>Cd</media>
-          <image>https://www-konga-com-res.cloudinary.com/w_400,f_auto,fl_lossy,dpr_3.0,q_auto/media/catalog/product/P/s/Ps3-Slim-160gb-With-10-Games-Including-Fifa17-And-Pes17-5549373.jpg</image>
-          <year>2003</year>
-          <price>50.0</price>
-          <games>
-            <head>
-              <next>
-                <contents class="system.dsaaca2.Models.Game">
-                  <name>The last of us 1</name>
-                  <publisher>Sony</publisher>
-                  <description>zombie</description>
-                  <developers>Naughty Dog</developers>
-                  <cover>https://upload.wikimedia.org/wikipedia/en/4/46/Video_Game_Cover_-_The_Last_of_Us.jpg</cover>
-                  <gamesMachine reference="../../../../.."/>
-                  <year>2009</year>
-                  <ports>
-                    <head>
-                      <contents class="system.dsaaca2.Models.GamePort">
-                        <originalGame reference="../../../.."/>
-                        <machinePortedTo reference="../../../../../../../../../next/next/next/contents/games/head/contents/ports/head/contents/machinePortedTo/games/head/contents/ports/head/contents/machinePortedTo"/>
-                        <originalMachine reference="../../../../../../../.."/>
-                        <developers>Naughty Dog</developers>
-                        <cover>https://ie.static.webuy.com/product_images/Gaming/Playstation4%20Software/711719441717_l.jpg</cover>
-                        <portYear>2017</portYear>
-                      </contents>
-                    </head>
-                  </ports>
-                </contents>
-              </next>
-              <contents class="system.dsaaca2.Models.Game">
-                <name>Sly Cooper</name>
-                <publisher>Sony</publisher>
-                <description>racoon</description>
-                <developers>Sony</developers>
-                <cover>https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/81XeJm6-SVL.jpg</cover>
-                <gamesMachine reference="../../../.."/>
-                <year>2010</year>
-                <ports/>
-              </contents>
-            </head>
-          </games>
-        </contents>
+        <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/next/next/contents/games/head/next/next/contents/ports/head/contents/machinePortedTo"/>
       </next>
-      <contents class="system.dsaaca2.Models.GamesMachine" reference="../next/next/next/next/contents/games/head/contents/ports/head/contents/machinePortedTo/games/head/contents/ports/head/contents/machinePortedTo"/>
+      <contents class="system.dsaaca2.Models.GamesMachine">
+        <name>NES</name>
+        <manufacturer>Nintendo</manufacturer>
+        <description>original nintendo</description>
+        <type>console</type>
+        <media>cartridge</media>
+        <image>https://i5.walmartimages.com/seo/Nintendo-NES-Classic-Edition-Entertainment-System_0b153716-6921-4f44-9175-b2b38e7b37e0.af00237b8c00d79e57248e62581ec2c4.jpeg?odnHeight=768&amp;odnWidth=768&amp;odnBg=FFFFFF</image>
+        <year>1986</year>
+        <price>800.0</price>
+        <games>
+          <head>
+            <contents class="system.dsaaca2.Models.Game">
+              <name>Super Mario</name>
+              <publisher>Nintendo</publisher>
+              <description>first gen mario</description>
+              <developers>Nintendo</developers>
+              <cover>https://cdn.europosters.eu/image/750/plastic-frame-super-mario-bros-nes-cover-i161997.jpg</cover>
+              <gamesMachine reference="../../../.."/>
+              <year>1999</year>
+              <ports/>
+            </contents>
+          </head>
+        </games>
+      </contents>
     </head>
   </system.dsaaca2.Datastructures.SillyList>
 </object-stream>
