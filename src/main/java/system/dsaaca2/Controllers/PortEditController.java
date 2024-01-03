@@ -10,6 +10,7 @@ import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,6 +18,7 @@ import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class PortEditController implements Initializable {
     public static PortEditController portEditController = new PortEditController();
+    /*----------------JavaFX--------------------------------------*/
     public TableView<GamePort> portEditTable = new TableView<>();
     public TableColumn<GamesMachine, String> newPort;
     public TableColumn<GamesMachine, String> origMachine;
@@ -30,8 +32,13 @@ public class PortEditController implements Initializable {
     public TextField updatePortYear;
     public TextField portOrigMac;
     public TextField portNewPortName;
-    public ComboBox<GamesMachine> newMachineBox;
+    public ComboBox<GamesMachine> newMachineBox = new ComboBox<>();
+    /*--------------------------------------------------------*/
 
+    /**
+     * Handles the event when a game port is selected in the table.
+     * Populates the update fields with the values of the selected game port.
+     */
     public void onGamePortSelect() {
         GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
         if (selectedPort != null) {
@@ -44,6 +51,10 @@ public class PortEditController implements Initializable {
         }
     }
 
+    /**
+     * Removes the selected game port from the system.
+     * Also updates associated UI and displays a success alert.
+     */
     public void removePort() {
         GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
 
@@ -56,6 +67,10 @@ public class PortEditController implements Initializable {
         Utilities.showInformationAlert("SUCCESS!", "SUCCESSFULLY DELETED:\n" + selectedPort);
     }
 
+    /**
+     * Initializes the PortEditController during JavaFX application startup.
+     * Populates the table with existing game ports and their information.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         portEditController = this;
@@ -68,6 +83,11 @@ public class PortEditController implements Initializable {
         pCover.setCellValueFactory(new PropertyValueFactory<>("cover"));
         pYear.setCellValueFactory(new PropertyValueFactory<>("year"));
     }
+
+    /**
+     * Opens a viewer to display detailed information about the selected game port and its image.
+     * Requires a game port to be selected in the table.
+     */
     public void showViewer() {
         GamePort p = portEditTable.getSelectionModel().getSelectedItem();
         if (p != null) {
@@ -75,6 +95,12 @@ public class PortEditController implements Initializable {
 
         }
     }
+
+    /**
+     * Updates the information of the selected game port based on user input.
+     * Validates input fields and updates the port accordingly.
+     * Displays success or error alerts based on the operation result.
+     */
     public void updatePort() {
         GamePort selectedPort = portEditTable.getSelectionModel().getSelectedItem();
 

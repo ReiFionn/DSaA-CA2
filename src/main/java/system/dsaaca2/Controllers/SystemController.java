@@ -1,5 +1,6 @@
 package system.dsaaca2.Controllers;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -29,6 +30,9 @@ import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class SystemController implements Initializable {
     public static SystemController sysControl = new SystemController();
+    private final SillyList<String> searchResultsList = new SillyList<>();
+
+    /*------------JavaFx Ids----------------------------------*/
     public TextField searchMachines;
     public ListView<String> searchResults = new ListView<>();
     public TextField searchGamesAndPorts;
@@ -36,14 +40,21 @@ public class SystemController implements Initializable {
     public ComboBox<String> machineSort = new ComboBox<>();
     public ComboBox<String> gameAndPortFilter = new ComboBox<>();
     public ComboBox<String> gameAndPortSort = new ComboBox<>();
-    private final SillyList<String > searchResultsList = new SillyList<>();
-    public Label portNameLabel;
-    public Label portOrigMachine;
-    public Label portMachineToLabel;
-    public Label portGameLabel;
-    public Label portYearLabel;
-    public Label portDevLabel;
-    public Label portCoverLabel;
+    @FXML
+    public Label portNameLabel = new Label();
+    @FXML
+    public Label portOrigMachine = new Label();
+    @FXML
+    public Label portMachineToLabel = new Label();
+    @FXML
+    public Label portGameLabel = new Label();
+    @FXML
+    public Label portYearLabel = new Label();
+    @FXML
+    public Label portDevLabel = new Label();
+    @FXML
+    public Label portCoverLabel = new Label();
+    @FXML
     public ImageView gameImage;
     public Label gameNameLabel;
     public Label gamePubLabel;
@@ -54,21 +65,37 @@ public class SystemController implements Initializable {
     public Label gamesPortsLabel;
     public Label gameMachineLabel;
     public ImageView machineImage;
-    public Label machineNameLabel;
-    public Label machineManLabel;
-    public Label machineTypeLabel;
-    public Label machineMediaLabel;
-    public Label machinePriceLabel;
-    public Label mYearLabel;
-    public Label mImageLabel;
-    public Label mGamesLabel;
-    public Label mPortsLabel;
+    @FXML
+    public Label machineNameLabel = new Label();
+    @FXML
+    public Label machineManLabel = new Label();
+    @FXML
+    public Label machineTypeLabel = new Label();
+    @FXML
+    public Label machineMediaLabel = new Label();
+    @FXML
+    public Label machinePriceLabel = new Label();
+    @FXML
+    public Label mYearLabel = new Label();
+    @FXML
+    public Label mImageLabel = new Label();
+    @FXML
+    public Label mGamesLabel = new Label();
+    @FXML
+    public Label mPortsLabel = new Label();
+    /*------------------------------------------------------*/
 
+    /**
+     * Switches the scene back to the main game scene and clears the search results.
+     */
     public void switchSceneBack() {
         Main.mainStage.setScene(Main.gameScene);
         searchResults.getItems().clear();
     }
 
+    /**
+     * Populates the search filters and sorts for machines, games, and ports in JavaFx.
+     */
     public void populateSearchFiltersAndSorts() {
         machineFilter.getItems().addAll("Name", "Description", "Year", "Manufacturer", "Type", "Media");
         machineSort.getItems().addAll("Price Lowest ---> Highest", "Alphabetically", "Oldest ---> Newest");
@@ -77,11 +104,14 @@ public class SystemController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    /* Populates choices on scene initialisation*/ public void initialize(URL url, ResourceBundle resourceBundle) {
         sysControl = this;
         populateSearchFiltersAndSorts();
     }
 
+    /**
+     * Performs a search for machines based on the selected filter and user input.
+     */
     public void searchMachines() {
         searchResults.getItems().clear();
         searchResultsList.clear();
@@ -139,14 +169,15 @@ public class SystemController implements Initializable {
                         }
                     }
                 }
-                if (!added)
-                    Utilities.showWarningAlert("OOPS", "NO RESULTS FOUND");
-            } else
-                Utilities.showWarningAlert("OOPS", "PICK A FILTER PLEASE");
-        } else
-            Utilities.showWarningAlert("OOPS", "ENTER SOMETHING TO SEARCH FOR");
+                if (!added) Utilities.showWarningAlert("OOPS", "NO RESULTS FOUND");
+            } else Utilities.showWarningAlert("OOPS", "PICK A FILTER PLEASE");
+        } else Utilities.showWarningAlert("OOPS", "ENTER SOMETHING TO SEconARCH FOR");
     }
 
+
+    /**
+     * Performs a search for games and ports based on the selected filter and user input.
+     */
     public void searchGamesAndPorts() {
         searchResults.getItems().clear();
         searchResultsList.clear();
@@ -245,27 +276,12 @@ public class SystemController implements Initializable {
     }
 
 
-    public void selectForDetails(){
-        String selected = searchResults.getSelectionModel().getSelectedItem();
-        Object found;
-
-        if (selected != null && !selected.isEmpty()) {
-            found = hashMap.find(selected);
-
-            if (found instanceof Game) {
-                showGameDetailsPopup((Game) found);
-            } else if (found instanceof GamesMachine) {
-                showMachineDetailsPopUp((GamesMachine) found);
-            } else if (found instanceof GamePort) {
-                showPortDetailsPopUp((GamePort) found);
-            } else {
-                Utilities.showWarningAlert("ERR", "ERR");
-            }
-        } else {
-            Utilities.showWarningAlert("ERR", "SELECT A RESULT");
-        }
-    }
-    public void showPortDetailsPopUp(GamePort selected){
+    /**
+     * Displays a pop-up displaying details for the selected game port with its image.
+     *
+     * @param selected The selected game port.
+     */
+    public void showPortDetailsPopUp(GamePort selected) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/portViewer.fxml"));
@@ -300,8 +316,6 @@ public class SystemController implements Initializable {
             }
 
             Stage popUp = new Stage();
-            Main.getMainStage().setIconified(true);
-            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(false));
 
             popUp.setTitle(selected.getMachinePortedTo().getName().toUpperCase() + " PORT DETAILS");
             popUp.setResizable(false);
@@ -314,6 +328,11 @@ public class SystemController implements Initializable {
         }
     }
 
+    /**
+     * Displays a pop-up with details for the selected game with its image.
+     *
+     * @param selected The selected game.
+     */
     public void showGameDetailsPopup(Game selected) {
 
         try {
@@ -340,10 +359,12 @@ public class SystemController implements Initializable {
             gameCoverLabel.setText(selected.getCover().toLowerCase());
             StringBuilder namesText = new StringBuilder();
 
+              String names="";
             for (GamePort gp : selected.getPorts()) {
-                namesText.append(gp.getMachinePortedTo().getName().toUpperCase()).append("\n");
+                names += "( " + gp.getMachinePortedTo().getName().toUpperCase() + " ) , ";
+
             }
-            gamesPortsLabel.setText(namesText.toString());
+            gamesPortsLabel.setText(names);
 
             try {
                 Image image = new Image(coverURL);
@@ -357,8 +378,7 @@ public class SystemController implements Initializable {
 
             Stage popUp = new Stage();
             popUp.setTitle(selected.getGamesMachineName().toUpperCase() + " GAME DETAILS");
-            Main.getMainStage().setIconified(true);
-            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(false));
+
             popUp.setResizable(false);
             Scene newScene = new Scene(root, 500, 700);
             popUp.setScene(newScene);
@@ -369,6 +389,11 @@ public class SystemController implements Initializable {
         }
     }
 
+    /**
+     * Displays a pop-up with details for the selected games machine with its image.
+     *
+     * @param selected The selected games machine.
+     */
     public void showMachineDetailsPopUp(GamesMachine selected) {
 
         try {
@@ -396,15 +421,15 @@ public class SystemController implements Initializable {
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             mImageLabel.setText(selected.getImage().toLowerCase());
 
-            String names="";
+            String names = "";
             for (GamePort gp : allGamePorts) {
                 if (gp.getMachinePortedTo().getName().equals(selected.getName()))
-                 names+= gp.getGameName().toUpperCase() +" ( " +gp.getMachinePortedTo().getName().toUpperCase()+" ) , ";
+                    names += gp.getGameName().toUpperCase() + " ( " + gp.getMachinePortedTo().getName().toUpperCase() + " ) , ";
             }
             mPortsLabel.setText(names);
             String gamesText = "";
             for (Game g : selected.getGames()) {
-                gamesText+= g.getName().toUpperCase() +" ( " +g.getYear()+" ) , ";
+                gamesText += g.getName().toUpperCase() + " ( " + g.getYear() + " ) , ";
             }
             mGamesLabel.setText(gamesText);
             try {
@@ -418,8 +443,6 @@ public class SystemController implements Initializable {
             }
 
             Stage popUp = new Stage();
-            Main.getMainStage().setIconified(true);
-            popUp.setOnCloseRequest(event -> Main.getMainStage().setIconified(false));
             popUp.setTitle(selected.getName().toUpperCase() + " MACHINE DETAILS");
             popUp.setResizable(false);
             Scene newScene = new Scene(root, 500, 700);
@@ -431,139 +454,203 @@ public class SystemController implements Initializable {
         }
     }
 
+    /**
+     * Triggered once a double click is registered on the search results and drills down based on the selected item.
+     * Hashing is used here to efficiently find and retrieve specific data based on the instance selected.
+     * Alerts the user if an instance can not be further expanded.
+     * @param event The mouse event.
+     */
     public void resultsClicked(MouseEvent event) {
-        String toDrill;
-        if (event.getButton().equals(MouseButton.PRIMARY)) {
-            if (event.getClickCount() == 2) {
-                toDrill = searchResults.getSelectionModel().getSelectedItem();
-                Object foundDrill = hashMap.find(toDrill);
+        if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+            String toDrill = searchResults.getSelectionModel().getSelectedItem();
+            Object foundDrill = hashMap.find(toDrill);
 
-                if (foundDrill != null) {
-                    if (foundDrill instanceof GamesMachine) {
+            if (foundDrill != null) {
+                if (foundDrill instanceof GamesMachine) {
+                    if (((GamesMachine) foundDrill).getGames().isEmpty()) {
+                        Utilities.showInformationAlert("DRILL-DOWN", "No games available for this machine. Cannot drill down any further.");
+                    } else {
+                        searchResults.getItems().clear();
+                        searchResults.getItems().add("--------------------------------------------------------LIST OF GAMES FOR " + ((GamesMachine) foundDrill).getName().toUpperCase() + "----------------------------------------");
                         for (Game g : ((GamesMachine) foundDrill).getGames()) {
-                            searchResults.getItems().clear();
                             searchResults.getItems().add(g.toString());
                         }
-                    } else if (foundDrill instanceof Game) {
+
+                    }
+                } else if (foundDrill instanceof Game) {
+                    if (((Game) foundDrill).getPorts().isEmpty()) {
+                        Utilities.showInformationAlert("DRILL-DOWN", "This game does not have any ports to drill further.");
+                    } else {
                         for (GamePort p : ((Game) foundDrill).getPorts()) {
                             searchResults.getItems().clear();
-                            if(((Game) foundDrill).getPorts().isEmpty()){
-                                Utilities.showInformationAlert("DRILL-DOWN","THIS GAME DOES NOT HAVE ANY PORTS TO DRILL FURTHER");
-                            }
-                            searchResults.getItems().add("--------------------LIST OF GAME PORTS FOR "+((Game) foundDrill).getName().toUpperCase()+"--------------------");
+                            searchResults.getItems().add("--------------------------------------  LIST OF GAME PORTS FOR " + ((Game) foundDrill).getName().toUpperCase() + "  --------------------------------------------");
                             searchResults.getItems().add(p.toString());
                         }
-                    } else if (foundDrill instanceof GamePort) {
-                        Utilities.showInformationAlert("DRILL-DOWN","CANNOT DRILL DOWN ANY FURTHER");
                     }
+
+                } else if (foundDrill instanceof GamePort) {
+                    Utilities.showInformationAlert("DRILL-DOWN", "Cannot drill down any further");
                 }
             }
         }
     }
 
+
+    /**
+     * Sorts the search results using Insertion Sort based on the Object instance of the selected sorting criteria.
+     * Hashing is used here for effective search and retrieval of results to sort
+     */
     public void sortResults() {
-       String sort = machineSort.getSelectionModel().getSelectedItem();
-       SillyList<Hashable> results = new SillyList<>();
+        /* Get the selected sorting option from the combo box. */
+        String sort = machineSort.getSelectionModel().getSelectedItem();
 
-       for (String s : searchResultsList) {
-           results.add(hashMap.find(s));
-       }
+        /* Create a list to store the results after sorting. */
+        SillyList<Hashable> results = new SillyList<>();
 
-       if (sort != null) {
-           if ("Oldest ---> Newest".equalsIgnoreCase(sort)) {
-               for (int e = 1; e < results.size(); e++) {
-                   int elem;
+        /* Populate the results list with the Hashable objects corresponding to the search results. */
+        for (String s : searchResultsList) {
+            results.add(hashMap.find(s));
+        }
 
-                   if (results.get(e) instanceof GamesMachine) {
-                       elem = ((GamesMachine) results.get(e)).getYear();
-                   } else if (results.get(e) instanceof Game) {
-                       elem = ((Game) results.get(e)).getYear();
-                   } else {
-                       elem = ((GamePort) results.get(e)).getYear();
-                   }
+        /* Make sure an option is chosen. */
+        if (sort != null) {
+            /* Sort based on Old -> New. */
+            if ("Oldest ---> Newest".equalsIgnoreCase(sort)) {
+                /* Iterate through each element starting from the second one. */
+                for (int e = 1; e < results.size(); e++) {
+                    /* Extract the year value of the current element. */
+                    int elem;
+                    if (results.get(e) instanceof GamesMachine) {
+                        elem = ((GamesMachine) results.get(e)).getYear();
+                    } else if (results.get(e) instanceof Game) {
+                        elem = ((Game) results.get(e)).getYear();
+                    } else {
+                        elem = ((GamePort) results.get(e)).getYear();
+                    }
 
-                   int i;
-                   for (i = e; i >=1; i--) {
-                       int eye;
+                    /* Insert the current element at the correct position in the sorted order. */
+                    int i;
+                    for (i = e; i >= 1; i--) {
+                        int eye;
+                        /* Extract the year value of the element at index (i-1). */
+                        if (results.get(i - 1) instanceof GamesMachine) {
+                            eye = ((GamesMachine) results.get(i - 1)).getYear();
+                        } else if (results.get(i - 1) instanceof Game) {
+                            eye = ((Game) results.get(i - 1)).getYear();
+                        } else {
+                            eye = ((GamePort) results.get(i - 1)).getYear();
+                        }
 
-                       if(results.get(i-1) instanceof GamesMachine) {
-                           eye = ((GamesMachine) results.get(i-1)).getYear();
-                       } else if (results.get(i-1) instanceof Game) {
-                           eye = ((Game)  results.get(i-1)).getYear();
-                       } else {
-                           eye = ((GamePort) results.get(i-1)).getYear();
-                       }
+                        /* Compare and swap if necessary to maintain sorted order. */
+                        if (eye <= elem) break;
+                        else results.swapIndex(i, i - 1);
+                    }
+                }
+            }
+            /* Sort based on A-Z. */
+            else if ("Alphabetically".equalsIgnoreCase(sort)) {
+                /* Iterate through each element starting from the second one. */
+                for (int e = 1; e < results.size(); e++) {
+                    /* Extract the name value of the current element. */
+                    String elem;
+                    if (results.get(e) instanceof GamesMachine) {
+                        elem = ((GamesMachine) results.get(e)).getName();
+                    } else if (results.get(e) instanceof Game) {
+                        elem = ((Game) results.get(e)).getName();
+                    } else {
+                        elem = ((GamePort) results.get(e)).getGameName();
+                    }
 
-                       if (eye <= elem)
-                           break;
-                       else
-                           results.swapIndex(i, i-1);
-                   }
-               }
-           } else if ("Alphabetically".equalsIgnoreCase(sort)) {
-               for (int e = 1; e < results.size(); e++) {
-                   String elem;
+                    /* Insert the current element at the correct position in the sorted order. */
+                    int i;
+                    for (i = e; i >= 1; i--) {
+                        String eye;
+                        /* Extract the name value of the element at index (i-1). */
+                        if (results.get(i - 1) instanceof GamesMachine) {
+                            eye = ((GamesMachine) results.get(i - 1)).getName();
+                        } else if (results.get(i - 1) instanceof Game) {
+                            eye = ((Game) results.get(i - 1)).getName();
+                        } else {
+                            eye = ((GamePort) results.get(i - 1)).getGameName();
+                        }
 
-                   if (results.get(e) instanceof GamesMachine) {
-                       elem = ((GamesMachine) results.get(e)).getName();
-                   } else if (results.get(e) instanceof Game) {
-                       elem = ((Game) results.get(e)).getName();
-                   } else {
-                       elem = ((GamePort) results.get(e)).getGameName();
-                   }
+                        /* Compare and swap if necessary */
+                        if (eye.compareToIgnoreCase(elem) < 1) break;
+                        else results.swapIndex(i, i - 1);
+                    }
+                }
+            }
+            /* Sort based on Price Low -> High. */
+            else {
+                /* Iterate through each element starting from the second one. */
+                for (int e = 1; e < results.size(); e++) {
+                    /* Extract the price value of the current element. */
+                    double elem;
+                    if (results.get(e) instanceof GamesMachine) {
+                        elem = ((GamesMachine) results.get(e)).getPrice();
+                    } else {
+                        /* Display a warning alert if trying to sort games and ports without a price. */
+                        Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
+                        break;
+                    }
 
-                   int i;
-                   for (i = e; i >=1; i--) {
-                       String eye;
+                    /* Insert the current element at the correct position in the sorted order. */
+                    int i;
+                    for (i = e; i >= 1; i--) {
+                        double eye = ((GamesMachine) results.get(i - 1)).getPrice();
 
-                       if(results.get(i-1) instanceof GamesMachine) {
-                           eye = ((GamesMachine) results.get(i-1)).getName();
-                       } else if (results.get(i-1) instanceof Game) {
-                           eye = ((Game)  results.get(i-1)).getName();
-                       } else {
-                           eye = ((GamePort) results.get(i-1)).getGameName();
-                       }
+                        /* Compare and swap if necessary. */
+                        if (eye <= elem) break;
+                        else results.swapIndex(i, i - 1);
+                    }
+                }
+            }
 
-                       if (eye.compareToIgnoreCase(elem) < 1 )
-                           break;
-                       else
-                           results.swapIndex(i, i-1);
-                   }
-               }
-           } else {
-               for (int e = 1; e < results.size(); e++) {
-                   double elem;
+            /* Clear the search results in the Listview. */
+            searchResults.getItems().clear();
 
-                   if (results.get(e) instanceof GamesMachine) {
-                       elem = ((GamesMachine) results.get(e)).getPrice();
-                   } else if (results.get(e) instanceof Game) {
-                       Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
-                       break;
-                   } else {
-                       Utilities.showWarningAlert("ERR", "UNABLE TO SORT GAMES AND PORTS AS THEY HAVE NO PRICE");
-                       break;
-                   }
+            /* Repopulate the ListView with the sorted results. */
+            for (Hashable h : results) {
+                searchResults.getItems().add(h.toString());
+            }
+        } else {
+            /* Display a warning alert if no sorting option is selected. */
+            Utilities.showWarningAlert("ERR", "SELECT A WAY TO SORT");
+        }
+    }
+    /**
+     * Opens a pop-up window displaying detailed information about the selected result Object
+     * based on the instance selected.
+     */
+    public void selectForDetails() {
 
-                   int i;
-                   for (i = e; i >=1; i--) {
-                       double eye = ((GamesMachine) results.get(i-1)).getPrice();
+        Object found;
+        String selected = searchResults.getSelectionModel().getSelectedItem();
+        if (selected != null && !selected.isEmpty()) {
+            found = hashMap.find(selected);
 
-                       if (eye <= elem)
-                           break;
-                       else
-                           results.swapIndex(i, i-1);
-                   }
-               }
-           }
-
-           searchResults.getItems().clear();
-           for (Hashable h : results) {
-               searchResults.getItems().add(h.toString());
-           }
-       } else
-           Utilities.showWarningAlert("ERR", "SELECT A WAY TO SORT");
+            if (found instanceof Game) {
+                showGameDetailsPopup((Game) found);
+            } else if (found instanceof GamesMachine) {
+                showMachineDetailsPopUp((GamesMachine) found);
+            } else if (found instanceof GamePort) {
+                showPortDetailsPopUp((GamePort) found);
+            } else {
+                Utilities.showWarningAlert("ERR", "ERR");
+            }
+        } else {
+            Utilities.showWarningAlert("ERR", "SELECT A RESULT");
+        }
     }
 
+    /**
+     * Edits the selected item from the search results.
+     * The method identifies the type of the selected item (Game, GamesMachine, or GamePort)
+     * and invokes the corresponding edit method from the gameAPI.
+     * It also selects the found object in the respective controller's TableView.
+     *
+     * @throws IOException If an input or output exception occurs.
+     */
     public void edit() throws IOException {
         String selected = searchResults.getSelectionModel().getSelectedItem();
         Object found;
@@ -571,8 +658,8 @@ public class SystemController implements Initializable {
         if (selected != null) {
             found = hashMap.find(selected);
             if (found instanceof Game) {
-                 gameAPI.editGames();
-                 GameEditController.gameEditController.gameEditTable.getSelectionModel().select((Game) found);
+                gameAPI.editGames();
+                GameEditController.gameEditController.gameEditTable.getSelectionModel().select((Game) found);
             } else if (found instanceof GamesMachine) {
                 gameAPI.editMachine();
                 MachineEditController.machineEditController.machineEditTable.getSelectionModel().select((GamesMachine) found);

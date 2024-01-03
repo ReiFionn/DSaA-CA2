@@ -1,20 +1,25 @@
 package system.dsaaca2.Controllers;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
+
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class GameEditController implements Initializable {
 
     public static GameEditController gameEditController = new GameEditController();
-
+    /*-----------------JavaFX------------------------------------*/
     public TableView<Game> gameEditTable = new TableView<>();
     public TableColumn<GamesMachine, String> mName;
     public TableColumn<Game, String> gNam;
@@ -30,7 +35,12 @@ public class GameEditController implements Initializable {
     public TextField updateGameCover;
     public TextField updateGameYear;
     public ComboBox<GamesMachine> updateGamesMachineBox;
+    /*--------------------------------------------------------*/
 
+    /**
+     * Handles the event when a game is selected in the table.
+     * Populates the update fields with the selected game's information.
+     */
     public void onGameSelect() {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
 
@@ -45,6 +55,11 @@ public class GameEditController implements Initializable {
         }
     }
 
+    /**
+     * Applies the updates made to the selected game's information.
+     * Validates input fields and updates the game.
+     * Displays success or error alerts based on the update result.
+     */
     public void applyGameUpdate() {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
 
@@ -88,16 +103,21 @@ public class GameEditController implements Initializable {
         } else
             Utilities.showWarningAlert("ERROR", "PLEASE SELECT A GAME TO UPDATE");
     }
+
+    /**
+     * Opens a viewer to display detailed information about the selected game with its image.
+     * Requires a game to be selected in the table.
+     */
     public void showViewer() {
         Game p = gameEditTable.getSelectionModel().getSelectedItem();
         if (p != null) {
-
             SystemController.sysControl.showGameDetailsPopup(p);
-
-
-
         }
     }
+
+    /**
+     * Populates the combo box and table with existing games and their information upon scene initialisation.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateGamesMachineBox.getItems().addAll(allMachines);
@@ -113,6 +133,11 @@ public class GameEditController implements Initializable {
         gPub.setCellValueFactory(new PropertyValueFactory<>("publisher"));
     }
 
+    /**
+     * Removes the selected game from the system.
+     * Also removes associated ports and updates relevant UI.
+     * Displays success or error alerts based on the removal result.
+     */
     public void removeGame() {
         Game selectedGame = gameEditTable.getSelectionModel().getSelectedItem();
 

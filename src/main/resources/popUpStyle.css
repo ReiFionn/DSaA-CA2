@@ -16,30 +16,29 @@
     -fx-background-size: cover;
 
 }
-/* Arcade-Style Button */
-/* Arcade-Style Button with Black Background and Custom Colors (No Flash Animation) */
+
 Button {
-    -fx-background-color: #000000; /* Black background color */
-    -fx-background-radius: 10px; /* Set a border-radius for a rounded look */
-    -fx-border-radius: 10px; /* Set a border-radius for a rounded look */
+    -fx-background-color: #000000;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
     -fx-border-color:  white;
-    -fx-text-fill: white; /* Text color */
-    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear font family */
+    -fx-text-fill: white;
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     -fx-font-weight: bold;
-    -fx-cursor: HAND; /* Set cursor to hand for better user feedback */
-    -fx-padding: 5 5; /* Adjust padding for better appearance */
-    -fx-effect: dropshadow(gaussian, #000000, 5, 5, 5, 5); /* Add a subtle drop shadow */
-    -fx-transition: all 0.3s; /* Add transition for other animations */
+    -fx-cursor: HAND;
+    -fx-padding: 5 5;
+    -fx-effect: dropshadow(gaussian, #000000, 5, 5, 5, 5);
+    -fx-transition: all 0.3s;
 }
 
-/* Arcade Hover effect for the Button */
+
 Button:hover {
-    -fx-background-color: #222222; /* Darker black on hover */
-    -fx-effect: dropshadow(gaussian, #000000, 8, 8, 8, 8); /* Enhance drop shadow on hover */
+    -fx-background-color: #222222;
+    -fx-effect: dropshadow(gaussian, #000000, 8, 8, 8, 8);
     -fx-text-fill: #FFDE59;
-    -fx-scale-x: 1.1; /* Increase scale on hover */
+    -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
-    -fx-rotate: 5deg; /* Rotate slightly on hover */
+    -fx-rotate: 5deg;
 }
 
 .combo-box {
@@ -48,10 +47,6 @@ Button:hover {
     -fx-background-color: black;
     -fx-text-fill: white;
 }
-
-
-/* styles.css */
-
 
 
 .table-cell {
