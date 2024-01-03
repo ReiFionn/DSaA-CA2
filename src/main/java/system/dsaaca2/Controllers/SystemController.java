@@ -56,14 +56,14 @@ public class SystemController implements Initializable {
     public Label portCoverLabel = new Label();
     @FXML
     public ImageView gameImage;
-    public Label gameNameLabel;
-    public Label gamePubLabel;
-    public Label gameDevLabel;
-    public Label gameYearLabel;
-    public Label gameDescLabel;
-    public Label gameCoverLabel;
-    public Label gamesPortsLabel;
-    public Label gameMachineLabel;
+    public Label gameNameLabel= new Label();
+    public Label gamePubLabel= new Label();
+    public Label gameDevLabel= new Label();
+    public Label gameYearLabel= new Label();
+    public Label gameDescLabel= new Label();
+    public Label gameCoverLabel= new Label();
+    public Label gamesPortsLabel= new Label();
+    public Label gameMachineLabel= new Label();
     public ImageView machineImage;
     @FXML
     public Label machineNameLabel = new Label();
@@ -477,9 +477,9 @@ public class SystemController implements Initializable {
                     if (((Game) foundDrill).getPorts().isEmpty()) {
                         Utilities.showInformationAlert("DRILL-DOWN", "This game does not have any ports to drill further.");
                     } else {
+                        searchResults.getItems().clear();
+                        searchResults.getItems().add("--------------------------------------  LIST OF GAME PORTS FOR " + ((Game) foundDrill).getName().toUpperCase() + "  --------------------------------------------");
                         for (GamePort p : ((Game) foundDrill).getPorts()) {
-                            searchResults.getItems().clear();
-                            searchResults.getItems().add("--------------------------------------  LIST OF GAME PORTS FOR " + ((Game) foundDrill).getName().toUpperCase() + "  --------------------------------------------");
                             searchResults.getItems().add(p.toString());
                         }
                     }
