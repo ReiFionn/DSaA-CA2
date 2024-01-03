@@ -33,8 +33,6 @@ public class Utilities {
         alert.setHeaderText(null);
         alert.setContentText(content);
 
-
-
         alert.showAndWait();
     }
 }

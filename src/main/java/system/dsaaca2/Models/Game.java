@@ -83,8 +83,6 @@ public class Game implements Hashable {
         ports.remove(p);
     }
 
-
-
     @Override
     public String toString() {
         return

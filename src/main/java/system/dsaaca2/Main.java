@@ -4,20 +4,18 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
-    public static Scene homePageScene,gameScene,systemScene,gameEditScene;
+    public static Scene homePageScene,gameScene,systemScene;
     public static Stage mainStage;
-
 
     public static void main(String[] args) {
         launch();
     }
+
     public Scene newScene(String file) throws IOException {
         /*Method for creating new scenes*/
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(file));
@@ -25,14 +23,6 @@ public class Main extends Application {
         Scene newScene = new Scene(root, 1500, 900);
         newScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/stylesheet.css")).toExternalForm());
         return newScene; // Return the new scene
-    }
-
-    public static Stage getMainStage() {
-        return mainStage;
-    }
-
-    public static void setMainStage(Stage mainStage) {
-        Main.mainStage = mainStage;
     }
 
     @Override
@@ -49,7 +39,6 @@ public class Main extends Application {
         mainStage.setResizable(false);
         mainStage.setTitle("Retro Games System");
         mainStage.show();
-
     }
 
     public static Stage newPopup(String file, String title) throws IOException {

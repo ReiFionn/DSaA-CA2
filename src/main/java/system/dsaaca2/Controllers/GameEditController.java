@@ -10,10 +10,8 @@ import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.utils.Utilities;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import static system.dsaaca2.Controllers.GameAPI.*;
 
 public class GameEditController implements Initializable {

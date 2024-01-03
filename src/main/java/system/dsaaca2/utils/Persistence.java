@@ -7,7 +7,6 @@ import system.dsaaca2.Datastructures.SillyList;
 import system.dsaaca2.Models.Game;
 import system.dsaaca2.Models.GamePort;
 import system.dsaaca2.Models.GamesMachine;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;

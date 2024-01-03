@@ -1,7 +1,6 @@
 package system.dsaaca2.Datastructures;
 
 import system.dsaaca2.Models.Hashable;
-
 import static java.lang.Math.abs;
 
 /**
@@ -15,7 +14,6 @@ public class HashMap<E extends Hashable> {
      * The hash table storing lists of objects.
      */
     SillyList<E>[] hashTable;
-
 
     /* Constructs a new hash map with the specified size.
      * size is the size of the hash table.
@@ -43,7 +41,6 @@ public class HashMap<E extends Hashable> {
         return toReturn;
     }
 
-
     /**
      * Adds an object to the hash map using the specified key.
      * @param key    The key for hashing.
@@ -56,7 +53,6 @@ public class HashMap<E extends Hashable> {
         hashTable[home].add(object);
         return home;
     }
-
 
     /**
      * Finds the index of an object with the specified key in a given list.
@@ -76,7 +72,6 @@ public class HashMap<E extends Hashable> {
         return index;
     }
 
-
     /**
      * Finds an object in the hash map using the specified key.
      *
@@ -95,7 +90,6 @@ public class HashMap<E extends Hashable> {
         else
             return list.get(index);
     }
-
 
     /**
      * Removes an object from the hash map using the specified key.

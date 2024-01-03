@@ -10,7 +10,6 @@ public class GamesMachine implements Hashable{
 
     SillyList<Game> games = new SillyList<>();
 
-
     public GamesMachine(String name, String manufacturer, String description, String type, String media, String image, int year, double price) {
         this.name = name;
         this.manufacturer = manufacturer;
@@ -92,7 +91,6 @@ public class GamesMachine implements Hashable{
     public void removeGame(Game g) {
         games.remove(g);
     }
-
 
     @Override
     public String toString() {

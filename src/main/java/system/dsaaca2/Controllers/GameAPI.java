@@ -12,7 +12,6 @@ import system.dsaaca2.Models.GamesMachine;
 import system.dsaaca2.Models.Hashable;
 import system.dsaaca2.utils.Persistence;
 import system.dsaaca2.utils.Utilities;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -174,7 +173,6 @@ public class GameAPI implements Initializable {
             Utilities.showWarningAlert("ERROR", "NO EMPTY FIELDS ALLOWED, PLEASE ENTER A VALUE FOR ALL FIELDS!!!");
     }
 
-
     /**
      * Adds a new game port to the system.
      * Validates input fields, checks for duplicates, and ensures the port is associated with valid game and game machine.
@@ -284,7 +282,6 @@ public class GameAPI implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Resets the system by clearing all data structures and UI.

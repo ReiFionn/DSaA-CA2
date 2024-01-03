@@ -174,7 +174,6 @@ public class SystemController implements Initializable {
         } else Utilities.showWarningAlert("OOPS", "ENTER SOMETHING TO SEconARCH FOR");
     }
 
-
     /**
      * Performs a search for games and ports based on the selected filter and user input.
      */
@@ -275,7 +274,6 @@ public class SystemController implements Initializable {
         }
     }
 
-
     /**
      * Displays a pop-up displaying details for the selected game port with its image.
      *
@@ -357,14 +355,12 @@ public class SystemController implements Initializable {
             gameYearLabel.setText(String.valueOf(selected.getYear()));
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             gameCoverLabel.setText(selected.getCover().toLowerCase());
-            StringBuilder namesText = new StringBuilder();
 
-              String names="";
+              StringBuilder names= new StringBuilder();
             for (GamePort gp : selected.getPorts()) {
-                names += "( " + gp.getMachinePortedTo().getName().toUpperCase() + " ) , ";
-
+                names.append("( ").append(gp.getMachinePortedTo().getName().toUpperCase()).append(" ) , ");
             }
-            gamesPortsLabel.setText(names);
+            gamesPortsLabel.setText(names.toString());
 
             try {
                 Image image = new Image(coverURL);
@@ -421,17 +417,17 @@ public class SystemController implements Initializable {
             gameDescLabel.setText(selected.getDescription().toUpperCase());
             mImageLabel.setText(selected.getImage().toLowerCase());
 
-            String names = "";
+            StringBuilder names = new StringBuilder();
             for (GamePort gp : allGamePorts) {
                 if (gp.getMachinePortedTo().getName().equals(selected.getName()))
-                    names += gp.getGameName().toUpperCase() + " ( " + gp.getMachinePortedTo().getName().toUpperCase() + " ) , ";
+                    names.append(gp.getGameName().toUpperCase()).append(" ( ").append(gp.getMachinePortedTo().getName().toUpperCase()).append(" ) , ");
             }
-            mPortsLabel.setText(names);
-            String gamesText = "";
+            mPortsLabel.setText(names.toString());
+            StringBuilder gamesText = new StringBuilder();
             for (Game g : selected.getGames()) {
-                gamesText += g.getName().toUpperCase() + " ( " + g.getYear() + " ) , ";
+                gamesText.append(g.getName().toUpperCase()).append(" ( ").append(g.getYear()).append(" ) , ");
             }
-            mGamesLabel.setText(gamesText);
+            mGamesLabel.setText(gamesText.toString());
             try {
                 Image image = new Image(coverURL);
                 machineImage.setImage(image);
@@ -494,7 +490,6 @@ public class SystemController implements Initializable {
             }
         }
     }
-
 
     /**
      * Sorts the search results using Insertion Sort based on the Object instance of the selected sorting criteria.
@@ -618,6 +613,7 @@ public class SystemController implements Initializable {
             Utilities.showWarningAlert("ERR", "SELECT A WAY TO SORT");
         }
     }
+
     /**
      * Opens a pop-up window displaying detailed information about the selected result Object
      * based on the instance selected.
