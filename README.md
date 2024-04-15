@@ -8,7 +8,7 @@ Project Objective
 The primary goal of this project was to design and implement a robust system for storing, retrieving, and presenting information about retro video games and the machines they ran on. Within the scope of our Data Structures and Algorithms course, we were tasked with not only demonstrating our knowledge of key data structures but also showcasing our ability to collaborate effectively.
 Team Collaboration
 
-This project wasn't just a display of individual skills but a collaborative effort between Fionn and I. Working together and leveraging our strengths allowed us to efficiently navigate through the development process, ensuring the sucess of the project.
+This project wasn't just a display of individual skills but a collaborative effort between both members. Working together and leveraging our strengths allowed us to efficiently navigate through the development process, ensuring the sucess of the project.
 
 Throughout the collaborative development process, we navigated through different aspects of the project, from designing the user interface to implementing data structures and algorithms. Regular communication, mutual respect for ideas, and the ability to seamlessly integrate our contributions are evident in every feature and functionality of the Retro Video Games Information System.
 Java and JavaFX
